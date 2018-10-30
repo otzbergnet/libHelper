@@ -12,7 +12,41 @@
 		2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */; };
 		2D3F8FAD218586290095ACD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FAC218586290095ACD7 /* Assets.xcassets */; };
 		2D3F8FB0218586290095ACD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FAE218586290095ACD7 /* Main.storyboard */; };
+		2D3F8FBF2185863C0095ACD7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D3F8FBE2185863C0095ACD7 /* Cocoa.framework */; };
+		2D3F8FC22185863C0095ACD7 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FC12185863C0095ACD7 /* SafariExtensionHandler.swift */; };
+		2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FC32185863C0095ACD7 /* SafariExtensionViewController.swift */; };
+		2D3F8FC72185863C0095ACD7 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FC52185863C0095ACD7 /* SafariExtensionViewController.xib */; };
+		2D3F8FCA2185863C0095ACD7 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FC92185863C0095ACD7 /* script.js */; };
+		2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */; };
+		2D3F8FD02185863C0095ACD7 /* libHelper Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D3F8FBC2185863C0095ACD7 /* libHelper Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FD52185867F0095ACD7 /* mycss.css */; };
+		2D3F8FDF2185CF590095ACD7 /* oa_100.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FDE2185CF590095ACD7 /* oa_100.pdf */; };
+		2D3F8FE02185F43D0095ACD7 /* oa_100.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FDE2185CF590095ACD7 /* oa_100.pdf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D3F8FCE2185863C0095ACD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D3F8F9A218586290095ACD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D3F8FBB2185863C0095ACD7;
+			remoteInfo = "libHelper Safari";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D3F8FD42185863C0095ACD7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2D3F8FD02185863C0095ACD7 /* libHelper Safari.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D3F8FA2218586290095ACD7 /* libHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +57,18 @@
 		2D3F8FAF218586290095ACD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D3F8FB1218586290095ACD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D3F8FB2218586290095ACD7 /* libHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = libHelper.entitlements; sourceTree = "<group>"; };
+		2D3F8FBC2185863C0095ACD7 /* libHelper Safari.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "libHelper Safari.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D3F8FBE2185863C0095ACD7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2D3F8FC12185863C0095ACD7 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		2D3F8FC32185863C0095ACD7 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		2D3F8FC62185863C0095ACD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		2D3F8FC82185863C0095ACD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D3F8FC92185863C0095ACD7 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		2D3F8FCD2185863C0095ACD7 /* libHelper_Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = libHelper_Safari.entitlements; sourceTree = "<group>"; };
+		2D3F8FD52185867F0095ACD7 /* mycss.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = mycss.css; sourceTree = "<group>"; };
+		2D3F8FD721858AD10095ACD7 /* libHelper Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "libHelper Safari.entitlements"; sourceTree = "<group>"; };
+		2D3F8FDE2185CF590095ACD7 /* oa_100.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +79,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2D3F8FB92185863C0095ACD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D3F8FBF2185863C0095ACD7 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -40,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				2D3F8FA4218586290095ACD7 /* libHelper */,
+				2D3F8FC02185863C0095ACD7 /* libHelper Safari */,
+				2D3F8FBD2185863C0095ACD7 /* Frameworks */,
 				2D3F8FA3218586290095ACD7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				2D3F8FA2218586290095ACD7 /* libHelper.app */,
+				2D3F8FBC2185863C0095ACD7 /* libHelper Safari.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +123,31 @@
 			path = libHelper;
 			sourceTree = "<group>";
 		};
+		2D3F8FBD2185863C0095ACD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D3F8FBE2185863C0095ACD7 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D3F8FC02185863C0095ACD7 /* libHelper Safari */ = {
+			isa = PBXGroup;
+			children = (
+				2D3F8FD721858AD10095ACD7 /* libHelper Safari.entitlements */,
+				2D3F8FC12185863C0095ACD7 /* SafariExtensionHandler.swift */,
+				2D3F8FC32185863C0095ACD7 /* SafariExtensionViewController.swift */,
+				2D3F8FC52185863C0095ACD7 /* SafariExtensionViewController.xib */,
+				2D3F8FC82185863C0095ACD7 /* Info.plist */,
+				2D3F8FDE2185CF590095ACD7 /* oa_100.pdf */,
+				2D3F8FD52185867F0095ACD7 /* mycss.css */,
+				2D3F8FC92185863C0095ACD7 /* script.js */,
+				2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */,
+				2D3F8FCD2185863C0095ACD7 /* libHelper_Safari.entitlements */,
+			);
+			path = "libHelper Safari";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -76,15 +158,34 @@
 				2D3F8F9E218586290095ACD7 /* Sources */,
 				2D3F8F9F218586290095ACD7 /* Frameworks */,
 				2D3F8FA0218586290095ACD7 /* Resources */,
+				2D3F8FD42185863C0095ACD7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2D3F8FCF2185863C0095ACD7 /* PBXTargetDependency */,
 			);
 			name = libHelper;
 			productName = libHelper;
 			productReference = 2D3F8FA2218586290095ACD7 /* libHelper.app */;
 			productType = "com.apple.product-type.application";
+		};
+		2D3F8FBB2185863C0095ACD7 /* libHelper Safari */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D3F8FD12185863C0095ACD7 /* Build configuration list for PBXNativeTarget "libHelper Safari" */;
+			buildPhases = (
+				2D3F8FB82185863C0095ACD7 /* Sources */,
+				2D3F8FB92185863C0095ACD7 /* Frameworks */,
+				2D3F8FBA2185863C0095ACD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "libHelper Safari";
+			productName = "libHelper Safari";
+			productReference = 2D3F8FBC2185863C0095ACD7 /* libHelper Safari.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -98,6 +199,25 @@
 				TargetAttributes = {
 					2D3F8FA1218586290095ACD7 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					2D3F8FBB2185863C0095ACD7 = {
+						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -115,6 +235,7 @@
 			projectRoot = "";
 			targets = (
 				2D3F8FA1218586290095ACD7 /* libHelper */,
+				2D3F8FBB2185863C0095ACD7 /* libHelper Safari */,
 			);
 		};
 /* End PBXProject section */
@@ -126,6 +247,19 @@
 			files = (
 				2D3F8FAD218586290095ACD7 /* Assets.xcassets in Resources */,
 				2D3F8FB0218586290095ACD7 /* Main.storyboard in Resources */,
+				2D3F8FE02185F43D0095ACD7 /* oa_100.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D3F8FBA2185863C0095ACD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */,
+				2D3F8FDF2185CF590095ACD7 /* oa_100.pdf in Resources */,
+				2D3F8FC72185863C0095ACD7 /* SafariExtensionViewController.xib in Resources */,
+				2D3F8FCA2185863C0095ACD7 /* script.js in Resources */,
+				2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +276,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2D3F8FB82185863C0095ACD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */,
+				2D3F8FC22185863C0095ACD7 /* SafariExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D3F8FCF2185863C0095ACD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D3F8FBB2185863C0095ACD7 /* libHelper Safari */;
+			targetProxy = 2D3F8FCE2185863C0095ACD7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2D3F8FAE218586290095ACD7 /* Main.storyboard */ = {
@@ -151,6 +302,14 @@
 				2D3F8FAF218586290095ACD7 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2D3F8FC52185863C0095ACD7 /* SafariExtensionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D3F8FC62185863C0095ACD7 /* Base */,
+			);
+			name = SafariExtensionViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -274,6 +433,7 @@
 		2D3F8FB6218586290095ACD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = libHelper/libHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -293,6 +453,7 @@
 		2D3F8FB7218586290095ACD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = libHelper/libHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -305,6 +466,44 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		2D3F8FD22185863C0095ACD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "libHelper Safari/libHelper Safari.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J3PNNM2UXC;
+				INFOPLIST_FILE = "libHelper Safari/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		2D3F8FD32185863C0095ACD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "libHelper Safari/libHelper Safari.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J3PNNM2UXC;
+				INFOPLIST_FILE = "libHelper Safari/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -326,6 +525,15 @@
 			buildConfigurations = (
 				2D3F8FB6218586290095ACD7 /* Debug */,
 				2D3F8FB7218586290095ACD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D3F8FD12185863C0095ACD7 /* Build configuration list for PBXNativeTarget "libHelper Safari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D3F8FD22185863C0095ACD7 /* Debug */,
+				2D3F8FD32185863C0095ACD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
