@@ -118,14 +118,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         //sole purpose is to dispatch the url
         do{
             let oaData = try JSONDecoder().decode(Unpaywall.self, from: data)
-            if (oaData.best_oa_location.url != "") {
-                updateBadge(text: "!")
-                updateCount()
-                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(oaData.best_oa_location.url)"])
+            if let boa = oaData.best_oa_location {
+                if (boa.url != "") {
+                    updateBadge(text: "!")
+                    updateCount()
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)"])
+                }
+                else{
+                    toolbarAction(imgName: "oa_100.pdf")
+                }
             }
-            else{
+            else {
                 toolbarAction(imgName: "oa_100.pdf")
             }
+            
             
         }
         catch let jsonError{
@@ -275,7 +281,7 @@ struct OaDOI : Decodable {
 }
 
 struct Unpaywall : Decodable{
-    let best_oa_location : OpenAccessLocation
+    let best_oa_location : OpenAccessLocation?
     let data_standard : Int
     let doi : String
     let doi_url : String
@@ -298,11 +304,11 @@ struct OpenAccessLocation : Decodable {
     let evidence : String
     let host_type : String
     let is_best : Bool
-    let license : String
+    let license : String?
     let pmh_id : String?
     let updated : String
     let url : String
-    let url_for_landing_page : String?
+    let url_for_landing_page : String
     let url_for_pdf : String?
     let version : String
 }

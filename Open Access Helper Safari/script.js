@@ -44,7 +44,7 @@ function findDoi(){
         }
     }
     if(doi != ""){
-        console.log(doi)
+        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
@@ -56,7 +56,7 @@ function findDoi(){
 function findDoi1(){
     var doi = getMetaScheme('dc.Identifier', 'doi');
     if(doi != ""){
-        console.log(doi)
+        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
@@ -95,9 +95,8 @@ function currentUrl() {
 
 function oafound(message){
 
-
     var src = safari.extension.baseURI + "sec30.png";
-    //⎋
+
     var div = document.createElement('div');
     div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="Open Access Version Found! '+message.url+'"><img id="doicheckmark" src="'+src+'" title="Open Access Version Found! '+message.url+'" data-oaurl="'+message.url+'"/></div>';
     div.id = 'doifound_outer'
@@ -106,13 +105,7 @@ function oafound(message){
     if(document.body.parentNode.parentNode != "#document"){
         document.body.appendChild(div);
     }
-    /*countDown()
-     setTimeout(
-     function(){
-     div.parentNode.removeChild(div);
-     },
-     10000);*/
-    
+    console.log("Open Access Helper (Safari Extension) found this Open Access URL: "+message.url)
     var currentUrl = window.location.href;
     safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
     
@@ -155,7 +148,7 @@ function getKnownOAUrl(){
         safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
     else{
-        alert("No DOI or Open Access to be found");
+        alert("No DOI or Open Access was found");
     }
     
 }
