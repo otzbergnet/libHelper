@@ -92,26 +92,36 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     func checkUnpaywall(doi: String, page: SFSafariPage) {
         toolbarAction(imgName: "oa_100a.pdf")
-        //need to add a little security here
-        let jsonUrlString = "https://www.otzberg.net/oadoiproxy/index.php?doi=\(doi)"
+        let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=claus.wolf@otzberg.net"
         let url = URL(string: jsonUrlString)
         
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            guard let data = data else { return }
-            self.handleData(data: data, page: page)
+            if let error = error{
+                //we got an error, let's tell the user
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_error" : error.localizedDescription])
+            }
+            if let data = data {
+                self.handleData(data: data, page: page)
+            }
+            else{
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_data" : "failed"])
+                self.toolbarAction(imgName: "oa_100.pdf")
+                return
+            }
+            
         }
-        
+
         task.resume()
     }
     
     func handleData(data: Data, page: SFSafariPage){
         //sole purpose is to dispatch the url
         do{
-            let oaData = try JSONDecoder().decode(OaDOI.self, from: data)
-            if (oaData.url != "") {
+            let oaData = try JSONDecoder().decode(Unpaywall.self, from: data)
+            if (oaData.best_oa_location.url != "") {
                 updateBadge(text: "!")
                 updateCount()
-                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : oaData.url])
+                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(oaData.best_oa_location.url)"])
             }
             else{
                 toolbarAction(imgName: "oa_100.pdf")
@@ -119,8 +129,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
         }
         catch let jsonError{
-            print(jsonError)
-            page.dispatchMessageToScript(withName: "printPls", userInfo: ["error" : jsonError])
+            NSLog("\(jsonError)")
+            //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             return
         }
     }
@@ -141,17 +151,36 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 
                 //remove http and https to avoid trouble in the comparison
                 let finalUrlString = "\(finalUrl)"
-                page.dispatchMessageToScript(withName: "printPls", userInfo: ["finalURL" : finalUrlString])
+
                 var myFinalUrl = finalUrlString.replacingOccurrences(of: "https://", with: "")
                 myFinalUrl = myFinalUrl.replacingOccurrences(of: "http://", with: "")
                 var myCurrent = current.replacingOccurrences(of: "https://", with: "")
                 myCurrent = myCurrent.replacingOccurrences(of: "http://", with: "")
 
+                let cUrl1 = URL(string: current)
+                let domain1 = cUrl1?.host
+                let domain2 = finalUrl.host
+                
+                
                 //simple string comparison
                 if (myFinalUrl == myCurrent){
                     self.toolbarAction(imgName: "oa_100a.pdf")
                     self.updateBadge(text: "✔")
-                    //self.updateCount()
+                    page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
+                }
+                else if (domain1 == domain2){
+                    self.toolbarAction(imgName: "oa_100a.pdf")
+                    self.updateBadge(text: "✔")
+                    page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
+                }
+                else if (domain1 == "www.sciencedirect.com" && domain2 == "linkinghub.elsevier.com"){
+                    self.toolbarAction(imgName: "oa_100a.pdf")
+                    self.updateBadge(text: "✔")
+                    page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
+                }
+                else if (current.contains("www.ncbi.nlm.nih.gov/pmc/")){
+                    self.toolbarAction(imgName: "oa_100a.pdf")
+                    self.updateBadge(text: "✔")
                     page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
                 }
                 
@@ -245,3 +274,52 @@ struct OaDOI : Decodable {
     let status : String
 }
 
+struct Unpaywall : Decodable{
+    let best_oa_location : OpenAccessLocation
+    let data_standard : Int
+    let doi : String
+    let doi_url : String
+    let genre : String
+    let is_oa : Bool
+    let journal_is_in_doaj: Bool
+    let journal_is_oa : Bool
+    let journal_issns : String
+    let journal_name : String
+    let oa_locations : [OpenAccessLocation]
+    let published_date : String
+    let publisher : String
+    let title : String
+    let updated : String
+    let year : Int
+    let z_authors : [OAAuthors]
+}
+
+struct OpenAccessLocation : Decodable {
+    let evidence : String
+    let host_type : String
+    let is_best : Bool
+    let license : String
+    let pmh_id : String?
+    let updated : String
+    let url : String
+    let url_for_landing_page : String?
+    let url_for_pdf : String?
+    let version : String
+}
+
+struct OAAuthors : Decodable{
+    
+    let orcid : String?
+    let authenticated_orcid : Bool?
+    let family : String?
+    let given : String?
+    let sequence : String?
+    
+    enum CodingKeys: String, CodingKey {
+        case authenticated_orcid = "authenticated-orcid"
+        case orcid = "ORCID"
+        case family = "family"
+        case given = "given"
+        case sequence = "sequence"
+    }
+}
