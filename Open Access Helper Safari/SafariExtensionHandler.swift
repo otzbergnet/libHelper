@@ -295,7 +295,7 @@ struct Unpaywall : Decodable{
     let published_date : String
     let publisher : String
     let title : String
-    let updated : String
+    let updated : String?
     let year : Int
     let z_authors : [OAAuthors]
 }
@@ -306,9 +306,9 @@ struct OpenAccessLocation : Decodable {
     let is_best : Bool
     let license : String?
     let pmh_id : String?
-    let updated : String
+    let updated : String?
     let url : String
-    let url_for_landing_page : String
+    let url_for_landing_page : String?
     let url_for_pdf : String?
     let version : String
 }
