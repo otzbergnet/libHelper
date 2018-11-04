@@ -1,0 +1,41 @@
+.doifound_outer{
+    top: 50%!important;
+    right: 0!important;
+    z-index: 10000!important;
+    position: fixed!important;
+    width: 50px!important;
+    height: 40px!important;
+    border-radius: 20px 0 0 20px!important;
+    background-color: rgb(255, 102, 0)!important;
+}
+
+.doiorange{
+    background-color: rgb(31,225,104)!important;
+}
+
+.doifound{
+    font-family:  "Helvetica", "Arial", "sans-serif"!important;
+    text-align: center;
+    cursor: pointer;
+    color: #FFF!important;
+    width: 50px!important;
+    height: 40px!important;
+}
+
+a#doifound, a#doifound:active, a#doifound:hover{
+    text-decoration: none!important;
+    color: #FFF!important;
+}
+
+#doicheckmark{
+    width: 30px!important;
+    height: 30px!important;
+    margin: 5px!important;
+    margin-left: 10px!important;
+}
+
+#cntdwn{
+    font-size: 1em!important;
+    color: #FFFFFF!important;
+}
+
