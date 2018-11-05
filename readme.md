@@ -23,8 +23,8 @@ The app will perform the following operations
 2. Try to identify a DOI on the page, to avoid playing with Regular Expressions, we are checking for meta-tags such as 'citation_doi', 'doi', 'dc.doi', 'dc.identifier', 'dc.identifier.doi', 'bepress_citation_doi', 'rft_id', 'dcsext.wt_doi'
 3. The DOI is then sent to unpaywall.org
 4. If Unpaywall.org doesn't know of a legal Open Access copy, the app will stop here
-5. If a legal Open Access copy is known an orange button is injected and the toolbar icon gets an exclamation mark badge - clicking either takes you to the item
-6. After injecting the orange button, the app follows the link to see if you possibly are on the page already, if you are the, button changes color to green and the toolbar icon gets a checkmark badge
+5. If a legal Open Access copy is known, an orange button is injected and the toolbar icon gets an exclamation mark badge - clicking either takes you to the item
+6. After injecting the orange button, the app follows the link to see if you possibly are on the page already, if you are, the button changes color to green and the toolbar icon gets a checkmark badge
 
 To help you recognize that the app is actively doing something, the icon changes from an outline to a filled padlock
 
