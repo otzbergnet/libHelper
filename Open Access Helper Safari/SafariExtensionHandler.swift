@@ -231,7 +231,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let text = count //just a text
         
         let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "net.otzberg.shared") else {
+        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
             return
         }
         let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
@@ -252,7 +252,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         var text2 = "0"
         
         let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "net.otzberg.shared") else {
+        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
             return 0
         }
         let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")

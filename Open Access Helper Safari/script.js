@@ -148,7 +148,7 @@ function getKnownOAUrl(){
         safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
     else{
-        alert("No DOI or Open Access was found");
+        alert("Open Access Helper is inactive on this page, as no DOI / Digital Object Identifier is available");
     }
     
 }

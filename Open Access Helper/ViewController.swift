@@ -18,7 +18,7 @@ class ViewController: NSViewController {
         var text2 = ""
         
         let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "net.otzberg.shared") else {
+        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
             return ""
         }
         let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
