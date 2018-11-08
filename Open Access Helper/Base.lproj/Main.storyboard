@@ -146,25 +146,25 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="190"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hre-mD-sm7">
-                                <rect key="frame" x="28" y="30" width="424" height="85"/>
+                                <rect key="frame" x="28" y="75" width="424" height="85"/>
                                 <textFieldCell key="cell" selectable="YES" id="FNM-3T-H4P">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">1) Launch Safari
 2) Access Safari &gt; Preferences (⌘,)
 3) Select Extensions
-4) Activate LibHelper Extension
+4) Activate the Open Access Helper Extension
 5) Find Open Access and enjoy :)</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qa8-Lu-Lg5">
-                                <rect key="frame" x="28" y="140" width="285" height="30"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Open Access Helper for Safari" id="qvY-WQ-5Ex">
+                                <rect key="frame" x="28" y="175" width="193" height="30"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Open Access Helper" id="qvY-WQ-5Ex">
                                     <font key="font" size="17" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -190,19 +190,30 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="lbX-Ov-jUe"/>
                             </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rY0-UY-Mcn">
+                                <rect key="frame" x="28" y="15" width="424" height="15"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Icon made by Freepik from www.flaticon.com; Thanks to unpaywall.org for their API" id="Mmq-K4-1aK">
+                                    <font key="font" size="10" name="HelveticaNeue"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="owU-kc-A61" secondAttribute="bottom" constant="30" id="1xu-aQ-inb"/>
                             <constraint firstItem="owU-kc-A61" firstAttribute="top" secondItem="LZV-Q3-IEu" secondAttribute="bottom" constant="8" id="4cJ-Z0-VAJ"/>
-                            <constraint firstAttribute="bottom" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="30" id="5n0-ff-z2b"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="30" id="Anl-fk-yAQ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qa8-Lu-Lg5" secondAttribute="trailing" constant="30" id="TEt-jv-Hxt"/>
                             <constraint firstAttribute="trailing" secondItem="owU-kc-A61" secondAttribute="trailing" constant="40" id="UzB-Pl-9s6"/>
-                            <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="25" id="X5k-Gn-k8b"/>
+                            <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="15" id="X5k-Gn-k8b"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="rY0-UY-Mcn" secondAttribute="trailing" constant="30" id="YeO-Rw-djN"/>
+                            <constraint firstAttribute="bottom" secondItem="rY0-UY-Mcn" secondAttribute="bottom" constant="15" id="a7w-7y-UUk"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="30" id="aqX-zD-CJO"/>
                             <constraint firstItem="owU-kc-A61" firstAttribute="leading" relation="lessThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="315" id="biD-vQ-0iq"/>
+                            <constraint firstItem="rY0-UY-Mcn" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="45" id="c9e-r0-SC0"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="trailing" constant="30" id="hCg-nt-OEo"/>
-                            <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="heb-Zz-WcX"/>
+                            <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="15" id="heb-Zz-WcX"/>
+                            <constraint firstItem="rY0-UY-Mcn" firstAttribute="leading" relation="lessThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="30" id="waN-gJ-dYG"/>
                             <constraint firstAttribute="trailing" secondItem="LZV-Q3-IEu" secondAttribute="trailing" constant="30" id="yJx-WC-tfU"/>
                         </constraints>
                     </view>
@@ -212,7 +223,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="654.5"/>
         </scene>
     </scenes>
     <resources>

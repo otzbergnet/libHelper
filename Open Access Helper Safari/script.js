@@ -35,7 +35,7 @@ function messageHandler(event){
 }
 
 function findDoi(){
-    var option = ['citation_doi', 'doi', 'dc.doi', 'dc.identifier', 'dc.identifier.doi', 'bepress_citation_doi', 'rft_id', 'dcsext.wt_doi'];
+    var option = ['citation_doi', 'doi', 'dc.doi', 'dc.identifier', 'dc.identifier.doi', 'bepress_citation_doi', 'rft_id', 'dcsext.wt_doi', 'DC.identifier'];
     var doi = "";
     for(i = 0; i < option.length; i++){
         doi = getMeta(option[i]);
@@ -44,17 +44,36 @@ function findDoi(){
         }
     }
     if(doi != ""){
-        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
+        cleanDOI = cleanDOI(doi)
+        console.log("Open Access Helper (Safari Extension) found this DOI: "+cleanDOI)
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
-        findDoi1()
+        findDoi1();
     }
     
 }
 
 function findDoi1(){
     var doi = getMetaScheme('dc.Identifier', 'doi');
+    if(doi != ""){
+        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
+        safari.extension.dispatchMessage("found", {"doi" : doi});
+    }
+    else{
+        findDoi2();
+    }
+}
+
+function findDoi2(){
+    var selectors = ['a[ref=\"aid_type=doi\"]'];
+    var doi = ""
+    for(i = 0; i < selectors.length; i++){
+        doi = getFromSelector(selectors[i]);
+        if(doi != ""){
+            break;
+        }
+    }
     if(doi != ""){
         console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
         safari.extension.dispatchMessage("found", {"doi" : doi});
@@ -86,6 +105,55 @@ function getMetaScheme(metaName, scheme){
     }
     
     return '';
+}
+
+function getFromSelector(selector){
+    const elements = document.querySelectorAll(selector);
+    
+    for (let i = 0; i < elements.length; i++) {
+        if(isDOI(elements[i].innerHTML)){
+            return elements[i].innerHTML
+        }
+    }
+    
+    return '';
+}
+
+function cleanDOI(doi){
+    var clean = ['info:doi/'];
+    
+    for(let i = 0; i < clean.length; i++){
+        doi = doi.replace(clean[i], '');
+    }
+    
+    return doi;
+}
+
+function isDOI(doi){
+    var regex1 = /^10.\d{4,9}\/[-._;()\/:A-Z0-9]+$/i;
+    var regex2 = /^10.1002\/[^\s]+$/i;
+    var regex3 = /^10.\d{4}\/\d+-\d+X?(\d+)\d+<[\d\w]+:[\d\w]*>\d+.\d+.\w+;\d$/i;
+    var regex4 = /^10.1021\/\w\w\d+$/i;
+    var regex5 = /^10.1207\/[\w\d]+\&\d+_\d+$/i;
+    
+    if(regex1.test(doi)) {
+        return true;
+    }
+    else if (regex2.test(doi)){
+        return true;
+    }
+    else if (regex3.test(doi)){
+        return true;
+    }
+    else if (regex4.test(doi)){
+        return true;
+    }
+    else if (regex5.test(doi)){
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 

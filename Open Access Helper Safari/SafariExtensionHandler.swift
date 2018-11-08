@@ -92,7 +92,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     func checkUnpaywall(doi: String, page: SFSafariPage) {
         toolbarAction(imgName: "oa_100a.pdf")
-        let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=claus.wolf@otzberg.net"
+        let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=oahelper@otzberg.net"
         let url = URL(string: jsonUrlString)
         
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
