@@ -7,11 +7,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 
+// double checking that we are not in an iFrame
+
 if(!inIframe()){
     // Listens for messages sent from the app extension's Swift code.
     safari.self.addEventListener("message", messageHandler);
 }
 
+
+// handles the requests from the SafariExtensionHandler
 function messageHandler(event){
     if (event.name === "doi"){
         findDoi();
@@ -35,6 +39,7 @@ function messageHandler(event){
 }
 
 function findDoi(){
+    // we are going to look in meta-tags for the DOI
     var option = ['citation_doi', 'doi', 'dc.doi', 'dc.identifier', 'dc.identifier.doi', 'bepress_citation_doi', 'rft_id', 'dcsext.wt_doi', 'DC.identifier'];
     var doi = "";
     for(i = 0; i < option.length; i++){
@@ -49,23 +54,29 @@ function findDoi(){
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
+        // didn't find a DOI yet, so let's look in another place
         findDoi1();
     }
     
 }
 
 function findDoi1(){
+    
+    //in this case, we are looking for both meta-tag and its scheme
     var doi = getMetaScheme('dc.Identifier', 'doi');
     if(doi != ""){
         console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
+        // didn't find a DOI yet, let's look in yet another place
         findDoi2();
     }
 }
 
 function findDoi2(){
+    // this is a place for more complex fallbacks, where we can provide additional "CSS-Selectors" to find
+    // a DOI
     var selectors = ['a[ref=\"aid_type=doi\"]'];
     var doi = ""
     for(i = 0; i < selectors.length; i++){
@@ -79,11 +90,14 @@ function findDoi2(){
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
+        // we are ready to give up here and send a notfound message, so that we can deactivate the icon
         safari.extension.dispatchMessage("notfound", {"doi" : ""});
     }
 }
 
 function getMeta(metaName) {
+    // get meta tags and loop through them. Looking for the name attribute and see if it is the metaName
+    // we were looking for
     const metas = document.getElementsByTagName('meta');
     
     for (let i = 0; i < metas.length; i++) {
@@ -96,6 +110,7 @@ function getMeta(metaName) {
 }
 
 function getMetaScheme(metaName, scheme){
+    // pretty much the same as the other function, but it also double-checks the scheme
     const metas = document.getElementsByTagName('meta');
     
     for (let i = 0; i < metas.length; i++) {
@@ -108,9 +123,11 @@ function getMetaScheme(metaName, scheme){
 }
 
 function getFromSelector(selector){
+    // allow for more complex CSS selectors, these are likely more "dangerous"
     const elements = document.querySelectorAll(selector);
     
     for (let i = 0; i < elements.length; i++) {
+        // make sure we test what we find to be a proper DOI
         if(isDOI(elements[i].innerHTML)){
             return elements[i].innerHTML
         }
@@ -120,6 +137,8 @@ function getFromSelector(selector){
 }
 
 function cleanDOI(doi){
+    
+    // clean for a few common known prefixes (well exactly one right now, but easy to expand
     var clean = ['info:doi/'];
     
     for(let i = 0; i < clean.length; i++){
@@ -130,6 +149,9 @@ function cleanDOI(doi){
 }
 
 function isDOI(doi){
+    
+    // these regular expressions were recommended by CrossRef in a blog
+    // https://www.crossref.org/blog/dois-and-matching-regular-expressions/
     var regex1 = /^10.\d{4,9}\/[-._;()\/:A-Z0-9]+$/i;
     var regex2 = /^10.1002\/[^\s]+$/i;
     var regex3 = /^10.\d{4}\/\d+-\d+X?(\d+)\d+<[\d\w]+:[\d\w]*>\d+.\d+.\w+;\d$/i;
@@ -163,10 +185,13 @@ function currentUrl() {
 
 function oafound(message){
 
-    var src = safari.extension.baseURI + "sec30.png";
+    // here we inject the icon into the page
+    // room for improvement, most Chrome extensions would inject an iFrame
+    
+    var src = safari.extension.baseURI + "sec30.png"; // padlock
 
     var div = document.createElement('div');
-    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="Open Access Version Found! '+message.url+'"><img id="doicheckmark" src="'+src+'" title="Open Access Version Found! '+message.url+'" data-oaurl="'+message.url+'"/></div>';
+    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="Open Access Version Found! '+message.url+'"><img id="doicheckmark" src="'+src+'" title="Open Access Version Found! '+message.url+'" data-oaurl="'+message.url+'"/></div>'; // data-oaurl is a gift to ourselves
     div.id = 'doifound_outer'
     div.className = 'doifound_outer'
     
@@ -179,12 +204,16 @@ function oafound(message){
     
 }
 
+// if on Open Access document, this will turn the imported badge green
+
 function onOa(){
     var div = document.getElementById("doifound_outer");
-    div.classList.add("doiorange");
+    div.classList.add("doigreen");
 }
 
 
+// unused function, leaving it here, in case I ever want to make the
+// injected div go away
 function countDown(){
     var i = 0;
     var id = document.getElementById("cntdwn");
@@ -199,7 +228,7 @@ function countDown(){
     }, 1000);
 }
 
-//simpe helper to see if we are in an iframe,, there are a lot of those on publisher sites
+//simple helper to see if we are in an iframe, there are a lot of those on publisher sites
 function inIframe () {
     try {
         return window.self !== window.top;
@@ -208,6 +237,10 @@ function inIframe () {
         return true;
     }
 }
+
+
+// this function is used, when you click the toolbar icon to return for you the URL,
+// which we previously injected ourselves
 
 function getKnownOAUrl(){
     var div = document.getElementById("doicheckmark");
