@@ -94,12 +94,44 @@ function findDoi2(){
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
-        // we are ready to give up here and send a notfound message, so that we can deactivate the icon
-        safari.extension.dispatchMessage("notfound", {"doi" : ""});
-        // however giving up is for losers, so we'll try a few more
-        alternativeOA();
+        // we are ready to give up here, but not quite
+        findDoi3();
     }
 }
+
+function findDoi3(){
+    var host = window.location.hostname;
+    if(host.indexOf("ieeexplore.ieee.org") > -1){
+        // IEEE
+        var regex = new RegExp('"doi":"([^"]+)"');
+        var doi = runRegexOnDoc(regex);
+        
+        scrapedDoi(doi);
+        
+    }
+    else if(host.indexOf("nber.org") > -1){
+        //National Bureau of Economic Research
+        var regex = new RegExp('Document Object Identifier \\(DOI\\): (10.*?)<\\/p>');
+        var doi = runRegexOnDoc(regex);
+        
+        scrapedDoi(doi);
+        
+    }
+    else if(host.indexOf("base-search.net") > -1){
+        // BASE SEARCH - for detail view, really quite superflous, but I like base
+        if (document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]").length > 0){
+            
+            var doi = document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]")[0].href.replace('https://doi.org/','').replace('http://doi.org/','');
+            scrapedDoi(doi);
+            
+        }
+    }
+    else{
+        // we are ready to give up here and send a notfound message, so that we can deactivate the icon
+        safari.extension.dispatchMessage("notfound", {"doi" : ""});
+    }
+}
+
 
 function getMeta(metaName) {
     // get meta tags and loop through them. Looking for the name attribute and see if it is the metaName
@@ -280,23 +312,16 @@ function alternativeOA(){
             }
         }
     }
-    else if(host.indexOf("ieeexplore.ieee.org") > -1){
-        // IEEE
-        var regex = new RegExp('"doi":"([^"]+)"');
-        var doi = runRegexOnDoc(regex);
-        
-        scrapedDoi(doi);
-        
+    else if(host.indexOf("base-search.net") > -1){
+        if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
+            var href = document.querySelectorAll("a.link-gruen.bold")[0].href;
+            if(href != null && href != ""){
+                var message = new Array();
+                message['url'] = href;
+                oafound(message);
+            }
+        }
     }
-    else if(host.indexOf("nber.org") > -1){
-        //National Bureau of Economic Research
-        var regex = new RegExp('Document Object Identifier \\(DOI\\): (10.*?)<\\/p>');
-        var doi = runRegexOnDoc(regex);
-        
-        scrapedDoi(doi);
-        
-    }
-    
 }
 
 
