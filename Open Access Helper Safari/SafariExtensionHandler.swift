@@ -126,10 +126,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
+                    page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
                 }
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
             }
             
             
@@ -289,14 +291,14 @@ struct Unpaywall : Decodable{
     let is_oa : Bool
     let journal_is_in_doaj: Bool
     let journal_is_oa : Bool
-    let journal_issns : String
-    let journal_name : String
+    let journal_issns : String?
+    let journal_name : String?
     let oa_locations : [OpenAccessLocation]
-    let published_date : String
-    let publisher : String
-    let title : String
+    let published_date : String?
+    let publisher : String?
+    let title : String?
     let updated : String?
-    let year : Int
+    let year : Int?
     let z_authors : [OAAuthors]
 }
 

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     //check if we are in an iframe, if so do nothing, otherwise go and find yourself a DOI
+
     if(!inIframe()){
         findDoi();
     }
@@ -34,6 +35,9 @@ function messageHandler(event){
     }
     else if (event.name == "getOAUrl"){
         getKnownOAUrl();
+    }
+    else if (event.name == "notoadoi"){
+        alternativeOA();
     }
     
 }
@@ -92,6 +96,8 @@ function findDoi2(){
     else{
         // we are ready to give up here and send a notfound message, so that we can deactivate the icon
         safari.extension.dispatchMessage("notfound", {"doi" : ""});
+        // however giving up is for losers, so we'll try a few more
+        alternativeOA();
     }
 }
 
@@ -252,4 +258,62 @@ function getKnownOAUrl(){
         alert("Open Access Helper is inactive on this page, as no DOI / Digital Object Identifier is available");
     }
     
+}
+
+// if oadoi gives back an empty result or not oa result,
+// we will run this to see if we might OA on the page
+// uses some site specific logic
+
+function alternativeOA(){
+    var host = window.location.hostname;
+    
+    if(host.indexOf("ingentaconnect") > -1){
+        // Ingenta Connect
+        if (document.querySelectorAll("span.access-icon img[alt='Open Access']").length > 0){
+            var onclick = document.querySelectorAll("a.fulltext.pdf")[0].getAttribute('onclick');
+            var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
+            if(href != null && href != ""){
+                var message = new Array();
+                message['url'] = window.location.protocol+'//'+host+href;
+                oafound(message);
+                onOa();
+            }
+        }
+    }
+    else if(host.indexOf("ieeexplore.ieee.org") > -1){
+        // IEEE
+        var regex = new RegExp('"doi":"([^"]+)"');
+        var doi = runRegexOnDoc(regex);
+        
+        scrapedDoi(doi);
+        
+    }
+    else if(host.indexOf("nber.org") > -1){
+        //National Bureau of Economic Research
+        var regex = new RegExp('Document Object Identifier \\(DOI\\): (10.*?)<\\/p>');
+        var doi = runRegexOnDoc(regex);
+        
+        scrapedDoi(doi);
+        
+    }
+    
+}
+
+
+
+//runRegexOnDoc - inspired by unpywall.org
+
+function runRegexOnDoc(regEx){
+    var m = regEx.exec(document.documentElement.innerHTML);
+    if (m && m.length > 1){
+       return m[1];
+    }
+    return false
+}
+
+function scrapedDoi(doi){
+    if(isDOI(doi)){
+        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
+        safari.extension.dispatchMessage("found", {"doi" : doi});
+    }
 }
