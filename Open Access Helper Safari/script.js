@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if(!inIframe()){
         findDoi();
     }
+    else{
+        //console.log("in iFrame");
+    }
                           
 });
 
@@ -43,6 +46,7 @@ function messageHandler(event){
 }
 
 function findDoi(){
+    //console.log("Open Acces Helper: DOI0");
     // we are going to look in meta-tags for the DOI
     var option = ['citation_doi', 'doi', 'dc.doi', 'dc.identifier', 'dc.identifier.doi', 'bepress_citation_doi', 'rft_id', 'dcsext.wt_doi', 'DC.identifier'];
     var doi = "";
@@ -65,7 +69,7 @@ function findDoi(){
 }
 
 function findDoi1(){
-    
+    //console.log("Open Acces Helper: DOI1");
     //in this case, we are looking for both meta-tag and its scheme
     var doi = getMetaScheme('dc.Identifier', 'doi');
     if(doi != ""){
@@ -79,8 +83,10 @@ function findDoi1(){
 }
 
 function findDoi2(){
+    //console.log("Open Acces Helper: DOI2");
     // this is a place for more complex fallbacks, where we can provide additional "CSS-Selectors" to find
-    // a DOI
+    // a DOI. Right now it really only handles a single case, but hopefully there will be aditional cases
+    // in future
     var selectors = ['a[ref=\"aid_type=doi\"]'];
     var doi = ""
     for(i = 0; i < selectors.length; i++){
@@ -100,14 +106,21 @@ function findDoi2(){
 }
 
 function findDoi3(){
+    //console.log("Open Acces Helper: DOI3");
+    // if we cannot work through specific selectors, a more general scraping approach might be neeeded
+    // to avoid doing this on every page, we specify the pages we support
+    
     var host = window.location.hostname;
     if(host.indexOf("ieeexplore.ieee.org") > -1){
         // IEEE
         var regex = new RegExp('"doi":"([^"]+)"');
         var doi = runRegexOnDoc(regex);
-        
-        scrapedDoi(doi);
-        
+        if(doi != false){
+            scrapedDoi(doi);
+        }
+        else{
+            alternativeOA();
+        }
     }
     else if(host.indexOf("nber.org") > -1){
         //National Bureau of Economic Research
@@ -120,15 +133,19 @@ function findDoi3(){
     else if(host.indexOf("base-search.net") > -1){
         // BASE SEARCH - for detail view, really quite superflous, but I like base
         if (document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]").length > 0){
-            
             var doi = document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]")[0].href.replace('https://doi.org/','').replace('http://doi.org/','');
             scrapedDoi(doi);
-            
+        }
+        else{
+            alternativeOA();
         }
     }
     else{
+        //console.log("Open Acces Helper: Failed on DOI3");
         // we are ready to give up here and send a notfound message, so that we can deactivate the icon
         safari.extension.dispatchMessage("notfound", {"doi" : ""});
+        // however we'll continue look at the alternativeOA Webscraping methods
+        alternativeOA();
     }
 }
 
@@ -161,7 +178,7 @@ function getMetaScheme(metaName, scheme){
 }
 
 function getFromSelector(selector){
-    // allow for more complex CSS selectors, these are likely more "dangerous"
+    // allow for more complex CSS selectors, these are likely more unreliable
     const elements = document.querySelectorAll(selector);
     
     for (let i = 0; i < elements.length; i++) {
@@ -188,7 +205,7 @@ function cleanDOI(doi){
 
 function isDOI(doi){
     
-    // these regular expressions were recommended by CrossRef in a blog
+    // these regular expressions were recommended by CrossRef in a blog post
     // https://www.crossref.org/blog/dois-and-matching-regular-expressions/
     var regex1 = /^10.\d{4,9}\/[-._;()\/:A-Z0-9]+$/i;
     var regex2 = /^10.1002\/[^\s]+$/i;
@@ -242,7 +259,7 @@ function oafound(message){
     
 }
 
-// if on Open Access document, this will turn the imported badge green
+// if on Open Access document, this will turn the injected badge / button green
 
 function onOa(){
     var div = document.getElementById("doifound_outer");
@@ -298,6 +315,7 @@ function getKnownOAUrl(){
 
 function alternativeOA(){
     var host = window.location.hostname;
+    console.log("Open Access Helper: We are checking some Web Scrapers real quick: "+host);
     
     if(host.indexOf("ingentaconnect") > -1){
         // Ingenta Connect
@@ -314,19 +332,29 @@ function alternativeOA(){
     }
     else if(host.indexOf("base-search.net") > -1){
         if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
-            var href = document.querySelectorAll("a.link-gruen.bold")[0].href;
-            if(href != null && href != ""){
-                var message = new Array();
-                message['url'] = href;
-                oafound(message);
-            }
+            webscraperBadge("a.link-gruen.bold", false)
+        }
+    }
+    else if(host.indexOf("ieeexplore.ieee.org") > -1){
+        if (document.querySelectorAll("i.icon-access-open-access").length > 0){
+            webscraperBadge("a.doc-actions-link.stats-document-lh-action-downloadPdf_2", false)
+        }
+    }
+    else if(host.indexOf("journals.sagepub.com") > -1){
+        if(document.querySelectorAll("img.accessIcon.freeAccess").length > 0){
+            webscraperBadge("a[data-item-name=\"download-PDF\"]", true);
+        }
+    }
+    else if(host.indexOf("academic.oup.com") > -1){
+        if(document.querySelectorAll("i.icon-availability_free").length > 0){
+            webscraperBadge("a.article-pdfLink", true);
         }
     }
 }
 
 
 
-//runRegexOnDoc - inspired by unpywall.org
+//runRegexOnDoc - inspired by unpaywall.org
 
 function runRegexOnDoc(regEx){
     var m = regEx.exec(document.documentElement.innerHTML);
@@ -336,9 +364,26 @@ function runRegexOnDoc(regEx){
     return false
 }
 
+// helper function, checks DOI is valid and then logs to browser console and
+// asks Extension Handler to get going
+
 function scrapedDoi(doi){
     if(isDOI(doi)){
         console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
 }
+
+function webscraperBadge(selector, onoa){
+    var href = document.querySelectorAll(selector)[0].href;
+    if(href != null && href != ""){
+        var message = new Array();
+        message['url'] = href;
+        oafound(message);
+        if(onoa){
+            onOa();
+        }
+    }
+}
+
+
