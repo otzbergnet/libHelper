@@ -72,7 +72,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Oxford University Press
 
-* No Badge: https://academic.oup.com/carcin/article-abstract/39/5/669/4935062?redirectedFrom=fulltext
+* No Badge: need case
 * Orange: https://academic.oup.com/ibdjournal/article-abstract/24/1/111/4757509?redirectedFrom=PDF (PDF on same server)
 * Green: https://academic.oup.com/annonc/article/29/suppl_8/mdy297.010/5141773?searchresult=1 (Free Access)
 
