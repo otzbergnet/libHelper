@@ -42,6 +42,17 @@ class ViewController: NSViewController {
         updateCount()
     }
     
+    override func viewWillAppear() {
+        
+        self.view.window?.titleVisibility = .hidden
+        self.view.window?.titlebarAppearsTransparent = true
+        
+        self.view.window?.styleMask.insert(.fullSizeContentView)
+        self.view.window?.styleMask.remove(.fullScreen)
+        self.view.window?.styleMask.remove(.miniaturizable)
+        self.view.window?.styleMask.remove(.resizable)
+    }
+    
     override var representedObject: Any? {
         didSet {
             // Update the view, if already loaded.
@@ -50,9 +61,7 @@ class ViewController: NSViewController {
     
     func updateCount(){
         let count = readSettings()
-        oaCount.stringValue = "OA found: \(count)"
+        oaCount.stringValue = "So far we've helped you find \(count) Open Access Documents!"
     }
-    
-    
     
 }

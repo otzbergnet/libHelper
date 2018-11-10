@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708921974B250050CFDD /* HelpViewController.swift */; };
+		2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708B21975AAC0050CFDD /* AboutController.swift */; };
 		2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA5218586290095ACD7 /* AppDelegate.swift */; };
 		2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA7218586290095ACD7 /* ViewController.swift */; };
 		2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */; };
@@ -50,6 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D28708921974B250050CFDD /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		2D28708B21975AAC0050CFDD /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		2D3F8FA2218586290095ACD7 /* Open Access Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Access Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3F8FA5218586290095ACD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D3F8FA7218586290095ACD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 			children = (
 				2D3F8FA5218586290095ACD7 /* AppDelegate.swift */,
 				2D3F8FA7218586290095ACD7 /* ViewController.swift */,
+				2D28708921974B250050CFDD /* HelpViewController.swift */,
+				2D28708B21975AAC0050CFDD /* AboutController.swift */,
 				2D3F8FAC218586290095ACD7 /* Assets.xcassets */,
 				2D3F8FAE218586290095ACD7 /* Main.storyboard */,
 				2D3F8FB1218586290095ACD7 /* Info.plist */,
@@ -275,8 +281,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */,
+				2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */,
 				2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */,
 				2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */,
+				2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
