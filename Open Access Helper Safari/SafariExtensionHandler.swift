@@ -299,7 +299,7 @@ struct Unpaywall : Decodable{
     let title : String?
     let updated : String?
     let year : Int?
-    let z_authors : [OAAuthors]
+    let z_authors : [OAAuthors]?
 }
 
 struct OpenAccessLocation : Decodable {
