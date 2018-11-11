@@ -315,7 +315,7 @@ function getKnownOAUrl(){
 
 function alternativeOA(){
     var host = window.location.hostname;
-    console.log("Open Access Helper: We are checking some Web Scrapers real quick: "+host);
+    console.log("Open Access Helper (Safari Extension): We are checking some Web Scrapers real quick: "+host);
     
     if(host.indexOf("ingentaconnect") > -1){
         // Ingenta Connect

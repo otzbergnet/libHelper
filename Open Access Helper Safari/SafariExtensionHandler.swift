@@ -145,11 +145,27 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     func followLink(current: String, next: String, page: SFSafariPage){
         
+        //before we run any network traffic, let's check, if we are on OA already
+        // first option is "failed"
+        if(!compareFinalURLs(current: current, next: next, page: page)){
+            //follow link
+            runUrlCall(current: current, next: next, page: page)
+        }
+        else{
+            self.toolbarAction(imgName: "oa_100a.pdf")
+            self.updateBadge(text: "✔")
+            page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
+        }
+        
+    }
+    
+    func runUrlCall(current: String, next: String, page: SFSafariPage) {
         let url = URL(string: next)
         
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
+                // known issue, as soon as we hit watermark.silverchair.com the connection is dropped :(
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["error" : error.localizedDescription])
             }
             guard let response = response else {
@@ -157,45 +173,52 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             if let finalUrl = response.url{
                 
-                //remove http and https to avoid trouble in the comparison
-                let finalUrlString = "\(finalUrl)"
-
-                var myFinalUrl = finalUrlString.replacingOccurrences(of: "https://", with: "")
-                myFinalUrl = myFinalUrl.replacingOccurrences(of: "http://", with: "")
-                var myCurrent = current.replacingOccurrences(of: "https://", with: "")
-                myCurrent = myCurrent.replacingOccurrences(of: "http://", with: "")
-
-                let cUrl1 = URL(string: current)
-                let domain1 = cUrl1?.host
-                let domain2 = finalUrl.host
-                
-                
-                //simple string comparison
-                if (myFinalUrl == myCurrent){
+                if(self.compareFinalURLs(current: current, next: "\(finalUrl)", page: page)){
                     self.toolbarAction(imgName: "oa_100a.pdf")
                     self.updateBadge(text: "✔")
                     page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
                 }
-                else if (domain1 == domain2){
-                    self.toolbarAction(imgName: "oa_100a.pdf")
-                    self.updateBadge(text: "✔")
-                    page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
-                }
-                else if (domain1 == "www.sciencedirect.com" && domain2 == "linkinghub.elsevier.com"){
-                    self.toolbarAction(imgName: "oa_100a.pdf")
-                    self.updateBadge(text: "✔")
-                    page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
-                }
-                else if (current.contains("www.ncbi.nlm.nih.gov/pmc/")){
-                    self.toolbarAction(imgName: "oa_100a.pdf")
-                    self.updateBadge(text: "✔")
-                    page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
+                else{
+                    // do nothing, i.e. keep old state in tact
                 }
                 
             }
         }
         
         task.resume()
+    }
+    
+    func compareFinalURLs(current: String, next: String, page: SFSafariPage) -> Bool{
+        
+        //remove http and https to avoid trouble in the comparison
+        let finalUrlString = "\(next)"
+        
+        var myFinalUrl = finalUrlString.replacingOccurrences(of: "https://", with: "")
+        myFinalUrl = myFinalUrl.replacingOccurrences(of: "http://", with: "")
+        var myCurrent = current.replacingOccurrences(of: "https://", with: "")
+        myCurrent = myCurrent.replacingOccurrences(of: "http://", with: "")
+        
+        let cUrl1 = URL(string: current)
+        let next1 = URL(string: next)
+        let domain1 = cUrl1?.host
+        let domain2 = next1?.host
+        
+        if (myFinalUrl == myCurrent){
+            return true
+        }
+        else if (domain1 == domain2){
+            return true
+        }
+        else if (domain1 == "www.sciencedirect.com" && domain2 == "linkinghub.elsevier.com"){
+            return true
+        }
+        else if (current.contains("www.ncbi.nlm.nih.gov/pmc/")){
+            return true
+        }
+        else{
+            return false
+        }
+        
     }
     
     func toolbarAction(imgName: String){
