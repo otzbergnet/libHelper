@@ -103,6 +103,12 @@
                                                 <action selector="onlineHelpClicked:" target="Voe-Tx-rLC" id="kF9-Pp-OfT"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Release Notes" id="7Ez-AC-3or">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="releaseNotesClicked:" target="Voe-Tx-rLC" id="caI-pg-icH"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Contact Me" toolTip="Go to Website" id="EtY-qe-aEe">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <accessibility description="Contact Details for App Author"/>

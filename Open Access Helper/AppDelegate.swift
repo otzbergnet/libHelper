@@ -128,5 +128,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSWorkspace.shared.open(url) {
         }
     }
+    @IBAction func releaseNotesClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.otzberg.net/oahelper/releasenotes.html"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
 }
 

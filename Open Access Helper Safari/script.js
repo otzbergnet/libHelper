@@ -315,9 +315,9 @@ function getKnownOAUrl(){
 
 function alternativeOA(){
     var host = window.location.hostname;
-    console.log("Open Access Helper (Safari Extension): We are checking some Web Scrapers real quick: "+host);
     
     if(host.indexOf("ingentaconnect") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         // Ingenta Connect
         if (document.querySelectorAll("span.access-icon img[alt='Open Access']").length > 0){
             var onclick = document.querySelectorAll("a.fulltext.pdf")[0].getAttribute('onclick');
@@ -331,21 +331,25 @@ function alternativeOA(){
         }
     }
     else if(host.indexOf("base-search.net") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
             webscraperBadge("a.link-gruen.bold", false)
         }
     }
     else if(host.indexOf("ieeexplore.ieee.org") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if (document.querySelectorAll("i.icon-access-open-access").length > 0){
             webscraperBadge("a.doc-actions-link.stats-document-lh-action-downloadPdf_2", false)
         }
     }
     else if(host.indexOf("journals.sagepub.com") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if(document.querySelectorAll("img.accessIcon.freeAccess").length > 0){
             webscraperBadge("a[data-item-name=\"download-PDF\"]", true);
         }
     }
     else if(host.indexOf("academic.oup.com") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if(document.querySelectorAll("i.icon-availability_free").length > 0){
             webscraperBadge("a.article-pdfLink", true);
         }
