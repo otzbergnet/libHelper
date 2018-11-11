@@ -118,5 +118,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return .terminateNow
     }
 
+    @IBAction func contactMeClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.otzberg.net/oahelper#contactme"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
+    @IBAction func onlineHelpClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.otzberg.net/oahelper#faq"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
 }
 

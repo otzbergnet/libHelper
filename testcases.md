@@ -43,7 +43,8 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 * No Badge: https://ieeexplore.ieee.org/document/6197616
 * Orange: http://ieeexplore.ieee.org/document/6512846/ 
-* Green: https://ieeexplore.ieee.org/document/7147523 (web scraping)
+* Green: https://ieeexplore.ieee.org/document/8440671 (oadoi)
+* Green: https://ieeexplore.ieee.org/document/8454727 (web scraping)
 
 ## Sage Publishing
 
@@ -73,7 +74,8 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 ## Oxford University Press
 
 * No Badge: https://academic.oup.com/ibdjournal/article-abstract/16/9/1514/4628438?redirectedFrom=fulltext
-* Orange: https://academic.oup.com/ibdjournal/article-abstract/24/1/111/4757509?redirectedFrom=PDF (PDF on same server)
+* Orange: https://academic.oup.com/jac/article/73/4/833/4840684
+* Green: https://academic.oup.com/ibdjournal/article-abstract/24/1/111/4757509?redirectedFrom=PDF (PDF on same server)
 * Green: https://academic.oup.com/annonc/article/29/suppl_8/mdy297.010/5141773?searchresult=1 (Free Access)
 
 ## Cambridge University Press:

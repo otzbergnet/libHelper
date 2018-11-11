@@ -97,10 +97,17 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Open Access Helper Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Online Help" keyEquivalent="?" toolTip="Go to Website" id="JOV-dD-lM6">
+                                            <accessibility description="Online Help / Support"/>
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
-                                                <segue destination="nQh-L2-iCo" kind="modal" id="LoZ-PJ-j5J"/>
+                                                <action selector="onlineHelpClicked:" target="Voe-Tx-rLC" id="kF9-Pp-OfT"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Contact Me" toolTip="Go to Website" id="EtY-qe-aEe">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <accessibility description="Contact Details for App Author"/>
+                                            <connections>
+                                                <action selector="contactMeClicked:" target="Voe-Tx-rLC" id="vbz-Qb-dVZ"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -116,7 +123,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="-53"/>
+            <point key="canvasLocation" x="304" y="46"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -171,8 +178,8 @@
                             </imageView>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
                                 <rect key="frame" x="18" y="58" width="444" height="140"/>
-                                <textFieldCell key="cell" selectable="YES" alignment="justified" id="L7v-na-jJq">
-                                    <font key="font" metaFont="system" size="11"/>
+                                <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
+                                    <font key="font" metaFont="smallSystem"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing on that hope or if you have suggestions to improve the app.
 
 The app itself would not be possible without the awesome API from unpaywall.org - many thanks to the team there for making this possible.
@@ -249,94 +256,13 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstItem="w9o-Gb-dZU" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="zDx-ir-vgv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="infoText" destination="E43-sS-goO" id="UU6-5m-Yme"/>
+                    </connections>
                 </viewController>
                 <customObject id="dbP-uY-Rvb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="650" y="413"/>
-        </scene>
-        <!--Help View Controller-->
-        <scene sceneID="rd8-UN-or2">
-            <objects>
-                <viewController showSeguePresentationStyle="single" id="nQh-L2-iCo" customClass="HelpViewController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="q7k-EH-Sig">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="266"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bFh-fK-5zy">
-                                <rect key="frame" x="18" y="206" width="59" height="30"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Help" id="aAs-Aw-lTS">
-                                    <font key="font" metaFont="systemBold" size="25"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5aZ-R4-94w">
-                                <rect key="frame" x="18" y="61" width="444" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="3z2-tP-KjF"/>
-                                </constraints>
-                                <textFieldCell key="cell" selectable="YES" id="UCP-aw-4zl">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">Thank you so much for using this app!
-
-In order to offer you the best possible support experience, I would like to invite you to visit my website to benefit of the most up to date documentation available.
-
-Click the button below to go there now!</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uhP-BY-1CA">
-                                <rect key="frame" x="14" y="13" width="158" height="32"/>
-                                <buttonCell key="cell" type="push" title="Access Online Help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pBK-b7-xj4">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="onlineHelpClicked:" target="nQh-L2-iCo" id="lX1-81-HnD"/>
-                                </connections>
-                            </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pJD-t8-794">
-                                <rect key="frame" x="402" y="196" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="LsR-9o-1xm"/>
-                                    <constraint firstAttribute="width" constant="50" id="rmj-0q-E6D"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="DCI-I4-aMb"/>
-                            </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S7j-dR-woG">
-                                <rect key="frame" x="391" y="13" width="75" height="32"/>
-                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="F4J-bO-dwt">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="closeClicked:" target="nQh-L2-iCo" id="Mpn-WU-TFH"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="5aZ-R4-94w" firstAttribute="top" secondItem="bFh-fK-5zy" secondAttribute="bottom" constant="20" id="1ra-Mj-4q5"/>
-                            <constraint firstItem="uhP-BY-1CA" firstAttribute="leading" secondItem="q7k-EH-Sig" secondAttribute="leading" constant="20" id="5TQ-t5-FM6"/>
-                            <constraint firstItem="uhP-BY-1CA" firstAttribute="top" secondItem="5aZ-R4-94w" secondAttribute="bottom" constant="20" id="E2T-dW-fTN"/>
-                            <constraint firstAttribute="bottom" secondItem="S7j-dR-woG" secondAttribute="bottom" constant="20" id="H6g-Ln-Ize"/>
-                            <constraint firstItem="pJD-t8-794" firstAttribute="leading" relation="lessThanOrEqual" secondItem="bFh-fK-5zy" secondAttribute="trailing" constant="327" id="I8y-Mv-ye7"/>
-                            <constraint firstItem="S7j-dR-woG" firstAttribute="top" secondItem="5aZ-R4-94w" secondAttribute="bottom" constant="20" id="SFg-iR-VPw"/>
-                            <constraint firstItem="bFh-fK-5zy" firstAttribute="leading" secondItem="q7k-EH-Sig" secondAttribute="leading" constant="20" id="U9j-Gs-nbM"/>
-                            <constraint firstAttribute="bottom" secondItem="uhP-BY-1CA" secondAttribute="bottom" constant="20" id="bRZ-xG-UE8"/>
-                            <constraint firstItem="S7j-dR-woG" firstAttribute="leading" relation="lessThanOrEqual" secondItem="uhP-BY-1CA" secondAttribute="trailing" constant="231" id="c8j-xU-0xm"/>
-                            <constraint firstAttribute="trailing" secondItem="S7j-dR-woG" secondAttribute="trailing" constant="20" id="id7-Rn-YRx"/>
-                            <constraint firstItem="bFh-fK-5zy" firstAttribute="top" secondItem="q7k-EH-Sig" secondAttribute="top" constant="30" id="jrj-kr-kR9"/>
-                            <constraint firstAttribute="trailing" secondItem="5aZ-R4-94w" secondAttribute="trailing" constant="20" id="ppc-6j-srH"/>
-                            <constraint firstAttribute="trailing" secondItem="pJD-t8-794" secondAttribute="trailing" constant="28" id="vTt-qg-hSU"/>
-                            <constraint firstItem="pJD-t8-794" firstAttribute="top" secondItem="q7k-EH-Sig" secondAttribute="top" constant="20" id="xdK-Rp-kIs"/>
-                            <constraint firstItem="5aZ-R4-94w" firstAttribute="leading" secondItem="q7k-EH-Sig" secondAttribute="leading" constant="20" id="yHd-Hm-SQk"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <customObject id="9ml-0F-Ehw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1182" y="381"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -378,7 +304,7 @@ Click the button below to go there now!</string>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="lbX-Ov-jUe"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="owU-kc-A61">
-                                <rect key="frame" x="18" y="20" width="434" height="17"/>
+                                <rect key="frame" x="18" y="20" width="347" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="So far we've helped you find 0 Open Access Documents!" id="upX-50-mCL">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -398,7 +324,7 @@ Click the button below to go there now!</string>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="trailing" constant="30" id="hCg-nt-OEo"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="heb-Zz-WcX"/>
                             <constraint firstItem="LZV-Q3-IEu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="u8K-8O-3SG"/>
-                            <constraint firstAttribute="trailing" secondItem="owU-kc-A61" secondAttribute="trailing" constant="30" id="z2S-2Y-Iu0"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="owU-kc-A61" secondAttribute="trailing" constant="30" id="z2S-2Y-Iu0"/>
                         </constraints>
                     </view>
                     <connections>

@@ -10,11 +10,14 @@ import Cocoa
 
 class AboutController: NSViewController {
 
+    @IBOutlet weak var infoText: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         self.view.window?.titleVisibility = .hidden
         self.view.window?.titlebarAppearsTransparent = true
+        
     }
     
     override func viewWillAppear() {

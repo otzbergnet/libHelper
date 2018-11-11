@@ -39,3 +39,9 @@ class HelpViewController: NSViewController {
     
     
 }
+
+class HelpMenuItems: NSMenuItem{
+    
+    
+    
+}
