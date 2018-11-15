@@ -15,8 +15,6 @@ class AboutController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        self.view.window?.titleVisibility = .hidden
-        self.view.window?.titlebarAppearsTransparent = true
         
     }
     
@@ -51,5 +49,6 @@ class AboutController: NSViewController {
     @IBAction func closeClicked(_ sender: Any) {
         self.dismiss(self)
     }
+    
     
 }

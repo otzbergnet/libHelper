@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>16</string>
+	<string>17</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSMinimumSystemVersion</key>
@@ -40,6 +40,15 @@
 			<dict>
 				<key>Script</key>
 				<string>script.js</string>
+			</dict>
+		</array>
+		<key>SFSafariContextMenu</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>oasearch</string>
+				<key>Text</key>
+				<string>Open Access Search for selection</string>
 			</dict>
 		</array>
 		<key>SFSafariStyleSheet</key>

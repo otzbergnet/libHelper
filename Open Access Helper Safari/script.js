@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 if(!inIframe()){
     // Listens for messages sent from the app extension's Swift code.
     safari.self.addEventListener("message", messageHandler);
+    document.addEventListener("contextmenu", handleContextMenu, false);
 }
 
 
@@ -391,3 +392,9 @@ function webscraperBadge(selector, onoa){
 }
 
 
+//the purpose of this function is to let SafariExtensionHandler know what text was selected
+//the extensionhandler will then update the context menu item
+function handleContextMenu(event) {
+    var selectedText =  window.getSelection().toString();
+    safari.extension.setContextMenuEventUserInfo(event, { "selectedText": selectedText });
+}

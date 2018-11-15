@@ -62,6 +62,36 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     }
     
+    // update context menu with the text selected by the user in Safari
+    override func validateContextMenuItem(withCommand command: String, in page: SFSafariPage, userInfo: [String : Any]? = nil, validationHandler: @escaping (Bool, String?) -> Void){
+        var selectedText = ""
+        if let myUserInfo = userInfo{
+            selectedText = myUserInfo["selectedText"] as! String
+            let index = selectedText.index(selectedText.startIndex, offsetBy: 20)
+            let mySubstring = selectedText[..<index]
+            validationHandler(false, "OA Search for: \"\(mySubstring)…\"")
+        }
+        
+    }
+    
+    
+    //construct the URL and open a new tab
+    override func contextMenuItemSelected(withCommand command: String, in page: SFSafariPage, userInfo: [String : Any]? = nil) {
+        
+        if let myUserInfo = userInfo{
+            var selectedText = ""
+            selectedText = myUserInfo["selectedText"] as! String
+            let searchTerm = selectedText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            
+            let myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+            
+            if(command == "oasearch"){
+                goToOaUrl(url: myurl)
+            }
+        }
+
+    }
+    
     func goToOaUrl(url: String){
         SFSafariApplication.getActiveWindow { (window) in
             if let myUrl = URL(string: url) {
@@ -161,7 +191,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     func runUrlCall(current: String, next: String, page: SFSafariPage) {
         let url = URL(string: next)
-        
+        //NSLog("OAURLCALL: \(next)")
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user

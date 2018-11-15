@@ -117,6 +117,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .terminateNow
     }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool{
+        return true
+    }
 
     @IBAction func contactMeClicked(_ sender: Any) {
         if let url = URL(string: "https://www.otzberg.net/oahelper#contactme"),
