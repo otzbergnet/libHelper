@@ -69,7 +69,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             selectedText = myUserInfo["selectedText"] as! String
             let index = selectedText.index(selectedText.startIndex, offsetBy: 20)
             let mySubstring = selectedText[..<index]
-            validationHandler(false, "OA Search for: \"\(mySubstring)…\"")
+            let myContextLabel = String(format: NSLocalizedString("OA Search for: \"%@…\"", comment: "changes Context Label"), String(mySubstring))
+            validationHandler(false, myContextLabel)
         }
         
     }
@@ -152,7 +153,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 if (boa.url != "") {
                     updateBadge(text: "!")
                     updateCount()
-                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)"])
+                    let title = NSLocalizedString("Open Access Version Found! ", comment: "used in JS injection to indicate OA found")
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title])
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
@@ -184,7 +186,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         else{
             self.toolbarAction(imgName: "oa_100a.pdf")
             self.updateBadge(text: "✔")
-            page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
+            let title = NSLocalizedString("You are at the Open Acccess Location!", comment: "used in JS confirm that you are on OA already")
+            page.dispatchMessageToScript(withName: "onoa", userInfo: ["title" : title]);
         }
         
     }
@@ -206,7 +209,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 if(self.compareFinalURLs(current: current, next: "\(finalUrl)", page: page)){
                     self.toolbarAction(imgName: "oa_100a.pdf")
                     self.updateBadge(text: "✔")
-                    page.dispatchMessageToScript(withName: "onoa", userInfo: [:]);
+                    let title = NSLocalizedString("You are at the Open Acccess Location!", comment: "used in JS confirm that you are on OA already")
+                    page.dispatchMessageToScript(withName: "onoa", userInfo: ["title" : title]);
                 }
                 else{
                     // do nothing, i.e. keep old state in tact

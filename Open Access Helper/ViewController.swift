@@ -61,7 +61,8 @@ class ViewController: NSViewController {
     
     func updateCount(){
         let count = readSettings()
-        oaCount.stringValue = "So far we've helped you find \(count) Open Access Documents!"
+        oaCount.stringValue = String(format: NSLocalizedString("So far we've helped you find %@ Open Access Documents!", comment: "shows on main window, number of OpenAccess found"), count)
+        
     }
     
 }

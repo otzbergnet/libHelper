@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Open Access Helper
+
+  Created by Claus Wolf on 17.11.18.
+  Copyright © 2018 Claus Wolf. All rights reserved.
+*/
+
+"OA Search for: \"%@…\"" = "OA Suche nach: \"%@…\"";
+"Open Access Version Found! " = "Open Access Version gefunden! ";
+"You are at the Open Acccess Location!" = "Du befindest Dich bereits auf der Open Acccess Version!";

@@ -39,3 +39,11 @@ a#doifound, a#doifound:active, a#doifound:hover{
     color: #FFFFFF!important;
 }
 
+#OAHelperLiveRegion{
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}

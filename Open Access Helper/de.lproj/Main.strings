@@ -1,0 +1,124 @@
+/* Class = "NSMenuItem"; title = "Open Access Helper"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Open Access Helper";
+
+/* Class = "NSMenuItem"; title = "Quit Open Access Helper"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Open Access Helper beenden";
+
+/* Class = "NSMenuItem"; title = "About Open Access Helper"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Über Open Access Helper";
+
+/* Class = "NSMenuItem"; title = "Release Notes"; ObjectID = "7Ez-AC-3or"; */
+"7Ez-AC-3or.title" = "Versionshinweise";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Fenster";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "Datei";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Einstellungen…";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Datei";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Schließen";
+
+/* Class = "NSMenuItem"; ibExternalAccessibilityDescription = "Contact Details for App Author"; ObjectID = "EtY-qe-aEe"; */
+"EtY-qe-aEe.ibExternalAccessibilityDescription" = "Kontakt zum Entwickler";
+
+/* Class = "NSMenuItem"; ibShadowedToolTip = "Go to Website"; ObjectID = "EtY-qe-aEe"; */
+"EtY-qe-aEe.ibShadowedToolTip" = "Zur Webseite";
+
+/* Class = "NSMenuItem"; title = "Contact Me"; ObjectID = "EtY-qe-aEe"; */
+"EtY-qe-aEe.title" = "Kontakt";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Hilfe";
+
+/* Class = "NSTextFieldCell"; title = "1) Launch Safari\n2) Access Safari > Preferences (⌘,)\n3) Select Extensions\n4) Activate the Open Access Helper Extension\n5) Find Open Access and enjoy :)"; ObjectID = "FNM-3T-H4P"; */
+"FNM-3T-H4P.title" = "1) Safari öffnen
+2) Safari > Einstellungen (⌘,) öffnen
+3) Erweiterungen auswählen
+4) Open Access Helper aktivieren
+5) Finde Open Access und habe Spaß :)";
+
+/* Class = "NSTextFieldCell"; title = "About"; ObjectID = "g4U-2c-WI9"; */
+"g4U-2c-WI9.title" = "Über";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Dienste";
+
+/* Class = "NSWindow"; title = "Open Access Helper"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Open Access Helper";
+
+/* Class = "NSMenuItem"; ibExternalAccessibilityDescription = "Online Help / Support"; ObjectID = "JOV-dD-lM6"; */
+"JOV-dD-lM6.ibExternalAccessibilityDescription" = "Online-Hilfe / Support";
+
+/* Class = "NSMenuItem"; ibShadowedToolTip = "Go to Website"; ObjectID = "JOV-dD-lM6"; */
+"JOV-dD-lM6.ibShadowedToolTip" = "Gehe zur Webseite";
+
+/* Class = "NSMenuItem"; title = "Online Help"; ObjectID = "JOV-dD-lM6"; */
+"JOV-dD-lM6.title" = "Online-Hilfe";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Alle zeigen";
+
+/* Class = "NSTextFieldCell"; title = "It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing on that hope or if you have suggestions to improve the app.\n\nThe app itself would not be possible without the awesome API from unpaywall.org - many thanks to the team there for making this possible.\n\nThe icon for this app was provided by Freepik from www.flaticon.com\n\nIf you need to reach me, please click the Contact Me button below!"; ObjectID = "L7v-na-jJq"; */
+"L7v-na-jJq.title" = "Ich hoffe, dass diese kleine Safari App Extension Dir helfen wird, mehr Open Access leichter zu finden. Lass es mich wissen, fall Du Verbesserungsvorschläge hast!
+
+Diese App wäre ohne die ausgezeichnete unpaywall.org API nicht möglich - vielen Dank an das dortige Team.
+
+Das Icon wurde von by Freepik from www.flaticon.com bereitgestellt.
+
+Wenn Du mich erreichen möchtest, klicke auf die Kontakt Schaltfläche unten!";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Alle nach vorne bringen";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Dienste";
+
+/* Class = "NSButtonCell"; title = "Close"; ObjectID = "nyJ-2r-ya5"; */
+"nyJ-2r-ya5.title" = "Schließen";
+
+/* Class = "NSMenuItem"; title = "Hide Open Access Helper"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Open Access Helper verstecken";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimieren";
+
+/* Class = "NSButtonCell"; title = "Contact Me"; ObjectID = "pYZ-Bo-Lhq"; */
+"pYZ-Bo-Lhq.title" = "Kontakt";
+
+/* Class = "NSTextFieldCell"; title = "Open Access Helper"; ObjectID = "qvY-WQ-5Ex"; */
+"qvY-WQ-5Ex.title" = "Open Access Helper";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zoom";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Fenster";
+
+/* Class = "NSButtonCell"; title = "Unpaywall.org"; ObjectID = "u7B-2x-O8I"; */
+"u7B-2x-O8I.title" = "Unpaywall.org";
+
+/* Class = "NSTextFieldCell"; title = "So far we've helped you find 0 Open Access Documents!"; ObjectID = "upX-50-mCL"; */
+"upX-50-mCL.title" = "Bisher haben wir Dir geholfen 0 Open Access Dokumente zu finden!";
+
+/* Class = "NSMenu"; title = "Open Access Helper"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Open Access Helper";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Andere verstecken";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Hilfe";
+
+/* Class = "NSButtonCell"; title = "Flaticon.com"; ObjectID = "YzV-Ir-K2x"; */
+"YzV-Ir-K2x.title" = "Flaticon.com";
+

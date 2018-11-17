@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Open Access Helper";
+
+/* Bundle name */
+"CFBundleName" = "$(PRODUCT_NAME)";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Copyright © 2018 Claus Wolf. Einige Rechte vorbehalten";
+

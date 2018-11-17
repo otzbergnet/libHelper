@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Open Access Helper
+
+  Created by Claus Wolf on 16.11.18.
+  Copyright © 2018 Claus Wolf. All rights reserved.
+*/
+/* Cancel button title */
+"Cancel" = "Abbrechen";
+
+/* Quit without saves error question message */
+"Could not save changes while quitting. Quit anyway?" = "Änderungen konnten nicht gespeichert werden, dennoch beenden?";
+
+/* Quit anyway button title */
+"Quit anyway" = "Beenden";
+
+/* Quit without saves error question info */
+"Quitting now will lose any changes you have made since the last successful save" = "Wenn Du das Programm jetzt beendest, werden Deine Änderungen verloren gehen";
+
+"So far we've helped you find %@ Open Access Documents!" = "Bisher haben wir Dir geholfen %@ Open Access Dokumente zu finden!";

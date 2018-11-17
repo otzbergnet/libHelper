@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D06B57C219E841300E4A453 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D06B57E219E841300E4A453 /* Localizable.strings */; };
 		2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708921974B250050CFDD /* HelpViewController.swift */; };
 		2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708B21975AAC0050CFDD /* AboutController.swift */; };
 		2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA5218586290095ACD7 /* AppDelegate.swift */; };
@@ -22,6 +23,9 @@
 		2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */; };
 		2D3F8FD02185863C0095ACD7 /* Open Access Helper Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D3F8FBC2185863C0095ACD7 /* Open Access Helper Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FD52185867F0095ACD7 /* mycss.css */; };
+		2D655F1221A0036F0092E480 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D655F1421A0036F0092E480 /* Localizable.strings */; };
+		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
+		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2DF38072218D8BC200CF2A45 /* sec30.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38071218D8BC100CF2A45 /* sec30.png */; };
 		2DF38078218DAC0D00CF2A45 /* oa_100.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38077218DAC0D00CF2A45 /* oa_100.pdf */; };
 		2DF3807A218DB78700CF2A45 /* oa_100a.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38079218DB78600CF2A45 /* oa_100a.pdf */; };
@@ -52,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D06B57D219E841300E4A453 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D28708921974B250050CFDD /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		2D28708B21975AAC0050CFDD /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		2D3F8FA2218586290095ACD7 /* Open Access Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Access Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +77,11 @@
 		2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		2D3F8FD52185867F0095ACD7 /* mycss.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = mycss.css; sourceTree = "<group>"; };
 		2D3F8FD721858AD10095ACD7 /* libHelper Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "libHelper Safari.entitlements"; sourceTree = "<group>"; };
+		2D655F1321A0036F0092E480 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D92437F219E790A000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2D924380219E790B000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SafariExtensionViewController.strings; sourceTree = "<group>"; };
+		2D924382219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D924385219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DF38071218D8BC100CF2A45 /* sec30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sec30.png; sourceTree = "<group>"; };
 		2DF38077218DAC0D00CF2A45 /* oa_100.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100.pdf; sourceTree = "<group>"; };
 		2DF38079218DB78600CF2A45 /* oa_100a.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100a.pdf; sourceTree = "<group>"; };
@@ -125,8 +135,10 @@
 				2D3F8FAC218586290095ACD7 /* Assets.xcassets */,
 				2D3F8FAE218586290095ACD7 /* Main.storyboard */,
 				2D3F8FB1218586290095ACD7 /* Info.plist */,
+				2D924384219E7DCA000E8F74 /* InfoPlist.strings */,
 				2D3F8FB2218586290095ACD7 /* libHelper.entitlements */,
 				2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */,
+				2D06B57E219E841300E4A453 /* Localizable.strings */,
 			);
 			path = "Open Access Helper";
 			sourceTree = "<group>";
@@ -147,12 +159,14 @@
 				2D3F8FC32185863C0095ACD7 /* SafariExtensionViewController.swift */,
 				2D3F8FC52185863C0095ACD7 /* SafariExtensionViewController.xib */,
 				2D3F8FC82185863C0095ACD7 /* Info.plist */,
+				2D924381219E7DCA000E8F74 /* InfoPlist.strings */,
 				2DF38077218DAC0D00CF2A45 /* oa_100.pdf */,
 				2DF38079218DB78600CF2A45 /* oa_100a.pdf */,
 				2DF38071218D8BC100CF2A45 /* sec30.png */,
 				2D3F8FD52185867F0095ACD7 /* mycss.css */,
 				2D3F8FC92185863C0095ACD7 /* script.js */,
 				2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */,
+				2D655F1421A0036F0092E480 /* Localizable.strings */,
 			);
 			path = "Open Access Helper Safari";
 			sourceTree = "<group>";
@@ -237,6 +251,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 2D3F8F99218586290095ACD7;
 			productRefGroup = 2D3F8FA3218586290095ACD7 /* Products */;
@@ -255,6 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3F8FAD218586290095ACD7 /* Assets.xcassets in Resources */,
+				2D06B57C219E841300E4A453 /* Localizable.strings in Resources */,
+				2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */,
 				2D3F8FB0218586290095ACD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,8 +281,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */,
+				2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */,
 				2DF3807A218DB78700CF2A45 /* oa_100a.pdf in Resources */,
 				2D3F8FC72185863C0095ACD7 /* SafariExtensionViewController.xib in Resources */,
+				2D655F1221A0036F0092E480 /* Localizable.strings in Resources */,
 				2DF38078218DAC0D00CF2A45 /* oa_100.pdf in Resources */,
 				2D3F8FCA2185863C0095ACD7 /* script.js in Resources */,
 				2DF38072218D8BC200CF2A45 /* sec30.png in Resources */,
@@ -308,10 +327,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2D06B57E219E841300E4A453 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D06B57D219E841300E4A453 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		2D3F8FAE218586290095ACD7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2D3F8FAF218586290095ACD7 /* Base */,
+				2D92437F219E790A000E8F74 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -320,8 +348,33 @@
 			isa = PBXVariantGroup;
 			children = (
 				2D3F8FC62185863C0095ACD7 /* Base */,
+				2D924380219E790B000E8F74 /* de */,
 			);
 			name = SafariExtensionViewController.xib;
+			sourceTree = "<group>";
+		};
+		2D655F1421A0036F0092E480 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D655F1321A0036F0092E480 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		2D924381219E7DCA000E8F74 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D924382219E7DCA000E8F74 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2D924384219E7DCA000E8F74 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D924385219E7DCA000E8F74 /* de */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -331,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -392,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -32,7 +32,7 @@ function messageHandler(event){
         oafound(event.message);
     }
     else if (event.name === "onoa"){
-        onOa();
+        onOa(event.message);
     }
     else if (event.name === "printPls"){
         console.log(event.message);
@@ -247,7 +247,7 @@ function oafound(message){
     var src = safari.extension.baseURI + "sec30.png"; // padlock
 
     var div = document.createElement('div');
-    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="Open Access Version Found! '+message.url+'"><img id="doicheckmark" src="'+src+'" title="Open Access Version Found! '+message.url+'" data-oaurl="'+message.url+'"/></div>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+'" data-oaurl="'+message.url+'"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'doifound_outer'
     div.className = 'doifound_outer'
     
@@ -257,14 +257,23 @@ function oafound(message){
     console.log("Open Access Helper (Safari Extension) found this Open Access URL: "+message.url)
     var currentUrl = window.location.href;
     safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
-    
+    var trackCall = setInterval(function () {
+        var div = document.getElementById("OAHelperLiveRegion");
+        div.innerHTML = message.title;
+        clearInterval(trackCall);
+    }, 4000);
 }
 
 // if on Open Access document, this will turn the injected badge / button green
 
-function onOa(){
+function onOa(message){
     var div = document.getElementById("doifound_outer");
     div.classList.add("doigreen");
+    var trackCall = setInterval(function () {
+        var div = document.getElementById("OAHelperLiveRegion");
+        div.innerHTML = message.title;
+        clearInterval(trackCall);
+    }, 8000);
 }
 
 
@@ -386,7 +395,7 @@ function webscraperBadge(selector, onoa){
         message['url'] = href;
         oafound(message);
         if(onoa){
-            onOa();
+            onOa("This is the Open Access location!");
         }
     }
 }
