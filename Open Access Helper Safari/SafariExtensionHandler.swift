@@ -38,9 +38,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         else if messageName == "oaURLReturn"{
             if let url = userInfo?["oaurl"] {
-                goToOaUrl(url: "\(url)");
+                goToOaUrl(url: "\(url)")
             }
-            
+        }
+        else if messageName == "searchOA"{
+            searchOA(userInfo: (userInfo)!)
         }
         
         page.getPropertiesWithCompletionHandler { properties in
@@ -89,6 +91,17 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if(command == "oasearch"){
                 goToOaUrl(url: myurl)
             }
+        }
+
+    }
+    
+    func searchOA(userInfo: [String : Any]){
+        if let selectedText = userInfo["selected"]{
+            let selectedText1 = "\(selectedText)"
+            let searchTerm = selectedText1.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            
+            let myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+            goToOaUrl(url: myurl)
         }
 
     }

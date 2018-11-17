@@ -17,6 +17,7 @@ if(!inIframe()){
     // Listens for messages sent from the app extension's Swift code.
     safari.self.addEventListener("message", messageHandler);
     document.addEventListener("contextmenu", handleContextMenu, false);
+    document.addEventListener("keydown", fireOnKeypress, false);
 }
 
 
@@ -406,4 +407,25 @@ function webscraperBadge(selector, onoa){
 function handleContextMenu(event) {
     var selectedText =  window.getSelection().toString();
     safari.extension.setContextMenuEventUserInfo(event, { "selectedText": selectedText });
+}
+
+
+function fireOnKeypress(){
+    const e = event;
+    if (event.target.nodeName.toLowerCase() !== 'input'){
+        if (e.altKey && e.ctrlKey && e.keyCode == 79) {
+            var selectedText =  window.getSelection().toString();
+            var div = document.getElementById("doicheckmark");
+            if(selectedText != ""){
+                safari.extension.dispatchMessage("searchOA", {"selected" : selectedText});
+            }
+            else if(div != null){
+                var url = div.dataset.oaurl;
+                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
+            }
+            else{
+                //
+            }
+        }
+    }
 }
