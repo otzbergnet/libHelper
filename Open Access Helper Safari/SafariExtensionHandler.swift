@@ -305,14 +305,17 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     func returnIntlAlert(id: String, page: SFSafariPage){
         var msg = ""
+        var type = ""
         if (id == "oahdoire_0") {
             msg = NSLocalizedString("Open Access Helper could not find a legal open-access version of this article.", comment: "will show in JS Alert, when there was a doi, but no oadoi url")
+            type = "alert"
         }
         else if(id == "oahdoire_1"){
-            msg = NSLocalizedString("Open Access Helper is inactive on this page, as we could not identify a DOI", comment: "will show in JS Alert, when there no doi = inactive state")
+            msg = NSLocalizedString("Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message", comment: "will show in JS Alert, when there no doi = inactive state")
+            type = "confirm"
         }
         if(msg != ""){
-            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg]);
+            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type]);
         }
     }
 

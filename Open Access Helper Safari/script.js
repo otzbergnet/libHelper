@@ -48,7 +48,13 @@ function messageHandler(event){
         alternativeOA();
     }
     else if (event.name == "showAlert"){
-        alert(event.message.msg)
+        if(event.message.type == "alert"){
+            alert(event.message.msg);
+        }
+        else if(event.message.type == "confirm"){
+            handleConfirmRequest(event.message.msg);
+        }
+        
     }
     
 }
@@ -441,5 +447,14 @@ function fireOnKeypress(){
                 //
             }
         }
+    }
+}
+
+
+function handleConfirmRequest(msg){
+    if(window.confirm(msg)){
+        //ask extension to go to user FAQ
+        var url = "https://www.otzberg.net/oahelper/userfaq.html";
+        safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
 }
