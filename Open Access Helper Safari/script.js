@@ -354,7 +354,7 @@ function alternativeOA(){
             }
         }
     }
-    else if(host.indexOf("base-search.net") > -1 && window.location.indexOf("/Record/") > -1){
+    else if(host.indexOf("base-search.net") > -1 && window.location.href.indexOf("/Record/") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
             webscraperBadge("a.link-gruen.bold", false)
