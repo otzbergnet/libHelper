@@ -9,3 +9,5 @@
 "OA Search for: \"%@…\"" = "OA Suche nach: \"%@…\"";
 "Open Access Version Found! " = "Open Access Version gefunden! ";
 "You are at the Open Acccess Location!" = "Du befindest Dich bereits auf der Open Acccess Version!";
+"Open Access Helper could not find a legal open-access version of this article." = "Open Access Helper konnte keine legale Open-Access Version dieses Artikels finden.";
+"Open Access Helper is inactive on this page, as we could not identify a DOI" = "Open Access Helper ist auf dieser Seite inaktiv, da kein DOI gefunden wurde";

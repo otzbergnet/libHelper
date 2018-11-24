@@ -11,9 +11,10 @@ import Cocoa
 class ViewController: NSViewController {
     
     @IBOutlet weak var oaCount: NSTextField!
+    @IBOutlet weak var oaSearchCountLabel: NSTextField!
     
-    func readSettings() -> String{
-        let file = "count.txt" //this is the file. we will write to and read from it
+    func readSettings(file: String) -> String{
+        let file = file //this is the file. we will write to and read from it
         
         var text2 = ""
         
@@ -60,8 +61,11 @@ class ViewController: NSViewController {
     }
     
     func updateCount(){
-        let count = readSettings()
+        let count = readSettings(file: "count.txt")
+        let myOASearchCount = readSettings(file: "oacount.txt")
         oaCount.stringValue = String(format: NSLocalizedString("So far we've helped you find %@ Open Access Documents!", comment: "shows on main window, number of OpenAccess found"), count)
+        
+        oaSearchCountLabel.stringValue = String(format: NSLocalizedString("You've searched base-search.net %@ times!", comment: "shows on main window, number of OpenAccess Searches conducted"), myOASearchCount)
         
     }
     

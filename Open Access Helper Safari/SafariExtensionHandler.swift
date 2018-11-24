@@ -44,6 +44,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         else if messageName == "searchOA"{
             searchOA(userInfo: (userInfo)!)
         }
+        else if messageName == "needIntlAlert"{
+            if let msgId = userInfo?["msgId"] {
+                returnIntlAlert(id: msgId as! String, page: page)
+            }
+        }
         
         page.getPropertiesWithCompletionHandler { properties in
             NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
@@ -69,9 +74,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         var selectedText = ""
         if let myUserInfo = userInfo{
             selectedText = myUserInfo["selectedText"] as! String
-            let index = selectedText.index(selectedText.startIndex, offsetBy: 20)
-            let mySubstring = selectedText[..<index]
-            let myContextLabel = String(format: NSLocalizedString("OA Search for: \"%@…\"", comment: "changes Context Label"), String(mySubstring))
+            var mySubstring = ""
+            if (selectedText.count > 25){
+                let index = selectedText.index(selectedText.startIndex, offsetBy: 25)
+                mySubstring = "\(String(selectedText[..<index]))…"
+            }
+            else{
+                mySubstring = selectedText
+            }
+            let myContextLabel = String(format: NSLocalizedString("OA Search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
             validationHandler(false, myContextLabel)
         }
         
@@ -89,6 +100,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
             
             if(command == "oasearch"){
+                updateOASearchCount()
                 goToOaUrl(url: myurl)
             }
         }
@@ -101,7 +113,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let searchTerm = selectedText1.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
             
             let myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+            updateOASearchCount()
             goToOaUrl(url: myurl)
+            
         }
 
     }
@@ -288,17 +302,36 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
     }
+    
+    func returnIntlAlert(id: String, page: SFSafariPage){
+        var msg = ""
+        if (id == "oahdoire_0") {
+            msg = NSLocalizedString("Open Access Helper could not find a legal open-access version of this article.", comment: "will show in JS Alert, when there was a doi, but no oadoi url")
+        }
+        else if(id == "oahdoire_1"){
+            msg = NSLocalizedString("Open Access Helper is inactive on this page, as we could not identify a DOI", comment: "will show in JS Alert, when there no doi = inactive state")
+        }
+        if(msg != ""){
+            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg]);
+        }
+    }
 
     
     func updateCount(){
-        let count = readCount()
+        let count = readCount(file: "count.txt")
         let new = count + 1
-        writeCount(count: "\(new)")
+        writeCount(count: "\(new)", file: "count.txt")
+    }
+    
+    func updateOASearchCount(){
+        let count = readCount(file: "oacount.txt")
+        let new = count + 1
+        writeCount(count: "\(new)", file: "oacount.txt")
     }
     
     
-    func writeCount(count: String ) {
-        let file = "count.txt" //this is the file. we will write to and read from it
+    func writeCount(count: String, file: String ) {
+        let file = file //this is the file. we will write to and read from it
         
         let text = count //just a text
         
@@ -318,8 +351,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
     }
 
-    func readCount() -> Int{
-        let file = "count.txt" //this is the file. we will write to and read from it
+    func readCount(file: String) -> Int{
+        let file = file //this is the file. we will write to and read from it
         
         var text2 = "0"
         

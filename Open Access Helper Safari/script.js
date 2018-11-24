@@ -30,9 +30,11 @@ function messageHandler(event){
         currentUrl();
     }
     else if (event.name === "oafound"){
+        document.body.dataset.oahdoire = "1";
         oafound(event.message);
     }
     else if (event.name === "onoa"){
+        document.body.dataset.oahdoire = "2";
         onOa(event.message);
     }
     else if (event.name === "printPls"){
@@ -42,7 +44,11 @@ function messageHandler(event){
         getKnownOAUrl();
     }
     else if (event.name == "notoadoi"){
+        document.body.dataset.oahdoire = "0";
         alternativeOA();
+    }
+    else if (event.name == "showAlert"){
+        alert(event.message.msg)
     }
     
 }
@@ -306,16 +312,23 @@ function inIframe () {
 
 
 // this function is used, when you click the toolbar icon to return for you the URL,
-// which we previously injected ourselves
+// which we previously injected ourselves, if no OADOI it will see if it got a "not on oa" message
+// previously (oahdoire == 0) and provide no OA found message, otherwise inactive message.
 
 function getKnownOAUrl(){
     var div = document.getElementById("doicheckmark");
+    var oahdoire = document.body.dataset['oahdoire'];
     if(div != null){
         var url = div.dataset.oaurl;
         safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
+    else if(oahdoire == 0){
+        safari.extension.dispatchMessage("needIntlAlert", {"msgId" : "oahdoire_0"});
+        //alert("Open Access Helper could not find a legal open-access version of this article.")
+    }
     else{
-        alert("Open Access Helper is inactive on this page, as no DOI / Digital Object Identifier is available");
+        safari.extension.dispatchMessage("needIntlAlert", {"msgId" : "oahdoire_1"});
+        //alert("Open Access Helper is inactive on this page, as we could not identify a DOI");
     }
     
 }
@@ -341,7 +354,7 @@ function alternativeOA(){
             }
         }
     }
-    else if(host.indexOf("base-search.net") > -1){
+    else if(host.indexOf("base-search.net") > -1 && window.location.indexOf("/Record/") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
             webscraperBadge("a.link-gruen.bold", false)
@@ -394,6 +407,7 @@ function webscraperBadge(selector, onoa){
     if(href != null && href != ""){
         var message = new Array();
         message['url'] = href;
+        message['title'] = "Open Access found at: ";
         oafound(message);
         if(onoa){
             onOa("This is the Open Access location!");
