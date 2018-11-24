@@ -6,6 +6,7 @@
   Copyright © 2018 Claus Wolf. All rights reserved.
 */
 
+"OA Search for: \"%@\"" = "OA Suche nach: \"%@\"";
 "OA Search for: \"%@…\"" = "OA Suche nach: \"%@…\"";
 "Open Access Version Found! " = "Open Access Version gefunden! ";
 "You are at the Open Acccess Location!" = "Du befindest Dich bereits auf der Open Acccess Version!";
