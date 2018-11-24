@@ -35,7 +35,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## PubMed
 
-* No Badge: https://www.ncbi.nlm.nih.gov/pubmed/30108905
+* No Badge: https://www.ncbi.nlm.nih.gov/pubmed/30468734
 * Orange: https://www.ncbi.nlm.nih.gov/pubmed/30258935
 * Green: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6147107/ (Pub Med Central)
 
@@ -57,7 +57,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 * No Badge: https://stemcellsjournals.onlinelibrary.wiley.com/doi/10.1002/stem.2571 
 * Orange: https://onlinelibrary.wiley.com/iucr/doi/10.1107/S1600577517008372 (PDF linked, HTML on page)
-* Green: https://onlinelibrary.wiley.com/doi/10.1002/ijc.28702 
+* Orange: https://onlinelibrary.wiley.com/doi/10.1002/ijc.28702 
 
 ## IngentaConnect
 
