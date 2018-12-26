@@ -28,6 +28,8 @@ The app will perform the following operations
 
 To help you recognize that the app is actively doing something, the icon changes from an outline to a filled padlock
 
+Additionally the App will allow you to highlight text and select the context menu to start a search at base-search.net
+
 ## About the code
 
 This app is a hobby project, I am sure there is plenty in the code that isn't perfect or best practice. If you see something, feel free to open an issue.

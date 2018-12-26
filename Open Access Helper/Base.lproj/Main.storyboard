@@ -161,11 +161,11 @@
             <objects>
                 <viewController id="5jK-gR-BaF" customClass="AboutController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3Tv-5Z-anh">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="278"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-iZ-uLQ">
-                                <rect key="frame" x="18" y="218" width="76" height="30"/>
+                                <rect key="frame" x="18" y="190" width="76" height="30"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="About" id="g4U-2c-WI9">
                                     <font key="font" metaFont="systemBold" size="25"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -173,24 +173,22 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2DO-zl-snM">
-                                <rect key="frame" x="410" y="208" width="50" height="50"/>
+                                <rect key="frame" x="406" y="176" width="64" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Jyu-vj-o2H"/>
-                                    <constraint firstAttribute="height" constant="50" id="QDd-nE-Nbi"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="pas-qh-rbO"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="puz-JY-guF"/>
+                                    <constraint firstAttribute="width" constant="64" id="Jyu-vj-o2H"/>
+                                    <constraint firstAttribute="height" constant="64" id="QDd-nE-Nbi"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="pas-qh-rbO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="puz-JY-guF"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="U5G-q7-7tE"/>
                             </imageView>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
-                                <rect key="frame" x="18" y="58" width="444" height="140"/>
+                                <rect key="frame" x="18" y="58" width="444" height="112"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing on that hope or if you have suggestions to improve the app.
 
 The app itself would not be possible without the awesome API from unpaywall.org - many thanks to the team there for making this possible.
-
-The icon for this app was provided by Freepik from www.flaticon.com
 
 If you need to reach me, please click the Contact Me button below!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -207,26 +205,6 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <action selector="contactMeClicked:" target="5jK-gR-BaF" id="fTk-ip-lI9"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-Gb-dZU">
-                                <rect key="frame" x="128" y="13" width="126" height="32"/>
-                                <buttonCell key="cell" type="push" title="Unpaywall.org" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u7B-2x-O8I">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="unpaywallClicked:" target="5jK-gR-BaF" id="oq8-Vc-bzg"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dja-cp-V0K">
-                                <rect key="frame" x="257" y="13" width="118" height="32"/>
-                                <buttonCell key="cell" type="push" title="Flaticon.com" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YzV-Ir-K2x">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="flaticonClicked:" target="5jK-gR-BaF" id="y8t-G3-5Kg"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Oh-Vi-WeA">
                                 <rect key="frame" x="391" y="13" width="75" height="32"/>
                                 <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nyJ-2r-ya5">
@@ -237,33 +215,51 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <action selector="closeClicked:" target="5jK-gR-BaF" id="bnr-In-Ecd"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yE6-V7-SE9">
+                                <rect key="frame" x="370" y="173" width="37" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="oRq-HL-zE8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-Gb-dZU">
+                                <rect key="frame" x="177" y="13" width="126" height="32"/>
+                                <buttonCell key="cell" type="push" title="Unpaywall.org" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u7B-2x-O8I">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="unpaywallClicked:" target="5jK-gR-BaF" id="oq8-Vc-bzg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="20" id="0Pb-Kj-lTZ"/>
                             <constraint firstAttribute="trailing" secondItem="1Oh-Vi-WeA" secondAttribute="trailing" constant="20" id="AMF-Gh-xoL"/>
-                            <constraint firstItem="Dja-cp-V0K" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="CaG-gc-4Q9"/>
+                            <constraint firstItem="yE6-V7-SE9" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Dv7-iZ-uLQ" secondAttribute="trailing" constant="284" id="AVz-8A-EI9"/>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="DKM-eB-r50"/>
                             <constraint firstAttribute="bottom" secondItem="1Oh-Vi-WeA" secondAttribute="bottom" constant="20" id="EQY-fR-PNx"/>
-                            <constraint firstItem="Dja-cp-V0K" firstAttribute="leading" secondItem="w9o-Gb-dZU" secondAttribute="trailing" constant="15" id="HJA-Jd-amJ"/>
+                            <constraint firstItem="w9o-Gb-dZU" firstAttribute="centerX" secondItem="3Tv-5Z-anh" secondAttribute="centerX" id="JSM-Lq-Jqb"/>
                             <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="30" id="LBe-yx-iLR"/>
-                            <constraint firstItem="w9o-Gb-dZU" firstAttribute="leading" secondItem="sGu-NU-4h3" secondAttribute="trailing" constant="15" id="LZZ-4y-yPb"/>
                             <constraint firstAttribute="bottom" secondItem="w9o-Gb-dZU" secondAttribute="bottom" constant="20" id="QSw-Nj-Ch3"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="Dv7-iZ-uLQ" secondAttribute="bottom" constant="20" id="RjB-ym-vyv"/>
                             <constraint firstItem="2DO-zl-snM" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Dv7-iZ-uLQ" secondAttribute="trailing" constant="318" id="TJs-ag-JFC"/>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="20" id="X1Z-ll-2i5"/>
-                            <constraint firstAttribute="bottom" secondItem="Dja-cp-V0K" secondAttribute="bottom" constant="20" id="k4a-QT-Xa1"/>
+                            <constraint firstItem="2DO-zl-snM" firstAttribute="leading" secondItem="yE6-V7-SE9" secondAttribute="trailing" constant="1" id="fTg-9k-R0I"/>
                             <constraint firstItem="1Oh-Vi-WeA" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="ler-jl-3vZ"/>
+                            <constraint firstItem="yE6-V7-SE9" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="60" id="nTy-Ze-Mm6"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="20" id="qbf-Qz-oao"/>
                             <constraint firstAttribute="bottom" secondItem="sGu-NU-4h3" secondAttribute="bottom" constant="20" id="rbt-5m-5my"/>
-                            <constraint firstItem="1Oh-Vi-WeA" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Dja-cp-V0K" secondAttribute="trailing" constant="28" id="rvl-Ve-hif"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E43-sS-goO" secondAttribute="trailing" constant="20" id="taw-xd-QgC"/>
-                            <constraint firstAttribute="trailing" secondItem="2DO-zl-snM" secondAttribute="trailing" constant="20" id="uGc-aY-gx8"/>
-                            <constraint firstItem="2DO-zl-snM" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="20" id="yb2-1D-nNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="2DO-zl-snM" secondAttribute="trailing" constant="10" id="uGc-aY-gx8"/>
+                            <constraint firstItem="2DO-zl-snM" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="10" id="yb2-1D-nNQ"/>
                             <constraint firstItem="w9o-Gb-dZU" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="zDx-ir-vgv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="infoText" destination="E43-sS-goO" id="UU6-5m-Yme"/>
+                        <outlet property="versionLabel" destination="yE6-V7-SE9" id="cqx-bp-jqd"/>
                     </connections>
                 </viewController>
                 <customObject id="dbP-uY-Rvb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -300,12 +296,12 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Q3-IEu">
-                                <rect key="frame" x="410" y="174" width="50" height="50"/>
+                                <rect key="frame" x="396" y="160" width="64" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="8gs-jV-KYF"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="O47-aL-DoA"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="g8L-fO-bYY"/>
-                                    <constraint firstAttribute="height" constant="50" id="hx2-xv-Sm5"/>
+                                    <constraint firstAttribute="width" constant="64" id="8gs-jV-KYF"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="O47-aL-DoA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="g8L-fO-bYY"/>
+                                    <constraint firstAttribute="height" constant="64" id="hx2-xv-Sm5"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="lbX-Ov-jUe"/>
                             </imageView>
@@ -355,6 +351,6 @@ If you need to reach me, please click the Contact Me button below!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="512" height="512"/>
+        <image name="icon" width="128" height="128"/>
     </resources>
 </document>

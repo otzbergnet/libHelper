@@ -11,10 +11,14 @@ import Cocoa
 class AboutController: NSViewController {
 
     @IBOutlet weak var infoText: NSTextField!
+    @IBOutlet weak var versionLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        if let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String{
+            versionLabel.stringValue = "Version \(appVersion)"
+        }
         
     }
     
@@ -40,11 +44,6 @@ class AboutController: NSViewController {
         }
     }
     
-    @IBAction func flaticonClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.flaticon.com"),
-            NSWorkspace.shared.open(url) {
-        }
-    }
     
     @IBAction func closeClicked(_ sender: Any) {
         self.dismiss(self)

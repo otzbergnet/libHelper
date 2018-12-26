@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>30</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSMinimumSystemVersion</key>
@@ -48,7 +48,13 @@
 				<key>Command</key>
 				<string>oasearch</string>
 				<key>Text</key>
-				<string>Open Access Search for selection</string>
+				<string>search at base-search.net</string>
+			</dict>
+			<dict>
+				<key>Command</key>
+				<string>oasearch2</string>
+				<key>Text</key>
+				<string>search at core.ac.uk</string>
 			</dict>
 		</array>
 		<key>SFSafariStyleSheet</key>

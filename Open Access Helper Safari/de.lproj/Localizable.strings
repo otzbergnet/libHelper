@@ -6,8 +6,10 @@
   Copyright © 2018 Claus Wolf. All rights reserved.
 */
 
-"OA Search for: \"%@\"" = "OA Suche nach: \"%@\"";
-"OA Search for: \"%@…\"" = "OA Suche nach: \"%@…\"";
+"base-search.net search for: \"%@\"" = "base-search.net Suche nach: \"%@\"";
+"base-search.net search for: \"%@…\"" = "base-search.net Suche nach: \"%@…\"";
+"core.ac.uk search for: \"%@\"" = "core.ac.uk Suche nach: \"%@\"";
+"core.ac.uk search for: \"%@…\"" = "core.ac.uk Suche nach: \"%@…\"";
 "Open Access Version Found! " = "Open Access Version gefunden! ";
 "You are at the Open Acccess Location!" = "Du befindest Dich bereits auf der Open Acccess Version!";
 "Open Access Helper could not find a legal open-access version of this article." = "Open Access Helper konnte keine legale Open-Access Version dieses Artikels finden.";

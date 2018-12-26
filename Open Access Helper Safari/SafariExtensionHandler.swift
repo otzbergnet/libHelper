@@ -42,7 +42,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
         else if messageName == "searchOA"{
-            searchOA(userInfo: (userInfo)!)
+            searchOA(userInfo: (userInfo)!, type: 1)
+        }
+        else if messageName == "searchOA2"{
+            searchOA(userInfo: (userInfo)!, type: 2)
         }
         else if messageName == "needIntlAlert"{
             if let msgId = userInfo?["msgId"] {
@@ -82,7 +85,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             else{
                 mySubstring = selectedText
             }
-            let myContextLabel = String(format: NSLocalizedString("OA Search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+            var myContextLabel = String(format: NSLocalizedString("base-search.net search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+            if(command == "oasearch"){
+                myContextLabel = String(format: NSLocalizedString("base-search.net search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+            }
+            else if(command == "oasearch2"){
+                myContextLabel = String(format: NSLocalizedString("core.ac.uk search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+            }
+            
             validationHandler(false, myContextLabel)
         }
         
@@ -96,10 +106,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             var selectedText = ""
             selectedText = myUserInfo["selectedText"] as! String
             let searchTerm = selectedText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-            
-            let myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
-            
+            var myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
             if(command == "oasearch"){
+               myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+            }
+            else if(command == "oasearch2"){
+               myurl = "https://core.ac.uk/search?q=%22\(searchTerm!)%22"
+            }
+        
+            if(command == "oasearch" || command == "oasearch2"){
                 updateOASearchCount()
                 goToOaUrl(url: myurl)
             }
@@ -107,12 +122,18 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     }
     
-    func searchOA(userInfo: [String : Any]){
+    func searchOA(userInfo: [String : Any], type: Int){
         if let selectedText = userInfo["selected"]{
             let selectedText1 = "\(selectedText)"
             let searchTerm = selectedText1.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            var myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+            if(type == 1){
+                myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+            }
+            else if(type == 2){
+                myurl = "https://core.ac.uk/search?q=%22\(searchTerm!)%22"
+            }
             
-            let myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
             updateOASearchCount()
             goToOaUrl(url: myurl)
             

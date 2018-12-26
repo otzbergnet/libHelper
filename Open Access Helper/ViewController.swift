@@ -65,7 +65,7 @@ class ViewController: NSViewController {
         let myOASearchCount = readSettings(file: "oacount.txt")
         oaCount.stringValue = String(format: NSLocalizedString("So far we've helped you find %@ Open Access Documents!", comment: "shows on main window, number of OpenAccess found"), count)
         
-        oaSearchCountLabel.stringValue = String(format: NSLocalizedString("You've searched base-search.net %@ times!", comment: "shows on main window, number of OpenAccess Searches conducted"), myOASearchCount)
+        oaSearchCountLabel.stringValue = String(format: NSLocalizedString("You've had help with %@ Open Access searches", comment: "shows on main window, number of OpenAccess Searches conducted"), myOASearchCount)
         
     }
     

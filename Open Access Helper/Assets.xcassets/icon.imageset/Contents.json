@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icona_512.png",
+      "filename" : "oahlper_macos_icon_128.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icona_1024.png",
+      "filename" : "oahlper_macos_icon_256.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "oahlper_macos_icon_384.png",
       "scale" : "3x"
     }
   ],
