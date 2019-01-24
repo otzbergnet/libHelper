@@ -439,7 +439,7 @@ struct OpenAccessLocation : Decodable {
     let url : String
     let url_for_landing_page : String?
     let url_for_pdf : String?
-    let version : String
+    let version : String?
 }
 
 struct OAAuthors : Decodable{
