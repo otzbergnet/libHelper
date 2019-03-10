@@ -177,6 +177,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
+                self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_error" : error.localizedDescription])
             }
             if let data = data {
@@ -219,6 +220,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         catch let jsonError{
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
             return
         }
     }

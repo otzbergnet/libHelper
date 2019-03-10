@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2D06B57C219E841300E4A453 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D06B57E219E841300E4A453 /* Localizable.strings */; };
+		2D08FE2B222A59F10066949C /* DataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08FE29222A59F10066949C /* DataSync.swift */; };
+		2D08FE30222A5C630066949C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D08FE2F222A5C630066949C /* CloudKit.framework */; };
 		2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708921974B250050CFDD /* HelpViewController.swift */; };
 		2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708B21975AAC0050CFDD /* AboutController.swift */; };
+		2D3CA07B2235238300D5D531 /* BookMarkTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CA0792235238300D5D531 /* BookMarkTableView.swift */; };
 		2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA5218586290095ACD7 /* AppDelegate.swift */; };
 		2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA7218586290095ACD7 /* ViewController.swift */; };
 		2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */; };
@@ -57,8 +60,11 @@
 
 /* Begin PBXFileReference section */
 		2D06B57D219E841300E4A453 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D08FE29222A59F10066949C /* DataSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSync.swift; sourceTree = "<group>"; };
+		2D08FE2F222A5C630066949C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2D28708921974B250050CFDD /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		2D28708B21975AAC0050CFDD /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		2D3CA0792235238300D5D531 /* BookMarkTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableView.swift; sourceTree = "<group>"; };
 		2D3F8FA2218586290095ACD7 /* Open Access Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Access Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3F8FA5218586290095ACD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D3F8FA7218586290095ACD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D08FE30222A5C630066949C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +139,7 @@
 				2D3F8FA7218586290095ACD7 /* ViewController.swift */,
 				2D28708921974B250050CFDD /* HelpViewController.swift */,
 				2D28708B21975AAC0050CFDD /* AboutController.swift */,
+				2D3CA0792235238300D5D531 /* BookMarkTableView.swift */,
 				2D3F8FAC218586290095ACD7 /* Assets.xcassets */,
 				2D3F8FAE218586290095ACD7 /* Main.storyboard */,
 				2D3F8FB1218586290095ACD7 /* Info.plist */,
@@ -139,6 +147,7 @@
 				2D3F8FB2218586290095ACD7 /* libHelper.entitlements */,
 				2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */,
 				2D06B57E219E841300E4A453 /* Localizable.strings */,
+				2D08FE29222A59F10066949C /* DataSync.swift */,
 			);
 			path = "Open Access Helper";
 			sourceTree = "<group>";
@@ -146,6 +155,7 @@
 		2D3F8FBD2185863C0095ACD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D08FE2F222A5C630066949C /* CloudKit.framework */,
 				2D3F8FBE2185863C0095ACD7 /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -226,7 +236,13 @@
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -300,7 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */,
+				2D3CA07B2235238300D5D531 /* BookMarkTableView.swift in Sources */,
 				2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */,
+				2D08FE2B222A59F10066949C /* DataSync.swift in Sources */,
 				2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */,
 				2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */,
 				2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */,
