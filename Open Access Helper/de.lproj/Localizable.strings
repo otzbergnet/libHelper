@@ -20,3 +20,12 @@
 "So far we've helped you find %@ Open Access Documents!" = "Bisher haben wir Dir geholfen %@ Open Access Dokumente zu finden!";
 
 "You've had help with %@ Open Access searches" = "Wir haben Dir bei %@ Open Access Suchen geholfen";
+
+"iCloud Error" = "iCloud Fehler";
+"Please check that you are logged into iCloud" = "Bitte überprüfen, dass Du in iCloud eingeloggt bist";
+"Connection Error" = "Verbindungsfehler";
+"We are sorry, but there was a connection error. Please check your Internet Connection" = "Leider ist ein Verbindungsfehler aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung";
+"Record Error" = "Datensatzfehler";
+"We were unable to retrieve your bookmarks" = "Wir konnten die Bookmarks nicht abrufen";
+"OK" = "OK";
+"Cancel" = "Abbrechen";

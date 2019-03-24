@@ -259,6 +259,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="Dv7-iZ-uLQ" secondAttribute="bottom" constant="20" id="RjB-ym-vyv"/>
                             <constraint firstItem="2DO-zl-snM" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Dv7-iZ-uLQ" secondAttribute="trailing" constant="318" id="TJs-ag-JFC"/>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="20" id="X1Z-ll-2i5"/>
+                            <constraint firstItem="w9o-Gb-dZU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="sGu-NU-4h3" secondAttribute="trailing" constant="64" id="XrV-en-HUx"/>
                             <constraint firstItem="2DO-zl-snM" firstAttribute="leading" secondItem="yE6-V7-SE9" secondAttribute="trailing" constant="1" id="fTg-9k-R0I"/>
                             <constraint firstItem="1Oh-Vi-WeA" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="ler-jl-3vZ"/>
                             <constraint firstItem="yE6-V7-SE9" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="60" id="nTy-Ze-Mm6"/>
@@ -266,6 +267,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstAttribute="bottom" secondItem="sGu-NU-4h3" secondAttribute="bottom" constant="20" id="rbt-5m-5my"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E43-sS-goO" secondAttribute="trailing" constant="20" id="taw-xd-QgC"/>
                             <constraint firstAttribute="trailing" secondItem="2DO-zl-snM" secondAttribute="trailing" constant="10" id="uGc-aY-gx8"/>
+                            <constraint firstItem="1Oh-Vi-WeA" firstAttribute="leading" relation="lessThanOrEqual" secondItem="w9o-Gb-dZU" secondAttribute="trailing" constant="100" id="xWn-7F-Kw2"/>
                             <constraint firstItem="2DO-zl-snM" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="10" id="yb2-1D-nNQ"/>
                             <constraint firstItem="w9o-Gb-dZU" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="zDx-ir-vgv"/>
                         </constraints>
@@ -277,7 +279,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="dbP-uY-Rvb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="580"/>
+            <point key="canvasLocation" x="1023" y="579"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="0CC-nx-hC5">
@@ -288,13 +290,13 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNZ-cE-SmH">
-                                <rect key="frame" x="0.0" y="0.0" width="650" height="400"/>
+                                <rect key="frame" x="0.0" y="30" width="650" height="370"/>
                                 <clipView key="contentView" id="EyY-MM-Mjj">
-                                    <rect key="frame" x="1" y="0.0" width="648" height="399"/>
+                                    <rect key="frame" x="1" y="0.0" width="648" height="369"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="vZc-7v-cUQ" viewBased="YES" id="4L1-mb-9aB">
-                                            <rect key="frame" x="0.0" y="0.0" width="649" height="374"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="648" height="344"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -366,7 +368,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="200" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
+                                                <tableColumn width="199" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -380,11 +382,11 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="UrlCellId" id="ekT-g3-87C">
-                                                            <rect key="frame" x="447" y="1" width="200" height="17"/>
+                                                            <rect key="frame" x="447" y="1" width="199" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="box-k0-Vhn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="xpj-jN-908">
                                                                         <font key="font" metaFont="system"/>
@@ -400,10 +402,13 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="menu" destination="sAe-Kd-f6Y" id="u0S-KG-AHP"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="jbp-s3-DkI">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="jbp-s3-DkI">
                                     <rect key="frame" x="1" y="383" width="648" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -412,16 +417,28 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="vZc-7v-cUQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="649" height="25"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="648" height="25"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Y2-OV-a5R">
+                                <rect key="frame" x="3" y="0.0" width="644" height="25"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Double-Click to open document in browser. More features to come soon!" id="Y9a-Pb-WdR">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2Y2-OV-a5R" secondAttribute="trailing" constant="5" id="1Z4-Fd-tt7"/>
+                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="top" secondItem="DNZ-cE-SmH" secondAttribute="bottom" constant="5" id="43b-BI-klp"/>
+                            <constraint firstAttribute="bottom" secondItem="2Y2-OV-a5R" secondAttribute="bottom" id="6XI-cl-mr2"/>
                             <constraint firstItem="DNZ-cE-SmH" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" id="AoS-cr-A6C"/>
-                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="top" secondItem="fdF-d4-aFW" secondAttribute="top" id="WYd-vm-iWm"/>
+                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="top" secondItem="fdF-d4-aFW" secondAttribute="top" id="Zp1-Iv-uOL"/>
+                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" constant="5" id="dbJ-ID-vA3"/>
                             <constraint firstAttribute="trailing" secondItem="DNZ-cE-SmH" secondAttribute="trailing" id="uIv-kI-cUQ"/>
-                            <constraint firstAttribute="bottom" secondItem="DNZ-cE-SmH" secondAttribute="bottom" id="vFl-Ck-B3d"/>
+                            <constraint firstAttribute="bottom" secondItem="DNZ-cE-SmH" secondAttribute="bottom" constant="30" id="vFl-Ck-B3d"/>
                         </constraints>
                     </view>
                     <connections>
@@ -429,8 +446,27 @@ If you need to reach me, please click the Contact Me button below!</string>
                     </connections>
                 </viewController>
                 <customObject id="dIf-1g-FNS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="x8S-6N-32a">
+                    <allowedToolbarItems>
+                        <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="fep-61-uNc"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="kCE-fL-Vf5"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="dLl-53-2TU"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="FfR-qe-Hbk"/>
+                    </allowedToolbarItems>
+                    <defaultToolbarItems/>
+                </toolbar>
+                <menu id="sAe-Kd-f6Y">
+                    <items>
+                        <menuItem title=" Open Link" id="WuH-EF-cyj">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="openLink:" target="d7Y-0M-Jnk" id="6uG-Am-ANY"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
-            <point key="canvasLocation" x="458" y="655"/>
+            <point key="canvasLocation" x="394" y="654"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -481,16 +517,15 @@ If you need to reach me, please click the Contact Me button below!</string>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7FZ-jx-6Z5">
                                 <rect key="frame" x="18" y="66" width="444" height="17"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="You've search base-search.net 0 times!" id="irf-Mg-7VE">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="You've had help with 0 Open Access searches." id="irf-Mg-7VE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JhT-q4-qkc">
-                                <rect key="frame" x="14" y="13" width="108" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Bookmarks" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ANV-lE-Ns1">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JhT-q4-qkc">
+                                <rect key="frame" x="14" y="13" width="141" height="32"/>
+                                <buttonCell key="cell" type="push" title="View Bookmarks" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ANV-lE-Ns1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -504,14 +539,17 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstAttribute="trailing" secondItem="7FZ-jx-6Z5" secondAttribute="trailing" constant="20" id="AJ5-Ko-DCH"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Anl-fk-yAQ"/>
                             <constraint firstItem="7FZ-jx-6Z5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Cj2-dx-Lka"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JhT-q4-qkc" secondAttribute="trailing" constant="331" id="QtB-V7-xtQ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qa8-Lu-Lg5" secondAttribute="trailing" constant="30" id="TEt-jv-Hxt"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="15" id="X5k-Gn-k8b"/>
                             <constraint firstItem="owU-kc-A61" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="20" id="Y8a-5O-5Ty"/>
                             <constraint firstAttribute="trailing" secondItem="LZV-Q3-IEu" secondAttribute="trailing" constant="20" id="aU2-IC-BSC"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="aqX-zD-CJO"/>
+                            <constraint firstItem="JhT-q4-qkc" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="eIa-RK-49J"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="trailing" constant="30" id="hCg-nt-OEo"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="15" id="heb-Zz-WcX"/>
                             <constraint firstItem="7FZ-jx-6Z5" firstAttribute="top" secondItem="owU-kc-A61" secondAttribute="bottom" constant="10" id="qTN-Q9-IRd"/>
+                            <constraint firstAttribute="bottom" secondItem="JhT-q4-qkc" secondAttribute="bottom" constant="20" id="sMF-l9-NjE"/>
                             <constraint firstItem="LZV-Q3-IEu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="u8K-8O-3SG"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="owU-kc-A61" secondAttribute="trailing" constant="30" id="z2S-2Y-Iu0"/>
                         </constraints>
@@ -530,6 +568,6 @@ If you need to reach me, please click the Contact Me button below!</string>
         <image name="icon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZPa-Tz-k79"/>
+        <segue reference="sbU-Lw-4rv"/>
     </inferredMetricsTieBreakers>
 </document>

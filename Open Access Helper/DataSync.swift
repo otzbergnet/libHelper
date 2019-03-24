@@ -28,6 +28,7 @@ class DataSync: NSViewController {
         self.defaultContainer.fetchUserRecordID { (recordID, error) -> Void in
             if let responseError = error {
                 print(responseError)
+                _ = self.dialogOKCancel(messageText: NSLocalizedString("iCloud Error", comment:  "error message title"), text: NSLocalizedString("Please check that you are logged into iCloud", comment:  "error message shown, when iCloud not logged in"), cancel: false)
                 
             } else if let userRecordID = recordID {
                 DispatchQueue.main.sync {
@@ -43,6 +44,7 @@ class DataSync: NSViewController {
         self.privateDatabase.fetch(withRecordID: recordID) { (record, error) -> Void in
             if let responseError = error {
                 print(responseError)
+                _ = self.dialogOKCancel(messageText: NSLocalizedString("iCloud Error", comment:  ""), text: NSLocalizedString("Please check that you are logged into iCloud", comment:  ""), cancel: false)
                 
             } else if record != nil {
                 //self.fetchBookMarks()
@@ -64,12 +66,17 @@ class DataSync: NSViewController {
         self.privateDatabase.perform(query, inZoneWith: self.customZone.zoneID) { (records, error) in
             if let responseError = error{
                 print(responseError.localizedDescription as Any)
+                DispatchQueue.main.async {
+                    _ = self.dialogOKCancel(messageText: NSLocalizedString("Connection Error", comment:  "iCloud internet connection"), text: NSLocalizedString("We are sorry, but there was a connection error. Please check your Internet Connection", comment:  ""), cancel: false)
+                    
+                }
             }
             else {
                 records?.forEach({ (record) in
                     
                     guard error == nil else{
                         print(error?.localizedDescription as Any)
+                        _ = self.dialogOKCancel(messageText: NSLocalizedString("Record Error", comment:  "iCloud record error"), text: NSLocalizedString("We were unable to retrieve your bookmarks", comment:  ""), cancel: false)
                         return
                     }
                     
@@ -90,6 +97,19 @@ class DataSync: NSViewController {
                 completion(bookmarks)
             }
         }
+    }
+    
+    func dialogOKCancel(messageText: String, text: String, cancel: Bool) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = messageText
+        alert.informativeText = text
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: NSLocalizedString("OK", comment:  "OK button in alert"))
+        if(cancel){
+           alert.addButton(withTitle: NSLocalizedString("Cancel", comment:  "Cancel button in alert"))
+        }
+        
+        return alert.runModal() == .alertFirstButtonReturn
     }
     
 }

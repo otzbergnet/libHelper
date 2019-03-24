@@ -140,6 +140,7 @@
 				2D28708921974B250050CFDD /* HelpViewController.swift */,
 				2D28708B21975AAC0050CFDD /* AboutController.swift */,
 				2D3CA0792235238300D5D531 /* BookMarkTableView.swift */,
+				2D08FE29222A59F10066949C /* DataSync.swift */,
 				2D3F8FAC218586290095ACD7 /* Assets.xcassets */,
 				2D3F8FAE218586290095ACD7 /* Main.storyboard */,
 				2D3F8FB1218586290095ACD7 /* Info.plist */,
@@ -147,7 +148,6 @@
 				2D3F8FB2218586290095ACD7 /* libHelper.entitlements */,
 				2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */,
 				2D06B57E219E841300E4A453 /* Localizable.strings */,
-				2D08FE29222A59F10066949C /* DataSync.swift */,
 			);
 			path = "Open Access Helper";
 			sourceTree = "<group>";

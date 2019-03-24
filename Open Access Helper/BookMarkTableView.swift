@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BookMarkObject {
+class BookMarkObject:NSObject {
     var date : Date = Date()
     var doi : String = ""
     var pdf : String = ""
@@ -23,6 +23,7 @@ class BookMarkTableView: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
     var directoryItems = [BookMarkObject]()
+    
     let data = DataSync()
     
     override func viewDidLoad() {
@@ -34,9 +35,17 @@ class BookMarkTableView: NSViewController {
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleClick(_:))
         
+        let descriptorName = NSSortDescriptor(key: "title", ascending: true)
+        let descriptorDate = NSSortDescriptor(key: "date", ascending: true)
+        let descriptorUrl = NSSortDescriptor(key: "url", ascending: true)
+        
+        tableView.tableColumns[0].sortDescriptorPrototype = descriptorDate
+        tableView.tableColumns[1].sortDescriptorPrototype = descriptorName
+        tableView.tableColumns[2].sortDescriptorPrototype = descriptorUrl
+        
         let directoryItem = BookMarkObject()
-        directoryItem.title = "test"
-        directoryItem.url = "https://www.test.com"
+        directoryItem.title = "Open Access Helper"
+        directoryItem.url = "https://www.otzberg.net/oahelper"
         directoryItem.date = Date()
         directoryItems.append(directoryItem)
         
@@ -47,12 +56,64 @@ class BookMarkTableView: NSViewController {
         
     }
 
+    func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+        // 1
+        guard let sortDescriptor = tableView.sortDescriptors.first else {
+            return
+        }
+        if(sortDescriptor.key == "title"){
+            if(sortDescriptor.ascending){
+                self.directoryItems = self.directoryItems.sorted { $0.title < $1.title }
+            }
+            else{
+                self.directoryItems = self.directoryItems.sorted { $0.title > $1.title }
+            }
+            reloadFileList()
+        }
+        else if(sortDescriptor.key == "url"){
+            if(sortDescriptor.ascending){
+                self.directoryItems = self.directoryItems.sorted { $0.url < $1.url}
+            }
+            else{
+                self.directoryItems = self.directoryItems.sorted { $0.url > $1.url }
+            }
+            reloadFileList()
+        }
+        else if(sortDescriptor.key == "date"){
+            if(sortDescriptor.ascending){
+                self.directoryItems = self.directoryItems.sorted { $0.date < $1.date }
+            }
+            else{
+                self.directoryItems = self.directoryItems.sorted { $0.date > $1.date }
+            }
+            reloadFileList()
+        }
+    }
+    
+
+    
     func reloadFileList() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
 
+    @IBAction func openLink(_ sender: Any) {
+        print("right clicked")
+        if(tableView.clickedRow < 0){
+            return
+        }
+        let item = self.directoryItems[tableView.clickedRow]
+        
+        if let url = URL(string: item.url),
+            NSWorkspace.shared.open(url) {
+        }
+        else{
+            return
+        }
+    }
+    
+    
     @objc func tableViewDoubleClick(_ sender:AnyObject) {
         // 1
         if tableView.selectedRow < 0{
@@ -97,7 +158,7 @@ extension BookMarkTableView: NSTableViewDelegate {
         
         // 1
         let item = directoryItems[row]
-        print(item)
+        //print(item)
         
         // 2
         if tableColumn == tableView.tableColumns[0] {
