@@ -30,3 +30,6 @@
 "We were unable to retrieve your bookmarks" = "Wir konnten die Bookmarks nicht abrufen";
 "OK" = "OK";
 "Cancel" = "Abbrechen";
+
+"No Bookmarks" = "Keine Bookmarks";
+"We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?" = "Wir konnten keine Bookmarks aus iCloud abrufen. Sind Sie sich sicher, dass Sie bereits Bookmarks über die Open Access Helper App für iOS angelegt haben?";

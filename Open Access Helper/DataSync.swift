@@ -65,8 +65,8 @@ class DataSync: NSViewController {
         // Perform Query
         self.privateDatabase.perform(query, inZoneWith: self.customZone.zoneID) { (records, error) in
             if let responseError = error{
+                
                 let e1 = error as! CKError
-                print(e1.code.rawValue)
                 if (e1.code == .notAuthenticated){
                     // this request requires an authenticated account
                     DispatchQueue.main.async {
@@ -90,6 +90,12 @@ class DataSync: NSViewController {
                 
             }
             else {
+                if(records?.count == 0){
+                    DispatchQueue.main.async {
+                        _ = self.dialogOKCancel(messageText: NSLocalizedString("No Bookmarks", comment:  "0 bookmarks retrieved"), text: NSLocalizedString("We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?", comment:  ""), cancel: false)
+                        
+                    }
+                }
                 records?.forEach({ (record) in
                     
                     guard error == nil else{
