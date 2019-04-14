@@ -99,7 +99,7 @@ class BookMarkTableView: NSViewController {
     }
 
     @IBAction func openLink(_ sender: Any) {
-        print("right clicked")
+        //print("right clicked")
         if(tableView.clickedRow < 0){
             return
         }
