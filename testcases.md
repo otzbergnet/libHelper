@@ -39,6 +39,10 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * Orange: https://www.ncbi.nlm.nih.gov/pubmed/30258935
 * Green: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6147107/ (Pub Med Central)
 
+## BMH
+
+* Green: https://ard.bmj.com/content/78/3/421 (Hybridge Journal Article)
+
 ## IEEE:
 
 * No Badge: https://ieeexplore.ieee.org/document/6197616
@@ -52,6 +56,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * Orange: https://journals.sagepub.com/doi/full/10.1177/1474515116687178
 * Green: https://journals.sagepub.com/doi/full/10.1177/1536504211418465 (Open Access)
 * Green: https://journals.sagepub.com/doi/full/10.1177/0956797616674999 (Free Access vs. Open Access)
+* Green https://journals.sagepub.com/doi/abs/10.1177/1947603519828432 (unpaywall.org errors, so scraping page)
 
 ## Wiley
 

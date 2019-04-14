@@ -377,6 +377,13 @@ function alternativeOA(){
         if(document.querySelectorAll("img.accessIcon.freeAccess").length > 0){
             webscraperBadge("a[data-item-name=\"download-PDF\"]", true);
         }
+        else{
+            console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+            if(document.querySelectorAll('img.accessIcon.openAccess').length > 0){
+                webscraperBadge("div.pdf-access>a", true)
+            }
+        }
+        
     }
     else if(host.indexOf("academic.oup.com") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
@@ -384,8 +391,30 @@ function alternativeOA(){
             webscraperBadge("a.article-pdfLink", true);
         }
     }
+    else if(host.indexOf("bmj.com") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+        if(document.querySelectorAll("svg.icon-open-access").length > 0){
+            var pdf = getMeta("citation_pdf_url")
+            if(pdf != "" && pdf.indexOf("http" == 0)){
+                successfulAlternativeOAFound(pdf)
+            }
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        }
+    }
 }
 
+//
+
+function successfulAlternativeOAFound(pdf){
+    var message = new Array();
+    message['url'] = pdf;
+    message['title'] = "Open Access found at: ";
+    oafound(message);
+    var currentUrl = window.location.href;
+    safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
+}
 
 
 //runRegexOnDoc - inspired by unpaywall.org
