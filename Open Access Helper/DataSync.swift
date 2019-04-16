@@ -80,6 +80,12 @@ class DataSync: NSViewController {
                         
                     }
                 }
+                else if (e1.code == .zoneNotFound || e1.code == .userDeletedZone){
+                    DispatchQueue.main.async {
+                        _ = self.dialogOKCancel(messageText: NSLocalizedString("Missing Database", comment:  "zoneNotFound or user deleted"), text: NSLocalizedString("We are sorry, but it seems you do not have a Open Access Helper Database in iCloud. Please add at least one bookmark in OpenAccess Helper for iOS", comment:  ""), cancel: false)
+                        
+                    }
+                }
                 else{
                     DispatchQueue.main.async {
                         _ = self.dialogOKCancel(messageText: NSLocalizedString("Connection Error", comment:  "iCloud internet connection"), text: NSLocalizedString("We are sorry, but there was a connection error. Please check your Internet Connection", comment:  ""), cancel: false)

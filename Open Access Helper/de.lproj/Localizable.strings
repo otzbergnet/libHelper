@@ -33,3 +33,4 @@
 
 "No Bookmarks" = "Keine Bookmarks";
 "We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?" = "Wir konnten keine Bookmarks aus iCloud abrufen. Sind Sie sich sicher, dass Sie bereits Bookmarks über die Open Access Helper App für iOS angelegt haben?";
+"We are sorry, but it seems you do not have a Open Access Helper Database in iCloud. Please add at least one bookmark in OpenAccess Helper for iOS" = "Wir konnten leider keine Open Access Helper Datenbank in iCloud finden. Bitte legen sie zu mindestens ein Bookmark mit Open Access Helper für iOS an.";
