@@ -220,6 +220,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         catch let jsonError{
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
+            toolbarAction(imgName: "oa_100.pdf")
             page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
             return
         }
