@@ -104,7 +104,7 @@ class BookMarkTableView: NSViewController {
     }
     
     @objc private func tableViewOpenItemClicked(_ sender: AnyObject) {
-        print("right clicked")
+        //print("right clicked")
         if(tableView.clickedRow < 0){
             return
         }
