@@ -56,6 +56,12 @@
 				<key>Text</key>
 				<string>search at core.ac.uk</string>
 			</dict>
+			<dict>
+				<key>Command</key>
+				<string>oasearch3</string>
+				<key>Text</key>
+				<string>search at gettheresearch.org</string>
+			</dict>
 		</array>
 		<key>SFSafariStyleSheet</key>
 		<array>
@@ -86,7 +92,7 @@
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2018 Claus Wolf. Some rights reserved.</string>
+	<string>Copyright © 2019 Claus Wolf. Some rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
 	<string>Checks DOI for OpenAccess Version by identifying a DOI (Digital Object Identifier) and then checking status with unpaywall API (oadoi)</string>
 </dict>

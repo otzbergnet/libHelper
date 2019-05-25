@@ -42,10 +42,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
         else if messageName == "searchOA"{
-            searchOA(userInfo: (userInfo)!, type: 1)
+            searchOA(userInfo: (userInfo)!, type: "oasearch")
         }
         else if messageName == "searchOA2"{
-            searchOA(userInfo: (userInfo)!, type: 2)
+            searchOA(userInfo: (userInfo)!, type: "oasearch2")
+        }
+        else if messageName == "searchOA3"{
+            searchOA(userInfo: (userInfo)!, type: "oasearch3")
         }
         else if messageName == "needIntlAlert"{
             if let msgId = userInfo?["msgId"] {
@@ -86,11 +89,23 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 mySubstring = selectedText
             }
             var myContextLabel = String(format: NSLocalizedString("base-search.net search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
-            if(command == "oasearch"){
+            if(command == "oasearch" && selectedText.count > 0){
                 myContextLabel = String(format: NSLocalizedString("base-search.net search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
             }
-            else if(command == "oasearch2"){
+            else if(command == "oasearch" && selectedText.count == 0){
+                myContextLabel = String(format: NSLocalizedString("Visit base-search.net", comment: "changes Context Label, base-search-net"), String(mySubstring))
+            }
+            else if(command == "oasearch2" && selectedText.count > 0){
                 myContextLabel = String(format: NSLocalizedString("core.ac.uk search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+            }
+            else if(command == "oasearch2" && selectedText.count == 0){
+                myContextLabel = String(format: NSLocalizedString("Visit core.ac.uk", comment: "changes Context Label"), String(mySubstring))
+            }
+            else if(command == "oasearch3" && selectedText.count > 0){
+                myContextLabel = String(format: NSLocalizedString("gettheresearch.org search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+            }
+            else if(command == "oasearch3" && selectedText.count == 0){
+                myContextLabel = String(format: NSLocalizedString("Visit gettheresearch.org", comment: "changes Context Label"), String(mySubstring))
             }
             
             validationHandler(false, myContextLabel)
@@ -99,46 +114,65 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     
-    //construct the URL and open a new tab
+    //construct the URL and open a new tab, when text is selected and the context menu is selected
     override func contextMenuItemSelected(withCommand command: String, in page: SFSafariPage, userInfo: [String : Any]? = nil) {
         
         if let myUserInfo = userInfo{
             var selectedText = ""
             selectedText = myUserInfo["selectedText"] as! String
-            let searchTerm = selectedText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-            var myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
-            if(command == "oasearch"){
-               myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
-            }
-            else if(command == "oasearch2"){
-               myurl = "https://core.ac.uk/search?q=%22\(searchTerm!)%22"
-            }
+            
+            let myurl = createOASearchURL(originalTextSelection: selectedText, command: command)
         
-            if(command == "oasearch" || command == "oasearch2"){
-                updateOASearchCount()
+            if(command != ""){
+                if(selectedText.count > 0){
+                    updateOASearchCount()
+                }
                 goToOaUrl(url: myurl)
             }
         }
 
     }
     
-    func searchOA(userInfo: [String : Any], type: Int){
+    
+    // this one gets executed when the keyboard shortcut (ctrl+alt+o) is pressed and text is selected
+    func searchOA(userInfo: [String : Any], type: String){
         if let selectedText = userInfo["selected"]{
             let selectedText1 = "\(selectedText)"
-            let searchTerm = selectedText1.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-            var myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
-            if(type == 1){
-                myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
-            }
-            else if(type == 2){
-                myurl = "https://core.ac.uk/search?q=%22\(searchTerm!)%22"
-            }
+            let myurl = createOASearchURL(originalTextSelection: selectedText1, command: type)
             
             updateOASearchCount()
             goToOaUrl(url: myurl)
             
         }
-
+    }
+    
+    func createOASearchURL(originalTextSelection: String, command: String) -> String{
+        let searchTerm = originalTextSelection.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let count = originalTextSelection.count
+        
+        //default to always return something
+        var myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+        
+        if(command == "oasearch" && count > 0){
+            myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
+        }
+        else if(command == "oasearch" && count == 0){
+            myurl = "https://www.base-search.net/"
+        }
+        else if(command == "oasearch2" && count > 0){
+            myurl = "https://core.ac.uk/search?q=%22\(searchTerm!)%22"
+        }
+        else if(command == "oasearch2" && count == 0){
+            myurl = "https://core.ac.uk/"
+        }
+        else if(command == "oasearch3" && count > 0){
+            myurl = "https://gettheresearch.org/search?q=\(searchTerm!)"
+        }
+        else if(command == "oasearch3" && count == 0){
+            myurl = "https://gettheresearch.org"
+        }
+        
+        return myurl
     }
     
     func goToOaUrl(url: String){

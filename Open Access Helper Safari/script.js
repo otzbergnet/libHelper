@@ -4,11 +4,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if(!inIframe()){
         findDoi();
     }
-    else{
-        //console.log("in iFrame");
-    }
                           
 });
+
+//I must really like the good folk at impactstory to work around their SPA :)
+if(window.location.hostname == "gettheresearch.org"){
+    let url = location.href;
+    document.addEventListener('click', ()=>{
+        requestAnimationFrame(()=>{
+            if(url!==location.href){
+                removeMyself()
+                findDoi3();
+                
+            }
+            url = location.href;
+        });
+    }, true);
+}
 
 
 // double checking that we are not in an iFrame
@@ -18,6 +30,16 @@ if(!inIframe()){
     safari.self.addEventListener("message", messageHandler);
     document.addEventListener("contextmenu", handleContextMenu, false);
     document.addEventListener("keydown", fireOnKeypress, false);
+}
+
+
+//support gettheresearch SPA
+function removeMyself(){
+    var element = document.getElementById('doifound_outer');
+    if(element != null){
+      element.parentNode.removeChild(element);
+      safari.extension.dispatchMessage("notfound", {"doi" : ""});
+    }
 }
 
 
@@ -154,6 +176,14 @@ function findDoi3(){
             alternativeOA();
         }
     }
+    else if(host.indexOf("gettheresearch.org") > -1){
+        console.log("Open Access Helper (Safari Extension) - support for gettheresearch.org is experimental")
+        // GetTheResearch.org- for detail view, really quite superflous, but I like base
+        if(window.location.search.indexOf("zoom=") > -1){
+            var potentialDoi = getQueryVariable("zoom");
+            scrapedDoi(potentialDoi);
+        }
+    }
     else{
         //console.log("Open Acces Helper: Failed on DOI3");
         // we are ready to give up here and send a notfound message, so that we can deactivate the icon
@@ -203,6 +233,17 @@ function getFromSelector(selector){
     }
     
     return '';
+}
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
 }
 
 function cleanDOI(doi){
