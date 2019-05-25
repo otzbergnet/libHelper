@@ -45,12 +45,12 @@ class ViewController: NSViewController {
     
     override func viewWillAppear() {
         
-        self.view.window?.titleVisibility = .hidden
-        self.view.window?.titlebarAppearsTransparent = true
-        
-        self.view.window?.styleMask.insert(.fullSizeContentView)
+//        self.view.window?.titleVisibility = .hidden
+//        self.view.window?.titlebarAppearsTransparent = true
+//
+//        self.view.window?.styleMask.insert(.fullSizeContentView)
         self.view.window?.styleMask.remove(.fullScreen)
-        self.view.window?.styleMask.remove(.miniaturizable)
+        //        self.view.window?.styleMask.remove(.miniaturizable)
         self.view.window?.styleMask.remove(.resizable)
     }
     

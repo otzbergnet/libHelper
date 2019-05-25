@@ -129,6 +129,19 @@ class DataSync: NSViewController {
         }
     }
     
+    public func deleteBookmark(recordName : String, completion: @escaping (Bool) -> ()){
+        //print("recordName: \(recordName)")
+        self.privateDatabase.delete(withRecordID: CKRecord.ID(recordName: recordName, zoneID: self.customZone.zoneID)) { (recordId, error) in
+            if recordId != nil{
+                completion(true)
+            }
+            if error != nil{
+                completion(false)
+            }
+        }
+        
+    }
+    
     func dialogOKCancel(messageText: String, text: String, cancel: Bool) -> Bool {
         let alert = NSAlert()
         alert.messageText = messageText

@@ -23,7 +23,7 @@ class BookMarkTableView: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
     var directoryItems = [BookMarkObject]()
-    
+       
     let data = DataSync()
     
     override func viewDidLoad() {
@@ -54,10 +54,15 @@ class BookMarkTableView: NSViewController {
             self.reloadFileList()
         }
         
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Open", action: #selector(tableViewOpenItemClicked(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Delete", action: #selector(tableViewDeleteItemClicked(_:)), keyEquivalent: ""))
+        tableView.menu = menu
+        
     }
 
     func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
-        // 1
+        
         guard let sortDescriptor = tableView.sortDescriptors.first else {
             return
         }
@@ -97,9 +102,9 @@ class BookMarkTableView: NSViewController {
             self.tableView.reloadData()
         }
     }
-
-    @IBAction func openLink(_ sender: Any) {
-        //print("right clicked")
+    
+    @objc private func tableViewOpenItemClicked(_ sender: AnyObject) {
+        print("right clicked")
         if(tableView.clickedRow < 0){
             return
         }
@@ -112,10 +117,45 @@ class BookMarkTableView: NSViewController {
             return
         }
     }
+
+    @IBAction func delete(_ sender: AnyObject){
+        deleteItem(sender)
+    }
     
+    @objc private func tableViewDeleteItemClicked(_ sender: AnyObject) {
+        deleteItem(sender)
+    }
+    
+    private func deleteItem(_ sender: AnyObject){
+        var row = 0
+        if(tableView.clickedRow < 0 && tableView.selectedRow < 0){
+            return
+        }
+        else if(tableView.clickedRow > 0){
+            row = tableView.clickedRow
+        }
+        else if(tableView.selectedRow > 0){
+            row = tableView.selectedRow
+        }
+        let item = self.directoryItems[row]
+             
+        self.data.deleteBookmark(recordName: item.id){ (testValue) in
+            if testValue {
+                self.data.fetchBookMarks(){ bookmarks in
+                    self.directoryItems = bookmarks
+                    self.reloadFileList()
+                }
+            }
+            else{
+                self.data.fetchBookMarks(){ bookmarks in
+                    self.directoryItems = bookmarks
+                    self.reloadFileList()
+                }
+            }
+        }
+    }
     
     @objc func tableViewDoubleClick(_ sender:AnyObject) {
-        // 1
         if tableView.selectedRow < 0{
             return
         }
@@ -128,6 +168,7 @@ class BookMarkTableView: NSViewController {
             return
         }
     }
+    
     
 }
 
@@ -156,11 +197,8 @@ extension BookMarkTableView: NSTableViewDelegate {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-        // 1
         let item = directoryItems[row]
-        //print(item)
         
-        // 2
         if tableColumn == tableView.tableColumns[0] {
             text = dateFormatter.string(from: item.date)
             cellIdentifier = CellIdentifiers.dateCell
@@ -172,7 +210,6 @@ extension BookMarkTableView: NSTableViewDelegate {
             cellIdentifier = CellIdentifiers.urlCell
         }
         
-        // 3
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
             cell.textField?.stringValue = text
             return cell
