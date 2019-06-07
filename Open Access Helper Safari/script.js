@@ -93,9 +93,9 @@ function findDoi(){
         }
     }
     if(doi != ""){
-        cleanDOI = cleanDOI(doi)
-        console.log("Open Access Helper (Safari Extension) found this DOI: "+cleanDOI)
-        safari.extension.dispatchMessage("found", {"doi" : doi});
+        cleanedDOI = cleanDOI(doi)
+        console.log("Open Access Helper (Safari Extension) found this DOI (0): "+cleanedDOI)
+        safari.extension.dispatchMessage("found", {"doi" : cleanedDOI});
     }
     else{
         // didn't find a DOI yet, so let's look in another place
@@ -109,7 +109,7 @@ function findDoi1(){
     //in this case, we are looking for both meta-tag and its scheme
     var doi = getMetaScheme('dc.Identifier', 'doi');
     if(doi != ""){
-        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
+        console.log("Open Access Helper (Safari Extension) found this DOI (1): "+doi)
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
@@ -132,7 +132,7 @@ function findDoi2(){
         }
     }
     if(doi != ""){
-        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
+        console.log("Open Access Helper (Safari Extension) found this DOI (2): "+doi)
         safari.extension.dispatchMessage("found", {"doi" : doi});
     }
     else{
