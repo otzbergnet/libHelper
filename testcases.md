@@ -60,13 +60,14 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Wiley
 
-* No Badge: https://stemcellsjournals.onlinelibrary.wiley.com/doi/10.1002/stem.2571 
+* Green: https://stemcellsjournals.onlinelibrary.wiley.com/doi/10.1002/stem.2571 
 * Orange: https://onlinelibrary.wiley.com/iucr/doi/10.1107/S1600577517008372 (PDF linked, HTML on page)
 * Orange: https://onlinelibrary.wiley.com/doi/10.1002/ijc.28702 
 
 ## IngentaConnect
 
-* No Badge: https://www.ingentaconnect.com/content/sp/mmr/2016/00000013/00000003/art00117
+* No Badge: https://www.ingentaconnect.com/content/wk/hyp/2018/00000071/00000001/art00017
+* Orange: https://www.ingentaconnect.com/content/sp/mmr/2016/00000013/00000003/art00117
 * Orange: https://www.ingentaconnect.com/content/sp/ijo/2010/00000037/00000002/art00013
 * Green: https://www.ingentaconnect.com/contentone/cog/or/2017/00000025/00000004/art00007 
 
@@ -80,7 +81,6 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 * No Badge: https://academic.oup.com/ibdjournal/article-abstract/16/9/1514/4628438?redirectedFrom=fulltext
 * Orange: https://academic.oup.com/jac/article/73/4/833/4840684
-* Green: https://academic.oup.com/ibdjournal/article-abstract/24/1/111/4757509?redirectedFrom=PDF (PDF on same server)
 * Green: https://academic.oup.com/annonc/article/29/suppl_8/mdy297.010/5141773?searchresult=1 (Free Access)
 
 ## Cambridge University Press:
