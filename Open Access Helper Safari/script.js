@@ -1,7 +1,9 @@
+var loaded = 0;
 document.addEventListener("DOMContentLoaded", function(event) {
     //check if we are in an iframe, if so do nothing, otherwise go and find yourself a DOI
 
-    if(!inIframe()){
+    if(!inIframe() && loaded == 0){
+        loaded++;
         findDoi();
     }
                           
@@ -46,6 +48,7 @@ function removeMyself(){
 // handles the requests from the SafariExtensionHandler
 function messageHandler(event){
     if (event.name === "doi"){
+        console.log("message doi to handle")
         findDoi();
     }
     else if (event.name === "url"){
@@ -392,13 +395,29 @@ function alternativeOA(){
         // Ingenta Connect
         if (document.querySelectorAll("span.access-icon img[alt='Open Access']").length > 0){
             var onclick = document.querySelectorAll("a.fulltext.pdf")[0].getAttribute('onclick');
-            var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
-            if(href != null && href != ""){
-                var message = new Array();
-                message['url'] = window.location.protocol+'//'+host+href;
-                oafound(message);
-                onOa();
+            if(onclick != null && onclick != "" && onclick.indexOf("javascript" > -1)){
+                var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
+                if(href != null && href != ""){
+                    var message = new Array();
+                    message['url'] = window.location.protocol+'//'+host+href;
+                    message['title'] = "Open Access Found on this page: ";
+                    oafound(message);
+                    onOa();
+                }
             }
+            else{
+                var popup = document.querySelectorAll("a.fulltext.pdf")[0].dataset.popup
+                if(popup != null && popup != "" && popup.indexOf("download" > -1)){
+                    if(popup != null && popup != ""){
+                        var message = new Array();
+                        message['url'] = window.location.protocol+'//'+host+popup;
+                        message['title'] = "Open Access Found on this page: ";
+                        oafound(message);
+                        onOa();
+                    }
+                }
+            }
+            
         }
     }
     else if(host.indexOf("base-search.net") > -1 && window.location.href.indexOf("/Record/") > -1){
