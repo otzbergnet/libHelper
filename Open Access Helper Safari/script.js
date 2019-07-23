@@ -311,7 +311,7 @@ function oafound(message){
     if(document.body.parentNode.parentNode != "#document"){
         document.body.appendChild(div);
     }
-    console.log("Open Access Helper (Safari Extension) found this Open Access URL: "+message.url)
+    console.log("Open Access Helper (Safari Extension) found this Open Access URL ("+message.source+"): "+message.url)
     var currentUrl = window.location.href;
     safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
     var trackCall = setInterval(function () {
