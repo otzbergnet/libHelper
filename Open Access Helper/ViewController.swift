@@ -87,4 +87,14 @@ class ViewController: NSViewController {
             NSWorkspace.shared.open(url) {
         }
     }
+    
+    @IBAction func openSafariPreferences(_ sender: Any) {
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: "net.otzberg.libHelper.libHelper-Safari") { error in
+            if let _ = error {
+                // Insert code to inform the user that something went wrong.
+            }
+        }
+    }
+    
+    
 }
