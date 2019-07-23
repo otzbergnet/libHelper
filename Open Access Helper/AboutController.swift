@@ -44,6 +44,11 @@ class AboutController: NSViewController {
         }
     }
     
+    @IBAction func coreClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.core.ac.uk"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
     
     @IBAction func closeClicked(_ sender: Any) {
         self.dismiss(self)

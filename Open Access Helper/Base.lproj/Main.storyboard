@@ -168,7 +168,7 @@ CA
                                     <font key="font" metaFont="system"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.
 
-The app itself would not be possible without the awesome API from unpaywall.org - many thanks to the team there for making this possible.
+The app itself would not be possible without the awesome API from unpaywall.org and core.ac.uk - many thanks to the teams there for making this possible.
 
 If you need to reach me, please click the Contact Me button below!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -203,6 +203,16 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mDD-6i-yKp">
+                                <rect key="frame" x="375" y="40" width="104" height="32"/>
+                                <buttonCell key="cell" type="push" title="core.ac.uk" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="No4-0T-VYZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="coreClicked:" target="5jK-gR-BaF" id="63k-lS-Oog"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="0Pb-Kj-lTZ"/>
@@ -210,10 +220,12 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="DKM-eB-r50"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yE6-V7-SE9" secondAttribute="trailing" constant="15" id="JDT-Ys-sQW"/>
                             <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="20" id="LBe-yx-iLR"/>
+                            <constraint firstItem="mDD-6i-yKp" firstAttribute="leading" secondItem="w9o-Gb-dZU" secondAttribute="trailing" constant="64" id="Pcq-yr-nSq"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="Dv7-iZ-uLQ" secondAttribute="bottom" constant="20" id="RjB-ym-vyv"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mDD-6i-yKp" secondAttribute="trailing" constant="94" id="V9k-Eq-Pde"/>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="X1Z-ll-2i5"/>
                             <constraint firstItem="w9o-Gb-dZU" firstAttribute="leading" secondItem="sGu-NU-4h3" secondAttribute="trailing" constant="64" id="XrV-en-HUx"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w9o-Gb-dZU" secondAttribute="trailing" constant="283" id="Xrc-xt-yiY"/>
+                            <constraint firstItem="mDD-6i-yKp" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="qQe-5W-17P"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="qbf-Qz-oao"/>
                             <constraint firstAttribute="trailing" secondItem="E43-sS-goO" secondAttribute="trailing" constant="47" id="taw-xd-QgC"/>
                             <constraint firstItem="yE6-V7-SE9" firstAttribute="leading" secondItem="Dv7-iZ-uLQ" secondAttribute="trailing" constant="15" id="u8s-Xa-vQg"/>
