@@ -32,6 +32,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * No Badge: https://www.sciencedirect.com/science/article/pii/B9780128012383651036
 * Orange: https://www.sciencedirect.com/science/article/pii/S0742051X16306692 
 * Green: https://www.sciencedirect.com/science/article/pii/S2352345X18301188
+* core.ac.uk: https://www.sciencedirect.com/science/article/pii/S0040580910000791 
 
 ## PubMed
 
