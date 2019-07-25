@@ -213,13 +213,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_error" : error.localizedDescription])
+                self.checkCore(doi: doi, page: page)
             }
             if let data = data {
-                self.handleData(data: data, page: page)
+                self.handleData(data: data, page: page, doi: doi)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_data" : "failed"])
                 self.toolbarAction(imgName: "oa_100.pdf")
+                self.checkCore(doi: doi, page: page)
                 return
             }
             
@@ -228,7 +230,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
     
-    func handleData(data: Data, page: SFSafariPage){
+    func handleData(data: Data, page: SFSafariPage, doi: String){
         //sole purpose is to dispatch the url
         do{
             let oaData = try JSONDecoder().decode(Unpaywall.self, from: data)
@@ -236,8 +238,70 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 if (boa.url != "") {
                     updateBadge(text: "!")
                     updateCount()
-                    let title = NSLocalizedString("Open Access Version Found! ", comment: "used in JS injection to indicate OA found")
-                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title])
+                    let title = NSLocalizedString("Open Access Version Found from unpaywall.org! ", comment: "used in JS injection to indicate OA found")
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title, "source" : "unpaywall.org"])
+                }
+                else{
+                    toolbarAction(imgName: "oa_100.pdf")
+                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                    self.checkCore(doi: doi, page: page)
+                }
+            }
+            else {
+                toolbarAction(imgName: "oa_100.pdf")
+                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                self.checkCore(doi: doi, page: page)
+            }
+            
+            
+        }
+        catch let jsonError{
+            NSLog("\(jsonError)")
+            //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
+            toolbarAction(imgName: "oa_100.pdf")
+            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+            self.checkCore(doi: doi, page: page)
+            return
+        }
+    }
+    
+    
+    func checkCore(doi: String, page: SFSafariPage) {
+        toolbarAction(imgName: "oa_100a.pdf")
+        let apiKey = self.getAPIKeyFromPlist()
+        let jsonUrlString = "https://api.core.ac.uk/discovery/discover?doi=\(doi)&apiKey=\(apiKey)"
+        let url = URL(string: jsonUrlString)
+        
+        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
+            if let error = error{
+                //we got an error, let's tell the user
+                self.toolbarAction(imgName: "oa_100.pdf")
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_error" : error.localizedDescription])
+            }
+            if let data = data {
+                self.handleCoreData(data: data, page: page)
+            }
+            else{
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_data" : "failed"])
+                self.toolbarAction(imgName: "oa_100.pdf")
+                return
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func handleCoreData(data: Data, page: SFSafariPage){
+        //sole purpose is to dispatch the url
+        do{
+            let coreData = try JSONDecoder().decode(Coredata.self, from: data)
+            if let boa = coreData.fullTextLink {
+                if (boa != "") {
+                    updateBadge(text: "!")
+                    updateCount()
+                    let title = NSLocalizedString("Open Access Version Found from core.ac.uk! ", comment: "used in JS injection to indicate OA found")
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa)", "title" : title, "source" : "core.ac.uk"])
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
@@ -435,6 +499,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         return Int(text2)!
     }
     
+    func getAPIKeyFromPlist() -> String{
+        //we are going to read the api key for coar.ac.uk from apikey.plist
+        //this file isn't the github bundle and as such you'll need to create it yourself, it is a simple Object
+        // core : String = API Key from core.ac.uk
+        var nsDictionary: NSDictionary?
+        if let path = Bundle.main.path(forResource: "apikey", ofType: "plist") {
+            nsDictionary = NSDictionary(contentsOfFile: path)
+        }
+        if let core = nsDictionary?["core"]{
+            return "\(core)"
+        }
+        return ""
+    }
+    
 }
 
 
@@ -494,4 +572,10 @@ struct OAAuthors : Decodable{
         case given = "given"
         case sequence = "sequence"
     }
+}
+
+
+struct Coredata : Decodable{
+    let fullTextLink : String?
+    let source : String?
 }

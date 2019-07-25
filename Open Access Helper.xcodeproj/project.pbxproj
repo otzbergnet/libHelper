@@ -26,6 +26,7 @@
 		2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */; };
 		2D3F8FD02185863C0095ACD7 /* Open Access Helper Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D3F8FBC2185863C0095ACD7 /* Open Access Helper Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FD52185867F0095ACD7 /* mycss.css */; };
+		2D446A7D22E77A65001ECFA0 /* apikey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D446A7C22E77A65001ECFA0 /* apikey.plist */; };
 		2D655F1221A0036F0092E480 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D655F1421A0036F0092E480 /* Localizable.strings */; };
 		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
@@ -83,6 +84,7 @@
 		2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		2D3F8FD52185867F0095ACD7 /* mycss.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = mycss.css; sourceTree = "<group>"; };
 		2D3F8FD721858AD10095ACD7 /* libHelper Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "libHelper Safari.entitlements"; sourceTree = "<group>"; };
+		2D446A7C22E77A65001ECFA0 /* apikey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = apikey.plist; sourceTree = "<group>"; };
 		2D655F1321A0036F0092E480 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D92437F219E790A000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2D924380219E790B000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SafariExtensionViewController.strings; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				2D3F8FC92185863C0095ACD7 /* script.js */,
 				2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */,
 				2D655F1421A0036F0092E480 /* Localizable.strings */,
+				2D446A7C22E77A65001ECFA0 /* apikey.plist */,
 			);
 			path = "Open Access Helper Safari";
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				2D3F8FCA2185863C0095ACD7 /* script.js in Resources */,
 				2DF38072218D8BC200CF2A45 /* sec30.png in Resources */,
 				2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */,
+				2D446A7D22E77A65001ECFA0 /* apikey.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -311,7 +311,7 @@ function oafound(message){
     if(document.body.parentNode.parentNode != "#document"){
         document.body.appendChild(div);
     }
-    console.log("Open Access Helper (Safari Extension) found this Open Access URL: "+message.url)
+    console.log("Open Access Helper (Safari Extension) found this Open Access URL ("+message.source+"): "+message.url)
     var currentUrl = window.location.href;
     safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
     var trackCall = setInterval(function () {
@@ -454,6 +454,18 @@ function alternativeOA(){
     else if(host.indexOf("bmj.com") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
         if(document.querySelectorAll("svg.icon-open-access").length > 0){
+            var pdf = getMeta("citation_pdf_url")
+            if(pdf != "" && pdf.indexOf("http" == 0)){
+                successfulAlternativeOAFound(pdf)
+            }
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        }
+    }
+    else if(host.indexOf("cambridge.org") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+        if(document.querySelectorAll("span.entitled").length > 0){
             var pdf = getMeta("citation_pdf_url")
             if(pdf != "" && pdf.indexOf("http" == 0)){
                 successfulAlternativeOAFound(pdf)
