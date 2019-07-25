@@ -495,9 +495,8 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dzx-R6-kVI">
-                                <rect key="frame" x="34" y="83" width="355" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dzx-R6-kVI">
+                                <rect key="frame" x="34" y="83" width="188" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yJ-gz-MNS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -513,14 +512,18 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstAttribute="trailing" secondItem="7FZ-jx-6Z5" secondAttribute="trailing" constant="20" id="AJ5-Ko-DCH"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Anl-fk-yAQ"/>
                             <constraint firstItem="7FZ-jx-6Z5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Cj2-dx-Lka"/>
+                            <constraint firstItem="owU-kc-A61" firstAttribute="top" secondItem="Dzx-R6-kVI" secondAttribute="bottom" constant="26" id="QXr-gs-NQ3"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dzx-R6-kVI" secondAttribute="trailing" constant="200" id="TBT-Hn-CCU"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qa8-Lu-Lg5" secondAttribute="trailing" constant="30" id="TEt-jv-Hxt"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="15" id="X5k-Gn-k8b"/>
                             <constraint firstAttribute="trailing" secondItem="LZV-Q3-IEu" secondAttribute="trailing" constant="50" id="aU2-IC-BSC"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="aqX-zD-CJO"/>
+                            <constraint firstItem="Dzx-R6-kVI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="bth-fd-9sn"/>
                             <constraint firstAttribute="trailing" secondItem="I2W-5X-aED" secondAttribute="trailing" constant="20" id="dl3-x1-XEl"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="trailing" constant="30" id="hCg-nt-OEo"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="heb-Zz-WcX"/>
                             <constraint firstAttribute="trailing" secondItem="oy5-fY-PUX" secondAttribute="trailing" constant="20" id="nxY-X6-dW8"/>
+                            <constraint firstItem="Dzx-R6-kVI" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="30" id="puM-fH-2Ck"/>
                             <constraint firstItem="7FZ-jx-6Z5" firstAttribute="top" secondItem="owU-kc-A61" secondAttribute="bottom" constant="10" id="qTN-Q9-IRd"/>
                             <constraint firstAttribute="bottom" secondItem="7FZ-jx-6Z5" secondAttribute="bottom" constant="20" id="rvV-G1-EXb"/>
                             <constraint firstItem="I2W-5X-aED" firstAttribute="top" secondItem="oy5-fY-PUX" secondAttribute="bottom" constant="12" id="siY-Ic-Mpg"/>
