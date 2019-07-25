@@ -463,6 +463,18 @@ function alternativeOA(){
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
         }
     }
+    else if(host.indexOf("cambridge.org") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+        if(document.querySelectorAll("span.entitled").length > 0){
+            var pdf = getMeta("citation_pdf_url")
+            if(pdf != "" && pdf.indexOf("http" == 0)){
+                successfulAlternativeOAFound(pdf)
+            }
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        }
+    }
 }
 
 //
