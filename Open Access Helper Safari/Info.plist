@@ -48,19 +48,19 @@
 				<key>Command</key>
 				<string>oasearch</string>
 				<key>Text</key>
-				<string>search at base-search.net</string>
+				<string>Search at base-search.net</string>
 			</dict>
 			<dict>
 				<key>Command</key>
 				<string>oasearch2</string>
 				<key>Text</key>
-				<string>search at core.ac.uk</string>
+				<string>Search at core.ac.uk</string>
 			</dict>
 			<dict>
 				<key>Command</key>
 				<string>oasearch3</string>
 				<key>Text</key>
-				<string>search at gettheresearch.org</string>
+				<string>Search at gettheresearch.org</string>
 			</dict>
 		</array>
 		<key>SFSafariStyleSheet</key>
