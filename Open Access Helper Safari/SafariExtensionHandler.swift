@@ -405,11 +405,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     func handleOAButtonData(data: Data, page: SFSafariPage, originUrl : String){
-        NSLog("OAHELPER: OAB handleData")
         do{
             let oaButtonData = try JSONDecoder().decode(OaButton.self, from: data)
             if let oabAvailability = oaButtonData.data.availability {
-                NSLog("OAHELPER: OAB Availability FOUND")
                 if let targetUrl = oabAvailability.first??.url{
                     if (targetUrl != "") {
                         updateBadge(text: "!")
@@ -424,9 +422,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 }
                 else{
                     if let oabRequests = oaButtonData.data.requests {
-                        NSLog("OAHELPER: OAB REQUEST FOUND")
                         if let requestId = oabRequests.first??.id {
-                            page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_request_id" : requestId])
+                            self.checkOAButtonRequest(request: requestId, page: page, originUrl: originUrl)
                         }
                         else{
                             toolbarAction(imgName: "oa_100.pdf")
@@ -444,6 +441,87 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         catch let jsonError{
             NSLog("OAHELPER: OAB JSONERROR: \(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
+            toolbarAction(imgName: "oa_100.pdf")
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+            return
+        }
+    }
+    
+    
+    func checkOAButtonRequest(request: String, page: SFSafariPage, originUrl: String) {
+        toolbarAction(imgName: "oa_100a.pdf")
+        let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
+        if(apiKey == ""){
+            self.toolbarAction(imgName: "oa_100.pdf")
+            return
+        }
+        
+        let jsonUrlString = "https://api.openaccessbutton.org/request/\(request)"
+        let url = URL(string: jsonUrlString)
+        
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(apiKey)", forHTTPHeaderField: "x-apikey")
+        
+        let task = session.dataTask(with: request) {(data, response, error) in
+            if let error = error{
+                //we got an error, let's tell the user
+                self.toolbarAction(imgName: "oa_100.pdf")
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
+            }
+            if let data = data {
+                self.handleOABRequestData(data: data, page: page, originUrl: originUrl)
+            }
+            else{
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
+                self.toolbarAction(imgName: "oa_100.pdf")
+                return
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func handleOABRequestData(data: Data, page: SFSafariPage, originUrl : String){
+        do{
+            let oaButtonData = try JSONDecoder().decode(OARequestData.self, from: data)
+            if let status = oaButtonData.data.status{
+                if(status == "received"){
+                    if let received = oaButtonData.data.received{
+                        if let url = received.url{
+                            if(url != ""){
+                                updateBadge(text: "!")
+                                updateCount()
+                                let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
+                                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button"])
+                            }
+                            else{
+                                toolbarAction(imgName: "oa_100.pdf")
+                                page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                            }
+                        }
+                        else{
+                            toolbarAction(imgName: "oa_100.pdf")
+                            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                        }
+                    }
+                    else{
+                        toolbarAction(imgName: "oa_100.pdf")
+                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                    }
+                }
+                else{
+                    toolbarAction(imgName: "oa_100.pdf")
+                    page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                }
+            }
+        }
+        catch let jsonError{
+            NSLog(jsonError as! String)
             toolbarAction(imgName: "oa_100.pdf")
             page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
             return
@@ -729,4 +807,17 @@ struct OARequests : Decodable {
         case type = "type"
         case id = "_id"
     }
+}
+
+struct OARequestData : Decodable{
+    let data : OARequestObject
+}
+
+struct OARequestObject : Decodable{
+    let status : String?
+    let received : OAReceivedObject?
+}
+
+struct OAReceivedObject : Decodable{
+    let url : String?
 }
