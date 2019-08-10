@@ -97,5 +97,10 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction func exampleTapped(_ sender: Any) {
+        if let url = URL(string: "https://www.otzberg.net/oahelper/example.html"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
     
 }

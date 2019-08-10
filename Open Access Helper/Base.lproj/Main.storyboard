@@ -505,17 +505,29 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <action selector="openSafariPreferences:" target="XfG-lQ-9wD" id="Awf-rk-vuH"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3E3-OW-ImE">
+                                <rect key="frame" x="235" y="83" width="168" height="32"/>
+                                <buttonCell key="cell" type="push" title="Show me an example" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6F0-hJ-Tur">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="exampleTapped:" target="XfG-lQ-9wD" id="t2g-TQ-bnA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="owU-kc-A61" firstAttribute="top" secondItem="3E3-OW-ImE" secondAttribute="bottom" constant="26" id="56j-Tl-B4U"/>
                             <constraint firstItem="owU-kc-A61" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="5Am-yU-eb2"/>
                             <constraint firstItem="oy5-fY-PUX" firstAttribute="top" secondItem="LZV-Q3-IEu" secondAttribute="bottom" constant="8" id="7nl-Xx-2lh"/>
                             <constraint firstAttribute="trailing" secondItem="7FZ-jx-6Z5" secondAttribute="trailing" constant="20" id="AJ5-Ko-DCH"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Anl-fk-yAQ"/>
                             <constraint firstItem="7FZ-jx-6Z5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Cj2-dx-Lka"/>
+                            <constraint firstItem="3E3-OW-ImE" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="30" id="K46-dq-3t0"/>
                             <constraint firstItem="owU-kc-A61" firstAttribute="top" secondItem="Dzx-R6-kVI" secondAttribute="bottom" constant="26" id="QXr-gs-NQ3"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dzx-R6-kVI" secondAttribute="trailing" constant="200" id="TBT-Hn-CCU"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qa8-Lu-Lg5" secondAttribute="trailing" constant="30" id="TEt-jv-Hxt"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="15" id="X5k-Gn-k8b"/>
+                            <constraint firstItem="3E3-OW-ImE" firstAttribute="leading" secondItem="Dzx-R6-kVI" secondAttribute="trailing" constant="25" id="Xte-62-YoW"/>
                             <constraint firstAttribute="trailing" secondItem="LZV-Q3-IEu" secondAttribute="trailing" constant="50" id="aU2-IC-BSC"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="aqX-zD-CJO"/>
                             <constraint firstItem="Dzx-R6-kVI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="bth-fd-9sn"/>
