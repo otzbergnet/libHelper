@@ -79,9 +79,10 @@ function messageHandler(event){
         else if(event.message.type == "confirm"){
             handleConfirmRequest(event.message.msg);
         }
-        
     }
-    
+    else if (event.name == "tabevaluate"){
+        evaluateTab();
+    }
 }
 
 function findDoi(){
@@ -98,7 +99,8 @@ function findDoi(){
     if(doi != ""){
         cleanedDOI = cleanDOI(doi)
         console.log("Open Access Helper (Safari Extension) found this DOI (0): "+cleanedDOI)
-        safari.extension.dispatchMessage("found", {"doi" : cleanedDOI});
+        var url = encodeURI(location.href);
+        safari.extension.dispatchMessage("found", {"doi" : cleanedDOI, "url" : url});
     }
     else{
         // didn't find a DOI yet, so let's look in another place
@@ -113,7 +115,8 @@ function findDoi1(){
     var doi = getMetaScheme('dc.Identifier', 'doi');
     if(doi != ""){
         console.log("Open Access Helper (Safari Extension) found this DOI (1): "+doi)
-        safari.extension.dispatchMessage("found", {"doi" : doi});
+        var url = encodeURI(location.href);
+        safari.extension.dispatchMessage("found", {"doi" : doi, "url" : url});
     }
     else{
         // didn't find a DOI yet, let's look in yet another place
@@ -136,7 +139,8 @@ function findDoi2(){
     }
     if(doi != ""){
         console.log("Open Access Helper (Safari Extension) found this DOI (2): "+doi)
-        safari.extension.dispatchMessage("found", {"doi" : doi});
+        var url = encodeURI(location.href);
+        safari.extension.dispatchMessage("found", {"doi" : doi, "url" : url});
     }
     else{
         // we are ready to give up here, but not quite
@@ -304,7 +308,7 @@ function oafound(message){
     var src = safari.extension.baseURI + "sec30.png"; // padlock
 
     var div = document.createElement('div');
-    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+'" data-oaurl="'+message.url+'"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+'" data-oaurl="'+message.url+'" data-badge="!"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'doifound_outer'
     div.className = 'doifound_outer'
     
@@ -326,6 +330,8 @@ function oafound(message){
 function onOa(message){
     var div = document.getElementById("doifound_outer");
     div.classList.add("doigreen");
+    var div1 = document.getElementById("doicheckmark");
+    div1.dataset.badge = "✔"
     var trackCall = setInterval(function () {
         var div = document.getElementById("OAHelperLiveRegion");
         div.innerHTML = message.title;
@@ -505,7 +511,8 @@ function runRegexOnDoc(regEx){
 function scrapedDoi(doi){
     if(isDOI(doi)){
         console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
-        safari.extension.dispatchMessage("found", {"doi" : doi});
+        var url = encodeURI(location.href)
+        safari.extension.dispatchMessage("found", {"doi" : doi, "url" : url});
     }
 }
 
@@ -558,4 +565,17 @@ function handleConfirmRequest(msg){
         var url = "https://www.otzberg.net/oahelper/userfaq.html";
         safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
+}
+
+
+function evaluateTab(){
+    var div = document.getElementById("doicheckmark");
+    var badge = ""
+    if (div != undefined){
+        badge = div.dataset.badge
+    }
+    if(badge == "!" || badge == "✔"){
+        safari.extension.dispatchMessage("badgeUpdate", {"badge" : badge});
+    }
+    
 }
