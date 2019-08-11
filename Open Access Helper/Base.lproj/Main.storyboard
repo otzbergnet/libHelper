@@ -151,7 +151,7 @@ CA
             <objects>
                 <viewController title="About" id="5jK-gR-BaF" customClass="AboutController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3Tv-5Z-anh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="605" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-iZ-uLQ">
@@ -163,7 +163,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
-                                <rect key="frame" x="38" y="68" width="517" height="153"/>
+                                <rect key="frame" x="38" y="68" width="522" height="153"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.
@@ -186,8 +186,8 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-Gb-dZU">
-                                <rect key="frame" x="153" y="23" width="126" height="32"/>
-                                <buttonCell key="cell" type="push" title="Unpaywall.org" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u7B-2x-O8I">
+                                <rect key="frame" x="153" y="23" width="124" height="32"/>
+                                <buttonCell key="cell" type="push" title="unpaywall.org" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u7B-2x-O8I">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -204,7 +204,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mDD-6i-yKp">
-                                <rect key="frame" x="287" y="23" width="104" height="32"/>
+                                <rect key="frame" x="285" y="23" width="104" height="32"/>
                                 <buttonCell key="cell" type="push" title="core.ac.uk" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="No4-0T-VYZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -214,7 +214,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tOF-Ne-Wuz">
-                                <rect key="frame" x="399" y="23" width="164" height="32"/>
+                                <rect key="frame" x="397" y="23" width="164" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Access Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1f-WK-LIa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
