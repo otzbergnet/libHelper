@@ -266,6 +266,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let oaData = try JSONDecoder().decode(Unpaywall.self, from: data)
             if let boa = oaData.best_oa_location {
                 if (boa.url != "") {
+                    toolbarAction(imgName: "oa_100a.pdf")
                     updateBadge(text: "!")
                     updateCount()
                     let title = NSLocalizedString("Open Access Version Found from unpaywall.org! ", comment: "used in JS injection to indicate OA found")
@@ -273,13 +274,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
-                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                     self.checkCore(doi: doi, page: page, originUrl: originUrl)
                 }
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
-                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 self.checkCore(doi: doi, page: page, originUrl: originUrl)
             }
             
@@ -289,7 +290,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
-            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
             self.checkCore(doi: doi, page: page, originUrl: originUrl)
             return
         }
@@ -330,6 +331,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let coreData = try JSONDecoder().decode(Coredata.self, from: data)
             if let boa = coreData.fullTextLink {
                 if (boa != "") {
+                    toolbarAction(imgName: "oa_100a.pdf")
                     updateBadge(text: "!")
                     updateCount()
                     let title = NSLocalizedString("Open Access Version Found from core.ac.uk! ", comment: "used in JS injection to indicate OA found")
@@ -337,13 +339,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
-                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                     self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
                 }
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
-                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
             }
             
@@ -353,7 +355,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
-            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
             self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
             return
         }
@@ -361,17 +363,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
 
     func checkOAButton(doi: String, page: SFSafariPage, originUrl: String) {
-        NSLog("OAHELPER: OAB checkOAButton")
         toolbarAction(imgName: "oa_100a.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
-        NSLog("OAHELPER: OAB API KEY: \(apiKey)")
         if(apiKey == ""){
             self.toolbarAction(imgName: "oa_100.pdf")
             return
         }
         
         let jsonUrlString = "https://api.openaccessbutton.org/availability?url=\(originUrl)&doi=\(doi)"
-        NSLog("OAHELPER: OAB jsonUrlString: \(jsonUrlString)")
         let url = URL(string: jsonUrlString)
         
         let session = URLSession.shared
@@ -386,15 +385,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 NSLog("OAHELPER: OAB ERROR in dataTask / error")
             }
             if let data = data {
-                NSLog("OAHELPER: \(data)")
                 self.handleOAButtonData(data: data, page: page, originUrl: originUrl)
             }
             else{
                 NSLog("OAHELPER: OAB ERROR in dataTask / else")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 self.toolbarAction(imgName: "oa_100.pdf")
                 return
             }
@@ -410,6 +410,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if let oabAvailability = oaButtonData.data.availability {
                 if let targetUrl = oabAvailability.first??.url{
                     if (targetUrl != "") {
+                        toolbarAction(imgName: "oa_100a.pdf")
                         updateBadge(text: "!")
                         updateCount()
                         let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
@@ -417,7 +418,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     }
                     else{
                         toolbarAction(imgName: "oa_100.pdf")
-                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                     }
                 }
                 else{
@@ -427,22 +428,26 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         }
                         else{
                             toolbarAction(imgName: "oa_100.pdf")
-                            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                         }
+                    }
+                    else{
+                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                     }
                 }
                 
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                
             }
         }
         catch let jsonError{
-            NSLog("OAHELPER: OAB JSONERROR: \(jsonError)")
-            //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
+            page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+            
             return
         }
     }
@@ -471,12 +476,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                
             }
             if let data = data {
                 self.handleOABRequestData(data: data, page: page, originUrl: originUrl)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 self.toolbarAction(imgName: "oa_100.pdf")
                 return
             }
@@ -494,6 +502,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     if let received = oaButtonData.data.received{
                         if let url = received.url{
                             if(url != ""){
+                                toolbarAction(imgName: "oa_100a.pdf")
                                 updateBadge(text: "!")
                                 updateCount()
                                 let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
@@ -501,29 +510,34 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                             }
                             else{
                                 toolbarAction(imgName: "oa_100.pdf")
-                                page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                                
                             }
                         }
                         else{
                             toolbarAction(imgName: "oa_100.pdf")
-                            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                            
                         }
                     }
                     else{
                         toolbarAction(imgName: "oa_100.pdf")
-                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                        
                     }
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
-                    page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                    page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                    
                 }
             }
         }
         catch let jsonError{
             NSLog(jsonError as! String)
             toolbarAction(imgName: "oa_100.pdf")
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+            
             return
         }
     }
