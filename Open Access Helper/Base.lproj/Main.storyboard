@@ -239,7 +239,103 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="dbP-uY-Rvb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="507"/>
+            <point key="canvasLocation" x="-321" y="453"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="fhr-tX-ivf">
+            <objects>
+                <viewController title="Settings" id="of7-oY-NLd" customClass="SettingsController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="MRn-52-FQI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-uE-U3c">
+                                <rect key="frame" x="38" y="241" width="109" height="39"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Settings" id="HcR-jI-6Ct">
+                                    <font key="font" size="23" name="Arial-Black"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
+                                <rect key="frame" x="38" y="125" width="328" height="18"/>
+                                <buttonCell key="cell" type="check" title="Use core Discovery to find additional Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CMq-iy-q6b">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="coreClicked:" target="of7-oY-NLd" id="zDq-o2-mri"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Job-2k-mWy">
+                                <rect key="frame" x="38" y="91" width="366" height="18"/>
+                                <buttonCell key="cell" type="check" title="Use Open Access Button to find even more Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vwZ-Zm-K8p">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="oaButtonClicked:" target="of7-oY-NLd" id="frg-mG-mYa"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-to-XHx">
+                                <rect key="frame" x="38" y="57" width="425" height="18"/>
+                                <buttonCell key="cell" type="check" title="Offer to take me to Open Access Button to make an article request" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fYC-2c-t0y">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="oaButtonRequestClicked:" target="of7-oY-NLd" id="U3p-Pe-kGv"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vuC-t1-To1">
+                                <rect key="frame" x="38" y="161" width="512" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="HhT-9Q-SRf"/>
+                                    <constraint firstAttribute="width" constant="508" id="WOT-yl-HCZ"/>
+                                </constraints>
+                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" id="nJJ-h3-n2K">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">We will always use unpaywall.org to find legal Open Access copies, but you can select to add Core Discovery &amp; Open Access Button to find even more copies. Lastly you can have us add a button to request copies from authors, if you'd like.</string>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iwf-yg-VlJ">
+                                <rect key="frame" x="457" y="13" width="129" height="32"/>
+                                <buttonCell key="cell" type="push" title="Tell me more..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="73V-Is-3jl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tellMeMoreClicked:" target="of7-oY-NLd" id="JDl-9l-omm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="vuC-t1-To1" firstAttribute="top" secondItem="lKy-uE-U3c" secondAttribute="bottom" constant="25" id="88a-UA-9eB"/>
+                            <constraint firstItem="nAf-MO-GuS" firstAttribute="top" secondItem="vuC-t1-To1" secondAttribute="bottom" constant="20" id="8oD-Yw-7GI"/>
+                            <constraint firstItem="nAf-MO-GuS" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="D1V-72-gqP"/>
+                            <constraint firstAttribute="trailing" secondItem="vuC-t1-To1" secondAttribute="trailing" constant="52" id="GqF-as-M8c"/>
+                            <constraint firstAttribute="trailing" secondItem="iwf-yg-VlJ" secondAttribute="trailing" constant="20" id="JJC-le-MIl"/>
+                            <constraint firstItem="1rJ-to-XHx" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="MAF-0x-kFn"/>
+                            <constraint firstItem="lKy-uE-U3c" firstAttribute="top" secondItem="MRn-52-FQI" secondAttribute="top" constant="20" id="Qaa-ro-rzG"/>
+                            <constraint firstItem="1rJ-to-XHx" firstAttribute="top" secondItem="Job-2k-mWy" secondAttribute="bottom" constant="20" id="b0c-xO-msS"/>
+                            <constraint firstItem="lKy-uE-U3c" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="eQe-jw-PLu"/>
+                            <constraint firstItem="vuC-t1-To1" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="ql6-KK-pTe"/>
+                            <constraint firstItem="Job-2k-mWy" firstAttribute="top" secondItem="nAf-MO-GuS" secondAttribute="bottom" constant="20" id="sQp-aU-2hw"/>
+                            <constraint firstAttribute="bottom" secondItem="iwf-yg-VlJ" secondAttribute="bottom" constant="20" id="ty8-bz-u3M"/>
+                            <constraint firstItem="Job-2k-mWy" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="vO0-Us-SHg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="coreCheckBox" destination="nAf-MO-GuS" id="B7L-Lk-Tjf"/>
+                        <outlet property="oaButtonCheckBox" destination="Job-2k-mWy" id="S2R-wd-Xar"/>
+                        <outlet property="oaButtonRequestCheckBox" destination="1rJ-to-XHx" id="4Gx-HS-8w0"/>
+                    </connections>
+                </viewController>
+                <customObject id="Ppl-fj-736" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="287" y="453"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="0CC-nx-hC5">
@@ -413,7 +509,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                     <defaultToolbarItems/>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="-508" y="507"/>
+            <point key="canvasLocation" x="-938" y="453"/>
         </scene>
         <!--Getting Started-->
         <scene sceneID="hIz-AP-VOD">
@@ -551,7 +647,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1245" y="507"/>
+            <point key="canvasLocation" x="-1581" y="453"/>
         </scene>
         <!--Open Access Helper-->
         <scene sceneID="11Y-1U-yYL">
@@ -601,6 +697,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                     <tabViewItems>
                         <tabViewItem id="JVa-K2-C0Y"/>
                         <tabViewItem id="g3r-Pj-Ei3"/>
+                        <tabViewItem id="Sok-of-F1q"/>
                         <tabViewItem id="fxk-jD-gOy"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
@@ -616,6 +713,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <outlet property="tabView" destination="Nm0-yH-eNb" id="b6k-wJ-0ES"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="ONz-9K-Gr5"/>
                         <segue destination="d7Y-0M-Jnk" kind="relationship" relationship="tabItems" id="ivR-99-Asn"/>
+                        <segue destination="of7-oY-NLd" kind="relationship" relationship="tabItems" id="byJ-bB-5mP"/>
                         <segue destination="5jK-gR-BaF" kind="relationship" relationship="tabItems" id="hYj-U4-jMt"/>
                     </connections>
                 </tabViewController>
@@ -629,6 +727,6 @@ If you need to reach me, please click the Contact Me button below!</string>
         <image name="icon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="evb-Pl-laT"/>
+        <segue reference="hYj-U4-jMt"/>
     </inferredMetricsTieBreakers>
 </document>

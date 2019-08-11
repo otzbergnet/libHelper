@@ -11,6 +11,8 @@ import SafariServices
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
+    let preferences = Preferences()
+    
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         if messageName == "found" {
             if let doi = userInfo?["doi"] {
@@ -298,6 +300,21 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     
     func checkCore(doi: String, page: SFSafariPage, originUrl: String) {
+        let coreSetting = preferences.getValue(key: "core")
+        let oaButtonSetting = preferences.getValue(key: "oabutton")
+        if(!coreSetting && !oaButtonSetting){
+            // user wants neither core nor open access button
+            // let's take them to potential order button
+            noOpenAccessFound(page: page, doi: "y")
+            return
+        }
+        else if(!coreSetting && oaButtonSetting){
+            //client doesn't want core, but wants Open Access Button
+            self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+            return
+        }
+        // if we got here the client wants core
+
         toolbarAction(imgName: "oa_100a.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "apikey")
         let jsonUrlString = "https://api.core.ac.uk/discovery/discover?doi=\(doi)&apiKey=\(apiKey)"
@@ -363,6 +380,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
 
     func checkOAButton(doi: String, page: SFSafariPage, originUrl: String) {
+        let oaButtonSetting = preferences.getValue(key: "oabutton")
+        if(!oaButtonSetting){
+            noOpenAccessFound(page: page, doi: "y")
+            return
+        }
+        
+        //if user got here, they want the Open Access Button Check
         toolbarAction(imgName: "oa_100a.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
         if(apiKey == ""){
@@ -383,10 +407,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let task = session.dataTask(with: request) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
-                self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 NSLog("OAHELPER: OAB ERROR in dataTask / error")
+                self.noOpenAccessFound(page: page, doi: "y")
             }
             if let data = data {
                 self.handleOAButtonData(data: data, page: page, originUrl: originUrl)
@@ -394,8 +417,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             else{
                 NSLog("OAHELPER: OAB ERROR in dataTask / else")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                self.toolbarAction(imgName: "oa_100.pdf")
+                self.noOpenAccessFound(page: page, doi: "y")
                 return
             }
             
@@ -417,8 +439,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button"])
                     }
                     else{
-                        toolbarAction(imgName: "oa_100.pdf")
-                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                        noOpenAccessFound(page: page, doi: "y")
                     }
                 }
                 else{
@@ -427,26 +448,23 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                             self.checkOAButtonRequest(request: requestId, page: page, originUrl: originUrl)
                         }
                         else{
-                            toolbarAction(imgName: "oa_100.pdf")
-                            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                            noOpenAccessFound(page: page, doi: "y")
                         }
                     }
                     else{
-                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                        noOpenAccessFound(page: page, doi: "y")
                     }
                 }
                 
             }
             else {
-                toolbarAction(imgName: "oa_100.pdf")
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                noOpenAccessFound(page: page, doi: "y")
                 
             }
         }
         catch let jsonError{
             page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
-            toolbarAction(imgName: "oa_100.pdf")
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+            noOpenAccessFound(page: page, doi: "y")
             
             return
         }
@@ -474,9 +492,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let task = session.dataTask(with: request) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
-                self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                self.noOpenAccessFound(page: page, doi: "y")
                 
             }
             if let data = data {
@@ -484,8 +501,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                self.toolbarAction(imgName: "oa_100.pdf")
+                self.noOpenAccessFound(page: page, doi: "y")
                 return
             }
             
@@ -509,37 +525,40 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                                 page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button"])
                             }
                             else{
-                                toolbarAction(imgName: "oa_100.pdf")
-                                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                                
+                                noOpenAccessFound(page: page, doi: "y")
                             }
                         }
                         else{
-                            toolbarAction(imgName: "oa_100.pdf")
-                            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                            
+                            noOpenAccessFound(page: page, doi: "y")
                         }
                     }
                     else{
-                        toolbarAction(imgName: "oa_100.pdf")
-                        page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                        
+                        noOpenAccessFound(page: page, doi: "y")
                     }
                 }
                 else{
-                    toolbarAction(imgName: "oa_100.pdf")
-                    page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                    
+                    noOpenAccessFound(page: page, doi: "y")
                 }
             }
         }
         catch let jsonError{
             NSLog(jsonError as! String)
-            toolbarAction(imgName: "oa_100.pdf")
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-            
+            noOpenAccessFound(page: page, doi: "y")
             return
         }
+    }
+    
+    func noOpenAccessFound(page: SFSafariPage, doi: String){
+        let oabRequestSetting = preferences.getValue(key: "oabrequest")
+        self.toolbarAction(imgName: "oa_100.pdf")
+        if(oabRequestSetting){
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+        }
+        else{
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n"])
+        }
+        
+        
     }
     
     func followLink(current: String, next: String, page: SFSafariPage){
