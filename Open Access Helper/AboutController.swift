@@ -50,6 +50,13 @@ class AboutController: NSViewController {
         }
     }
     
+    @IBAction func oabClicked(_ sender: Any) {
+        if let url = URL(string: "https://openaccessbutton.org/"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
+    
+    
     @IBAction func closeClicked(_ sender: Any) {
         self.dismiss(self)
     }

@@ -163,12 +163,12 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
-                                <rect key="frame" x="38" y="85" width="517" height="136"/>
+                                <rect key="frame" x="38" y="68" width="517" height="153"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.
 
-The app itself would not be possible without the awesome API from unpaywall.org and core.ac.uk - many thanks to the teams there for making this possible.
+The app itself would not be possible without the awesome API from unpaywall.org,  core.ac.uk and Open Access Button - many thanks to the teams there for making this possible.
 
 If you need to reach me, please click the Contact Me button below!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -176,7 +176,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sGu-NU-4h3">
-                                <rect key="frame" x="34" y="40" width="111" height="32"/>
+                                <rect key="frame" x="34" y="23" width="111" height="32"/>
                                 <buttonCell key="cell" type="push" title="Contact Me" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pYZ-Bo-Lhq">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -186,7 +186,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-Gb-dZU">
-                                <rect key="frame" x="197" y="40" width="126" height="32"/>
+                                <rect key="frame" x="153" y="23" width="126" height="32"/>
                                 <buttonCell key="cell" type="push" title="Unpaywall.org" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u7B-2x-O8I">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -204,7 +204,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mDD-6i-yKp">
-                                <rect key="frame" x="375" y="40" width="104" height="32"/>
+                                <rect key="frame" x="287" y="23" width="104" height="32"/>
                                 <buttonCell key="cell" type="push" title="core.ac.uk" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="No4-0T-VYZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -213,18 +213,30 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <action selector="coreClicked:" target="5jK-gR-BaF" id="63k-lS-Oog"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tOF-Ne-Wuz">
+                                <rect key="frame" x="399" y="23" width="164" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open Access Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1f-WK-LIa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="oabClicked:" target="5jK-gR-BaF" id="CZr-8i-sgD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="tOF-Ne-Wuz" firstAttribute="leading" secondItem="mDD-6i-yKp" secondAttribute="trailing" constant="20" id="0Ai-Yq-ROo"/>
                             <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="0Pb-Kj-lTZ"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="yE6-V7-SE9" secondAttribute="bottom" constant="24" id="6qF-pS-dig"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tOF-Ne-Wuz" secondAttribute="trailing" constant="38" id="9Iv-ox-4J5"/>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="DKM-eB-r50"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yE6-V7-SE9" secondAttribute="trailing" constant="15" id="JDT-Ys-sQW"/>
                             <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="20" id="LBe-yx-iLR"/>
-                            <constraint firstItem="mDD-6i-yKp" firstAttribute="leading" secondItem="w9o-Gb-dZU" secondAttribute="trailing" constant="64" id="Pcq-yr-nSq"/>
+                            <constraint firstItem="tOF-Ne-Wuz" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="O4R-fk-GMg"/>
+                            <constraint firstItem="mDD-6i-yKp" firstAttribute="leading" secondItem="w9o-Gb-dZU" secondAttribute="trailing" constant="20" id="Pcq-yr-nSq"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="Dv7-iZ-uLQ" secondAttribute="bottom" constant="20" id="RjB-ym-vyv"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mDD-6i-yKp" secondAttribute="trailing" constant="94" id="V9k-Eq-Pde"/>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="X1Z-ll-2i5"/>
-                            <constraint firstItem="w9o-Gb-dZU" firstAttribute="leading" secondItem="sGu-NU-4h3" secondAttribute="trailing" constant="64" id="XrV-en-HUx"/>
+                            <constraint firstItem="w9o-Gb-dZU" firstAttribute="leading" secondItem="sGu-NU-4h3" secondAttribute="trailing" constant="20" id="XrV-en-HUx"/>
                             <constraint firstItem="mDD-6i-yKp" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="qQe-5W-17P"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="qbf-Qz-oao"/>
                             <constraint firstAttribute="trailing" secondItem="E43-sS-goO" secondAttribute="trailing" constant="47" id="taw-xd-QgC"/>
