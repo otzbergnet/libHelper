@@ -17,6 +17,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var appStoreIcon: NSButton!
     
     
+    let preferences = Preferences()
+    
     func readSettings(file: String) -> String{
         let file = file //this is the file. we will write to and read from it
         
@@ -46,6 +48,9 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         changeAppStoreBadge()
         updateCount()
+        if(!preferences.isSetup()){
+            preferences.doSetup()
+        }
     }
     
     override func viewWillAppear() {
@@ -97,5 +102,10 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction func exampleTapped(_ sender: Any) {
+        if let url = URL(string: "https://www.otzberg.net/oahelper/example.html"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
     
 }

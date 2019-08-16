@@ -71,7 +71,7 @@
 /* Class = "NSTextFieldCell"; title = "It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing on that hope or if you have suggestions to improve the app.\n\nThe app itself would not be possible without the awesome API from unpaywall.org - many thanks to the team there for making this possible.\n\nThe icon for this app was provided by Freepik from www.flaticon.com\n\nIf you need to reach me, please click the Contact Me button below!"; ObjectID = "L7v-na-jJq"; */
 "L7v-na-jJq.title" = "Ich hoffe, dass diese kleine Safari App Extension Dir helfen wird, mehr Open Access leichter zu finden. Lass es mich wissen, fall Du Verbesserungsvorschläge hast!
 
-Diese App wäre ohne die ausgezeichneten APIs von unpaywall.org und core.ac.uk nicht möglich - vielen Dank an die Teams dort.
+Diese App wäre ohne die ausgezeichneten APIs von unpaywall.org, core.ac.uk und openaccessbutton.org nicht möglich - vielen Dank an die Teams dort.
 
 Wenn Du mich erreichen möchtest, klicke auf die Kontakt Schaltfläche unten!";
 
@@ -122,3 +122,10 @@ Wenn Du mich erreichen möchtest, klicke auf die Kontakt Schaltfläche unten!";
 
 "2Y2-OV-a5R.title" = "Dokument öffnet durch Doppelklick im Browser. ⌘ ⌫ löscht ausgewähltes Dokument!";
 "oy5-fY-PUX.title" = "Auch für iOS";
+
+"lKy-uE-U3c.title" = "Einstellungen";
+"vuC-t1-To1.title" = "Wir werden immer unpaywall.org nutzen, um legagle Open Access Versionen zu finden, aber Sie können zusätzlich Core Discovery & Open Access Button aktivieren. Die letzte Option ermöglicht es Ihnen, eine Anfrage an die Autoren nach dem Dokument zu senden.";
+"nAf-MO-GuS.title" = "Core Discovery für erweiterte Open Access Abfrage nutzen";
+"Job-2k-mWy.title" = "Open Access Button für erweiterte Open Access Abfrage nutzen";
+"1rJ-to-XHx.title" = "Wenn kein Open Access vorhanden, pber Open Access Button eine Anfrage an die Autoren stellen";
+"73V-Is-3jl.title" = "Mehr Infos...";

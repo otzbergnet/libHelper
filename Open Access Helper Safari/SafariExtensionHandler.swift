@@ -11,11 +11,26 @@ import SafariServices
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
+    let preferences = Preferences()
+    
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         if messageName == "found" {
             if let doi = userInfo?["doi"] {
                 let mydoi = doi as! String
-                checkUnpaywall(doi: mydoi, page: page)
+                if let url = userInfo?["url"]{
+                    let myUrl = url as! String
+                    checkUnpaywall(doi: mydoi, page: page, originUrl: myUrl)
+                    //checkOAButton(doi: mydoi, page: page, originUrl: myUrl)
+                }
+                else{
+                    let myUrl = ""
+                    checkUnpaywall(doi: mydoi, page: page, originUrl: myUrl)
+                    //checkOAButton(doi: mydoi, page: page, originUrl: myUrl)
+                }
+                
+            }
+            else{
+                NSLog("OAHELPER: LOST in MESSAGE RECEIVED")
             }
             
         }
@@ -53,6 +68,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         else if messageName == "needIntlAlert"{
             if let msgId = userInfo?["msgId"] {
                 returnIntlAlert(id: msgId as! String, page: page)
+            }
+        }
+        else if messageName == "badgeUpdate"{
+            let badge = userInfo?["badge"] as! String
+            if(badge == "!" || badge == "✔"){
+                updateBadge(text: "\(badge)")
+                self.toolbarAction(imgName: "oa_100a.pdf")
+            }
+            else{
+                self.toolbarAction(imgName: "oa_100.pdf")
             }
         }
         
@@ -185,9 +210,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
+
         // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
-        
+        window.getActiveTab { (activeTab) in
+            activeTab?.getActivePage(completionHandler:  { (activePage) in
+                activePage?.dispatchMessageToScript(withName: "tabevaluate", userInfo: nil);
+            })
+        }
+        self.toolbarAction(imgName: "oa_100.pdf")
         validationHandler(true, "")
+        
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
@@ -203,7 +235,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
     }
     
-    func checkUnpaywall(doi: String, page: SFSafariPage) {
+    func checkUnpaywall(doi: String, page: SFSafariPage, originUrl: String) {
         toolbarAction(imgName: "oa_100a.pdf")
         let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=oahelper@otzberg.net"
         let url = URL(string: jsonUrlString)
@@ -213,15 +245,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_error" : error.localizedDescription])
-                self.checkCore(doi: doi, page: page)
+                self.checkCore(doi: doi, page: page, originUrl: originUrl)
             }
             if let data = data {
-                self.handleData(data: data, page: page, doi: doi)
+                self.handleData(data: data, page: page, doi: doi, originUrl: originUrl)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_data" : "failed"])
                 self.toolbarAction(imgName: "oa_100.pdf")
-                self.checkCore(doi: doi, page: page)
+                self.checkCore(doi: doi, page: page, originUrl: originUrl)
                 return
             }
             
@@ -230,12 +262,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
     
-    func handleData(data: Data, page: SFSafariPage, doi: String){
+    func handleData(data: Data, page: SFSafariPage, doi: String, originUrl: String){
         //sole purpose is to dispatch the url
         do{
             let oaData = try JSONDecoder().decode(Unpaywall.self, from: data)
             if let boa = oaData.best_oa_location {
                 if (boa.url != "") {
+                    toolbarAction(imgName: "oa_100a.pdf")
                     updateBadge(text: "!")
                     updateCount()
                     let title = NSLocalizedString("Open Access Version Found from unpaywall.org! ", comment: "used in JS injection to indicate OA found")
@@ -243,14 +276,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
-                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
-                    self.checkCore(doi: doi, page: page)
+                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                    self.checkCore(doi: doi, page: page, originUrl: originUrl)
                 }
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
-                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
-                self.checkCore(doi: doi, page: page)
+                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                self.checkCore(doi: doi, page: page, originUrl: originUrl)
             }
             
             
@@ -259,16 +292,31 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
-            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
-            self.checkCore(doi: doi, page: page)
+            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+            self.checkCore(doi: doi, page: page, originUrl: originUrl)
             return
         }
     }
     
     
-    func checkCore(doi: String, page: SFSafariPage) {
+    func checkCore(doi: String, page: SFSafariPage, originUrl: String) {
+        let coreSetting = preferences.getValue(key: "core")
+        let oaButtonSetting = preferences.getValue(key: "oabutton")
+        if(!coreSetting && !oaButtonSetting){
+            // user wants neither core nor open access button
+            // let's take them to potential order button
+            noOpenAccessFound(page: page, doi: "y")
+            return
+        }
+        else if(!coreSetting && oaButtonSetting){
+            //client doesn't want core, but wants Open Access Button
+            self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+            return
+        }
+        // if we got here the client wants core
+
         toolbarAction(imgName: "oa_100a.pdf")
-        let apiKey = self.getAPIKeyFromPlist()
+        let apiKey = self.getAPIKeyFromPlist(type: "apikey")
         let jsonUrlString = "https://api.core.ac.uk/discovery/discover?doi=\(doi)&apiKey=\(apiKey)"
         let url = URL(string: jsonUrlString)
         
@@ -277,13 +325,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_error" : error.localizedDescription])
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
             }
             if let data = data {
-                self.handleCoreData(data: data, page: page)
+                self.handleCoreData(data: data, doi: doi, originUrl: originUrl, page: page)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_data" : "failed"])
                 self.toolbarAction(imgName: "oa_100.pdf")
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
                 return
             }
             
@@ -292,12 +342,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
     
-    func handleCoreData(data: Data, page: SFSafariPage){
+    func handleCoreData(data: Data, doi: String, originUrl: String, page: SFSafariPage){
         //sole purpose is to dispatch the url
         do{
             let coreData = try JSONDecoder().decode(Coredata.self, from: data)
             if let boa = coreData.fullTextLink {
                 if (boa != "") {
+                    toolbarAction(imgName: "oa_100a.pdf")
                     updateBadge(text: "!")
                     updateCount()
                     let title = NSLocalizedString("Open Access Version Found from core.ac.uk! ", comment: "used in JS injection to indicate OA found")
@@ -305,12 +356,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
-                    page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                    //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                    self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
                 }
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+                //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
             }
             
             
@@ -319,9 +372,193 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: nil)
+            //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+            self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
             return
         }
+    }
+    
+
+    func checkOAButton(doi: String, page: SFSafariPage, originUrl: String) {
+        let oaButtonSetting = preferences.getValue(key: "oabutton")
+        if(!oaButtonSetting){
+            noOpenAccessFound(page: page, doi: "y")
+            return
+        }
+        
+        //if user got here, they want the Open Access Button Check
+        toolbarAction(imgName: "oa_100a.pdf")
+        let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
+        if(apiKey == ""){
+            self.toolbarAction(imgName: "oa_100.pdf")
+            return
+        }
+        
+        let jsonUrlString = "https://api.openaccessbutton.org/availability?url=\(originUrl)&doi=\(doi)"
+        let url = URL(string: jsonUrlString)
+        
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(apiKey)", forHTTPHeaderField: "x-apikey")
+        
+        let task = session.dataTask(with: request) {(data, response, error) in
+            if let error = error{
+                //we got an error, let's tell the user
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
+                NSLog("OAHELPER: OAB ERROR in dataTask / error")
+                self.noOpenAccessFound(page: page, doi: "y")
+            }
+            if let data = data {
+                self.handleOAButtonData(data: data, page: page, originUrl: originUrl)
+            }
+            else{
+                NSLog("OAHELPER: OAB ERROR in dataTask / else")
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
+                self.noOpenAccessFound(page: page, doi: "y")
+                return
+            }
+            
+        }
+        
+        task.resume()
+    }
+
+    func handleOAButtonData(data: Data, page: SFSafariPage, originUrl : String){
+        do{
+            let oaButtonData = try JSONDecoder().decode(OaButton.self, from: data)
+            if let oabAvailability = oaButtonData.data.availability {
+                if let targetUrl = oabAvailability.first??.url{
+                    if (targetUrl != "") {
+                        toolbarAction(imgName: "oa_100a.pdf")
+                        updateBadge(text: "!")
+                        updateCount()
+                        let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
+                        page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button"])
+                    }
+                    else{
+                        noOpenAccessFound(page: page, doi: "y")
+                    }
+                }
+                else{
+                    if let oabRequests = oaButtonData.data.requests {
+                        if let requestId = oabRequests.first??.id {
+                            self.checkOAButtonRequest(request: requestId, page: page, originUrl: originUrl)
+                        }
+                        else{
+                            noOpenAccessFound(page: page, doi: "y")
+                        }
+                    }
+                    else{
+                        noOpenAccessFound(page: page, doi: "y")
+                    }
+                }
+                
+            }
+            else {
+                noOpenAccessFound(page: page, doi: "y")
+                
+            }
+        }
+        catch let jsonError{
+            page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
+            noOpenAccessFound(page: page, doi: "y")
+            
+            return
+        }
+    }
+    
+    
+    func checkOAButtonRequest(request: String, page: SFSafariPage, originUrl: String) {
+        toolbarAction(imgName: "oa_100a.pdf")
+        let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
+        if(apiKey == ""){
+            self.toolbarAction(imgName: "oa_100.pdf")
+            return
+        }
+        
+        let jsonUrlString = "https://api.openaccessbutton.org/request/\(request)"
+        let url = URL(string: jsonUrlString)
+        
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(apiKey)", forHTTPHeaderField: "x-apikey")
+        
+        let task = session.dataTask(with: request) {(data, response, error) in
+            if let error = error{
+                //we got an error, let's tell the user
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
+                self.noOpenAccessFound(page: page, doi: "y")
+                
+            }
+            if let data = data {
+                self.handleOABRequestData(data: data, page: page, originUrl: originUrl)
+            }
+            else{
+                page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
+                self.noOpenAccessFound(page: page, doi: "y")
+                return
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func handleOABRequestData(data: Data, page: SFSafariPage, originUrl : String){
+        do{
+            let oaButtonData = try JSONDecoder().decode(OARequestData.self, from: data)
+            if let status = oaButtonData.data.status{
+                if(status == "received"){
+                    if let received = oaButtonData.data.received{
+                        if let url = received.url{
+                            if(url != ""){
+                                toolbarAction(imgName: "oa_100a.pdf")
+                                updateBadge(text: "!")
+                                updateCount()
+                                let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
+                                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button"])
+                            }
+                            else{
+                                noOpenAccessFound(page: page, doi: "y")
+                            }
+                        }
+                        else{
+                            noOpenAccessFound(page: page, doi: "y")
+                        }
+                    }
+                    else{
+                        noOpenAccessFound(page: page, doi: "y")
+                    }
+                }
+                else{
+                    noOpenAccessFound(page: page, doi: "y")
+                }
+            }
+        }
+        catch let jsonError{
+            NSLog(jsonError as! String)
+            noOpenAccessFound(page: page, doi: "y")
+            return
+        }
+    }
+    
+    func noOpenAccessFound(page: SFSafariPage, doi: String){
+        let oabRequestSetting = preferences.getValue(key: "oabrequest")
+        self.toolbarAction(imgName: "oa_100.pdf")
+        if(oabRequestSetting){
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+        }
+        else{
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n"])
+        }
+        
+        
     }
     
     func followLink(current: String, next: String, page: SFSafariPage){
@@ -499,7 +736,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         return Int(text2)!
     }
     
-    func getAPIKeyFromPlist() -> String{
+    func getAPIKeyFromPlist(type: String) -> String{
         //we are going to read the api key for coar.ac.uk from apikey.plist
         //this file isn't the github bundle and as such you'll need to create it yourself, it is a simple Object
         // core : String = API Key from core.ac.uk
@@ -507,8 +744,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         if let path = Bundle.main.path(forResource: "apikey", ofType: "plist") {
             nsDictionary = NSDictionary(contentsOfFile: path)
         }
-        if let core = nsDictionary?["core"]{
-            return "\(core)"
+        if let key = nsDictionary?[type]{
+            return "\(key)"
         }
         return ""
     }
@@ -578,4 +815,42 @@ struct OAAuthors : Decodable{
 struct Coredata : Decodable{
     let fullTextLink : String?
     let source : String?
+}
+
+
+struct OaButton : Decodable{
+    let data : OAData
+}
+
+struct OAData : Decodable{
+    let availability : [OAAvailability?]?
+    let requests : [OARequests?]?
+}
+
+struct OAAvailability : Decodable{
+    let type : String?
+    let url : String?
+}
+
+struct OARequests : Decodable {
+    let type : String?
+    let id : String?
+    
+    enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case id = "_id"
+    }
+}
+
+struct OARequestData : Decodable{
+    let data : OARequestObject
+}
+
+struct OARequestObject : Decodable{
+    let status : String?
+    let received : OAReceivedObject?
+}
+
+struct OAReceivedObject : Decodable{
+    let url : String?
 }
