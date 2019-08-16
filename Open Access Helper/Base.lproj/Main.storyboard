@@ -26,7 +26,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="of7-oY-NLd" kind="modal" id="cPE-3I-5As"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -739,6 +743,7 @@ If you need to reach me, please click the Contact Me button below!</string>
         <image name="icon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hYj-U4-jMt"/>
+        <segue reference="cPE-3I-5As"/>
+        <segue reference="evb-Pl-laT"/>
     </inferredMetricsTieBreakers>
 </document>
