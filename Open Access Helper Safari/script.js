@@ -471,11 +471,19 @@ function alternativeOA(message){
         if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
             webscraperBadge("a.link-gruen.bold", false)
         }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            requestDocument();
+        }
     }
     else if(host.indexOf("ieeexplore.ieee.org") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if (document.querySelectorAll("i.icon-access-open-access").length > 0){
             webscraperBadge("a.doc-actions-link.stats-document-lh-action-downloadPdf_2", false)
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            requestDocument();
         }
     }
     else if(host.indexOf("journals.sagepub.com") > -1){
@@ -488,6 +496,10 @@ function alternativeOA(message){
             if(document.querySelectorAll('img.accessIcon.openAccess').length > 0){
                 webscraperBadge("div.pdf-access>a", true)
             }
+            else{
+                console.log("Open Access Helper (Safari Extension): no Open Access Found");
+                requestDocument();
+            }
         }
         
     }
@@ -495,6 +507,10 @@ function alternativeOA(message){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if(document.querySelectorAll("i.icon-availability_free").length > 0){
             webscraperBadge("a.article-pdfLink", true);
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            requestDocument();
         }
     }
     else if(host.indexOf("bmj.com") > -1){
