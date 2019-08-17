@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jtC-8H-YpD">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -539,11 +540,11 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 <rect key="frame" x="38" y="141" width="534" height="85"/>
                                 <textFieldCell key="cell" selectable="YES" id="FNM-3T-H4P">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">1) Launch Safari
-2) Access Safari &gt; Preferences (⌘,)
-3) Select Extensions
-4) Activate the Open Access Helper Extension
-5) Find Open Access and enjoy :)</string>
+                                    <string key="title">Getting started:
+1) Click Open Safari Preferences below:
+2) Select Extensions
+3) Activate the Open Access Helper Extension
+4) That's it :)</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -583,7 +584,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button toolTip="Click to download" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-5X-aED">
-                                <rect key="frame" x="460" y="129" width="120" height="40"/>
+                                <rect key="frame" x="460" y="130" width="120" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Fhm-rs-TAZ"/>
                                     <constraint firstAttribute="width" constant="120" id="gf9-rb-xrg"/>
@@ -597,12 +598,12 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oy5-fY-PUX">
-                                <rect key="frame" x="458" y="181" width="124" height="17"/>
+                                <rect key="frame" x="458" y="182" width="124" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Ejt-UE-Wd0"/>
                                 </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Available for iOS" id="Hfu-xe-1tt">
-                                    <font key="font" metaFont="system"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Also available for iOS" id="Hfu-xe-1tt">
+                                    <font key="font" metaFont="system" size="12"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -743,7 +744,7 @@ If you need to reach me, please click the Contact Me button below!</string>
         <image name="icon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cPE-3I-5As"/>
-        <segue reference="evb-Pl-laT"/>
+        <segue reference="byJ-bB-5mP"/>
+        <segue reference="hYj-U4-jMt"/>
     </inferredMetricsTieBreakers>
 </document>
