@@ -271,8 +271,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     toolbarAction(imgName: "oa_100a.pdf")
                     updateBadge(text: "!")
                     updateCount()
+                    let oaVersion = self.getOpenAccessVersion(data: oaData)
                     let title = NSLocalizedString("Open Access Version Found from unpaywall.org! ", comment: "used in JS injection to indicate OA found")
-                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title, "source" : "unpaywall.org"])
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title, "source" : "unpaywall.org", "version" : "\(oaVersion)"])
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
@@ -352,7 +353,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     updateBadge(text: "!")
                     updateCount()
                     let title = NSLocalizedString("Open Access Version Found from core.ac.uk! ", comment: "used in JS injection to indicate OA found")
-                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa)", "title" : title, "source" : "core.ac.uk"])
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa)", "title" : title, "source" : "core.ac.uk", "version" : ""])
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
@@ -436,7 +437,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         updateBadge(text: "!")
                         updateCount()
                         let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
-                        page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button"])
+                        page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button", "version" : ""])
                     }
                     else{
                         noOpenAccessFound(page: page, doi: "y")
@@ -522,7 +523,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                                 updateBadge(text: "!")
                                 updateCount()
                                 let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
-                                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button"])
+                                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button", "version" : ""])
                             }
                             else{
                                 noOpenAccessFound(page: page, doi: "y")
@@ -734,6 +735,24 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
         return Int(text2)!
+    }
+    
+    func getOpenAccessVersion(data: Unpaywall) -> String{
+        if let version = data.best_oa_location?.version{
+            
+            switch version{
+                case "submittedVersion":
+                    return NSLocalizedString("Submitted Version", comment: "submittedVersion")
+                case "acceptedVersion":
+                    return NSLocalizedString("Accepted Version", comment: "acceptedVersion")
+                case "publishedVersion":
+                    return NSLocalizedString("Published Version", comment: "publishedVersion")
+                default:
+                    return ""
+            }
+            
+        }
+        return ""
     }
     
     func getAPIKeyFromPlist(type: String) -> String{

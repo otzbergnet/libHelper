@@ -307,15 +307,21 @@ function oafound(message){
     
     var src = safari.extension.baseURI + "sec30.png"; // padlock
 
+    var oaVersion = "";
+    if(message.version != ""){
+        oaVersion = " - OA Version: "+message.version;
+    }
+    
     var div = document.createElement('div');
-    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+'" data-oaurl="'+message.url+'" data-badge="!"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'doifound_outer';
     div.className = 'doifound_outer';
     
     if(document.body.parentNode.parentNode != "#document"){
         document.body.appendChild(div);
     }
-    console.log("Open Access Helper (Safari Extension) found this Open Access URL ("+message.source+"): "+message.url)
+
+    console.log("Open Access Helper (Safari Extension) found this Open Access URL ("+message.source+"): "+message.url+oaVersion)
     var currentUrl = window.location.href;
     safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
     var trackCall = setInterval(function () {
