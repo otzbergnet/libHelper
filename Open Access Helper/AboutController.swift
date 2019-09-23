@@ -85,11 +85,13 @@ extension AboutController: NSTouchBarDelegate {
         switch identifier {
         case NSTouchBarItem.Identifier.label2:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-            customViewItem.view = NSTextField(labelWithString: "About: ")
+            let labelString = NSLocalizedString("About: ", comment: "")
+            customViewItem.view = NSTextField(labelWithString: labelString)
             return customViewItem
         case NSTouchBarItem.Identifier.contact:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Contact Author", target: self, action: #selector(contactMeClicked(_:)))
+            let labelString = NSLocalizedString("Contact Me", comment: "")
+            let button = NSButton(title: labelString, target: self, action: #selector(contactMeClicked(_:)))
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.unpaywall:

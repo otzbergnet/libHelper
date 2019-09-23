@@ -263,17 +263,20 @@ extension BookMarkTableView: NSTouchBarDelegate {
             return customViewItem
         case NSTouchBarItem.Identifier.label5:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-            customViewItem.view = NSTextField(labelWithString: "Bookmarks: Select a row to see options")
+            let labelString = NSLocalizedString("Bookmarks: Select a row to see options", comment: "")
+            customViewItem.view = NSTextField(labelWithString: labelString)
             return customViewItem
         case NSTouchBarItem.Identifier.openBookmark:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Open Bookmark", target: self, action: #selector(tableViewDoubleClick(_:)))
+            let labelString = NSLocalizedString("Open Bookmark", comment: "")
+            let button = NSButton(title: labelString, target: self, action: #selector(tableViewDoubleClick(_:)))
             button.bezelColor = NSColor.systemBlue
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.deleteBookmark:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Delete Bookmark", target: self, action: #selector(delete(_:)))
+            let labelString = NSLocalizedString("Delete Bookmark", comment: "")
+            let button = NSButton(title: labelString, target: self, action: #selector(delete(_:)))
             button.bezelColor = NSColor.systemRed
             saveItem.view = button
             return saveItem

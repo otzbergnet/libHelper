@@ -143,16 +143,19 @@ extension ViewController: NSTouchBarDelegate {
         switch identifier {
         case NSTouchBarItem.Identifier.label1:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-            customViewItem.view = NSTextField(labelWithString: "Getting Started: ")
+            let labelString = NSLocalizedString("Getting Started: ", comment: "")
+            customViewItem.view = NSTextField(labelWithString: labelString)
             return customViewItem
         case NSTouchBarItem.Identifier.openPreferences:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Open Safari Preferences", target: self, action: #selector(openSafariPreferences(_:)))
+            let labelString = NSLocalizedString("Open Safari Preferences", comment: "")
+            let button = NSButton(title: labelString, target: self, action: #selector(openSafariPreferences(_:)))
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.openExample:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Show Example", target: self, action: #selector(exampleTapped(_:)))
+            let labelString = NSLocalizedString("Show Example", comment: "")
+            let button = NSButton(title: labelString, target: self, action: #selector(exampleTapped(_:)))
             saveItem.view = button
             return saveItem
         default:
