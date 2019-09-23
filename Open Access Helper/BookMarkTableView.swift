@@ -20,10 +20,10 @@ class BookMarkObject:NSObject {
 }
 
 class BookMarkTableView: NSViewController {
-
+    
     @IBOutlet weak var tableView: NSTableView!
     var directoryItems = [BookMarkObject]()
-       
+    
     let data = DataSync()
     
     override func viewDidLoad() {
@@ -34,6 +34,7 @@ class BookMarkTableView: NSViewController {
         
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleClick(_:))
+        tableView.action = #selector(onItemClicked)
         
         let descriptorName = NSSortDescriptor(key: "title", ascending: true)
         let descriptorDate = NSSortDescriptor(key: "date", ascending: true)
@@ -60,7 +61,19 @@ class BookMarkTableView: NSViewController {
         tableView.menu = menu
         
     }
-
+    
+    deinit {
+        self.view.window?.unbind(NSBindingName(rawValue: #keyPath(touchBar)))
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        if #available(OSX 10.12.1, *) {
+            self.view.window?.unbind(NSBindingName(rawValue: #keyPath(touchBar))) // unbind first
+            self.view.window?.bind(NSBindingName(rawValue: #keyPath(touchBar)), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+        }
+    }
+    
     func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
         
         guard let sortDescriptor = tableView.sortDescriptors.first else {
@@ -95,7 +108,11 @@ class BookMarkTableView: NSViewController {
         }
     }
     
-
+    @objc private func onItemClicked() {
+        //print("row \(tableView.clickedRow), col \(tableView.clickedColumn) clicked")
+        self.touchBar = nil
+    }
+    
     
     func reloadFileList() {
         DispatchQueue.main.async {
@@ -117,7 +134,7 @@ class BookMarkTableView: NSViewController {
             return
         }
     }
-
+    
     @IBAction func delete(_ sender: AnyObject){
         deleteItem(sender)
     }
@@ -138,7 +155,7 @@ class BookMarkTableView: NSViewController {
             row = tableView.selectedRow
         }
         let item = self.directoryItems[row]
-             
+        
         self.data.deleteBookmark(recordName: item.id){ (testValue) in
             if testValue {
                 self.data.fetchBookMarks(){ bookmarks in
@@ -217,4 +234,51 @@ extension BookMarkTableView: NSTableViewDelegate {
         return nil
     }
     
+}
+
+
+@available(OSX 10.12.1, *)
+extension BookMarkTableView: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.customizationIdentifier = .bar4
+        if tableView.selectedRow < 0{
+            touchBar.defaultItemIdentifiers = [.label5]
+            touchBar.customizationAllowedItemIdentifiers = [.label5]
+        }
+        else{
+            touchBar.defaultItemIdentifiers = [.label4, .openBookmark, .deleteBookmark]
+            touchBar.customizationAllowedItemIdentifiers = [.label4, .openBookmark, .deleteBookmark]
+        }
+        
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        switch identifier {
+        case NSTouchBarItem.Identifier.label4:
+            let customViewItem = NSCustomTouchBarItem(identifier: identifier)
+            customViewItem.view = NSTextField(labelWithString: "Bookmarks: ")
+            return customViewItem
+        case NSTouchBarItem.Identifier.label5:
+            let customViewItem = NSCustomTouchBarItem(identifier: identifier)
+            customViewItem.view = NSTextField(labelWithString: "Bookmarks: Select a row to see options")
+            return customViewItem
+        case NSTouchBarItem.Identifier.openBookmark:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Open Bookmark", target: self, action: #selector(tableViewDoubleClick(_:)))
+            button.bezelColor = NSColor.systemBlue
+            saveItem.view = button
+            return saveItem
+        case NSTouchBarItem.Identifier.deleteBookmark:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Delete Bookmark", target: self, action: #selector(delete(_:)))
+            button.bezelColor = NSColor.systemRed
+            saveItem.view = button
+            return saveItem
+        default:
+            return nil
+        }
+    }
 }

@@ -21,11 +21,16 @@ extension NSTouchBarItem.Identifier {
     static let moreInfo = NSTouchBarItem.Identifier("net.otzberg.libHelper.SettingsController.moreInfo")
     static let noneSelected = NSTouchBarItem.Identifier("net.otzberg.libHelper.SettingsController.noneSelected")
     static let recommendedSelected = NSTouchBarItem.Identifier("net.otzberg.libHelper.SettingsController.recommendedSelected")
+    static let label4 = NSTouchBarItem.Identifier("net.otzberg.libHelper.BookMarkTableView.label4")
+    static let label5 = NSTouchBarItem.Identifier("net.otzberg.libHelper.BookMarkTableView.label5")
+    static let openBookmark = NSTouchBarItem.Identifier("net.otzberg.libHelper.BookMarkTableView.openBookmark")
+    static let deleteBookmark = NSTouchBarItem.Identifier("net.otzberg.libHelper.BookMarkTableView.deleteBookmark")
 }
 
 
 extension NSTouchBar.CustomizationIdentifier {
     static let bar1 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.ViewController.bar1")
     static let bar2 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.AboutController.bar2")
-    static let bar3 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.AboutController.bar3")
+    static let bar3 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.SettingsController.bar3")
+    static let bar4 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.BookMarkTableView.bar4")
 }
