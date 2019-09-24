@@ -553,6 +553,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper/libHelper.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 92;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -574,6 +575,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper/libHelper.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 92;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -592,6 +594,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 92;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -612,6 +615,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 92;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
