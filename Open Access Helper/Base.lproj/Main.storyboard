@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jtC-8H-YpD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rwG-Iq-qMP">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -160,7 +160,7 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-iZ-uLQ">
-                                <rect key="frame" x="38" y="241" width="79" height="39"/>
+                                <rect key="frame" x="38" y="248" width="79" height="32"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="About" id="g4U-2c-WI9">
                                     <font key="font" size="23" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -168,7 +168,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
-                                <rect key="frame" x="38" y="68" width="522" height="153"/>
+                                <rect key="frame" x="38" y="84" width="522" height="144"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.
@@ -181,7 +181,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sGu-NU-4h3">
-                                <rect key="frame" x="34" y="23" width="111" height="32"/>
+                                <rect key="frame" x="34" y="39" width="111" height="32"/>
                                 <buttonCell key="cell" type="push" title="Contact Me" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pYZ-Bo-Lhq">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -191,7 +191,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-Gb-dZU">
-                                <rect key="frame" x="153" y="23" width="124" height="32"/>
+                                <rect key="frame" x="153" y="39" width="124" height="32"/>
                                 <buttonCell key="cell" type="push" title="unpaywall.org" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u7B-2x-O8I">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -201,7 +201,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yE6-V7-SE9">
-                                <rect key="frame" x="128" y="245" width="37" height="17"/>
+                                <rect key="frame" x="128" y="252" width="37" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="oRq-HL-zE8">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -209,7 +209,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mDD-6i-yKp">
-                                <rect key="frame" x="285" y="23" width="104" height="32"/>
+                                <rect key="frame" x="285" y="39" width="104" height="32"/>
                                 <buttonCell key="cell" type="push" title="core.ac.uk" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="No4-0T-VYZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -219,7 +219,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tOF-Ne-Wuz">
-                                <rect key="frame" x="397" y="23" width="164" height="32"/>
+                                <rect key="frame" x="397" y="39" width="164" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Access Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1f-WK-LIa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -267,7 +267,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-uE-U3c">
-                                <rect key="frame" x="38" y="241" width="109" height="39"/>
+                                <rect key="frame" x="38" y="248" width="109" height="32"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Settings" id="HcR-jI-6Ct">
                                     <font key="font" size="23" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -275,7 +275,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
-                                <rect key="frame" x="38" y="125" width="328" height="18"/>
+                                <rect key="frame" x="38" y="132" width="328" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use core Discovery to find additional Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CMq-iy-q6b">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -285,7 +285,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Job-2k-mWy">
-                                <rect key="frame" x="38" y="91" width="366" height="18"/>
+                                <rect key="frame" x="38" y="98" width="366" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use Open Access Button to find even more Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vwZ-Zm-K8p">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -295,7 +295,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-to-XHx">
-                                <rect key="frame" x="38" y="57" width="425" height="18"/>
+                                <rect key="frame" x="38" y="64" width="425" height="18"/>
                                 <buttonCell key="cell" type="check" title="Offer to take me to Open Access Button to make an article request" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fYC-2c-t0y">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -305,7 +305,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vuC-t1-To1">
-                                <rect key="frame" x="38" y="161" width="512" height="55"/>
+                                <rect key="frame" x="38" y="168" width="512" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="HhT-9Q-SRf"/>
                                     <constraint firstAttribute="width" constant="508" id="WOT-yl-HCZ"/>
@@ -533,11 +533,11 @@ If you need to reach me, please click the Contact Me button below!</string>
             <objects>
                 <viewController title="Getting Started" id="XfG-lQ-9wD" customClass="ViewController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="286"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hre-mD-sm7">
-                                <rect key="frame" x="38" y="141" width="534" height="85"/>
+                                <rect key="frame" x="38" y="139" width="534" height="80"/>
                                 <textFieldCell key="cell" selectable="YES" id="FNM-3T-H4P">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">Getting started:
@@ -550,7 +550,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qa8-Lu-Lg5">
-                                <rect key="frame" x="38" y="241" width="260" height="39"/>
+                                <rect key="frame" x="38" y="234" width="260" height="32"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Open Access Helper" id="qvY-WQ-5Ex">
                                     <font key="font" size="23" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -558,7 +558,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Q3-IEu">
-                                <rect key="frame" x="486" y="206" width="64" height="64"/>
+                                <rect key="frame" x="486" y="192" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="8gs-jV-KYF"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="O47-aL-DoA"/>
@@ -568,7 +568,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="lbX-Ov-jUe"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="owU-kc-A61">
-                                <rect key="frame" x="38" y="47" width="347" height="17"/>
+                                <rect key="frame" x="38" y="46" width="347" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="So far we've helped you find 0 Open Access Documents!" id="upX-50-mCL">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -576,7 +576,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7FZ-jx-6Z5">
-                                <rect key="frame" x="38" y="20" width="544" height="17"/>
+                                <rect key="frame" x="38" y="20" width="544" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="You've had help with 0 Open Access searches." id="irf-Mg-7VE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -584,7 +584,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button toolTip="Click to download" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-5X-aED">
-                                <rect key="frame" x="460" y="130" width="120" height="40"/>
+                                <rect key="frame" x="460" y="117" width="120" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Fhm-rs-TAZ"/>
                                     <constraint firstAttribute="width" constant="120" id="gf9-rb-xrg"/>
@@ -598,18 +598,18 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oy5-fY-PUX">
-                                <rect key="frame" x="458" y="182" width="124" height="16"/>
+                                <rect key="frame" x="458" y="169" width="124" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Ejt-UE-Wd0"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Also available for iOS" id="Hfu-xe-1tt">
-                                    <font key="font" metaFont="system" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dzx-R6-kVI">
-                                <rect key="frame" x="34" y="83" width="188" height="32"/>
+                                <rect key="frame" x="34" y="81" width="188" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yJ-gz-MNS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -619,7 +619,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3E3-OW-ImE">
-                                <rect key="frame" x="235" y="83" width="168" height="32"/>
+                                <rect key="frame" x="235" y="81" width="168" height="32"/>
                                 <buttonCell key="cell" type="push" title="Show me an example" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6F0-hJ-Tur">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -665,6 +665,27 @@ If you need to reach me, please click the Contact Me button below!</string>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1581" y="453"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="hlh-TD-x0o">
+            <objects>
+                <customObject id="lBW-z9-Vfh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <windowController id="rwG-Iq-qMP" customClass="MainWindowController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Open Access Helper" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vZx-Nd-Q7l">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="rwG-Iq-qMP" id="Goi-BU-kMC"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="jtC-8H-YpD" kind="relationship" relationship="window.shadowedContentViewController" id="gjP-NR-Bus"/>
+                    </connections>
+                </windowController>
+            </objects>
+            <point key="canvasLocation" x="-1504" y="-696"/>
         </scene>
         <!--Open Access Helper-->
         <scene sceneID="11Y-1U-yYL">
@@ -741,7 +762,7 @@ If you need to reach me, please click the Contact Me button below!</string>
     </scenes>
     <resources>
         <image name="Download_on_the_App_Store_Badge_DE" width="250" height="83"/>
-        <image name="icon" width="128" height="128"/>
+        <image name="icon" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="byJ-bB-5mP"/>
