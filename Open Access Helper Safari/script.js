@@ -70,7 +70,7 @@ function messageHandler(event){
     }
     else if (event.name == "notoadoi"){
         document.body.dataset.oahdoire = "0";
-        alternativeOA(event.message.doi);
+        alternativeOA(event.message.doi, event.message.oab);
     }
     else if (event.name == "showAlert"){
         if(event.message.type == "alert"){
@@ -156,14 +156,19 @@ function findDoi3(){
     var host = window.location.hostname;
     if(host.indexOf("ieeexplore.ieee.org") > -1){
         // IEEE
-        var regex = new RegExp('"doi":"([^"]+)"');
-        var doi = runRegexOnDoc(regex);
-        if(doi != false){
-            scrapedDoi(doi);
-        }
-        else{
-            alternativeOA("n");
-        }
+        // this is a Single Page Application and the delay helps catch the DOI
+        setTimeout(function (){
+          var regex = new RegExp('"doi":"([^"]+)"');
+          var doi = runRegexOnDoc(regex);
+          if(doi != false){
+              scrapedDoi(doi);
+          }
+          else{
+              alternativeOA("n", "n");
+          }
+
+        }, 1500);
+        
     }
     else if(host.indexOf("nber.org") > -1){
         //National Bureau of Economic Research
@@ -180,7 +185,7 @@ function findDoi3(){
             scrapedDoi(doi);
         }
         else{
-            alternativeOA("n");
+            alternativeOA("n", "n");
         }
     }
     else if(host.indexOf("gettheresearch.org") > -1){
@@ -196,7 +201,7 @@ function findDoi3(){
         // we are ready to give up here and send a notfound message, so that we can deactivate the icon
         safari.extension.dispatchMessage("notfound", {"doi" : ""});
         // however we'll continue look at the alternativeOA Webscraping methods
-        alternativeOA("n");
+        alternativeOA("n", "n");
     }
 }
 
@@ -331,10 +336,14 @@ function oafound(message){
     }, 4000);
 }
 
-function requestDocument(){
+function requestDocument(oab){
     
     // here we inject the icon into the page
     // room for improvement, most Chrome extensions would inject an iFrame
+    
+    if(oab == "n"){
+        return;
+    }
     
     var src = safari.extension.baseURI + "ask.png"; // padlock
     var url = encodeURIComponent(location.href);
@@ -427,7 +436,7 @@ function getKnownOAUrl(){
 // we will run this to see if we might OA on the page
 // uses some site specific logic
 
-function alternativeOA(message){
+function alternativeOA(message, oab){
     var host = window.location.hostname;
     
     if(host.indexOf("ingentaconnect") > -1){
@@ -446,7 +455,7 @@ function alternativeOA(message){
                 }
                 else{
                     console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                    requestDocument();
+                    requestDocument(oab);
                 }
             }
             else{
@@ -461,12 +470,12 @@ function alternativeOA(message){
                     }
                     else{
                         console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                        requestDocument();
+                        requestDocument(oab);
                     }
                 }
                 else{
                     console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                    requestDocument();
+                    requestDocument(oab);
                 }
             }
             
@@ -475,36 +484,36 @@ function alternativeOA(message){
     else if(host.indexOf("base-search.net") > -1 && window.location.href.indexOf("/Record/") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
-            webscraperBadge("a.link-gruen.bold", false)
+            webscraperBadge("a.link-gruen.bold", false, oab);
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument();
+            requestDocument(oab);
         }
     }
     else if(host.indexOf("ieeexplore.ieee.org") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if (document.querySelectorAll("i.icon-access-open-access").length > 0){
-            webscraperBadge("a.doc-actions-link.stats-document-lh-action-downloadPdf_2", false)
+            webscraperBadge("a.doc-actions-link.stats-document-lh-action-downloadPdf_2", false, oab);
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument();
+            requestDocument(oab);
         }
     }
     else if(host.indexOf("journals.sagepub.com") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if(document.querySelectorAll("img.accessIcon.freeAccess").length > 0){
-            webscraperBadge("a[data-item-name=\"download-PDF\"]", true);
+            webscraperBadge("a[data-item-name=\"download-PDF\"]", true, oab);
         }
         else{
             console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
             if(document.querySelectorAll('img.accessIcon.openAccess').length > 0){
-                webscraperBadge("div.pdf-access>a", true)
+                webscraperBadge("div.pdf-access>a", true, oab);
             }
             else{
                 console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                requestDocument();
+                requestDocument(oab);
             }
         }
         
@@ -512,11 +521,11 @@ function alternativeOA(message){
     else if(host.indexOf("academic.oup.com") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if(document.querySelectorAll("i.icon-availability_free").length > 0){
-            webscraperBadge("a.article-pdfLink", true);
+            webscraperBadge("a.article-pdfLink", true, oab);
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument();
+            requestDocument(oab);
         }
     }
     else if(host.indexOf("bmj.com") > -1){
@@ -528,12 +537,12 @@ function alternativeOA(message){
             }
             else{
                 console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                requestDocument();
+                requestDocument(oab);
             }
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument();
+            requestDocument(oab);
         }
     }
     else if(host.indexOf("cambridge.org") > -1){
@@ -546,12 +555,12 @@ function alternativeOA(message){
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument();
+            requestDocument(oab);
         }
     }
     else if(message != undefined && message == "y"){
         console.log("Open Access Helper (Safari Extension): no Open Access Found");
-        requestDocument();
+        requestDocument(oab);
     }
     
 }
@@ -589,7 +598,7 @@ function scrapedDoi(doi){
     }
 }
 
-function webscraperBadge(selector, onoa){
+function webscraperBadge(selector, onoa, oab){
     var href = document.querySelectorAll(selector)[0].href;
     if(href != null && href != ""){
         var message = new Array();
@@ -601,7 +610,7 @@ function webscraperBadge(selector, onoa){
         }
     }
     else{
-        requestDocument();
+        requestDocument(oab);
     }
 }
 
