@@ -9,7 +9,7 @@
 import Cocoa
 
 class SettingsController: NSViewController {
-
+    
     let preferences = Preferences()
     
     @IBOutlet weak var coreCheckBox: NSButton!
@@ -27,6 +27,18 @@ class SettingsController: NSViewController {
             preferences.doSetup()
         }
         setAllCheckBoxes()
+    }
+    
+    deinit {
+        self.view.window?.unbind(NSBindingName(rawValue: #keyPath(touchBar)))
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        if #available(OSX 10.12.1, *) {
+            self.view.window?.unbind(NSBindingName(rawValue: #keyPath(touchBar))) // unbind first
+            self.view.window?.bind(NSBindingName(rawValue: #keyPath(touchBar)), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+        }
     }
     
     func setAllCheckBoxes(){
@@ -146,4 +158,62 @@ class SettingsController: NSViewController {
         }
     }
     
+    @IBAction func noneSelected(_ sender: Any){
+        coreCheckBox.state = .off
+        oaButtonCheckBox.state = .off
+        oaButtonRequestCheckBox.state = .off
+        preferences.setValue(key: "core", value: false)
+        preferences.setValue(key: "oabutton", value: false)
+        preferences.setValue(key: "oabrequest", value: false)
+    }
+    
+    @IBAction func recommendedSelected(_ sender: Any){
+        coreCheckBox.state = .on
+        oaButtonCheckBox.state = .off
+        oaButtonRequestCheckBox.state = .on
+        preferences.setValue(key: "core", value: true)
+        preferences.setValue(key: "oabutton", value: false)
+        preferences.setValue(key: "oabrequest", value: true)
+    }
+    
+}
+
+@available(OSX 10.12.1, *)
+extension SettingsController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.customizationIdentifier = .bar3
+        touchBar.defaultItemIdentifiers = [.label3, .noneSelected, .recommendedSelected, .moreInfo]
+        touchBar.customizationAllowedItemIdentifiers = [.label3, .noneSelected, .recommendedSelected, .moreInfo]
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        switch identifier {
+        case NSTouchBarItem.Identifier.label3:
+            let customViewItem = NSCustomTouchBarItem(identifier: identifier)
+            customViewItem.view = NSTextField(labelWithString: "Settings: ")
+            return customViewItem
+        case NSTouchBarItem.Identifier.moreInfo:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Tell me more...", target: self, action: #selector(tellMeMoreClicked(_:)))
+            saveItem.view = button
+            return saveItem
+        case NSTouchBarItem.Identifier.noneSelected:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Deselect All", target: self, action: #selector(noneSelected(_:)))
+            button.bezelColor = NSColor.systemOrange
+            saveItem.view = button
+            return saveItem
+        case NSTouchBarItem.Identifier.recommendedSelected:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Recommended Settings", target: self, action: #selector(recommendedSelected(_:)))
+            button.bezelColor = NSColor.systemBlue
+            saveItem.view = button
+            return saveItem
+        default:
+            return nil
+        }
+    }
 }
