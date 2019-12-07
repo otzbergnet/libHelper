@@ -133,7 +133,34 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 myContextLabel = String(format: NSLocalizedString("Visit gettheresearch.org", comment: "changes Context Label"), String(mySubstring))
             }
             
-            validationHandler(false, myContextLabel)
+            //validationHandler(false, myContextLabel)
+            
+            switch (command){
+                case "oasearch":
+                    if(preferences.getValue(key: "basehs")){
+                        validationHandler(false, myContextLabel)
+                    }
+                    else{
+                        validationHandler(true, myContextLabel)
+                    }
+                case "oasearch2":
+                    if(preferences.getValue(key: "corehs")){
+                        validationHandler(false, myContextLabel)
+                    }
+                    else{
+                        validationHandler(true, myContextLabel)
+                    }
+                case "oasearch3":
+                    if(preferences.getValue(key: "gettheresearchhs")){
+                        validationHandler(false, myContextLabel)
+                    }
+                    else{
+                        validationHandler(true, myContextLabel)
+                    }
+                default:
+                    NSLog("wbm_log: apparently we found a new command that we didn't code for. bummer...")
+            }
+            
         }
         
     }
@@ -245,7 +272,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_error" : error.localizedDescription])
-                self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 0)
+                self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
             }
             if let data = data {
                 self.handleData(data: data, page: page, doi: doi, originUrl: originUrl)
@@ -253,7 +280,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_data" : "failed"])
                 self.toolbarAction(imgName: "oa_100.pdf")
-                self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 0)
+                self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
                 return
             }
             
@@ -305,7 +332,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
             //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-            self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 0)
+            self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
             return
         }
     }
@@ -337,7 +364,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_error" : error.localizedDescription])
-                self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
             }
             if let data = data {
                 self.handleCoreData(data: data, doi: doi, originUrl: originUrl, page: page, year: year)
@@ -345,7 +372,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_data" : "failed"])
                 self.toolbarAction(imgName: "oa_100.pdf")
-                self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
                 return
             }
             
@@ -385,7 +412,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
             //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-            self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
+            self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
             return
         }
     }
@@ -571,8 +598,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if(year == 0 || year > fiveYearsAgo){
                 page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y"])
             }
+            else if(year == 1){
+               page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e"])
+            }
             else{
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n"])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o"])
             }
             
         }

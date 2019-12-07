@@ -89,15 +89,24 @@ function findDoi(){
     //console.log("Open Acces Helper: DOI0");
     // we are going to look in meta-tags for the DOI
     var option = ['citation_doi', 'doi', 'dc.doi', 'dc.identifier', 'dc.identifier.doi', 'bepress_citation_doi', 'rft_id', 'dcsext.wt_doi', 'DC.identifier'];
-    var doi = "";
+    var doi = [];
     for(i = 0; i < option.length; i++){
-        doi = getMeta(option[i]);
-        if(doi != ""){
-            break;
+        var potentialDoiArray = getMeta(option[i]);
+
+        for(j = 0; j < potentialDoiArray.length; j++){
+            var testDoi = potentialDoiArray[j];
+            if(testDoi != "" && isDOI(cleanDOI(testDoi))){
+                doi.push(cleanDOI(testDoi));
+            }
         }
     }
-    if(doi != ""){
-        cleanedDOI = cleanDOI(doi)
+    executeFoundDoi(doi);
+}
+
+function executeFoundDoi(doi){
+
+    if(doi[0] != undefined && doi[0] != ""){
+        cleanedDOI = cleanDOI(doi[0])
         console.log("Open Access Helper (Safari Extension) found this DOI (0): "+cleanedDOI)
         var url = encodeURI(location.href);
         safari.extension.dispatchMessage("found", {"doi" : cleanedDOI, "url" : url});
@@ -106,17 +115,24 @@ function findDoi(){
         // didn't find a DOI yet, so let's look in another place
         findDoi1();
     }
-    
 }
 
 function findDoi1(){
     //console.log("Open Acces Helper: DOI1");
     //in this case, we are looking for both meta-tag and its scheme
-    var doi = getMetaScheme('dc.Identifier', 'doi');
-    if(doi != ""){
-        console.log("Open Access Helper (Safari Extension) found this DOI (1): "+doi)
+    var potentialDoiArray = getMetaScheme('dc.Identifier', 'doi');
+    var doi = [];
+    for(i = 0; i < potentialDoiArray.length; i++){
+        var testDoi = potentialDoiArray[i];
+        if(testDoi != "" && isDOI(cleanDOI(testDoi))){
+            doi.push(cleanDOI(testDoi));
+        }
+    }
+    
+    if(doi[0] != undefined && doi[0] != ""){
+        console.log("Open Access Helper (Safari Extension) found this DOI (1): "+doi[0])
         var url = encodeURI(location.href);
-        safari.extension.dispatchMessage("found", {"doi" : doi, "url" : url});
+        safari.extension.dispatchMessage("found", {"doi" : doi[0], "url" : url});
     }
     else{
         // didn't find a DOI yet, let's look in yet another place
@@ -210,27 +226,28 @@ function getMeta(metaName) {
     // get meta tags and loop through them. Looking for the name attribute and see if it is the metaName
     // we were looking for
     const metas = document.getElementsByTagName('meta');
+    var response = []
     
     for (let i = 0; i < metas.length; i++) {
         if (metas[i].getAttribute('name') === metaName) {
-            return metas[i].getAttribute('content');
+            response.push(metas[i].getAttribute('content'));
         }
     }
     
-    return '';
+    return response;
 }
 
 function getMetaScheme(metaName, scheme){
     // pretty much the same as the other function, but it also double-checks the scheme
     const metas = document.getElementsByTagName('meta');
-    
+    var response = []
     for (let i = 0; i < metas.length; i++) {
         if (metas[i].getAttribute('name') === metaName && metas[i].getAttribute('scheme') === scheme) {
-            return metas[i].getAttribute('content');
+            response.push(metas[i].getAttribute('content'));
         }
     }
     
-    return '';
+    return response;
 }
 
 function getFromSelector(selector){
@@ -345,6 +362,16 @@ function requestDocument(oab){
         return;
     }
     
+    if(oab == "e"){
+        console.log("Open Access Helper (Safari Extension): Open Access Button not possible, as there was an error obtaining pub data");
+        return;
+    }
+    
+    if(oab == "o"){
+        console.log("Open Access Helper (Safari Extension): Open Access Button not possible, as Pub Year > 5 years ago");
+        return;
+    }
+    
     var src = safari.extension.baseURI + "ask.png"; // padlock
     var url = encodeURIComponent(location.href);
     var oabUrl = "https://openaccessbutton.org/request?url="
@@ -438,6 +465,8 @@ function getKnownOAUrl(){
 
 function alternativeOA(message, oab){
     var host = window.location.hostname;
+    var path = window.location.pathname;
+    var generator = getMeta('Generator');
     
     if(host.indexOf("ingentaconnect") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
@@ -447,11 +476,8 @@ function alternativeOA(message, oab){
             if(onclick != null && onclick != "" && onclick.indexOf("javascript" > -1)){
                 var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
                 if(href != null && href != ""){
-                    var message = new Array();
-                    message['url'] = window.location.protocol+'//'+host+href;
-                    message['title'] = "Open Access Found on this page: ";
-                    oafound(message);
-                    onOa();
+                    var url = window.location.protocol+'//'+host+href;
+                    successfulAlternativeOAFound(url, "Free Access", true);
                 }
                 else{
                     console.log("Open Access Helper (Safari Extension): no Open Access Found");
@@ -462,11 +488,8 @@ function alternativeOA(message, oab){
                 var popup = document.querySelectorAll("a.fulltext.pdf")[0].dataset.popup
                 if(popup != null && popup != "" && popup.indexOf("download" > -1)){
                     if(popup != null && popup != ""){
-                        var message = new Array();
-                        message['url'] = window.location.protocol+'//'+host+popup;
-                        message['title'] = "Open Access Found on this page: ";
-                        oafound(message);
-                        onOa();
+                        var url = window.location.protocol+'//'+host+popup;
+                        successfulAlternativeOAFound(url, "Free Access", true);
                     }
                     else{
                         console.log("Open Access Helper (Safari Extension): no Open Access Found");
@@ -501,7 +524,7 @@ function alternativeOA(message, oab){
             requestDocument(oab);
         }
     }
-    else if(host.indexOf("journals.sagepub.com") > -1){
+    else if(host.indexOf("journals.sagepub.com") > -1 && path.indexOf("doi") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
         if(document.querySelectorAll("img.accessIcon.freeAccess").length > 0){
             webscraperBadge("a[data-item-name=\"download-PDF\"]", true, oab);
@@ -533,7 +556,7 @@ function alternativeOA(message, oab){
         if(document.querySelectorAll("svg.icon-open-access").length > 0){
             var pdf = getMeta("citation_pdf_url")
             if(pdf != "" && pdf.indexOf("http" == 0)){
-                successfulAlternativeOAFound(pdf)
+                successfulAlternativeOAFound(pdf, "Open Access", true)
             }
             else{
                 console.log("Open Access Helper (Safari Extension): no Open Access Found");
@@ -550,13 +573,46 @@ function alternativeOA(message, oab){
         if(document.querySelectorAll("span.entitled").length > 0){
             var pdf = getMeta("citation_pdf_url")
             if(pdf != "" && pdf.indexOf("http" == 0)){
-                successfulAlternativeOAFound(pdf)
+                successfulAlternativeOAFound(pdf, "Free / Subscription Access", true)
             }
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
             requestDocument(oab);
         }
+    }
+    else if(host.indexOf("onlinelibrary.wiley.com") > -1 && path.indexOf("doi") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
+        var toCheck = document.querySelectorAll("div.doi-access");
+        if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Free Access")){
+            console.log("Open Access Helper (Safari Extension): We found FREE Access");
+            var pdf = getMeta("citation_pdf_url");
+            successfulAlternativeOAFound(pdf, "Free Access", true);
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            if(path.indexOf("doi/pdf") == -1){
+                requestDocument(oab);
+            }
+            
+        }
+    }
+    else if(host.indexOf("link.springer.com") > -1 && path.indexOf("article") > -1){
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
+        var toCheck = document.querySelectorAll("div.download-article");
+        if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Download") > -1){
+            console.log("Open Access Helper (Safari Extension): We found FREE / Subscription Access");
+            var pdf = getMeta("citation_pdf_url");
+            successfulAlternativeOAFound(pdf, "Free / Subscription Access", true);
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            requestDocument(oab);
+        }
+    }
+    
+    else if(generator.length > 0 && generator[0].indexOf('DSpace') > -1){
+        console.log("Open Access Helper (Safari Extension): we are on a DSPACE respository - there is a chance the document is available here");
     }
     else if(message != undefined && message == "y"){
         console.log("Open Access Helper (Safari Extension): no Open Access Found");
@@ -567,13 +623,21 @@ function alternativeOA(message, oab){
 
 //
 
-function successfulAlternativeOAFound(pdf){
+function successfulAlternativeOAFound(pdf, type = "Open Access", onOa = false){
     var message = new Array();
     message['url'] = pdf;
-    message['title'] = "Open Access found at: ";
+    message['title'] = type+" found at: ";
+    message['version'] = "unknown";
+    message['source'] = "Page Analysis";
     oafound(message);
     var currentUrl = window.location.href;
-    safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
+    if(onOa){
+        
+    }
+    else{
+      safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
+    }
+    
 }
 
 
@@ -599,6 +663,11 @@ function scrapedDoi(doi){
 }
 
 function webscraperBadge(selector, onoa, oab){
+    var selected = document.querySelectorAll(selector);
+    if(selected.length == 0){
+        requestDocument(oab);
+        return;
+    }
     var href = document.querySelectorAll(selector)[0].href;
     if(href != null && href != ""){
         var message = new Array();
