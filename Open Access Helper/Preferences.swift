@@ -28,6 +28,9 @@ class Preferences: NSViewController {
             defaults.set(true, forKey: "core")
             defaults.set(false, forKey: "oabutton")
             defaults.set(false, forKey: "oabrequest")
+            defaults.set(true, forKey: "basehs")
+            defaults.set(true, forKey: "corehs")
+            defaults.set(false, forKey: "gettheresearchhs")
         }
         
     }
