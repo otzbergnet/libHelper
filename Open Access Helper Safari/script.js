@@ -335,7 +335,7 @@ function oafound(message){
     }
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+oaVersion+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'doifound_outer';
     div.className = 'doifound_outer';
     
