@@ -59,17 +59,11 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Hilfe";
 
-/* Class = "NSTextFieldCell"; title = "1) Launch Safari\n2) Access Safari > Preferences (⌘,)\n3) Select Extensions\n4) Activate the Open Access Helper Extension\n5) Find Open Access and enjoy :)"; ObjectID = "FNM-3T-H4P"; */
+/* Class = "NSTextFieldCell"; title = "Getting started:\n1) Click Open Safari Preferences below:\n2) Select Extensions\n3) Activate the Open Access Helper Extension\n4) That's it :)"; ObjectID = "FNM-3T-H4P"; */
 "FNM-3T-H4P.title" = "So geht es los:\n1) \"Safari Einstellungen öffnen\" klicken\n2) Erweiterungen auswählen\n3) Open Access Helper aktivieren\n5) Das war es schon :)";
 
 /* Class = "NSTextFieldCell"; title = "Settings"; ObjectID = "HcR-jI-6Ct"; */
 "HcR-jI-6Ct.title" = "Einstellungen";
-
-/* Class = "NSTextFieldCell"; title = "Available for iOS"; ObjectID = "Hfu-xe-1tt"; */
-"Hfu-xe-1tt.title" = "Auch für iOS";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Click to download"; ObjectID = "I2W-5X-aED"; */
-"I2W-5X-aED.ibShadowedToolTip" = "Für Download klicken";
 
 /* Class = "NSMenuItem"; ibExternalAccessibilityDescription = "Online Help / Support"; ObjectID = "JOV-dD-lM6"; */
 "JOV-dD-lM6.ibExternalAccessibilityDescription" = "Onlinehilfe / Support";
@@ -168,7 +162,7 @@
 "jtC-8H-YpD.title" = "Open Access Helper";
 
 /* Class = "NSTextFieldCell"; title = "We will always use unpaywall.org to find legal Open Access copies, but you can select to add Core Discovery & Open Access Button to find even more copies. Lastly you can have us add a button to request copies from authors, if you'd like."; ObjectID = "nJJ-h3-n2K"; */
-"nJJ-h3-n2K.title" = "Ich werde immer unpaywall.org nutzen, um legale Open Access Versionen zu finden. Hier kannst Du jedoch auch Core Discovery & Open Access Button aktivieren, um die Abdeckung noch weiter zu erhöhen. Weiterhin ist es möglich eine Anfrage bei Autoren bezüglich der Open Access Veröffentlichung zu stellen (über Open Access Button).";
+"nJJ-h3-n2K.title" = "Ich werde immer unpaywall.org nutzen, um legale Open Access Versionen zu finden. Hier können Sie weitere Quellen aktivieren. Klicken Sie auf \"Mehr Inofs\" für weitere Details.";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "oRq-HL-zE8"; */
 "oRq-HL-zE8.title" = "Label";
@@ -205,3 +199,18 @@
 
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "xpj-jN-908"; */
 "xpj-jN-908.title" = "Table View Cell";
+
+/* Class = "NSButtonCell"; title = "base-search.net"; ObjectID = "E5Y-zn-Amu"; */
+"E5Y-zn-Amu.title" = "base-search.net";
+
+/* Class = "NSButtonCell"; title = "core.ac.uk"; ObjectID = "PmR-Jf-2Mz"; */
+"PmR-Jf-2Mz.title" = "core.ac.uk";
+
+/* Class = "NSTextFieldCell"; title = "Highlight & Search"; ObjectID = "skg-S1-2HM"; */
+"skg-S1-2HM.title" = "Highlight & Search";
+
+/* Class = "NSWindow"; title = "Open Access Helper"; ObjectID = "vZx-Nd-Q7l"; */
+"vZx-Nd-Q7l.title" = "Open Access Helper";
+
+/* Class = "NSButtonCell"; title = "gettheresearch.com"; ObjectID = "yaq-Tp-X4R"; */
+"yaq-Tp-X4R.title" = "gettheresearch.com";

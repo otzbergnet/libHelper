@@ -1,3 +1,4 @@
+
 /* 
   Localizable.strings
   Open Access Helper
@@ -5,19 +6,130 @@
   Created by Claus Wolf on 17.11.18.
   Copyright © 2018 Claus Wolf. All rights reserved.
 */
-
 "base-search.net search for: \"%@\"" = "base-search.net Suche nach: \"%@\"";
+
 "base-search.net search for: \"%@…\"" = "base-search.net Suche nach: \"%@…\"";
+
+/* changes Context Label */
 "core.ac.uk search for: \"%@\"" = "core.ac.uk Suche nach: \"%@\"";
+
 "core.ac.uk search for: \"%@…\"" = "core.ac.uk Suche nach: \"%@…\"";
+
+/* used in JS injection to indicate OA found */
 "Open Access Version Found from unpaywall.org! " = "Open Access Version von unpaywall.org gefunden! ";
+
+/* used in JS injection to indicate OA found */
 "Open Access Version Found from core.ac.uk! " = "Open Access Version von core.ac.uk gefunden! ";
+
+/* used in JS confirm that you are on OA already */
 "You are at the Open Acccess Location!" = "Du befindest Dich bereits auf der Open Acccess Version!";
+
+/* will show in JS Alert, when there was a doi, but no oadoi url */
 "Open Access Helper could not find a legal open-access version of this article." = "Open Access Helper konnte keine legale Open-Access Version dieses Artikels finden.";
+
+/* will show in JS Alert, when there no doi = inactive state */
 "Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message" = "Open Access Helper ist auf dieser Seite inaktiv, da kein DOI gefunden wurde\n\nBitte klicke:\nOK, um mehr über diese App zu erfahren\nAbbrechen, um diese Meldung zu schließen";
+
+/* changes Context Label */
 "Visit gettheresearch.org" = "gettheresearch.org aufrufen";
+
+/* changes Context Label */
 "Visit core.ac.uk" = "core.ac.uk aufrufen";
+
+/* changes Context Label, base-search-net */
 "Visit base-search.net" = "base-search.net aufrufen";
+
+/* submittedVersion */
 "Submitted Version" = "Eingereichte Fassung";
+
+/* acceptedVersion */
 "Accepted Version" = "Akzeptierte Fassung";
+
+/* publishedVersion */
 "Published Version" = "Veröffentlichte Fassung";
+
+/* No comment provided by engineer. */
+"About: " = "Über: ";
+
+/* No comment provided by engineer. */
+"Bookmarks: Select a row to see options" = "Bookmarks: Wählen Sie eine Reihe für Optionen";
+
+/* Cancel button in alert
+   Cancel button title */
+"Cancel" = "Abbrechen";
+
+/* iCloud internet connection */
+"Connection Error" = "Verbindungsfehler";
+
+/* No comment provided by engineer. */
+"Contact Me" = "Kontakt";
+
+/* Quit without saves error question message */
+"Could not save changes while quitting. Quit anyway?" = "Änderungen konnten nicht gespeichert werden. Trotzdem beenden?";
+
+/* No comment provided by engineer. */
+"Delete Bookmark" = "Bookmark löschen";
+
+/* changes Context Label */
+"gettheresearch.org search for: \"%@\"" = "gettheresearch.org Suche nach \"%@\"";
+
+/* No comment provided by engineer. */
+"Getting Started: " = "So legen Sie los:";
+
+/* error message title
+   iCloud error - not authenticated */
+"iCloud Error" = "iCloud Fehler";
+
+/* zoneNotFound or user deleted */
+"Missing Database" = "Fehlende Datenbank";
+
+/* 0 bookmarks retrieved */
+"No Bookmarks" = "Keine Bookmarks";
+
+/* OK button in alert */
+"OK" = "OK";
+
+/* used in JS injection to indicate OA found */
+"Open Access Version Found from Open Access Button " = "Open Access Version von Open Access Button gefunden";
+
+/* No comment provided by engineer. */
+"Open Bookmark" = "Bookmark öffnen";
+
+/* No comment provided by engineer. */
+"Open Safari Preferences" = "Safari-Einstellungen öffnen";
+
+/* error message shown, when iCloud not logged in */
+"Please check that you are logged into iCloud" = "Bitte überprüfen Sie, dass Sie in iCloud eingeloggt sind";
+
+/* Quit anyway button title */
+"Quit anyway" = "Trotdem schließen";
+
+/* Quit without saves error question info */
+"Quitting now will lose any changes you have made since the last successful save" = "Wenn Sie die App jetzt beenden, gehen alle Änderungen seit Ihrer letzten";
+
+/* iCloud record error */
+"Record Error" = "Datensatz fehler";
+
+/* No comment provided by engineer. */
+"Show Example" = "Beispiel zeigen";
+
+/* shows on main window, number of OpenAccess found */
+"So far we've helped you find %@ Open Access Documents!" = "Bisher haben wir Ihnen geholfen %@ Open Access Dokumente zu finden!";
+
+/* No comment provided by engineer. */
+"We are sorry, but it seems that you either do not have an iCloud account, or access is limited for Open Access Helper. Please check iCloud settings" = "Entweder haben Sie kein iCloud Konto, oder Open Access Helper darf darauf nicht zugreifen. Bitte überprüfen Sie Ihre iCloud Einstellungen";
+
+/* No comment provided by engineer. */
+"We are sorry, but it seems you do not have a Open Access Helper Database in iCloud. Please add at least one bookmark in OpenAccess Helper for iOS" = "Es sieht so aus, als ob es noch keine Open Access Helper Datenbank in iCloud gibt. Bitte fügen Sie mindestens ein Bookmark in Open Access Helper für iOS hinzu";
+
+/* No comment provided by engineer. */
+"We are sorry, but there was a connection error. Please check your Internet Connection" = "Leider gab es einen Verbindungsfehler. Bitte überprüfen Sie Ihre Internetverbindung.";
+
+/* No comment provided by engineer. */
+"We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?" = "Leider konnten wir keine Bookmarks abrufen. Sind Sie sich sicher, dass Sie bereits Artikel in Open Access Helper für iOS hinzugefügt haben?";
+
+/* No comment provided by engineer. */
+"We were unable to retrieve your bookmarks" = "Wir konnten keine Bookmarks abrufen";
+
+/* shows on main window, number of OpenAccess Searches conducted */
+"You've had help with %@ Open Access searches" = "Sie hatten Hilfe mit %@ Open Access Suchen";

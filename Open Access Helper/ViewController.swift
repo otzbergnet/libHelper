@@ -46,7 +46,6 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        changeAppStoreBadge()
         updateCount()
         if(!preferences.isSetup()){
             preferences.doSetup()
@@ -87,22 +86,6 @@ class ViewController: NSViewController {
         
     }
     
-    func changeAppStoreBadge(){
-        if(Locale.current.languageCode == "en"){
-            appStoreIcon.image = NSImage(named: "Download_on_the_App_Store_Badge_US")
-        }
-        else if(Locale.current.languageCode == "de"){
-            appStoreIcon.image = NSImage(named: "Download_on_the_App_Store_Badge_DE")
-        }
-    }
-    
-    
-    
-    @IBAction func appStoreClicked(_ sender: Any) {
-        if let url = URL(string: "https://itunes.apple.com/de/app/open-access-helper/id1447927317?mt=8"),
-            NSWorkspace.shared.open(url) {
-        }
-    }
     
     @IBAction func openSafariPreferences(_ sender: Any) {
         openSafariPreferencesNow()

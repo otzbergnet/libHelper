@@ -208,6 +208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D3F8FB5218586290095ACD7 /* Build configuration list for PBXNativeTarget "Open Access Helper" */;
 			buildPhases = (
+				2DF1F77C239BAFCF0045DD43 /* BartyCrouch */,
 				2D3F8F9E218586290095ACD7 /* Sources */,
 				2D3F8F9F218586290095ACD7 /* Frameworks */,
 				2D3F8FA0218586290095ACD7 /* Resources */,
@@ -227,6 +228,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D3F8FD12185863C0095ACD7 /* Build configuration list for PBXNativeTarget "Open Access Helper Safari" */;
 			buildPhases = (
+				2DF1F77D239BAFE70045DD43 /* BartyCrouch */,
 				2D3F8FB82185863C0095ACD7 /* Sources */,
 				2D3F8FB92185863C0095ACD7 /* Frameworks */,
 				2D3F8FBA2185863C0095ACD7 /* Resources */,
@@ -334,6 +336,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2DF1F77C239BAFCF0045DD43 /* BartyCrouch */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = BartyCrouch;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
+		};
+		2DF1F77D239BAFE70045DD43 /* BartyCrouch */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = BartyCrouch;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D3F8F9E218586290095ACD7 /* Sources */ = {
