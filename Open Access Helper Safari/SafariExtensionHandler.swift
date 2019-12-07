@@ -133,7 +133,34 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 myContextLabel = String(format: NSLocalizedString("Visit gettheresearch.org", comment: "changes Context Label"), String(mySubstring))
             }
             
-            validationHandler(false, myContextLabel)
+            //validationHandler(false, myContextLabel)
+            
+            switch (command){
+                case "oasearch":
+                    if(preferences.getValue(key: "basehs")){
+                        validationHandler(false, myContextLabel)
+                    }
+                    else{
+                        validationHandler(true, myContextLabel)
+                    }
+                case "oasearch2":
+                    if(preferences.getValue(key: "corehs")){
+                        validationHandler(false, myContextLabel)
+                    }
+                    else{
+                        validationHandler(true, myContextLabel)
+                    }
+                case "oasearch3":
+                    if(preferences.getValue(key: "gettheresearchhs")){
+                        validationHandler(false, myContextLabel)
+                    }
+                    else{
+                        validationHandler(true, myContextLabel)
+                    }
+                default:
+                    NSLog("wbm_log: apparently we found a new command that we didn't code for. bummer...")
+            }
+            
         }
         
     }
@@ -245,7 +272,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_error" : error.localizedDescription])
-                self.checkCore(doi: doi, page: page, originUrl: originUrl)
+                self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
             }
             if let data = data {
                 self.handleData(data: data, page: page, doi: doi, originUrl: originUrl)
@@ -253,7 +280,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_data" : "failed"])
                 self.toolbarAction(imgName: "oa_100.pdf")
-                self.checkCore(doi: doi, page: page, originUrl: originUrl)
+                self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
                 return
             }
             
@@ -278,13 +305,24 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
                     //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                    self.checkCore(doi: doi, page: page, originUrl: originUrl)
+                    if let year = oaData.year {
+                        self.checkCore(doi: doi, page: page, originUrl: originUrl, year: year)
+                    }
+                    else{
+                        self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 0)
+                    }
+                    
                 }
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
                 //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                self.checkCore(doi: doi, page: page, originUrl: originUrl)
+                if let year = oaData.year {
+                    self.checkCore(doi: doi, page: page, originUrl: originUrl, year: year)
+                }
+                else{
+                    self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 0)
+                }
             }
             
             
@@ -294,24 +332,24 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
             //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-            self.checkCore(doi: doi, page: page, originUrl: originUrl)
+            self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
             return
         }
     }
     
     
-    func checkCore(doi: String, page: SFSafariPage, originUrl: String) {
+    func checkCore(doi: String, page: SFSafariPage, originUrl: String, year: Int) {
         let coreSetting = preferences.getValue(key: "core")
         let oaButtonSetting = preferences.getValue(key: "oabutton")
         if(!coreSetting && !oaButtonSetting){
             // user wants neither core nor open access button
             // let's take them to potential order button
-            noOpenAccessFound(page: page, doi: "y")
+            noOpenAccessFound(page: page, doi: "y", year: year)
             return
         }
         else if(!coreSetting && oaButtonSetting){
             //client doesn't want core, but wants Open Access Button
-            self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+            self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
             return
         }
         // if we got here the client wants core
@@ -326,15 +364,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oa_100.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_error" : error.localizedDescription])
-                self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
             }
             if let data = data {
-                self.handleCoreData(data: data, doi: doi, originUrl: originUrl, page: page)
+                self.handleCoreData(data: data, doi: doi, originUrl: originUrl, page: page, year: year)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_data" : "failed"])
                 self.toolbarAction(imgName: "oa_100.pdf")
-                self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
                 return
             }
             
@@ -343,7 +381,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
     
-    func handleCoreData(data: Data, doi: String, originUrl: String, page: SFSafariPage){
+    func handleCoreData(data: Data, doi: String, originUrl: String, page: SFSafariPage, year: Int){
         //sole purpose is to dispatch the url
         do{
             let coreData = try JSONDecoder().decode(Coredata.self, from: data)
@@ -358,13 +396,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
                     //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                    self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+                    self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
                 }
             }
             else {
                 toolbarAction(imgName: "oa_100.pdf")
                 //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-                self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+                self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
             }
             
             
@@ -374,16 +412,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
             toolbarAction(imgName: "oa_100.pdf")
             //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
-            self.checkOAButton(doi: doi, page: page, originUrl: originUrl)
+            self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
             return
         }
     }
     
 
-    func checkOAButton(doi: String, page: SFSafariPage, originUrl: String) {
+    func checkOAButton(doi: String, page: SFSafariPage, originUrl: String, year: Int) {
         let oaButtonSetting = preferences.getValue(key: "oabutton")
         if(!oaButtonSetting){
-            noOpenAccessFound(page: page, doi: "y")
+            noOpenAccessFound(page: page, doi: "y", year: year)
             return
         }
         
@@ -410,15 +448,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
                 NSLog("OAHELPER: OAB ERROR in dataTask / error")
-                self.noOpenAccessFound(page: page, doi: "y")
+                self.noOpenAccessFound(page: page, doi: "y", year: year)
             }
             if let data = data {
-                self.handleOAButtonData(data: data, page: page, originUrl: originUrl)
+                self.handleOAButtonData(data: data, page: page, originUrl: originUrl, year: year)
             }
             else{
                 NSLog("OAHELPER: OAB ERROR in dataTask / else")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
-                self.noOpenAccessFound(page: page, doi: "y")
+                self.noOpenAccessFound(page: page, doi: "y", year: year)
                 return
             }
             
@@ -427,7 +465,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
 
-    func handleOAButtonData(data: Data, page: SFSafariPage, originUrl : String){
+    func handleOAButtonData(data: Data, page: SFSafariPage, originUrl : String, year: Int){
         do{
             let oaButtonData = try JSONDecoder().decode(OaButton.self, from: data)
             if let oabAvailability = oaButtonData.data.availability {
@@ -440,39 +478,39 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button", "version" : ""])
                     }
                     else{
-                        noOpenAccessFound(page: page, doi: "y")
+                        noOpenAccessFound(page: page, doi: "y", year: year)
                     }
                 }
                 else{
                     if let oabRequests = oaButtonData.data.requests {
                         if let requestId = oabRequests.first??.id {
-                            self.checkOAButtonRequest(request: requestId, page: page, originUrl: originUrl)
+                            self.checkOAButtonRequest(request: requestId, page: page, originUrl: originUrl, year: year)
                         }
                         else{
-                            noOpenAccessFound(page: page, doi: "y")
+                            noOpenAccessFound(page: page, doi: "y", year: year)
                         }
                     }
                     else{
-                        noOpenAccessFound(page: page, doi: "y")
+                        noOpenAccessFound(page: page, doi: "y", year: year)
                     }
                 }
                 
             }
             else {
-                noOpenAccessFound(page: page, doi: "y")
+                noOpenAccessFound(page: page, doi: "y", year: year)
                 
             }
         }
         catch let jsonError{
             page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
-            noOpenAccessFound(page: page, doi: "y")
+            noOpenAccessFound(page: page, doi: "y", year: year)
             
             return
         }
     }
     
     
-    func checkOAButtonRequest(request: String, page: SFSafariPage, originUrl: String) {
+    func checkOAButtonRequest(request: String, page: SFSafariPage, originUrl: String, year: Int) {
         toolbarAction(imgName: "oa_100a.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
         if(apiKey == ""){
@@ -494,15 +532,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if let error = error{
                 //we got an error, let's tell the user
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
-                self.noOpenAccessFound(page: page, doi: "y")
+                self.noOpenAccessFound(page: page, doi: "y", year: year)
                 
             }
             if let data = data {
-                self.handleOABRequestData(data: data, page: page, originUrl: originUrl)
+                self.handleOABRequestData(data: data, page: page, originUrl: originUrl, year: year)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
-                self.noOpenAccessFound(page: page, doi: "y")
+                self.noOpenAccessFound(page: page, doi: "y", year: year)
                 return
             }
             
@@ -511,7 +549,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
     
-    func handleOABRequestData(data: Data, page: SFSafariPage, originUrl : String){
+    func handleOABRequestData(data: Data, page: SFSafariPage, originUrl : String, year: Int){
         do{
             let oaButtonData = try JSONDecoder().decode(OARequestData.self, from: data)
             if let status = oaButtonData.data.status{
@@ -526,37 +564,50 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                                 page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button", "version" : ""])
                             }
                             else{
-                                noOpenAccessFound(page: page, doi: "y")
+                                noOpenAccessFound(page: page, doi: "y", year: year)
                             }
                         }
                         else{
-                            noOpenAccessFound(page: page, doi: "y")
+                            noOpenAccessFound(page: page, doi: "y", year: year)
                         }
                     }
                     else{
-                        noOpenAccessFound(page: page, doi: "y")
+                        noOpenAccessFound(page: page, doi: "y", year: year)
                     }
                 }
                 else{
-                    noOpenAccessFound(page: page, doi: "y")
+                    noOpenAccessFound(page: page, doi: "y", year: year)
                 }
             }
         }
         catch let jsonError{
             NSLog(jsonError as! String)
-            noOpenAccessFound(page: page, doi: "y")
+            noOpenAccessFound(page: page, doi: "y", year: year)
             return
         }
     }
     
-    func noOpenAccessFound(page: SFSafariPage, doi: String){
+    func noOpenAccessFound(page: SFSafariPage, doi: String, year: Int){
+        let date = Date()
+        let calendar = Calendar.current
+        let currentYear = calendar.component(.year, from: date)
+        let fiveYearsAgo = currentYear - 6
         let oabRequestSetting = preferences.getValue(key: "oabrequest")
         self.toolbarAction(imgName: "oa_100.pdf")
         if(oabRequestSetting){
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
+            if(year == 0 || year > fiveYearsAgo){
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y"])
+            }
+            else if(year == 1){
+               page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e"])
+            }
+            else{
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o"])
+            }
+            
         }
         else{
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n"])
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n"])
         }
         
         
