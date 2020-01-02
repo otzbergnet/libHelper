@@ -1,49 +1,56 @@
-.doifound_outer{
-    top: 25%!important;
-    right: 0!important;
-    z-index: 999999999!important;
-    position: fixed!important;
-    width: 50px!important;
-    height: 40px!important;
-    border-radius: 20px 0 0 20px!important;
-    background-color: rgb(255, 102, 0)!important;
+.oahelper_doifound_outer{
+    top: 25% !important;
+    right: -180px !important;
+    z-index: 999999999 !important;
+    position: fixed !important;
+    width: 230px !important;
+    height: 40px !important;
+    border-radius: 20px 0 0 20px !important;
+    background-color: rgb(255, 102, 0) !important;
 }
 
-.doigreen{
-    background-color: rgb(31,225,104)!important;
+.oahelper_doifound_outer:hover{
+    right: 0 !important;
+    -webkit-transition: right 0.5s;
 }
 
-.doiblue{
-    background-color: #398bc5!important;
+#oahelper_oahelpmsg{
+    display: inline-block;
+    font-size: 15px !important;
+    vertical-align: middle !important;
+    line-height: 40px !important;
 }
 
-.doifound{
-    font-family:  "Helvetica", "Arial", "sans-serif"!important;
+.oahelper_doigreen{
+    background-color: rgb(31,225,104) !important;
+}
+
+.oahelper_doiblue{
+    background-color: #398bc5 !important;
+}
+
+.oahelper_doifound{
+    font-family:  "Helvetica", "Arial", "sans-serif" !important;
     text-align: center;
     cursor: pointer;
-    color: #FFF!important;
-    width: 50px!important;
-    height: 40px!important;
+    color: #FFF !important;
+    width: 230px !important;
+    height: 40px !important;
 }
 
-a#doifound, a#doifound:active, a#doifound:hover{
-    text-decoration: none!important;
-    color: #FFF!important;
+a#oahelper_doifound, a#oahelper_doifound:active, a#oahelper_doifound:hover{
+    text-decoration: none !important;
+    color: #FFF !important;
 }
 
-#doicheckmark{
-    width: 30px!important;
-    height: 30px!important;
-    margin: 5px!important;
-    margin-left: 10px!important;
+#oahelper_doicheckmark{
+    width: 30px !important;
+    height: 30px !important;
+    margin: 5px !important;
+    margin-left: 10px !important;
 }
 
-#cntdwn{
-    font-size: 1em!important;
-    color: #FFFFFF!important;
-}
-
-#OAHelperLiveRegion{
+#oahelper_LiveRegion{
     position:absolute;
     left:-10000px;
     top:auto;

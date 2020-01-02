@@ -333,11 +333,14 @@ function oafound(message){
     if(message.version != ""){
         oaVersion = " - OA Version: "+message.version;
     }
+    else{
+        message.version = "CORE Discovery";
+    }
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+oaVersion+'"><img id="doicheckmark" src="'+src+'" title="'+message.title+message.url+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
-    div.id = 'doifound_outer';
-    div.className = 'doifound_outer';
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+oaVersion+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left" title="'+message.title+message.url+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/><span id="oahelper_oahelpmsg">'+message.version+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.id = 'oahelper_doifound_outer';
+    div.className = 'oahelper_doifound_outer';
     
     if(document.body.parentNode.parentNode != "#document"){
         document.body.appendChild(div);
@@ -347,7 +350,7 @@ function oafound(message){
     var currentUrl = window.location.href;
     safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
     var trackCall = setInterval(function () {
-        var div = document.getElementById("OAHelperLiveRegion");
+        var div = document.getElementById("oahelper_LiveRegion");
         div.innerHTML = message.title;
         clearInterval(trackCall);
     }, 4000);
@@ -378,9 +381,9 @@ function requestDocument(oab){
     var message = "We didn't find a legal Open Access Version, but you could try and request it via Open Access Button";
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="doicheckmark" src="'+src+'" title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge=""/></div><span id="OAHelperLiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
-    div.id = 'doifound_outer';
-    div.className = 'doifound_outer doiblue';
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge=""/><span id="oahelper_oahelpmsg">Open Access Button</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.id = 'oahelper_doifound_outer';
+    div.className = 'oahelper_doifound_outer oahelper_doiblue';
     
     if(document.body.parentNode.parentNode != "#document"){
         document.body.appendChild(div);
@@ -388,7 +391,7 @@ function requestDocument(oab){
     console.log("Open Access Helper (Safari Extension) did not find any Open Access, but you can try to request from Open Access Button ")
     var currentUrl = window.location.href;
     var trackCall = setInterval(function () {
-                                var div = document.getElementById("OAHelperLiveRegion");
+                                var div = document.getElementById("oahelper_LiveRegion");
                                 div.innerHTML = message;
                                 clearInterval(trackCall);
                                 }, 4000);
@@ -398,33 +401,17 @@ function requestDocument(oab){
 // if on Open Access document, this will turn the injected badge / button green
 
 function onOa(message){
-    var div = document.getElementById("doifound_outer");
-    div.classList.add("doigreen");
-    var div1 = document.getElementById("doicheckmark");
+    var div = document.getElementById("oahelper_doifound_outer");
+    div.classList.add("oahelper_doigreen");
+    var div1 = document.getElementById("oahelper_doicheckmark");
     div1.dataset.badge = "✔"
     var trackCall = setInterval(function () {
-        var div = document.getElementById("OAHelperLiveRegion");
+        var div = document.getElementById("oahelper_LiveRegion");
         div.innerHTML = message.title;
         clearInterval(trackCall);
     }, 8000);
 }
 
-
-// unused function, leaving it here, in case I ever want to make the
-// injected div go away
-function countDown(){
-    var i = 0;
-    var id = document.getElementById("cntdwn");
-    var trackCall = setInterval(function () {
-        if (i == 25) {
-            clearInterval(trackCall);
-        }
-        else{
-            id.innerHTML = 9-i;
-            i++;
-        }
-    }, 1000);
-}
 
 //simple helper to see if we are in an iframe, there are a lot of those on publisher sites
 function inIframe () {
@@ -442,7 +429,7 @@ function inIframe () {
 // previously (oahdoire == 0) and provide no OA found message, otherwise inactive message.
 
 function getKnownOAUrl(){
-    var div = document.getElementById("doicheckmark");
+    var div = document.getElementById("oahelper_doicheckmark");
     var oahdoire = document.body.dataset['oahdoire'];
     if(div != null){
         var url = div.dataset.oaurl;
@@ -697,7 +684,7 @@ function fireOnKeypress(){
     if (event.target.nodeName.toLowerCase() !== 'input'){
         if (e.altKey && e.ctrlKey && e.keyCode == 79) {
             var selectedText =  window.getSelection().toString();
-            var div = document.getElementById("doicheckmark");
+            var div = document.getElementById("oahelper_doicheckmark");
             if(selectedText != ""){
                 safari.extension.dispatchMessage("searchOA", {"selected" : selectedText});
             }
@@ -723,7 +710,7 @@ function handleConfirmRequest(msg){
 
 
 function evaluateTab(){
-    var div = document.getElementById("doicheckmark");
+    var div = document.getElementById("oahelper_doicheckmark");
     var badge = ""
     if (div != undefined){
         badge = div.dataset.badge
