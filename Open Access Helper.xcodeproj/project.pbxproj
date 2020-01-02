@@ -40,6 +40,8 @@
 		2DF38072218D8BC200CF2A45 /* sec30.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38071218D8BC100CF2A45 /* sec30.png */; };
 		2DF38078218DAC0D00CF2A45 /* oa_100.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38077218DAC0D00CF2A45 /* oa_100.pdf */; };
 		2DF3807A218DB78700CF2A45 /* oa_100a.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38079218DB78600CF2A45 /* oa_100a.pdf */; };
+		2DFE4F4023B732D7006CF1AB /* BartyCrouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */; };
+		2DFE4F4123B732D7006CF1AB /* BartyCrouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,7 @@
 		2DF38071218D8BC100CF2A45 /* sec30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sec30.png; sourceTree = "<group>"; };
 		2DF38077218DAC0D00CF2A45 /* oa_100.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100.pdf; sourceTree = "<group>"; };
 		2DF38079218DB78600CF2A45 /* oa_100a.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100a.pdf; sourceTree = "<group>"; };
+		2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BartyCrouch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,7 @@
 				2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */,
 				2D06B57E219E841300E4A453 /* Localizable.strings */,
 				2D63EE8D23375CA10086BBA2 /* TouchBarIdentifiers.swift */,
+				2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */,
 			);
 			path = "Open Access Helper";
 			sourceTree = "<group>";
@@ -249,7 +253,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Claus Wolf";
 				TargetAttributes = {
 					2D3F8FA1218586290095ACD7 = {
@@ -383,6 +387,7 @@
 			files = (
 				2D643FCC23001F5B00A4FA14 /* SettingsController.swift in Sources */,
 				2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */,
+				2DFE4F4023B732D7006CF1AB /* BartyCrouch.swift in Sources */,
 				2D3CA07B2235238300D5D531 /* BookMarkTableView.swift in Sources */,
 				2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */,
 				2D63EE8B233739890086BBA2 /* MainWindowController.swift in Sources */,
@@ -401,6 +406,7 @@
 			files = (
 				2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */,
 				2D3F8FC22185863C0095ACD7 /* SafariExtensionHandler.swift in Sources */,
+				2DFE4F4123B732D7006CF1AB /* BartyCrouch.swift in Sources */,
 				2D643FD1230020A800A4FA14 /* Preferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -577,7 +583,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -595,8 +601,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -606,6 +613,7 @@
 				MARKETING_VERSION = 2019.11;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -619,8 +627,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -630,6 +639,7 @@
 				MARKETING_VERSION = 2019.11;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -640,8 +650,9 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -663,8 +674,9 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
