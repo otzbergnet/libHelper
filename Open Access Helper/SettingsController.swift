@@ -15,6 +15,7 @@ class SettingsController: NSViewController {
     @IBOutlet weak var coreCheckBox: NSButton!
     @IBOutlet weak var oaButtonCheckBox: NSButton!
     @IBOutlet weak var oaButtonRequestCheckBox: NSButton!
+    @IBOutlet weak var coreRecomCheckBox: NSButton!
     @IBOutlet weak var basesearchHSCheckBox: NSButton!
     @IBOutlet weak var coreHSCheckBox: NSButton!
     @IBOutlet weak var gettheresearchHSCheckBox: NSButton!
@@ -62,6 +63,14 @@ class SettingsController: NSViewController {
         }
         else{
             oaButtonRequestCheckBox.state = .off
+        }
+        
+        let coreRecom = preferences.getValue(key: "corerecom")
+        if(coreRecom){
+            coreRecomCheckBox.state = .on
+        }
+        else{
+            coreRecomCheckBox.state = .off
         }
         
         let baseHS = preferences.getValue(key: "basehs")
@@ -120,6 +129,17 @@ class SettingsController: NSViewController {
         }
     }
     
+    @IBAction func coreRecomClicked(_ sender: Any) {
+        let state = coreRecomCheckBox.state
+        if(state == .on){
+            preferences.setValue(key: "corerecom", value: true)
+        }
+        else{
+            preferences.setValue(key: "corerecom", value: false)
+        }
+        
+    }
+    
     @IBAction func basesearchHSclicked(_ sender: Any) {
         let state = basesearchHSCheckBox.state
         if(state == .on){
@@ -149,6 +169,9 @@ class SettingsController: NSViewController {
             preferences.setValue(key: "gettheresearchhs", value: false)
         }
     }
+    
+
+    
     
     
     

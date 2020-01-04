@@ -83,6 +83,9 @@ function messageHandler(event){
     else if (event.name == "tabevaluate"){
         evaluateTab();
     }
+    else if (event.name == "doCoreRecom"){
+        coreRecommenderStart();
+    }
 }
 
 function findDoi(){
@@ -357,6 +360,9 @@ function oafound(message){
 }
 
 function requestDocument(oab){
+    
+    // find out whether we are supposed to do CORE Recommender at All
+    safari.extension.dispatchMessage("doCoreRecom", {"doCoreRecom" : ""});
     
     // here we inject the icon into the page
     // room for improvement, most Chrome extensions would inject an iFrame
@@ -719,4 +725,10 @@ function evaluateTab(){
         safari.extension.dispatchMessage("badgeUpdate", {"badge" : badge});
     }
     
+}
+
+// Core Recommender Related Functions
+
+function coreRecommenderStart(){
+    console.log("OAHelper: I am supposed to do CORE RECOMMENDER")
 }

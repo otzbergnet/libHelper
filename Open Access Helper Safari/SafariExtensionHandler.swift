@@ -80,6 +80,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 self.toolbarAction(imgName: "oa_100.pdf")
             }
         }
+        else if messageName == "doCoreRecom"{
+            if(preferences.getValue(key: "corerecom")){
+              page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doCoreRecom" : true])
+            }
+        }
         
         page.getPropertiesWithCompletionHandler { properties in
             NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
@@ -595,6 +600,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let oabRequestSetting = preferences.getValue(key: "oabrequest")
         self.toolbarAction(imgName: "oa_100.pdf")
         if(oabRequestSetting){
+            
+            // oab: y = yes, e = error getting data, o = older than 5 years ago
+            
             if(year == 0 || year > fiveYearsAgo){
                 page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y"])
             }

@@ -214,3 +214,6 @@
 
 /* Class = "NSButtonCell"; title = "gettheresearch.com"; ObjectID = "yaq-Tp-X4R"; */
 "yaq-Tp-X4R.title" = "gettheresearch.com";
+
+/* Class = "NSButtonCell"; title = "Show CORE Recommender, if there is no Open Access"; ObjectID = "evK-lJ-UtH"; */
+"evK-lJ-UtH.title" = "CORE Recommender zeigen, wenn kein Open Access gefunden wurde";

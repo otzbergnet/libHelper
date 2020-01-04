@@ -14,7 +14,18 @@ class Preferences: NSViewController {
     
     func isSetup() -> Bool{
         if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
-            return defaults.bool(forKey: "setup")
+            if(defaults.bool(forKey: "setup_2020_01")){
+                //we are fully setup, nothing needs to happen
+                return true
+            }
+            if(defaults.bool(forKey: "setup")){
+                //if we got here, it is a partial setup, only need CORE Recom change
+                defaults.set(true, forKey: "corerecom")
+                //now we can return true, as we are fully setup
+                return true
+            }
+            // if we get here, we need to do a full setup, so we return false
+            return false
         }
         else{
             return false
@@ -27,7 +38,8 @@ class Preferences: NSViewController {
             defaults.set(true, forKey: "setup")
             defaults.set(true, forKey: "core")
             defaults.set(false, forKey: "oabutton")
-            defaults.set(false, forKey: "oabrequest")
+            defaults.set(true, forKey: "oabrequest")
+            defaults.set(true, forKey: "corerecom")
             defaults.set(true, forKey: "basehs")
             defaults.set(true, forKey: "corehs")
             defaults.set(false, forKey: "gettheresearchhs")
