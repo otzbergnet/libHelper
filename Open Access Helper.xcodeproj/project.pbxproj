@@ -37,6 +37,11 @@
 		2D655F1221A0036F0092E480 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D655F1421A0036F0092E480 /* Localizable.strings */; };
 		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
+		2DC8627C23C23330007DF1AA /* core_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DC8627B23C23330007DF1AA /* core_logo.svg */; };
+		2DD336A723C1A3C6004A34C5 /* recom.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD336A623C1A3C6004A34C5 /* recom.png */; };
+		2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD336A823C1B025004A34C5 /* Extensions.swift */; };
+		2DD336AB23C1B038004A34C5 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD336AA23C1B038004A34C5 /* Structs.swift */; };
+		2DD336AD23C1C6FA004A34C5 /* loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2DD336AC23C1C6FA004A34C5 /* loader.gif */; };
 		2DF38072218D8BC200CF2A45 /* sec30.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38071218D8BC100CF2A45 /* sec30.png */; };
 		2DF38078218DAC0D00CF2A45 /* oa_100.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38077218DAC0D00CF2A45 /* oa_100.pdf */; };
 		2DF3807A218DB78700CF2A45 /* oa_100a.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38079218DB78600CF2A45 /* oa_100a.pdf */; };
@@ -103,7 +108,12 @@
 		2D924380219E790B000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SafariExtensionViewController.strings; sourceTree = "<group>"; };
 		2D924382219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D924385219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2DC8627B23C23330007DF1AA /* core_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = core_logo.svg; sourceTree = "<group>"; };
 		2DC9ED7A230729B80074D067 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2DD336A623C1A3C6004A34C5 /* recom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recom.png; sourceTree = "<group>"; };
+		2DD336A823C1B025004A34C5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2DD336AA23C1B038004A34C5 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		2DD336AC23C1C6FA004A34C5 /* loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loader.gif; sourceTree = "<group>"; };
 		2DF38071218D8BC100CF2A45 /* sec30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sec30.png; sourceTree = "<group>"; };
 		2DF38077218DAC0D00CF2A45 /* oa_100.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100.pdf; sourceTree = "<group>"; };
 		2DF38079218DB78600CF2A45 /* oa_100a.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100a.pdf; sourceTree = "<group>"; };
@@ -189,13 +199,18 @@
 				2D3F8FD721858AD10095ACD7 /* libHelper Safari.entitlements */,
 				2D3F8FC12185863C0095ACD7 /* SafariExtensionHandler.swift */,
 				2D3F8FC32185863C0095ACD7 /* SafariExtensionViewController.swift */,
+				2DD336A823C1B025004A34C5 /* Extensions.swift */,
+				2DD336AA23C1B038004A34C5 /* Structs.swift */,
 				2D3F8FC52185863C0095ACD7 /* SafariExtensionViewController.xib */,
 				2D3F8FC82185863C0095ACD7 /* Info.plist */,
 				2D924381219E7DCA000E8F74 /* InfoPlist.strings */,
 				2DF38077218DAC0D00CF2A45 /* oa_100.pdf */,
 				2DF38079218DB78600CF2A45 /* oa_100a.pdf */,
 				2DF38071218D8BC100CF2A45 /* sec30.png */,
+				2DD336A623C1A3C6004A34C5 /* recom.png */,
 				2D643FD4230058A300A4FA14 /* ask.png */,
+				2DD336AC23C1C6FA004A34C5 /* loader.gif */,
+				2DC8627B23C23330007DF1AA /* core_logo.svg */,
 				2D3F8FD52185867F0095ACD7 /* mycss.css */,
 				2D3F8FC92185863C0095ACD7 /* script.js */,
 				2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */,
@@ -325,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DC8627C23C23330007DF1AA /* core_logo.svg in Resources */,
 				2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */,
 				2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */,
 				2DF3807A218DB78700CF2A45 /* oa_100a.pdf in Resources */,
@@ -335,7 +351,9 @@
 				2DF38072218D8BC200CF2A45 /* sec30.png in Resources */,
 				2D643FD6230058A300A4FA14 /* ask.png in Resources */,
 				2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */,
+				2DD336A723C1A3C6004A34C5 /* recom.png in Resources */,
 				2D446A7D22E77A65001ECFA0 /* apikey.plist in Resources */,
+				2DD336AD23C1C6FA004A34C5 /* loader.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +422,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD336AB23C1B038004A34C5 /* Structs.swift in Sources */,
+				2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */,
 				2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */,
 				2D3F8FC22185863C0095ACD7 /* SafariExtensionHandler.swift in Sources */,
 				2DFE4F4123B732D7006CF1AB /* BartyCrouch.swift in Sources */,

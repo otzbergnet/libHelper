@@ -70,7 +70,7 @@ function messageHandler(event){
     }
     else if (event.name == "notoadoi"){
         document.body.dataset.oahdoire = "0";
-        alternativeOA(event.message.doi, event.message.oab);
+        alternativeOA(event.message.doi, event.message.oab, event.message.doistring);
     }
     else if (event.name == "showAlert"){
         if(event.message.type == "alert"){
@@ -84,7 +84,16 @@ function messageHandler(event){
         evaluateTab();
     }
     else if (event.name == "doCoreRecom"){
-        coreRecommenderStart();
+        coreRecommenderStart(event.message.doistring);
+    }
+    else if (event.name == "recomResults"){
+        if(event.message.action == "dismiss"){
+            //console.log(event.message.detail);
+            dismissCoreRecommender();
+        }
+        else{
+            showRecommendations(event.message.data);
+        }
     }
 }
 
@@ -183,7 +192,7 @@ function findDoi3(){
               scrapedDoi(doi);
           }
           else{
-              alternativeOA("n", "n");
+              alternativeOA("n", "n", "-");
           }
 
         }, 1500);
@@ -204,7 +213,7 @@ function findDoi3(){
             scrapedDoi(doi);
         }
         else{
-            alternativeOA("n", "n");
+            alternativeOA("n", "n", "-");
         }
     }
     else if(host.indexOf("gettheresearch.org") > -1){
@@ -220,7 +229,7 @@ function findDoi3(){
         // we are ready to give up here and send a notfound message, so that we can deactivate the icon
         safari.extension.dispatchMessage("notfound", {"doi" : ""});
         // however we'll continue look at the alternativeOA Webscraping methods
-        alternativeOA("n", "n");
+        alternativeOA("n", "n", "-");
     }
 }
 
@@ -236,8 +245,21 @@ function getMeta(metaName) {
             response.push(metas[i].getAttribute('content'));
         }
     }
-    
     return response;
+}
+
+function getMetaForAbstract(metaName) {
+    // get meta tags and loop through them. Looking for the name attribute and see if it is the metaName
+    // we were looking for
+    const metas = document.getElementsByTagName('meta');
+    
+    for (let i = 0; i < metas.length; i++) {
+        if (metas[i].getAttribute('name') === metaName) {
+            return metas[i].getAttribute('content');
+        }
+    }
+    
+    return "0";
 }
 
 function getMetaScheme(metaName, scheme){
@@ -251,6 +273,18 @@ function getMetaScheme(metaName, scheme){
     }
     
     return response;
+}
+
+function getMetaProperty(metaName){
+    const metas = document.getElementsByTagName('meta');
+    
+    for (let i = 0; i < metas.length; i++) {
+        if (metas[i].getAttribute('property') === metaName) {
+            return metas[i].getAttribute('content');
+        }
+    }
+    
+    return "0";
 }
 
 function getFromSelector(selector){
@@ -359,13 +393,12 @@ function oafound(message){
     }, 4000);
 }
 
-function requestDocument(oab){
+function requestDocument(oab, doistring){
     
     // find out whether we are supposed to do CORE Recommender at All
-    safari.extension.dispatchMessage("doCoreRecom", {"doCoreRecom" : ""});
+    safari.extension.dispatchMessage("doCoreRecom", {"doistring" : doistring});
     
     // here we inject the icon into the page
-    // room for improvement, most Chrome extensions would inject an iFrame
     
     if(oab == "n"){
         return;
@@ -456,7 +489,8 @@ function getKnownOAUrl(){
 // we will run this to see if we might OA on the page
 // uses some site specific logic
 
-function alternativeOA(message, oab){
+function alternativeOA(message, oab, doistring){
+    //console.log("OAHelper alternativeOA");
     var host = window.location.hostname;
     var path = window.location.pathname;
     var generator = getMeta('Generator');
@@ -474,7 +508,7 @@ function alternativeOA(message, oab){
                 }
                 else{
                     console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                    requestDocument(oab);
+                    requestDocument(oab, doistring);
                 }
             }
             else{
@@ -486,12 +520,12 @@ function alternativeOA(message, oab){
                     }
                     else{
                         console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                        requestDocument(oab);
+                        requestDocument(oab, doistring);
                     }
                 }
                 else{
                     console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                    requestDocument(oab);
+                    requestDocument(oab, doistring);
                 }
             }
             
@@ -504,7 +538,7 @@ function alternativeOA(message, oab){
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab);
+            requestDocument(oab, doistring);
         }
     }
     else if(host.indexOf("ieeexplore.ieee.org") > -1){
@@ -514,7 +548,7 @@ function alternativeOA(message, oab){
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab);
+            requestDocument(oab, doistring);
         }
     }
     else if(host.indexOf("journals.sagepub.com") > -1 && path.indexOf("doi") > -1){
@@ -529,7 +563,7 @@ function alternativeOA(message, oab){
             }
             else{
                 console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                requestDocument(oab);
+                requestDocument(oab, doistring);
             }
         }
         
@@ -541,7 +575,7 @@ function alternativeOA(message, oab){
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab);
+            requestDocument(oab, doistring);
         }
     }
     else if(host.indexOf("bmj.com") > -1){
@@ -553,12 +587,12 @@ function alternativeOA(message, oab){
             }
             else{
                 console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                requestDocument(oab);
+                requestDocument(oab, doistring);
             }
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab);
+            requestDocument(oab, doistring);
         }
     }
     else if(host.indexOf("cambridge.org") > -1){
@@ -571,7 +605,7 @@ function alternativeOA(message, oab){
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab);
+            requestDocument(oab, doistring);
         }
     }
     else if(host.indexOf("onlinelibrary.wiley.com") > -1 && path.indexOf("doi") > -1){
@@ -585,7 +619,7 @@ function alternativeOA(message, oab){
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
             if(path.indexOf("doi/pdf") == -1){
-                requestDocument(oab);
+                requestDocument(oab, doistring);
             }
             
         }
@@ -600,7 +634,7 @@ function alternativeOA(message, oab){
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab);
+            requestDocument(oab, doistring);
         }
     }
     
@@ -609,7 +643,11 @@ function alternativeOA(message, oab){
     }
     else if(message != undefined && message == "y"){
         console.log("Open Access Helper (Safari Extension): no Open Access Found");
-        requestDocument(oab);
+        requestDocument(oab, doistring);
+    }
+    else{
+        console.log("OAHELPER FALLBACK in alternativeOA")
+        requestDocument(oab, doistring);
     }
     
 }
@@ -656,9 +694,10 @@ function scrapedDoi(doi){
 }
 
 function webscraperBadge(selector, onoa, oab){
+    var doistring = "-"
     var selected = document.querySelectorAll(selector);
     if(selected.length == 0){
-        requestDocument(oab);
+        requestDocument(oab, doistring);
         return;
     }
     var href = document.querySelectorAll(selector)[0].href;
@@ -672,7 +711,7 @@ function webscraperBadge(selector, onoa, oab){
         }
     }
     else{
-        requestDocument(oab);
+        requestDocument(oab, doistring);
     }
 }
 
@@ -729,6 +768,166 @@ function evaluateTab(){
 
 // Core Recommender Related Functions
 
-function coreRecommenderStart(){
-    console.log("OAHelper: I am supposed to do CORE RECOMMENDER")
+function coreRecommenderStart(doistring){
+    if(isDOI(doistring)){
+        var doi = doistring;
+    }
+    else{
+        return;
+    }
+    
+    var currentUrl = document.URL;
+    var docTitle = findTitle();
+    var abstract = findAbstract();
+
+    if(doi == "" && docTitle == "0" && abstract == "0"){
+        return
+    }
+    
+    console.log("DOI FOR RECOMMENDATION: "+doi);
+    console.log("abstract length: "+abstract.length)
+    
+    var src = safari.extension.baseURI + "recom.png"; // padlock
+    var message = "We didn't find a legal Open Access Version, but you could try and review some CORE Open Access Recommendations instead";
+    
+    var div = document.createElement('div');
+    div.innerHTML = '<div class="oahelper_corerecom" title="'+message+'"><img id="oahelper_doicheckmark1" src="'+src+'" align="left"  title="'+message+'" data-doi="'+doi+'" data-badge=""/><span id="oahelper_oahelpmsg">CORE Recommender</span></div>'; // data-oaurl is a gift to ourselves
+    div.id = 'oahelper_corerecom_outer';
+    div.className = 'oahelper_corerecom_outer oahelper_corecolor';
+    
+    if(document.body.parentNode.parentNode != "#document"){
+        document.body.appendChild(div);
+    }
+    const element = document.getElementById("oahelper_corerecom_outer");
+    element.addEventListener("click", doCORERecom, false);
+    console.log("Open Access Helper (Safari Extension) did not find any Open Access, but you can review some CORE Open Access Recommendations")
+    
+}
+
+function findAbstract(){
+    var locations = ['DC.description', 'dc.Description', 'DCTERMS.abstract', 'eprints.abstract', 'description', 'Description'];
+    var abstract = "0";
+    
+    for(i = 0; i < locations.length; i++){
+        if(abstract == "0"){
+           abstract = getMetaForAbstract(locations[i]);
+        }
+    }
+    var ogLocation = ['og:description'];
+    for(j = 0; j < ogLocation.length; j++){
+        if(abstract == "0"){
+           abstract = getMetaProperty(ogLocation[j]);
+        }
+    }
+    if(abstract.length > 2000){
+        abstract = abstract.substring(0, 2000);
+    }
+    return abstract;
+}
+
+function findTitle(){
+    var locations = ['citation_title'];
+    var title = "0";
+    
+    for(i = 0; i < locations.length; i++){
+        if(title == "0"){
+           title = getMetaForAbstract(locations[i]);
+        }
+    }
+    if(title == 0){
+        title = document.title;
+    }
+    
+    return title
+    
+}
+
+
+function doCORERecom(){
+
+    console.log("doCORERecom");
+    
+    var element = document.getElementById("oahelper_doicheckmark1");
+   
+    var doi = element.dataset.doi;
+    var currentUrl = document.URL;
+    var docTitle = findTitle();
+    var abstract = findAbstract();
+        
+    //remove button
+    var element1 = document.getElementById("oahelper_corerecom_outer");
+    element1.parentNode.removeChild(element1);
+    
+    var imgSrc = safari.extension.baseURI + "loader.gif";
+    var logoSrc = safari.extension.baseURI + "core_logo.svg";
+    
+    //add sidebar
+    var div = document.createElement('div');
+    div.innerHTML = '<div id="oahelper_corerecommendations" ><div id="oahelper_corerecom_intro"><img src="'+logoSrc+'" id="oahelper_core_logo"> Recommender <div id="oahelper_core_x" title="close">X close</div></div><div id="oahelper_correcom_intro2">We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)</div><div id="oahelper_spinner"><img src="'+imgSrc+'"></div></div>'; // data-oaurl is a gift to ourselves
+    div.id = 'oahelper_corerecommender_outer';
+    div.className = 'oahelper_corerecommender_outer';
+    
+    if(document.body.parentNode.parentNode != "#document"){
+        document.body.appendChild(div);
+    }
+    
+    var element2 = document.getElementById("oahelper_core_x");
+    element2.addEventListener("click", dismissCoreRecommendations, false);
+    
+    setTimeout(function () {
+        var element3 = document.getElementById("oahelper_corerecommender_outer");
+        element3.classList.remove("oahelper_animate_out");
+        element3.classList.add("oahelper_animate_in")
+    } , 200);
+    
+    
+    safari.extension.dispatchMessage("requestRecommendation", {"doi" : doi, "currentUrl" : currentUrl, "docTitle" : docTitle, "abstract" : abstract});
+}
+
+function dismissCoreRecommender(){
+    console.log("Open Access Helper (Safari Extension): There were no recommendations, removing info")
+    
+    var element = document.getElementById("oahelper_spinner");
+    element.parentNode.removeChild(element)
+    
+    var element = document.getElementById("oahelper_correcom_intro2");
+    element.parentNode.removeChild(element)
+    
+    var myRecomElement = document.getElementById("oahelper_corerecommendations");
+    
+    var div = document.createElement('div');
+    div.className = "oahelper_recommendation";
+    div.innerHTML = '<p class="oahelper_recommendation_p">We were hopeful, but there were no recommendations :( This will automatically dismiss in a few seconds.</p>';
+    myRecomElement.appendChild(div);
+    
+    setTimeout(function () {
+               dismissCoreRecommendations();
+    }, 5500);
+}
+
+function showRecommendations(data){
+    var element = document.getElementById("oahelper_spinner");
+    element.parentNode.removeChild(element)
+    
+    var intro = document.getElementById("oahelper_correcom_intro2");
+    intro.innerHTML = "We found a wonderful list of fresh papers similar to what you are looking for. We hope you'll like them!";
+    
+    var myRecomElement = document.getElementById("oahelper_corerecommendations");
+    var obj = JSON.parse(data)
+    for(i=0; i<obj.length; i++){
+        var year = ""
+        if(obj[i].year != ""){
+            year = "("+obj[i].year+") ";
+        }
+        var div = document.createElement('div');
+        div.className = "oahelper_recommendation";
+        div.innerHTML = '<p class="oahelper_recommendation_p"><a href="'+obj[i].link+'" target="_blank" class="oahelper_recommendation_a">'+obj[i].title+'</a><br>'+year+obj[i].author+'</p>';
+        myRecomElement.appendChild(div);
+    }
+    
+}
+
+function dismissCoreRecommendations(){
+    var element = document.getElementById("oahelper_corerecommender_outer");
+    element.parentNode.removeChild(element)
 }

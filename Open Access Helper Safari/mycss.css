@@ -9,13 +9,45 @@
     background-color: rgb(255, 102, 0) !important;
 }
 
-.oahelper_doifound_outer:hover{
+.oahelper_corerecom_outer{
+    bottom: 10% !important;
+    right: -180px !important;
+    z-index: 999999999 !important;
+    position: fixed !important;
+    width: 230px !important;
+    height: 40px !important;
+    border-radius: 20px 0 0 20px !important;
+    background-color: rgb(255, 102, 0) !important;
+}
+
+#oahelper_corerecommender_outer{
+    bottom: 10% !important;
+    right: -1000px;
+    z-index: 999999999 !important;
+    position: fixed !important;
+    width: 25% !important;
+    min-height: 250px !important;
+    background-color: rgb(255, 255, 255) !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 8px !important;
+}
+
+.oahelper_recommendation_p, #oahelper_correcom_intro2{
+    padding: 1em !important;
+    font-size: 14px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.oahelper_recommendation_p:hover{
+    background-color: #e5e5e5;
+}
+
+.oahelper_doifound_outer:hover, .oahelper_corerecom_outer:hover{
     right: 0 !important;
     -webkit-transition: right 0.5s;
 }
 
 #oahelper_oahelpmsg{
-    display: inline-block;
+    display: inline-block !important;
     font-size: 15px !important;
     vertical-align: middle !important;
     line-height: 40px !important;
@@ -29,10 +61,14 @@
     background-color: #398bc5 !important;
 }
 
-.oahelper_doifound{
+.oahelper_corecolor{
+    background-color: #b65500 !important;
+}
+
+.oahelper_doifound, .oahelper_corerecom{
     font-family:  "Helvetica", "Arial", "sans-serif" !important;
-    text-align: center;
-    cursor: pointer;
+    text-align: center !important;
+    cursor: pointer !important;
     color: #FFF !important;
     width: 230px !important;
     height: 40px !important;
@@ -43,7 +79,7 @@ a#oahelper_doifound, a#oahelper_doifound:active, a#oahelper_doifound:hover{
     color: #FFF !important;
 }
 
-#oahelper_doicheckmark{
+#oahelper_doicheckmark, #oahelper_doicheckmark1{
     width: 30px !important;
     height: 30px !important;
     margin: 5px !important;
@@ -52,9 +88,72 @@ a#oahelper_doifound, a#oahelper_doifound:active, a#oahelper_doifound:hover{
 
 #oahelper_LiveRegion{
     position:absolute;
-    left:-10000px;
+    left:-1000px;
     top:auto;
     width:1px;
     height:1px;
     overflow:hidden;
+}
+
+#oahelper_corerecom_intro{
+    width: 100% !important;
+    font-weight: bold !important;
+    background-color: #e5e5e5 !important;
+    color: #2d2d2d !important;
+    line-height: 1.5em !important;
+    padding: 10px !important;
+    font-family:  "Helvetica", "Arial", "sans-serif" !important;
+    font-size: 14px !important;
+}
+
+#oahelper_core_x{
+    font-family:  "Helvetica", "Arial", "sans-serif" !important;
+    font-size: 14px !important;
+    float: right !important;
+    padding-right: 1em !important;
+}
+
+#oahelper_core_x{
+    cursor: pointer !important;
+    text-decoration: none !important;
+    color: #2d2d2d !important;
+}
+
+#oahelper_core_x:hover{
+    text-decoration: none !important;
+    color: #b65500 !important;
+}
+
+#oahelper_spinner{
+    width: 32px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.oahelper_animate_out{
+    right: -1000px !important;
+    -webkit-transition: right 0.5s;
+}
+
+.oahelper_animate_in{
+    right: 0 !important;
+    -webkit-transition: right 0.5s;
+}
+
+.oahelper_recommendation_a{
+    text-decoration: none !important;
+    color: #b65500 !important;
+    font-weight: bold !important;
+}
+
+.oahelper_recommendation_a:hover{
+    text-decoration: underline !important;
+    color: #333333 !important;
+    font-weight: bold !important;
+}
+
+#oahelper_core_logo{
+    width: 17px !important;
+    height: 24px !important;
+    margin: -3px 0px !important;
 }

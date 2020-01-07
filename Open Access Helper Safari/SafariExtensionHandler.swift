@@ -82,7 +82,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         else if messageName == "doCoreRecom"{
             if(preferences.getValue(key: "corerecom")){
-              page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doCoreRecom" : true])
+                if let doiString = userInfo?["doistring"]{
+                   page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doistring" : doiString])
+                }
+            }
+        }
+        else if messageName == "requestRecommendation" {
+            //"requestRecommendation", {"doi" : doi, "currentUrl" : currentUrl, "docTitle" : docTitle, "abstract" : abstract}
+            if(preferences.getValue(key: "corerecom")){
+                self.requestRecommendation(userInfo: (userInfo)!, page: page)
             }
         }
         
@@ -349,7 +357,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         if(!coreSetting && !oaButtonSetting){
             // user wants neither core nor open access button
             // let's take them to potential order button
-            noOpenAccessFound(page: page, doi: "y", year: year)
+            noOpenAccessFound(page: page, doi: doi, year: year)
             return
         }
         else if(!coreSetting && oaButtonSetting){
@@ -426,7 +434,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     func checkOAButton(doi: String, page: SFSafariPage, originUrl: String, year: Int) {
         let oaButtonSetting = preferences.getValue(key: "oabutton")
         if(!oaButtonSetting){
-            noOpenAccessFound(page: page, doi: "y", year: year)
+            noOpenAccessFound(page: page, doi: doi, year: year)
             return
         }
         
@@ -453,15 +461,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 //we got an error, let's tell the user
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
                 NSLog("OAHELPER: OAB ERROR in dataTask / error")
-                self.noOpenAccessFound(page: page, doi: "y", year: year)
+                self.noOpenAccessFound(page: page, doi: doi, year: year)
             }
             if let data = data {
-                self.handleOAButtonData(data: data, page: page, originUrl: originUrl, year: year)
+                self.handleOAButtonData(data: data, page: page, originUrl: originUrl, year: year, doi: doi)
             }
             else{
                 NSLog("OAHELPER: OAB ERROR in dataTask / else")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
-                self.noOpenAccessFound(page: page, doi: "y", year: year)
+                self.noOpenAccessFound(page: page, doi: doi, year: year)
                 return
             }
             
@@ -470,7 +478,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
 
-    func handleOAButtonData(data: Data, page: SFSafariPage, originUrl : String, year: Int){
+    func handleOAButtonData(data: Data, page: SFSafariPage, originUrl : String, year: Int, doi: String){
         do{
             let oaButtonData = try JSONDecoder().decode(OaButton.self, from: data)
             if let oabAvailability = oaButtonData.data.availability {
@@ -483,39 +491,39 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button", "version" : ""])
                     }
                     else{
-                        noOpenAccessFound(page: page, doi: "y", year: year)
+                        noOpenAccessFound(page: page, doi: doi, year: year)
                     }
                 }
                 else{
                     if let oabRequests = oaButtonData.data.requests {
                         if let requestId = oabRequests.first??.id {
-                            self.checkOAButtonRequest(request: requestId, page: page, originUrl: originUrl, year: year)
+                            self.checkOAButtonRequest(request: requestId, page: page, originUrl: originUrl, year: year, doi: doi)
                         }
                         else{
-                            noOpenAccessFound(page: page, doi: "y", year: year)
+                            noOpenAccessFound(page: page, doi: doi, year: year)
                         }
                     }
                     else{
-                        noOpenAccessFound(page: page, doi: "y", year: year)
+                        noOpenAccessFound(page: page, doi: doi, year: year)
                     }
                 }
                 
             }
             else {
-                noOpenAccessFound(page: page, doi: "y", year: year)
+                noOpenAccessFound(page: page, doi: doi, year: year)
                 
             }
         }
         catch let jsonError{
             page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
-            noOpenAccessFound(page: page, doi: "y", year: year)
+            noOpenAccessFound(page: page, doi: doi, year: year)
             
             return
         }
     }
     
     
-    func checkOAButtonRequest(request: String, page: SFSafariPage, originUrl: String, year: Int) {
+    func checkOAButtonRequest(request: String, page: SFSafariPage, originUrl: String, year: Int, doi: String) {
         toolbarAction(imgName: "oa_100a.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
         if(apiKey == ""){
@@ -537,15 +545,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if let error = error{
                 //we got an error, let's tell the user
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_error" : error.localizedDescription])
-                self.noOpenAccessFound(page: page, doi: "y", year: year)
+                self.noOpenAccessFound(page: page, doi: doi, year: year)
                 
             }
             if let data = data {
-                self.handleOABRequestData(data: data, page: page, originUrl: originUrl, year: year)
+                self.handleOABRequestData(data: data, page: page, originUrl: originUrl, year: year, doi: doi)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["oa_button_data" : "failed"])
-                self.noOpenAccessFound(page: page, doi: "y", year: year)
+                self.noOpenAccessFound(page: page, doi: doi, year: year)
                 return
             }
             
@@ -554,7 +562,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         task.resume()
     }
     
-    func handleOABRequestData(data: Data, page: SFSafariPage, originUrl : String, year: Int){
+    func handleOABRequestData(data: Data, page: SFSafariPage, originUrl : String, year: Int, doi: String){
         do{
             let oaButtonData = try JSONDecoder().decode(OARequestData.self, from: data)
             if let status = oaButtonData.data.status{
@@ -569,25 +577,25 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                                 page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button", "version" : ""])
                             }
                             else{
-                                noOpenAccessFound(page: page, doi: "y", year: year)
+                                noOpenAccessFound(page: page, doi: doi, year: year)
                             }
                         }
                         else{
-                            noOpenAccessFound(page: page, doi: "y", year: year)
+                            noOpenAccessFound(page: page, doi: doi, year: year)
                         }
                     }
                     else{
-                        noOpenAccessFound(page: page, doi: "y", year: year)
+                        noOpenAccessFound(page: page, doi: doi, year: year)
                     }
                 }
                 else{
-                    noOpenAccessFound(page: page, doi: "y", year: year)
+                    noOpenAccessFound(page: page, doi: doi, year: year)
                 }
             }
         }
         catch let jsonError{
             NSLog(jsonError as! String)
-            noOpenAccessFound(page: page, doi: "y", year: year)
+            noOpenAccessFound(page: page, doi: doi, year: year)
             return
         }
     }
@@ -604,18 +612,18 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             // oab: y = yes, e = error getting data, o = older than 5 years ago
             
             if(year == 0 || year > fiveYearsAgo){
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y"])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y", "doistring" : doi])
             }
             else if(year == 1){
-               page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e"])
+               page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e", "doistring" : doi])
             }
             else{
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o"])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o", "doistring" : doi])
             }
             
         }
         else{
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n"])
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n", "doistring" : doi])
         }
         
         
@@ -828,107 +836,142 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         return ""
     }
     
-}
-
-
-
-
-struct OaDOI : Decodable {
-    let url : String
-    //let final : String
-    let status : String
-}
-
-struct Unpaywall : Decodable{
-    let best_oa_location : OpenAccessLocation?
-    let data_standard : Int
-    let doi : String
-    let doi_url : String
-    let genre : String
-    let is_oa : Bool
-    let journal_is_in_doaj: Bool
-    let journal_is_oa : Bool
-    let journal_issns : String?
-    let journal_name : String?
-    let oa_locations : [OpenAccessLocation]
-    let published_date : String?
-    let publisher : String?
-    let title : String?
-    let updated : String?
-    let year : Int?
-    let z_authors : [OAAuthors]?
-}
-
-struct OpenAccessLocation : Decodable {
-    let evidence : String
-    let host_type : String
-    let is_best : Bool
-    let license : String?
-    let pmh_id : String?
-    let updated : String?
-    let url : String
-    let url_for_landing_page : String?
-    let url_for_pdf : String?
-    let version : String?
-}
-
-struct OAAuthors : Decodable{
+    //MARK: CORE RECOMMENDATION STUFF
     
-    let orcid : String?
-    let authenticated_orcid : Bool?
-    let family : String?
-    let given : String?
-    let sequence : String?
-    
-    enum CodingKeys: String, CodingKey {
-        case authenticated_orcid = "authenticated-orcid"
-        case orcid = "ORCID"
-        case family = "family"
-        case given = "given"
-        case sequence = "sequence"
+    func requestRecommendation(userInfo: [String : Any]?, page: SFSafariPage){
+        
+        guard let doi = userInfo!["doi"] as? String else{
+            page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "no doi"])
+            return
+        }
+        guard let docTitle = userInfo!["docTitle"] as? String else{
+            page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "no docTitle"])
+            return
+        }
+        guard let currentUrl = userInfo!["currentUrl"] as? String else{
+            page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "no currentUrl"])
+            return
+        }
+        var abstract = ""
+        if let abs = userInfo?["abstract"] as? String{
+            abstract = abs
+        }
+        
+        let recommendationObject = CoreRequestObject()
+        recommendationObject.title = docTitle
+        recommendationObject.doi = doi
+        recommendationObject.aabstract = abstract
+        recommendationObject.referer = currentUrl
+
+        self.askForRecommendation(metaData: recommendationObject) { (res) in
+            switch res{
+            case .success(let coreRecommends):
+                // let's check if there are recommendations and then display
+                
+                if(coreRecommends.data.count > 0){
+                    let encoder = JSONEncoder()
+                    if let jsonData = try? encoder.encode(coreRecommends.data) {
+                        if let jsonString = String(data: jsonData, encoding: .utf8) {
+                            page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "show", "data" : jsonString])
+                        }
+                        else{
+                            page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail": "unable to create jsonString"])
+                        }
+                    }
+                    else{
+                        page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "unable to jsonEncode"])
+                    }
+
+                }
+                else{
+                    // there was nothing
+                    page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "data count == 0"])
+                }
+                
+            case .failure(let error):
+                //I hate my life right now
+                print("===== core recommend: there was an error: \(error)")
+                page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "failure from data task"])
+            }
+        }
+        
     }
-}
-
-
-struct Coredata : Decodable{
-    let fullTextLink : String?
-    let source : String?
-}
-
-
-struct OaButton : Decodable{
-    let data : OAData
-}
-
-struct OAData : Decodable{
-    let availability : [OAAvailability?]?
-    let requests : [OARequests?]?
-}
-
-struct OAAvailability : Decodable{
-    let type : String?
-    let url : String?
-}
-
-struct OARequests : Decodable {
-    let type : String?
-    let id : String?
     
-    enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "_id"
+    func askForRecommendation(metaData : CoreRequestObject, completion: @escaping (Result<CoreRecommender, Error>) -> ()){
+        let apiKey = self.getAPIKeyFromPlist(type: "coreRecommender")
+        let apiEndPoint = self.getAPIKeyFromPlist(type: "coreRecommenderUrl")
+        if (apiKey == "") {
+            //print("no API Key")
+            completion(.failure(NSError(domain: "", code: 441, userInfo: ["description" : "no APIKey Present"])))
+            return
+        }
+        if(apiEndPoint == ""){
+            //print("no API EndPoint")
+            completion(.failure(NSError(domain: "", code: 442, userInfo: ["description" : "no API End Point Present"])))
+            return
+        }
+        let jsonUrlString = apiEndPoint
+        guard let url = URL(string: jsonUrlString) else {
+            //print("could not create URL")
+            completion(.failure(NSError(domain: "", code: 443, userInfo: ["description" : "could not create URL"])))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(apiKey, forHTTPHeaderField: "X-Token")
+        request.httpMethod = "POST"
+                
+        let parameters: [String: Any] = [
+            "title" : metaData.title,
+            "aabstract" : metaData.aabstract,
+            "author" : metaData.author,
+            "referer" : metaData.referer,
+            "url" : metaData.fulltextUrl,
+            "doi" : metaData.doi,
+            "origin" : "macOS"
+        ]
+        
+        request.httpBody = parameters.percentEscaped().data(using: .utf8)
+        let urlconfig = URLSessionConfiguration.default
+        urlconfig.timeoutIntervalForRequest = 31
+        urlconfig.timeoutIntervalForResource = 31
+        
+        let session = URLSession(configuration: urlconfig, delegate: self as? URLSessionDelegate, delegateQueue: nil)
+        print("start recommender task")
+        let task = session.dataTask(with: request) {(data, response, error) in
+            //print("The core recommender task took \(timer.stop()) seconds.")
+            if let error = error{
+                //we got an error, let's tell the user
+                completion(.failure(error))
+                print(error)
+            }
+            if let data = data {
+                //this worked just fine
+                print("this worked fine")
+                do {
+                    print(data)
+                    let recommendations = try JSONDecoder().decode(CoreRecommender.self, from: data)
+                    completion(.success(recommendations))
+                }
+                catch let jsonError{
+                    //print(data)
+                    //print("json decode error", jsonError)
+                    print("===== JSON String: \(String(data: data, encoding: .utf8) ?? "JSON ERROR")")
+                    completion(.failure(jsonError))
+                }
+            }
+            else{
+                //another error
+                print("another error")
+                completion(.failure(NSError(domain: "", code: 440, userInfo: ["description" : "failed to get data"])))
+                return
+            }
+            
+        }
+        task.resume()
+        
     }
+    
 }
 
-struct OARequestData : Decodable{
-    let data : OARequestObject
-}
-
-struct OARequestObject : Decodable{
-    let status : String?
-    let received : OAReceivedObject?
-}
-
-struct OAReceivedObject : Decodable{
-    let url : String?
-}
