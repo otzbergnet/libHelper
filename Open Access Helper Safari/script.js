@@ -611,14 +611,17 @@ function alternativeOA(message, oab, doistring){
     else if(host.indexOf("onlinelibrary.wiley.com") > -1 && path.indexOf("doi") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
         var toCheck = document.querySelectorAll("div.article-citation > div > div.doi-access-container.clearfix > div > div");
+        var toCheck2 = document.getElementById("pdf-iframe");
         if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Free Access")){
-            console.log("Open Access Helper (Safari Extension): We found FREE Access");
-            var pdf = getMeta("citation_pdf_url");
-            successfulAlternativeOAFound(pdf, "Free Access", true);
+            if(toCheck2 === null){
+                console.log("Open Access Helper (Safari Extension): We found FREE Access");
+                var pdf = getMeta("citation_pdf_url");
+                successfulAlternativeOAFound(pdf, "Free Access", true);
+            }
         }
         else{
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            if(path.indexOf("doi/pdf") == -1){
+            if(toCheck2 === null){
                 requestDocument(oab, doistring);
             }
             
@@ -658,7 +661,7 @@ function successfulAlternativeOAFound(pdf, type = "Open Access", onOa = false){
     var message = new Array();
     message['url'] = pdf;
     message['title'] = type+" found at: ";
-    message['version'] = "unknown";
+    message['version'] = type+" (*)";
     message['source'] = "Page Analysis";
     oafound(message);
     var currentUrl = window.location.href;
