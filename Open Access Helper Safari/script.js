@@ -84,7 +84,7 @@ function messageHandler(event){
         evaluateTab();
     }
     else if (event.name == "doCoreRecom"){
-        coreRecommenderStart(event.message.doistring);
+        coreRecommenderStart(event.message.doistring, event.message.infoString);
     }
     else if (event.name == "recomResults"){
         if(event.message.action == "dismiss"){
@@ -92,7 +92,7 @@ function messageHandler(event){
             dismissCoreRecommender();
         }
         else{
-            showRecommendations(event.message.data);
+            showRecommendations(event.message.data, event.message.infoString);
         }
     }
 }
@@ -610,7 +610,7 @@ function alternativeOA(message, oab, doistring){
     }
     else if(host.indexOf("onlinelibrary.wiley.com") > -1 && path.indexOf("doi") > -1){
         console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
-        var toCheck = document.querySelectorAll("div.doi-access");
+        var toCheck = document.querySelectorAll("div.article-citation > div > div.doi-access-container.clearfix > div > div");
         if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Free Access")){
             console.log("Open Access Helper (Safari Extension): We found FREE Access");
             var pdf = getMeta("citation_pdf_url");
@@ -768,7 +768,7 @@ function evaluateTab(){
 
 // Core Recommender Related Functions
 
-function coreRecommenderStart(doistring){
+function coreRecommenderStart(doistring, infoString){
     if(isDOI(doistring)){
         var doi = doistring;
     }
@@ -799,9 +799,16 @@ function coreRecommenderStart(doistring){
         document.body.appendChild(div);
     }
     const element = document.getElementById("oahelper_corerecom_outer");
-    element.addEventListener("click", doCORERecom, false);
+    //element.addEventListener("click", doCORERecom, false);
+    addRecommenderClickHandler(element, infoString);
     console.log("Open Access Helper (Safari Extension) did not find any Open Access, but you can review some CORE Open Access Recommendations")
     
+}
+
+function addRecommenderClickHandler(element, infoString) {
+    element.addEventListener('click', function(e) {
+        doCORERecom(infoString);
+    }, false);
 }
 
 function findAbstract(){
@@ -843,7 +850,7 @@ function findTitle(){
 }
 
 
-function doCORERecom(){
+function doCORERecom(infoString){
 
     console.log("doCORERecom");
     
@@ -863,7 +870,7 @@ function doCORERecom(){
     
     //add sidebar
     var div = document.createElement('div');
-    div.innerHTML = '<div id="oahelper_corerecommendations" ><div id="oahelper_corerecom_intro"><img src="'+logoSrc+'" id="oahelper_core_logo"> Recommender <div id="oahelper_core_x" title="close">X close</div></div><div id="oahelper_correcom_intro2">We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)</div><div id="oahelper_spinner"><img src="'+imgSrc+'"></div></div>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div id="oahelper_corerecommendations" ><div id="oahelper_corerecom_intro"><img src="'+logoSrc+'" id="oahelper_core_logo"> Recommender <div id="oahelper_core_x" title="close">X close</div></div><div id="oahelper_correcom_intro2">'+infoString+'</div><div id="oahelper_spinner"><img src="'+imgSrc+'"></div></div>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_corerecommender_outer';
     div.className = 'oahelper_corerecommender_outer';
     
@@ -905,12 +912,12 @@ function dismissCoreRecommender(){
     }, 5500);
 }
 
-function showRecommendations(data){
+function showRecommendations(data, infoString){
     var element = document.getElementById("oahelper_spinner");
     element.parentNode.removeChild(element)
     
     var intro = document.getElementById("oahelper_correcom_intro2");
-    intro.innerHTML = "We found a wonderful list of fresh papers similar to what you are looking for. We hope you'll like them!";
+    intro.innerHTML = infoString;
     
     var myRecomElement = document.getElementById("oahelper_corerecommendations");
     var obj = JSON.parse(data)

@@ -83,7 +83,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         else if messageName == "doCoreRecom"{
             if(preferences.getValue(key: "corerecom")){
                 if let doiString = userInfo?["doistring"]{
-                   page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doistring" : doiString])
+                    let infoString = NSLocalizedString("We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)", comment: "infoString for waiting for recommendations to load")
+                    page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doistring" : doiString, "infoString" : infoString])
                 }
             }
         }
@@ -872,7 +873,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     let encoder = JSONEncoder()
                     if let jsonData = try? encoder.encode(coreRecommends.data) {
                         if let jsonString = String(data: jsonData, encoding: .utf8) {
-                            page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "show", "data" : jsonString])
+                            let infoString = NSLocalizedString("We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!", comment: "to be shown in JavaScript Popover")
+                            page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "show", "data" : jsonString, "infoString": infoString])
                         }
                         else{
                             page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail": "unable to create jsonString"])

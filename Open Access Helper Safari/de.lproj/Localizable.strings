@@ -132,3 +132,9 @@
 
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Sie hatten Hilfe mit %@ Open Access Suchen";
+
+/* to be shown in JavaScript Popover */
+"We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!" = "Wir haben eine kurze Liste mit Artikeln zusammengestellt, die dem von Ihnen angezeigten ähneln. Wir hoffen, dass diese nützlich sind!";
+
+/* infoString for waiting for recommendations to load */
+"We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)" = "Wir stellen gerade eine Liste an Ariktelempfehlungen zusammen. Bitte gedulden Sie sich!";
