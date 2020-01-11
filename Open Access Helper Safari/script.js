@@ -389,11 +389,9 @@ function oafound(message){
     console.log("Open Access Helper (Safari Extension) found this Open Access URL ("+message.source+"): "+message.url+oaVersion)
     var currentUrl = window.location.href;
     safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
-    var trackCall = setInterval(function () {
-        var div = document.getElementById("oahelper_LiveRegion");
-        div.innerHTML = message.title;
-        clearInterval(trackCall);
-    }, 4000);
+    
+    doOaHelperLiveRegion(message.title);
+    
 }
 
 function requestDocument(oab, doistring){
@@ -432,11 +430,8 @@ function requestDocument(oab, doistring){
     }
     console.log("Open Access Helper (Safari Extension) did not find any Open Access, but you can try to request from Open Access Button ")
     var currentUrl = window.location.href;
-    var trackCall = setInterval(function () {
-                                var div = document.getElementById("oahelper_LiveRegion");
-                                div.innerHTML = message;
-                                clearInterval(trackCall);
-                                }, 4000);
+    
+    doOaHelperLiveRegion(message.title);
 }
 
 
@@ -447,11 +442,8 @@ function onOa(message){
     div.classList.add("oahelper_doigreen");
     var div1 = document.getElementById("oahelper_doicheckmark");
     div1.dataset.badge = "✔"
-    var trackCall = setInterval(function () {
-        var div = document.getElementById("oahelper_LiveRegion");
-        div.innerHTML = message.title;
-        clearInterval(trackCall);
-    }, 8000);
+    
+    doOaHelperLiveRegion(message.title);
 }
 
 
@@ -988,4 +980,14 @@ function doPsycNet(){
             findDoi();
         } , 2500);
     }
+}
+
+
+function doOaHelperLiveRegion(message){
+    setTimeout(function () {
+        var div = document.getElementById("oahelper_LiveRegion");
+        if(div != null){
+            div.innerHTML = message;
+        }
+    } , 4000);
 }
