@@ -9,22 +9,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
                           
 });
 
-//I must really like the good folk at impactstory to work around their SPA :)
-if(window.location.hostname == "gettheresearch.org"){
-    let url = location.href;
-    document.addEventListener('click', ()=>{
-        requestAnimationFrame(()=>{
-            if(url!==location.href){
-                removeMyself()
-                findDoi3();
-                
-            }
-            url = location.href;
-        });
-    }, true);
-}
-
-
 // double checking that we are not in an iFrame
 
 if(!inIframe()){
@@ -34,10 +18,26 @@ if(!inIframe()){
     document.addEventListener("keydown", fireOnKeypress, false);
 }
 
+if(window.location.hostname == "gettheresearch.org" || window.location.hostname == "psycnet.apa.org"){
+    let url = location.href;
+    document.addEventListener('click', ()=>{
+        requestAnimationFrame(()=>{
+            if(url!==location.href){
+                removeMyself()
+                findDoi3();
+            }
+            url = location.href;
+        });
+    }, true);
+}
 
 //support gettheresearch SPA
 function removeMyself(){
-    var element = document.getElementById('doifound_outer');
+    var elementRecom = document.getElementById('oahelper_corerecom_outer');
+    if(elementRecom != null){
+        elementRecom.parentNode.removeChild(elementRecom);
+    }
+    var element = document.getElementById('oahelper_doifound_outer');
     if(element != null){
       element.parentNode.removeChild(element);
       safari.extension.dispatchMessage("notfound", {"doi" : ""});
@@ -223,6 +223,9 @@ function findDoi3(){
             var potentialDoi = getQueryVariable("zoom");
             scrapedDoi(potentialDoi);
         }
+    }
+    else if(host.indexOf("psycnet.apa.org") > -1){
+        doPsycNet();
     }
     else{
         //console.log("Open Acces Helper: Failed on DOI3");
@@ -496,151 +499,32 @@ function alternativeOA(message, oab, doistring){
     var generator = getMeta('Generator');
     
     if(host.indexOf("ingentaconnect") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
-        // Ingenta Connect
-        if (document.querySelectorAll("span.access-icon img[alt='Open Access']").length > 0){
-            var onclick = document.querySelectorAll("a.fulltext.pdf")[0].getAttribute('onclick');
-            if(onclick != null && onclick != "" && onclick.indexOf("javascript" > -1)){
-                var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
-                if(href != null && href != ""){
-                    var url = window.location.protocol+'//'+host+href;
-                    successfulAlternativeOAFound(url, "Free Access", true);
-                }
-                else{
-                    console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                    requestDocument(oab, doistring);
-                }
-            }
-            else{
-                var popup = document.querySelectorAll("a.fulltext.pdf")[0].dataset.popup
-                if(popup != null && popup != "" && popup.indexOf("download" > -1)){
-                    if(popup != null && popup != ""){
-                        var url = window.location.protocol+'//'+host+popup;
-                        successfulAlternativeOAFound(url, "Free Access", true);
-                    }
-                    else{
-                        console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                        requestDocument(oab, doistring);
-                    }
-                }
-                else{
-                    console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                    requestDocument(oab, doistring);
-                }
-            }
-            
-        }
+        doIngentaConnect(oab, doistring, host);
     }
     else if(host.indexOf("base-search.net") > -1 && window.location.href.indexOf("/Record/") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
-        if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
-            webscraperBadge("a.link-gruen.bold", false, oab);
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab, doistring);
-        }
+        doBaseSearch(oab, doistring, host);
     }
     else if(host.indexOf("ieeexplore.ieee.org") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
-        if (document.querySelectorAll("i.icon-access-open-access").length > 0){
-            webscraperBadge("a.doc-actions-link.stats-document-lh-action-downloadPdf_2", false, oab);
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab, doistring);
-        }
+        doIEEExplore(oab, doistring, host);
     }
     else if(host.indexOf("journals.sagepub.com") > -1 && path.indexOf("doi") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
-        if(document.querySelectorAll("img.accessIcon.freeAccess").length > 0){
-            webscraperBadge("a[data-item-name=\"download-PDF\"]", true, oab);
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
-            if(document.querySelectorAll('img.accessIcon.openAccess').length > 0){
-                webscraperBadge("div.pdf-access>a", true, oab);
-            }
-            else{
-                console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                requestDocument(oab, doistring);
-            }
-        }
-        
+        doSagePub(oab, doistring, host);
     }
     else if(host.indexOf("academic.oup.com") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
-        if(document.querySelectorAll("i.icon-availability_free").length > 0){
-            webscraperBadge("a.article-pdfLink", true, oab);
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab, doistring);
-        }
+        doOup(oab, doistring, host);
     }
     else if(host.indexOf("bmj.com") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
-        if(document.querySelectorAll("svg.icon-open-access").length > 0){
-            var pdf = getMeta("citation_pdf_url")
-            if(pdf != "" && pdf.indexOf("http" == 0)){
-                successfulAlternativeOAFound(pdf, "Open Access", true)
-            }
-            else{
-                console.log("Open Access Helper (Safari Extension): no Open Access Found");
-                requestDocument(oab, doistring);
-            }
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab, doistring);
-        }
+        doBmj(oab, doistring, host);
     }
     else if(host.indexOf("cambridge.org") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
-        if(document.querySelectorAll("span.entitled").length > 0){
-            var pdf = getMeta("citation_pdf_url")
-            if(pdf != "" && pdf.indexOf("http" == 0)){
-                successfulAlternativeOAFound(pdf, "Free / Subscription Access", true)
-            }
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab, doistring);
-        }
+        doCambridge(oab, doistring, host);
     }
     else if(host.indexOf("onlinelibrary.wiley.com") > -1 && path.indexOf("doi") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
-        var toCheck = document.querySelectorAll("div.article-citation > div > div.doi-access-container.clearfix > div > div");
-        var toCheck2 = document.getElementById("pdf-iframe");
-        if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Free Access")){
-            if(toCheck2 === null){
-                console.log("Open Access Helper (Safari Extension): We found FREE Access");
-                var pdf = getMeta("citation_pdf_url");
-                successfulAlternativeOAFound(pdf, "Free Access", true);
-            }
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            if(toCheck2 === null){
-                requestDocument(oab, doistring);
-            }
-            
-        }
+        doWiley(oab, doistring, host);
     }
     else if(host.indexOf("link.springer.com") > -1 && path.indexOf("article") > -1){
-        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
-        var toCheck = document.querySelectorAll("div.download-article");
-        if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Download") > -1){
-            console.log("Open Access Helper (Safari Extension): We found FREE / Subscription Access");
-            var pdf = getMeta("citation_pdf_url");
-            successfulAlternativeOAFound(pdf, "Free / Subscription Access", true);
-        }
-        else{
-            console.log("Open Access Helper (Safari Extension): no Open Access Found");
-            requestDocument(oab, doistring);
-        }
+        doSpringerLink(oab, doistring, host);
     }
-    
     else if(generator.length > 0 && generator[0].indexOf('DSpace') > -1){
         console.log("Open Access Helper (Safari Extension): we are on a DSPACE respository - there is a chance the document is available here");
     }
@@ -649,7 +533,6 @@ function alternativeOA(message, oab, doistring){
         requestDocument(oab, doistring);
     }
     else{
-        console.log("OAHELPER FALLBACK in alternativeOA")
         requestDocument(oab, doistring);
     }
     
@@ -690,7 +573,6 @@ function runRegexOnDoc(regEx){
 
 function scrapedDoi(doi){
     if(isDOI(doi)){
-        console.log("Open Access Helper (Safari Extension) found this DOI: "+doi)
         var url = encodeURI(location.href)
         safari.extension.dispatchMessage("found", {"doi" : doi, "url" : url});
     }
@@ -786,9 +668,6 @@ function coreRecommenderStart(doistring, infoString){
     if(doi == "" && docTitle == "0" && abstract == "0"){
         return
     }
-    
-    console.log("DOI FOR RECOMMENDATION: "+doi);
-    console.log("abstract length: "+abstract.length)
     
     var src = safari.extension.baseURI + "recom.png"; // padlock
     var message = "We didn't find a legal Open Access Version, but you could try and review some CORE Open Access Recommendations instead";
@@ -940,4 +819,173 @@ function showRecommendations(data, infoString){
 function dismissCoreRecommendations(){
     var element = document.getElementById("oahelper_corerecommender_outer");
     element.parentNode.removeChild(element)
+}
+
+
+/**********
+ *
+ * Handle Specific Vendor Sites
+ *
+ **********/
+
+
+function doIngentaConnect(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
+    // Ingenta Connect
+    if (document.querySelectorAll("span.access-icon img[alt='Open Access']").length > 0){
+        var onclick = document.querySelectorAll("a.fulltext.pdf")[0].getAttribute('onclick');
+        if(onclick != null && onclick != "" && onclick.indexOf("javascript" > -1)){
+            var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
+            if(href != null && href != ""){
+                var url = window.location.protocol+'//'+host+href;
+                successfulAlternativeOAFound(url, "Free Access", true);
+            }
+            else{
+                console.log("Open Access Helper (Safari Extension): no Open Access Found");
+                requestDocument(oab, doistring);
+            }
+        }
+        else{
+            var popup = document.querySelectorAll("a.fulltext.pdf")[0].dataset.popup
+            if(popup != null && popup != "" && popup.indexOf("download" > -1)){
+                if(popup != null && popup != ""){
+                    var url = window.location.protocol+'//'+host+popup;
+                    successfulAlternativeOAFound(url, "Free Access", true);
+                }
+                else{
+                    console.log("Open Access Helper (Safari Extension): no Open Access Found");
+                    requestDocument(oab, doistring);
+                }
+            }
+            else{
+                console.log("Open Access Helper (Safari Extension): no Open Access Found");
+                requestDocument(oab, doistring);
+            }
+        }
+        
+    }
+}
+
+function doBmj(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+    if(document.querySelectorAll("svg.icon-open-access").length > 0){
+        var pdf = getMeta("citation_pdf_url")
+        if(pdf != "" && pdf.indexOf("http" == 0)){
+            successfulAlternativeOAFound(pdf, "Open Access", true)
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            requestDocument(oab, doistring);
+        }
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        requestDocument(oab, doistring);
+    }
+}
+
+function doBaseSearch(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
+    if (document.querySelectorAll("img.pull-right[alt='Open Access']").length > 0){
+        webscraperBadge("a.link-gruen.bold", false, oab);
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        requestDocument(oab, doistring);
+    }
+}
+
+function doIEEExplore(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
+    if (document.querySelectorAll("i.icon-access-open-access").length > 0){
+        webscraperBadge("a.doc-actions-link.stats-document-lh-action-downloadPdf_2", false, oab);
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        requestDocument(oab, doistring);
+    }
+}
+
+function doSagePub(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
+    if(document.querySelectorAll("img.accessIcon.freeAccess").length > 0){
+        webscraperBadge("a[data-item-name=\"download-PDF\"]", true, oab);
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+        if(document.querySelectorAll('img.accessIcon.openAccess').length > 0){
+            webscraperBadge("div.pdf-access>a", true, oab);
+        }
+        else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            requestDocument(oab, doistring);
+        }
+    }
+}
+
+function doOup(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" with a web scraper");
+    if(document.querySelectorAll("i.icon-availability_free").length > 0){
+        webscraperBadge("a.article-pdfLink", true, oab);
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        requestDocument(oab, doistring);
+    }
+}
+
+function doCambridge(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+    if(document.querySelectorAll("span.entitled").length > 0){
+        var pdf = getMeta("citation_pdf_url")
+        if(pdf != "" && pdf.indexOf("http" == 0)){
+            successfulAlternativeOAFound(pdf, "Free / Subscription Access", true)
+        }
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        requestDocument(oab, doistring);
+    }
+}
+
+function doWiley(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
+    var toCheck = document.querySelectorAll("div.article-citation > div > div.doi-access-container.clearfix > div > div");
+    var toCheck2 = document.getElementById("pdf-iframe");
+    if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Free Access")){
+        if(toCheck2 === null){
+            console.log("Open Access Helper (Safari Extension): We found FREE Access");
+            var pdf = getMeta("citation_pdf_url");
+            successfulAlternativeOAFound(pdf, "Free Access", true);
+        }
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        if(toCheck2 === null){
+            requestDocument(oab, doistring);
+        }
+        
+    }
+}
+
+function doSpringerLink(oab, doistring, host){
+    console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for \"Free Access\"");
+    var toCheck = document.querySelectorAll("div.download-article");
+    if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Download") > -1){
+        console.log("Open Access Helper (Safari Extension): We found FREE / Subscription Access");
+        var pdf = getMeta("citation_pdf_url");
+        successfulAlternativeOAFound(pdf, "Free / Subscription Access", true);
+    }
+    else{
+        console.log("Open Access Helper (Safari Extension): no Open Access Found");
+        requestDocument(oab, doistring);
+    }
+}
+
+function doPsycNet(){
+    if(window.location.pathname.indexOf("/search/display") > -1){
+        setTimeout(function () {
+            findDoi();
+        } , 2500);
+    }
 }
