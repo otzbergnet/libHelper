@@ -592,6 +592,7 @@ function webscraperBadge(selector, onoa, oab){
         var message = new Array();
         message['url'] = href;
         message['title'] = "Open Access found at: ";
+        message['version'] = "Free Access (*)";
         oafound(message);
         if(onoa){
             onOa("This is the Open Access location!");
