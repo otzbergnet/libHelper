@@ -542,7 +542,7 @@ function alternativeOA(message, oab, doistring){
 
 //
 
-function successfulAlternativeOAFound(pdf, type = "Open Access", onOa = false){
+function successfulAlternativeOAFound(pdf, type = "Open Access", onOaTest = false){
     var message = new Array();
     message['url'] = pdf;
     message['title'] = type+" found at: ";
@@ -550,8 +550,8 @@ function successfulAlternativeOAFound(pdf, type = "Open Access", onOa = false){
     message['source'] = "Page Analysis";
     oafound(message);
     var currentUrl = window.location.href;
-    if(onOa){
-        
+    if(onOaTest){
+        onOa(message);
     }
     else{
       safari.extension.dispatchMessage("compareURL", {"current" : currentUrl, "goto" : message.url});
