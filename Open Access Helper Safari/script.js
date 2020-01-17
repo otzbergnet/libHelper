@@ -31,8 +31,11 @@ if(window.location.hostname == "gettheresearch.org" || window.location.hostname 
             }
             else{
                 if(window.location.hostname == "psycnet.apa.org"){
-                    //moving from search results to first result never driggered the URL change
-                    doPsycNet();
+                    //moving from search results to first result never triggered the URL change
+                    console.log("OAHELPER: I am on psycnet");
+                    setTimeout(function () {
+                        doPsycNet();
+                    },1500);
                 }
             }
             spaUrl = location.href;
@@ -235,7 +238,16 @@ function findDoi3(){
     }
     else if(host.indexOf("psycnet.apa.org") > -1){
         console.log("Open Access Helper (Safari Extension) - support for psycnet.apa.org is experimental")
-        doPsycNet();
+        
+        if(document.querySelectorAll(".citation-text>a").length > 0){
+            var doiElements = document.querySelectorAll(".citation-text>a");
+            var potentialDoi = doiElements[0];
+            var potentialDoi = potentialDoi.replace('https://doi.org/', '');
+            scrapedDoi(potentialDoi);
+        }
+        else{
+            doPsycNet();
+        }
     }
     else{
         //console.log("Open Acces Helper: Failed on DOI3");
