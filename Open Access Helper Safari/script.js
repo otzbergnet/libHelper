@@ -1,4 +1,7 @@
 var loaded = 0;
+var processedSinglePageApplication = false;
+var spaUrl = location.href;
+
 document.addEventListener("DOMContentLoaded", function(event) {
     //check if we are in an iframe, if so do nothing, otherwise go and find yourself a DOI
 
@@ -19,14 +22,20 @@ if(!inIframe()){
 }
 
 if(window.location.hostname == "gettheresearch.org" || window.location.hostname == "psycnet.apa.org"){
-    let url = location.href;
     document.addEventListener('click', ()=>{
         requestAnimationFrame(()=>{
-            if(url!==location.href){
+            if(spaUrl !== location.href){
+                processedSinglePageApplication = false;
                 removeMyself()
                 findDoi3();
             }
-            url = location.href;
+            else{
+                if(window.location.hostname == "psycnet.apa.org"){
+                    //moving from search results to first result never driggered the URL change
+                    doPsycNet();
+                }
+            }
+            spaUrl = location.href;
         });
     }, true);
 }
@@ -225,6 +234,7 @@ function findDoi3(){
         }
     }
     else if(host.indexOf("psycnet.apa.org") > -1){
+        console.log("Open Access Helper (Safari Extension) - support for psycnet.apa.org is experimental")
         doPsycNet();
     }
     else{
@@ -860,12 +870,26 @@ function doIngentaConnect(oab, doistring, host){
 
 function doBmj(oab, doistring, host){
     console.log("Open Access Helper (Safari Extension): We are checking: "+host+" for hybrid journal access");
+    var bmjFreeAccessClass = 'highwire-access-icon highwire-access-icon-user-access user-access bmjj-free bmjj-free-access bmjj-access-tag';
+    var pdf = getMeta("citation_pdf_url")
     if(document.querySelectorAll("svg.icon-open-access").length > 0){
-        var pdf = getMeta("citation_pdf_url")
         if(pdf != "" && pdf.indexOf("http" == 0)){
-            successfulAlternativeOAFound(pdf, "Open Access", true)
+            successfulAlternativeOAFound(pdf, "Open Access", true);
         }
         else{
+            console.log("Open Access Helper (Safari Extension): no Open Access Found");
+            requestDocument(oab, doistring);
+        }
+    }
+    else if(document.getElementsByClassName(bmjFreeAccessClass).length > 0){
+        var freeAccess = document.getElementsByClassName(bmjFreeAccessClass);
+        var bmjFree = false;
+        for(i=0; i<freeAccess.length; i++){
+            if(freeAccess[i].textContent == "Free" && !bmjFree){
+                successfulAlternativeOAFound(pdf, "Free Access", true);
+            }
+        }
+        if(!bmjFree){
             console.log("Open Access Helper (Safari Extension): no Open Access Found");
             requestDocument(oab, doistring);
         }
@@ -975,10 +999,11 @@ function doSpringerLink(oab, doistring, host){
 }
 
 function doPsycNet(){
-    if(window.location.pathname.indexOf("/search/display") > -1){
+    if(((window.location.pathname.indexOf("/search/display") > -1) || (window.location.pathname.indexOf("/record/") > - 1) || (window.location.pathname.indexOf("/fulltext/") > -1)) && processedSinglePageApplication == false){
         setTimeout(function () {
+            processedSinglePageApplication = true;
             findDoi();
-        } , 2500);
+        } , 4500);
     }
 }
 
