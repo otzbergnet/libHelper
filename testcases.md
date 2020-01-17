@@ -40,7 +40,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * Orange: https://www.ncbi.nlm.nih.gov/pubmed/30258935
 * Green: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6147107/ (Pub Med Central)
 
-## BMH
+## BMJ
 
 * Green: https://ard.bmj.com/content/78/3/421 (Hybridge Journal Article)
 
@@ -57,7 +57,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * Orange: https://journals.sagepub.com/doi/full/10.1177/1474515116687178
 * Green: https://journals.sagepub.com/doi/full/10.1177/1536504211418465 (Open Access)
 * No Badge: https://journals.sagepub.com/doi/full/10.1177/0956797616674999 
-* Green https://journals.sagepub.com/doi/abs/10.1177/1947603519828432 (unpaywall.org errors, so scraping page)
+* Green https://journals.sagepub.com/doi/abs/10.1177/1947603519828432 (unpaywall.org)
 
 ## Wiley
 
@@ -80,7 +80,8 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Oxford University Press
 
-* No Badge: https://academic.oup.com/ibdjournal/article-abstract/16/9/1514/4628438?redirectedFrom=fulltext
+* No Badge: https://academic.oup.com/jid/article-abstract/136/6/754/830381?redirectedFrom=fulltext
+* Green: https://academic.oup.com/ibdjournal/article-abstract/16/9/1514/4628438?redirectedFrom=fulltext
 * Green: https://academic.oup.com/jac/article/73/4/833/4840684
 * Green: https://academic.oup.com/annonc/article/29/suppl_8/mdy297.010/5141773?searchresult=1 (Free Access)
 
@@ -98,6 +99,6 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 * Note: There is a 4.5 second delay on detecting DOIs for this SPA*
 
-* https://psycnect.apa.org -> search for -- adhd -- click an article
+* https://psycnet.apa.org -> search for -- adhd -- click an article
 * https://psycnet.apa.org/record/2019-80678-001 (recommendations & OAB)
 * https://psycnet.apa.org/doi/10.1037/neu0000590
