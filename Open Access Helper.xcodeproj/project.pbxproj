@@ -621,7 +621,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -647,7 +647,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -670,7 +670,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -694,7 +694,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
