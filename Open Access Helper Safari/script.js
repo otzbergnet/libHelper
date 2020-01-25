@@ -648,7 +648,7 @@ function fireOnKeypress(){
 function handleConfirmRequest(msg){
     if(window.confirm(msg)){
         //ask extension to go to user FAQ
-        var url = "https://www.otzberg.net/oahelper/userfaq.html";
+        var url = "https://www.oahelper.org/userfaq.html";
         safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
 }

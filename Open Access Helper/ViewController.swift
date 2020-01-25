@@ -104,7 +104,7 @@ class ViewController: NSViewController {
     }
     
     func showMyExample(){
-        if let url = URL(string: "https://www.otzberg.net/oahelper/example.html"),
+        if let url = URL(string: "https://www.oahelper.org/example.html"),
             NSWorkspace.shared.open(url) {
         }
     }

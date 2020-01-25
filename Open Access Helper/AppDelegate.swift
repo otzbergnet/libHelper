@@ -127,17 +127,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func contactMeClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper#contactme"),
+        if let url = URL(string: "https://www.oahelper.org/#contactme"),
             NSWorkspace.shared.open(url) {
         }
     }
     @IBAction func onlineHelpClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper#faq"),
+        if let url = URL(string: "https://www.oahelper.org/#faq"),
             NSWorkspace.shared.open(url) {
         }
     }
     @IBAction func releaseNotesClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper/releasenotes.html"),
+        if let url = URL(string: "https://www.oahelper.org/releasenotes.html"),
             NSWorkspace.shared.open(url) {
         }
     }
