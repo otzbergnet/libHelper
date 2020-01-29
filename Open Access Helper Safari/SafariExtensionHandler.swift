@@ -52,9 +52,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             updateBadge(text: "remove")
         }
         else if messageName == "oaURLReturn"{
-            if let url = userInfo?["oaurl"] {
-                goToOaUrl(url: "\(url)")
+            let ezproxyPrefix = self.preferences.getStringValue(key: "ezproxyPrefix")
+            guard let oaurl = userInfo?["oaurl"] else{
+                return
             }
+            let actionUrl = "\(oaurl)"
+            if(actionUrl.contains("openaccessbutton") && ezproxyPrefix != ""){
+                page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : "proxy", "type" : "proxy", "ezproxy" : ezproxyPrefix]);
+            }
+            else{
+                if let url = userInfo?["oaurl"] {
+                    goToOaUrl(url: "\(url)")
+                }
+            }
+            
         }
         else if messageName == "searchOA"{
             searchOA(userInfo: (userInfo)!, type: "oasearch")
@@ -734,7 +745,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     func returnIntlAlert(id: String, page: SFSafariPage){
         var msg = ""
         var type = ""
-        if (id == "oahdoire_0") {
+        if(id == "oahdoire_0") {
             msg = NSLocalizedString("Open Access Helper could not find a legal open-access version of this article.", comment: "will show in JS Alert, when there was a doi, but no oadoi url")
             type = "alert"
         }
@@ -743,7 +754,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             type = "confirm"
         }
         if(msg != ""){
-            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type]);
+            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type, "ezproxy" : ""]);
         }
     }
 

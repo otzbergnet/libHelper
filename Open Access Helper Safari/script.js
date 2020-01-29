@@ -85,7 +85,10 @@ function messageHandler(event){
         alternativeOA(event.message.doi, event.message.oab, event.message.doistring);
     }
     else if (event.name == "showAlert"){
-        if(event.message.type == "alert"){
+        if(event.message.ezproxy != ""){
+            handleEzProxy(event.message.ezproxy);
+        }
+        else if(event.message.type == "alert"){
             alert(event.message.msg);
         }
         else if(event.message.type == "confirm"){
@@ -654,6 +657,13 @@ function handleConfirmRequest(msg){
 }
 
 
+
+function handleEzProxy(ezproxy){
+    var url = ezproxy+window.location.href;
+    window.location.href = url;
+}
+
+
 function evaluateTab(){
     var div = document.getElementById("oahelper_doicheckmark");
     var badge = ""
@@ -1029,3 +1039,4 @@ function doOaHelperLiveRegion(message){
         }
     } , 4000);
 }
+

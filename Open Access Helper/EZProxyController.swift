@@ -36,7 +36,7 @@ class EZProxyController: NSViewController {
     
     func validateProxyPrefix(urlString: String) -> Bool {
         if(urlString == ""){
-            print("empty")
+            self.preferences.setStringValue(key: "ezproxyPrefix", value: "")
             return false
         }
         
