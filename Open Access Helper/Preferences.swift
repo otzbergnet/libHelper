@@ -54,7 +54,22 @@ class Preferences: NSViewController {
         else{
             return false
         }
+    }
+    
+    func getStringValue(key: String) -> String{
+        if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
+            if let stringValue = defaults.string(forKey: key){
+                return stringValue
+            }
+        }
         
+        return ""
+    }
+    
+    func setStringValue(key: String, value: String){
+        if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
+            defaults.set(value, forKey: key)
+        }
     }
     
     func setValue(key: String, value: Bool){

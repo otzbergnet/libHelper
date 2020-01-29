@@ -80,6 +80,11 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Edit" id="Lxn-iJ-B5r">
                                     <items>
+                                        <menuItem title="Paste" keyEquivalent="v" id="Btx-9V-MZO">
+                                            <connections>
+                                                <action selector="pasteAsPlainText:" target="Ady-hI-5gd" id="qAb-8M-msi"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Delete" id="Xbj-lZ-EKE">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
@@ -440,12 +445,12 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mzB-iY-dpx">
-                                <rect key="frame" x="40" y="130" width="520" height="24"/>
+                                <rect key="frame" x="40" y="133" width="520" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="520" id="Kjq-3k-sEB"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Ggd-tc-Rne">
-                                    <font key="font" metaFont="system" size="16"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -465,7 +470,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5gf-DU-m1c">
-                                <rect key="frame" x="38" y="109" width="249" height="16"/>
+                                <rect key="frame" x="38" y="112" width="249" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="e.g. https://login.uniersity.edu/login?url=" id="3j0-df-eLV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -473,8 +478,8 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-k2-dT2">
-                                <rect key="frame" x="34" y="61" width="70" height="32"/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BDQ-uN-9q5">
+                                <rect key="frame" x="34" y="64" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save Setting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BDQ-uN-9q5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -482,10 +487,21 @@ URL of your institution's EZProxy Server</string>
                                     <action selector="saveClicked:" target="kVE-Sp-sqG" id="ovK-ak-iaJ"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f90-67-4gF">
+                                <rect key="frame" x="453" y="64" width="113" height="32"/>
+                                <buttonCell key="cell" type="push" title="Test Setting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1IN-JA-aq4">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="testClicked:" target="kVE-Sp-sqG" id="ZVp-EV-F0E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="oW3-04-xxv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="3pM-kz-cST"/>
                             <constraint firstItem="JwW-v2-1AU" firstAttribute="top" secondItem="aEQ-HV-eUt" secondAttribute="top" constant="20" id="4Jb-h4-4Eh"/>
+                            <constraint firstItem="f90-67-4gF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="20" id="5AI-4S-9QE"/>
                             <constraint firstAttribute="trailing" secondItem="mzB-iY-dpx" secondAttribute="trailing" constant="40" id="D2Z-h6-Yxf"/>
                             <constraint firstItem="oW3-04-xxv" firstAttribute="top" secondItem="JwW-v2-1AU" secondAttribute="bottom" constant="20" id="Gyg-8Q-APw"/>
                             <constraint firstItem="JwW-v2-1AU" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="J55-dG-ykT"/>
@@ -493,16 +509,19 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5gf-DU-m1c" secondAttribute="trailing" constant="40" id="Mc6-Up-Znb"/>
                             <constraint firstItem="5gf-DU-m1c" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="Rup-iw-0km"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="40" id="Tz7-SS-mvZ"/>
+                            <constraint firstItem="f90-67-4gF" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="XsN-6N-l02"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oW3-04-xxv" secondAttribute="trailing" constant="40" id="Z7Y-PA-70Q"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="azE-bY-R3l"/>
                             <constraint firstItem="5gf-DU-m1c" firstAttribute="top" secondItem="mzB-iY-dpx" secondAttribute="bottom" constant="5" id="fHq-Sh-gJI"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="iLH-cJ-v7V"/>
                             <constraint firstItem="mzB-iY-dpx" firstAttribute="top" secondItem="oW3-04-xxv" secondAttribute="bottom" constant="10" id="nul-tc-aYY"/>
                             <constraint firstItem="mzB-iY-dpx" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="q1X-ZR-z3y"/>
+                            <constraint firstAttribute="trailing" secondItem="f90-67-4gF" secondAttribute="trailing" constant="40" id="tbq-xa-3fA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="proxyPrefixTextField" destination="mzB-iY-dpx" id="amf-3M-OHB"/>
+                        <outlet property="testSettingsButton" destination="f90-67-4gF" id="0fw-xk-Ies"/>
                     </connections>
                 </viewController>
                 <customObject id="GMQ-Il-ak8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -540,7 +559,7 @@ URL of your institution's EZProxy Server</string>
                                             <tableColumns>
                                                 <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="xQe-Sg-ycL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -580,7 +599,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="Ses-Rj-Mtw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -620,7 +639,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="149" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -823,7 +842,7 @@ URL of your institution's EZProxy Server</string>
                     <window key="window" title="Open Access Helper" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vZx-Nd-Q7l">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="300"/>
+                        <rect key="contentRect" x="294" y="313" width="600" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <connections>
                             <outlet property="delegate" destination="rwG-Iq-qMP" id="Goi-BU-kMC"/>
@@ -880,7 +899,7 @@ URL of your institution's EZProxy Server</string>
         <!--Tab View Controller-->
         <scene sceneID="alN-kg-hoV">
             <objects>
-                <tabViewController selectedTabViewItemIndex="4" id="9yV-mt-10h" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="9yV-mt-10h" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="JVa-K2-C0Y"/>
                         <tabViewItem id="g3r-Pj-Ei3"/>
