@@ -60,6 +60,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if(actionUrl.contains("openaccessbutton") && ezproxyPrefix != ""){
                 page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : "proxy", "type" : "proxy", "ezproxy" : ezproxyPrefix]);
             }
+            else if(actionUrl == "pleaseproxy" && ezproxyPrefix != ""){
+                page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : "proxy", "type" : "proxy", "ezproxy" : ezproxyPrefix]);
+            }
             else{
                 if let url = userInfo?["oaurl"] {
                     goToOaUrl(url: "\(url)")
@@ -743,18 +746,23 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func returnIntlAlert(id: String, page: SFSafariPage){
+        let ezproxyPrefix = self.preferences.getStringValue(key: "ezproxyPrefix")
         var msg = ""
         var type = ""
         if(id == "oahdoire_0") {
             msg = NSLocalizedString("Open Access Helper could not find a legal open-access version of this article.", comment: "will show in JS Alert, when there was a doi, but no oadoi url")
             type = "alert"
         }
-        else if(id == "oahdoire_1"){
+        else if(id == "oahdoire_1" && ezproxyPrefix == ""){
             msg = NSLocalizedString("Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message", comment: "will show in JS Alert, when there no doi = inactive state")
             type = "confirm"
         }
+        else if(id == "oahdoire_1" && ezproxyPrefix != ""){
+            msg = "proxy"
+            type = "proxy"
+        }
         if(msg != ""){
-            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type, "ezproxy" : ""]);
+            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type, "ezproxy" : ezproxyPrefix]);
         }
     }
 
@@ -951,7 +959,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         urlconfig.timeoutIntervalForResource = 31
         
         let session = URLSession(configuration: urlconfig, delegate: self as? URLSessionDelegate, delegateQueue: nil)
-        print("start recommender task")
+        //print("start recommender task")
         let task = session.dataTask(with: request) {(data, response, error) in
             //print("The core recommender task took \(timer.stop()) seconds.")
             if let error = error{
@@ -961,7 +969,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             if let data = data {
                 //this worked just fine
-                print("this worked fine")
+                //print("this worked fine")
                 do {
                     print(data)
                     let recommendations = try JSONDecoder().decode(CoreRecommender.self, from: data)

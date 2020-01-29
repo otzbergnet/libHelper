@@ -641,7 +641,7 @@ function fireOnKeypress(){
                 safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
             }
             else{
-                //
+                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : "pleaseproxy"});
             }
         }
     }
