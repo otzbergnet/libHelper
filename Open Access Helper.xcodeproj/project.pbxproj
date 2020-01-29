@@ -37,6 +37,7 @@
 		2D655F1221A0036F0092E480 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D655F1421A0036F0092E480 /* Localizable.strings */; };
 		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
+		2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF938923E15DAA0023FC51 /* EZProxyController.swift */; };
 		2DC8627C23C23330007DF1AA /* core_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DC8627B23C23330007DF1AA /* core_logo.svg */; };
 		2DD336A723C1A3C6004A34C5 /* recom.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD336A623C1A3C6004A34C5 /* recom.png */; };
 		2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD336A823C1B025004A34C5 /* Extensions.swift */; };
@@ -108,6 +109,7 @@
 		2D924380219E790B000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SafariExtensionViewController.strings; sourceTree = "<group>"; };
 		2D924382219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D924385219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2DAF938923E15DAA0023FC51 /* EZProxyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZProxyController.swift; sourceTree = "<group>"; };
 		2DC8627B23C23330007DF1AA /* core_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = core_logo.svg; sourceTree = "<group>"; };
 		2DC9ED7A230729B80074D067 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2DD336A623C1A3C6004A34C5 /* recom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recom.png; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				2D3F8FA7218586290095ACD7 /* ViewController.swift */,
 				2D3CA0792235238300D5D531 /* BookMarkTableView.swift */,
 				2D643FCA23001F5B00A4FA14 /* SettingsController.swift */,
+				2DAF938923E15DAA0023FC51 /* EZProxyController.swift */,
 				2D28708B21975AAC0050CFDD /* AboutController.swift */,
 				2D28708921974B250050CFDD /* HelpViewController.swift */,
 				2D08FE29222A59F10066949C /* DataSync.swift */,
@@ -414,6 +417,7 @@
 				2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */,
 				2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */,
 				2D63EE8E23375CA10086BBA2 /* TouchBarIdentifiers.swift in Sources */,
+				2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */,
 				2D643FD0230020A800A4FA14 /* Preferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rwG-Iq-qMP">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rwG-Iq-qMP">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -156,7 +156,7 @@ CA
             <objects>
                 <viewController title="About" id="5jK-gR-BaF" customClass="AboutController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3Tv-5Z-anh">
-                        <rect key="frame" x="0.0" y="0.0" width="605" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-iZ-uLQ">
@@ -168,7 +168,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
-                                <rect key="frame" x="38" y="84" width="522" height="144"/>
+                                <rect key="frame" x="38" y="84" width="517" height="144"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.
@@ -423,6 +423,92 @@ If you need to reach me, please click the Contact Me button below!</string>
             </objects>
             <point key="canvasLocation" x="287" y="453"/>
         </scene>
+        <!--EZProxy-->
+        <scene sceneID="sii-Mu-s8B">
+            <objects>
+                <viewController title="EZProxy" id="kVE-Sp-sqG" customClass="EZProxyController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aEQ-HV-eUt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-v2-1AU">
+                                <rect key="frame" x="38" y="248" width="221" height="32"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="EZProxy Settings" id="pUg-hB-6ak">
+                                    <font key="font" size="23" name="Arial-Black"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mzB-iY-dpx">
+                                <rect key="frame" x="40" y="130" width="520" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="520" id="Kjq-3k-sEB"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Ggd-tc-Rne">
+                                    <font key="font" metaFont="system" size="16"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oW3-04-xxv">
+                                <rect key="frame" x="38" y="164" width="524" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="520" id="1Ww-Gj-MhR"/>
+                                </constraints>
+                                <textFieldCell key="cell" id="4SS-by-Tr0">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in ?url=
+
+URL of your institution's EZProxy Server</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5gf-DU-m1c">
+                                <rect key="frame" x="38" y="109" width="249" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="e.g. https://login.uniersity.edu/login?url=" id="3j0-df-eLV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-k2-dT2">
+                                <rect key="frame" x="34" y="61" width="70" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BDQ-uN-9q5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveClicked:" target="kVE-Sp-sqG" id="ovK-ak-iaJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oW3-04-xxv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="3pM-kz-cST"/>
+                            <constraint firstItem="JwW-v2-1AU" firstAttribute="top" secondItem="aEQ-HV-eUt" secondAttribute="top" constant="20" id="4Jb-h4-4Eh"/>
+                            <constraint firstAttribute="trailing" secondItem="mzB-iY-dpx" secondAttribute="trailing" constant="40" id="D2Z-h6-Yxf"/>
+                            <constraint firstItem="oW3-04-xxv" firstAttribute="top" secondItem="JwW-v2-1AU" secondAttribute="bottom" constant="20" id="Gyg-8Q-APw"/>
+                            <constraint firstItem="JwW-v2-1AU" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="J55-dG-ykT"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JwW-v2-1AU" secondAttribute="trailing" constant="40" id="MRi-bD-ZV3"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5gf-DU-m1c" secondAttribute="trailing" constant="40" id="Mc6-Up-Znb"/>
+                            <constraint firstItem="5gf-DU-m1c" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="Rup-iw-0km"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="40" id="Tz7-SS-mvZ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oW3-04-xxv" secondAttribute="trailing" constant="40" id="Z7Y-PA-70Q"/>
+                            <constraint firstItem="OdL-k2-dT2" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="azE-bY-R3l"/>
+                            <constraint firstItem="5gf-DU-m1c" firstAttribute="top" secondItem="mzB-iY-dpx" secondAttribute="bottom" constant="5" id="fHq-Sh-gJI"/>
+                            <constraint firstItem="OdL-k2-dT2" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="iLH-cJ-v7V"/>
+                            <constraint firstItem="mzB-iY-dpx" firstAttribute="top" secondItem="oW3-04-xxv" secondAttribute="bottom" constant="10" id="nul-tc-aYY"/>
+                            <constraint firstItem="mzB-iY-dpx" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="q1X-ZR-z3y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="proxyPrefixTextField" destination="mzB-iY-dpx" id="amf-3M-OHB"/>
+                    </connections>
+                </viewController>
+                <customObject id="GMQ-Il-ak8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="943" y="453"/>
+        </scene>
         <!--Bookmarks-->
         <scene sceneID="0CC-nx-hC5">
             <objects>
@@ -431,6 +517,14 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Y2-OV-a5R">
+                                <rect key="frame" x="3" y="8" width="594" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Double-Click to open document in default browser. ⌘⌫ to delete." id="Y9a-Pb-WdR">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNZ-cE-SmH">
                                 <rect key="frame" x="0.0" y="30" width="600" height="270"/>
                                 <clipView key="contentView" id="EyY-MM-Mjj">
@@ -568,11 +662,15 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </tableView>
                                     </subviews>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="3ce-dS-XQj"/>
+                                    <constraint firstAttribute="height" constant="270" id="oK4-qU-ySw"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="jbp-s3-DkI">
                                     <rect key="frame" x="1" y="353" width="598" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="JmE-5J-B7Z">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="JmE-5J-B7Z">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -581,24 +679,14 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Y2-OV-a5R">
-                                <rect key="frame" x="3" y="0.0" width="594" height="25"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Double-Click to open document in default browser. ⌘⌫ to delete." id="Y9a-Pb-WdR">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="2Y2-OV-a5R" secondAttribute="trailing" constant="5" id="1Z4-Fd-tt7"/>
-                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="top" secondItem="DNZ-cE-SmH" secondAttribute="bottom" constant="5" id="43b-BI-klp"/>
-                            <constraint firstAttribute="bottom" secondItem="2Y2-OV-a5R" secondAttribute="bottom" id="6XI-cl-mr2"/>
-                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" id="AoS-cr-A6C"/>
-                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="top" secondItem="fdF-d4-aFW" secondAttribute="top" id="Zp1-Iv-uOL"/>
-                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" constant="5" id="dbJ-ID-vA3"/>
-                            <constraint firstAttribute="trailing" secondItem="DNZ-cE-SmH" secondAttribute="trailing" id="uIv-kI-cUQ"/>
-                            <constraint firstAttribute="bottom" secondItem="DNZ-cE-SmH" secondAttribute="bottom" constant="30" id="vFl-Ck-B3d"/>
+                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" id="CEi-QC-b3s"/>
+                            <constraint firstAttribute="trailing" secondItem="2Y2-OV-a5R" secondAttribute="trailing" constant="5" id="TGT-25-nCd"/>
+                            <constraint firstAttribute="bottom" secondItem="2Y2-OV-a5R" secondAttribute="bottom" constant="8" id="YYj-M0-IXg"/>
+                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" constant="5" id="g1o-YY-ypp"/>
+                            <constraint firstAttribute="trailing" secondItem="DNZ-cE-SmH" secondAttribute="trailing" id="ggn-pM-0Ai"/>
+                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="top" secondItem="fdF-d4-aFW" secondAttribute="top" id="vvy-lN-cyc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -616,7 +704,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                     <defaultToolbarItems/>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="-938" y="452.5"/>
+            <point key="canvasLocation" x="-946" y="453"/>
         </scene>
         <!--Getting Started-->
         <scene sceneID="hIz-AP-VOD">
@@ -792,11 +880,12 @@ If you need to reach me, please click the Contact Me button below!</string>
         <!--Tab View Controller-->
         <scene sceneID="alN-kg-hoV">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" id="9yV-mt-10h" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="4" id="9yV-mt-10h" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="JVa-K2-C0Y"/>
                         <tabViewItem id="g3r-Pj-Ei3"/>
                         <tabViewItem id="Sok-of-F1q"/>
+                        <tabViewItem id="WcF-PF-ajA"/>
                         <tabViewItem id="fxk-jD-gOy"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
@@ -813,6 +902,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="ONz-9K-Gr5"/>
                         <segue destination="d7Y-0M-Jnk" kind="relationship" relationship="tabItems" id="ivR-99-Asn"/>
                         <segue destination="of7-oY-NLd" kind="relationship" relationship="tabItems" id="byJ-bB-5mP"/>
+                        <segue destination="kVE-Sp-sqG" kind="relationship" relationship="tabItems" id="9RC-7n-lhg"/>
                         <segue destination="5jK-gR-BaF" kind="relationship" relationship="tabItems" id="hYj-U4-jMt"/>
                     </connections>
                 </tabViewController>
