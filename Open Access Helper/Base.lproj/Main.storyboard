@@ -80,6 +80,16 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Edit" id="Lxn-iJ-B5r">
                                     <items>
+                                        <menuItem title="Cut" keyEquivalent="x" id="gia-fW-TaI">
+                                            <connections>
+                                                <action selector="cut:" target="Ady-hI-5gd" id="KpD-aH-xJl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="yKn-40-ZUX">
+                                            <connections>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="xHM-Zw-FvZ"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Paste" keyEquivalent="v" id="Btx-9V-MZO">
                                             <connections>
                                                 <action selector="pasteAsPlainText:" target="Ady-hI-5gd" id="qAb-8M-msi"/>
@@ -559,7 +569,7 @@ URL of your institution's EZProxy Server</string>
                                             <tableColumns>
                                                 <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="xQe-Sg-ycL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="toolTip"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -599,7 +609,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="Ses-Rj-Mtw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="toolTip"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -639,7 +649,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="149" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="toolTip"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -934,7 +944,7 @@ URL of your institution's EZProxy Server</string>
         <image name="icon" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="byJ-bB-5mP"/>
-        <segue reference="hYj-U4-jMt"/>
+        <segue reference="cPE-3I-5As"/>
+        <segue reference="evb-Pl-laT"/>
     </inferredMetricsTieBreakers>
 </document>
