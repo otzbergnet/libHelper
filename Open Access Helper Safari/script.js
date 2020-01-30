@@ -110,6 +110,15 @@ function messageHandler(event){
             showRecommendations(event.message.data, event.message.infoString);
         }
     }
+    else if (event.name == "addProxy"){
+        handleEzProxy(event.message.ezproxy);
+    }
+    else if (event.name == "removeProxy"){
+        var url = window.location.href;
+        var prefix = event.message.ezproxy;
+        var newUrl = url.replace(prefix, "");
+        window.location.href = newUrl;
+    }
 }
 
 function findDoi(){
@@ -659,7 +668,13 @@ function handleConfirmRequest(msg){
 
 
 function handleEzProxy(ezproxy){
-    var url = ezproxy+window.location.href;
+    var currentUrl = window.location.href;
+    if(window.location.href.indexOf(ezproxy) > -1){
+        var url = currentUrl.replace(ezproxy, "");
+    }
+    else{
+        var url = ezproxy+currentUrl;
+    }
     window.location.href = url;
 }
 

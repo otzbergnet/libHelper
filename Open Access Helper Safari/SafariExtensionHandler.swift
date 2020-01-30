@@ -57,11 +57,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 return
             }
             let actionUrl = "\(oaurl)"
-            if(actionUrl.contains("openaccessbutton") && ezproxyPrefix != ""){
-                page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : "proxy", "type" : "proxy", "ezproxy" : ezproxyPrefix]);
+            if(ezproxyPrefix != "" && actionUrl.contains(ezproxyPrefix)){
+                page.dispatchMessageToScript(withName: "removeProxy", userInfo: ["msg" : "removeproxy", "ezproxy" : ezproxyPrefix])
+            }
+            else if(actionUrl.contains("openaccessbutton") && ezproxyPrefix != ""){
+                page.dispatchMessageToScript(withName: "addProxy", userInfo: ["msg" : "addproxy", "ezproxy" : ezproxyPrefix])
             }
             else if(actionUrl == "pleaseproxy" && ezproxyPrefix != ""){
-                page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : "proxy", "type" : "proxy", "ezproxy" : ezproxyPrefix]);
+                page.dispatchMessageToScript(withName: "addProxy", userInfo: ["msg" : "addproxy", "ezproxy" : ezproxyPrefix])
             }
             else{
                 if let url = userInfo?["oaurl"] {
