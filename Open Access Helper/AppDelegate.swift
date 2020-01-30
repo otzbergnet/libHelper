@@ -23,6 +23,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+    
+    // MARK: - URL Scheme Support
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        NSAppleEventManager
+            .shared()
+            .setEventHandler(
+                self,
+                andSelector: #selector(handleURL(event:reply:)),
+                forEventClass: AEEventClass(kInternetEventClass),
+                andEventID: AEEventID(kAEGetURL)
+            )
+
+    }
+
+    @objc func handleURL(event: NSAppleEventDescriptor, reply: NSAppleEventDescriptor) {
+        if let path = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue?.removingPercentEncoding {
+            NSLog("oahelper_log: \(path)")
+            let url = URL(string: "\(path)")!
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            if let components = components {
+                if let queryItems = components.queryItems {
+                    for queryItem in queryItems {
+                        if(queryItem.name == "ezproxy"){
+                            if let base64data = queryItem.value{
+                                if let data = Data(base64Encoded: base64data){
+                                    if let urlString = String(data: data, encoding: .utf8){
+                                        print(urlString)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            let myTabBar = NSApplication.shared.mainWindow?.windowController?.contentViewController?.children[0] as! NSTabViewController
+            myTabBar.tabView.selectTabViewItem(at: 3)
+        }
+    }
 
     
     // MARK: - Core Data stack

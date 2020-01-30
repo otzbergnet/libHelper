@@ -238,3 +238,9 @@
 
 /* Class = "NSTextFieldCell"; title = "EZProxy Settings"; ObjectID = "pUg-hB-6ak"; */
 "pUg-hB-6ak.title" = "EZProxy Einstellungen";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "gia-fW-TaI"; */
+"gia-fW-TaI.title" = "Ausschneiden";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "yKn-40-ZUX"; */
+"yKn-40-ZUX.title" = "Kopieren";
