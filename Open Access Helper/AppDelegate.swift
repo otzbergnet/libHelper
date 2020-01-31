@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    let preferences = Preferences()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -40,17 +40,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func handleURL(event: NSAppleEventDescriptor, reply: NSAppleEventDescriptor) {
         if let path = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue?.removingPercentEncoding {
-            NSLog("oahelper_log: \(path)")
             let url = URL(string: "\(path)")!
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
             if let components = components {
                 if let queryItems = components.queryItems {
                     for queryItem in queryItems {
-                        if(queryItem.name == "ezproxy"){
+                        if(queryItem.name == "proxy"){
                             if let base64data = queryItem.value{
                                 if let data = Data(base64Encoded: base64data){
                                     if let urlString = String(data: data, encoding: .utf8){
                                         print(urlString)
+                                        self.preferences.setStringValue(key: "ezproxyPrefix", value: urlString)
+                                        
                                     }
                                 }
                             }
@@ -60,6 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             let myTabBar = NSApplication.shared.mainWindow?.windowController?.contentViewController?.children[0] as! NSTabViewController
             myTabBar.tabView.selectTabViewItem(at: 3)
+            myTabBar.tabView.tabViewItem(at: 3).viewController?.viewWillAppear()
         }
     }
 
