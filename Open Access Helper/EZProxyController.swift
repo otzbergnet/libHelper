@@ -86,5 +86,11 @@ class EZProxyController: NSViewController {
         }
     }
     
+    @IBAction func lookupClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.oahelper.org/institutes/add.php"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
+    
     
 }

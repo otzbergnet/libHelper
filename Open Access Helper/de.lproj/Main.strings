@@ -219,7 +219,7 @@
 "evK-lJ-UtH.title" = "CORE Recommender zeigen, wenn kein Open Access gefunden wurde";
 
 /* Class = "NSButtonCell"; title = "Test Setting"; ObjectID = "1IN-JA-aq4"; */
-"1IN-JA-aq4.title" = "Einstellungen testen";
+"1IN-JA-aq4.title" = "EZProxy testen";
 
 /* Class = "NSTextFieldCell"; title = "e.g. https://login.university.edu/login?url="; ObjectID = "3j0-df-eLV"; */
 "3j0-df-eLV.title" = "z.B. https://login.university.edu/login?url=";
@@ -228,7 +228,7 @@
 "4SS-by-Tr0.title" = "Sofern Ihre Institution Fernzugang mittles EZProxy anbietet, können Sie hier die URL des Servers hinterlegen. Bitte beachten Sie, dass die URL auf url= oder qurl= enden muss\n\nURL des institutionellen EZProxy Server";
 
 /* Class = "NSButtonCell"; title = "Save Setting"; ObjectID = "BDQ-uN-9q5"; */
-"BDQ-uN-9q5.title" = "Einstellungen speichern";
+"BDQ-uN-9q5.title" = "EZProxy speichern";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "Btx-9V-MZO"; */
 "Btx-9V-MZO.title" = "Einfügen";
@@ -244,3 +244,6 @@
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "yKn-40-ZUX"; */
 "yKn-40-ZUX.title" = "Kopieren";
+
+/* Class = "NSButtonCell"; title = "Not sure? Look it up..."; ObjectID = "nqs-wV-UGi"; */
+"nqs-wV-UGi.title" = "EZProxy nachschlagen...";
