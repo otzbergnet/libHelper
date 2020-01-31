@@ -769,62 +769,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
 
-    
     func updateCount(){
-        let count = readCount(file: "count.txt")
-        let new = count + 1
-        writeCount(count: "\(new)", file: "count.txt")
+        preferences.incrementIntVal(key: "oaFoundCount")
     }
     
     func updateOASearchCount(){
-        let count = readCount(file: "oacount.txt")
-        let new = count + 1
-        writeCount(count: "\(new)", file: "oacount.txt")
-    }
-    
-    
-    func writeCount(count: String, file: String ) {
-        let file = file //this is the file. we will write to and read from it
-        
-        let text = count //just a text
-        
-        let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
-            return
-        }
-        let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
-        let fileURL = safariExtDir.appendingPathComponent(file)
-        
-        //writing
-        do {
-            try text.write(to: fileURL, atomically: false, encoding: .utf8)
-        }
-        catch {/* error handling here */}
-        
-        
-    }
-
-    func readCount(file: String) -> Int{
-        let file = file //this is the file. we will write to and read from it
-        
-        var text2 = "0"
-        
-        let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
-            return 0
-        }
-        let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
-        let fileURL = safariExtDir.appendingPathComponent(file)
-        
-        //reading
-        do {
-            text2 = try String(contentsOf: fileURL, encoding: .utf8)
-        }
-        catch {
-            text2 = "0"
-        }
-        
-        return Int(text2)!
+        preferences.incrementIntVal(key: "oaSearchCount")
     }
     
     func getOpenAccessVersion(data: Unpaywall) -> String{
