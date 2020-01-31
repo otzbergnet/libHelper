@@ -507,26 +507,38 @@ URL of your institution's EZProxy Server</string>
                                     <action selector="testClicked:" target="kVE-Sp-sqG" id="ZVp-EV-F0E"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-0i-JjY">
+                                <rect key="frame" x="214" y="74" width="173" height="32"/>
+                                <buttonCell key="cell" type="push" title="Not sure? Look it up..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nqs-wV-UGi">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="lookupClicked:" target="kVE-Sp-sqG" id="kRZ-Rp-I2K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="oW3-04-xxv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="3pM-kz-cST"/>
                             <constraint firstItem="JwW-v2-1AU" firstAttribute="top" secondItem="aEQ-HV-eUt" secondAttribute="top" constant="20" id="4Jb-h4-4Eh"/>
-                            <constraint firstItem="f90-67-4gF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="20" id="5AI-4S-9QE"/>
                             <constraint firstAttribute="trailing" secondItem="mzB-iY-dpx" secondAttribute="trailing" constant="40" id="D2Z-h6-Yxf"/>
                             <constraint firstItem="oW3-04-xxv" firstAttribute="top" secondItem="JwW-v2-1AU" secondAttribute="bottom" constant="10" id="Gyg-8Q-APw"/>
                             <constraint firstItem="JwW-v2-1AU" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="J55-dG-ykT"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JwW-v2-1AU" secondAttribute="trailing" constant="40" id="MRi-bD-ZV3"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5gf-DU-m1c" secondAttribute="trailing" constant="40" id="Mc6-Up-Znb"/>
+                            <constraint firstItem="mkZ-0i-JjY" firstAttribute="centerX" secondItem="aEQ-HV-eUt" secondAttribute="centerX" id="NJ7-mX-05j"/>
                             <constraint firstItem="5gf-DU-m1c" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="Rup-iw-0km"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="40" id="Tz7-SS-mvZ"/>
                             <constraint firstItem="f90-67-4gF" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="XsN-6N-l02"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oW3-04-xxv" secondAttribute="trailing" constant="40" id="Z7Y-PA-70Q"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="azE-bY-R3l"/>
+                            <constraint firstItem="mkZ-0i-JjY" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="dfc-mm-XV1"/>
                             <constraint firstItem="5gf-DU-m1c" firstAttribute="top" secondItem="mzB-iY-dpx" secondAttribute="bottom" constant="5" id="fHq-Sh-gJI"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="iLH-cJ-v7V"/>
                             <constraint firstItem="mzB-iY-dpx" firstAttribute="top" secondItem="oW3-04-xxv" secondAttribute="bottom" constant="10" id="nul-tc-aYY"/>
                             <constraint firstItem="mzB-iY-dpx" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="q1X-ZR-z3y"/>
+                            <constraint firstItem="f90-67-4gF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mkZ-0i-JjY" secondAttribute="trailing" constant="20" id="sBD-BB-GxX"/>
                             <constraint firstAttribute="trailing" secondItem="f90-67-4gF" secondAttribute="trailing" constant="40" id="tbq-xa-3fA"/>
+                            <constraint firstItem="mkZ-0i-JjY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="20" id="yIf-WD-GVM"/>
                         </constraints>
                     </view>
                     <connections>
@@ -569,7 +581,7 @@ URL of your institution's EZProxy Server</string>
                                             <tableColumns>
                                                 <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="xQe-Sg-ycL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -609,7 +621,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="Ses-Rj-Mtw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -649,7 +661,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="149" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -944,7 +956,7 @@ URL of your institution's EZProxy Server</string>
         <image name="icon" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cPE-3I-5As"/>
-        <segue reference="evb-Pl-laT"/>
+        <segue reference="byJ-bB-5mP"/>
+        <segue reference="hYj-U4-jMt"/>
     </inferredMetricsTieBreakers>
 </document>

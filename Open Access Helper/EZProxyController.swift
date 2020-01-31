@@ -21,9 +21,14 @@ class EZProxyController: NSViewController {
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        self.showTestSettingsButton()
+    }
+    
     func showTestSettingsButton(){
         let proxyPrefix = preferences.getStringValue(key: "ezproxyPrefix") // always returns at least an empty String
-        print(proxyPrefix)
+        //print(proxyPrefix)
         if (proxyPrefix != "" && validateProxyPrefix(urlString: proxyPrefix)){
             self.testSettingsButton.isHidden = false
             self.proxyPrefixTextField.stringValue = "\(proxyPrefix)"
@@ -77,6 +82,12 @@ class EZProxyController: NSViewController {
         let testService = "https://www.jstor.org"
         let testUrl = proxyPrefix+testService
         if let url = URL(string: testUrl),
+            NSWorkspace.shared.open(url) {
+        }
+    }
+    
+    @IBAction func lookupClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.oahelper.org/institutes/add.php"),
             NSWorkspace.shared.open(url) {
         }
     }

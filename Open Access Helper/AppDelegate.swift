@@ -49,7 +49,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                             if let base64data = queryItem.value{
                                 if let data = Data(base64Encoded: base64data){
                                     if let urlString = String(data: data, encoding: .utf8){
-                                        print(urlString)
                                         self.preferences.setStringValue(key: "ezproxyPrefix", value: urlString)
                                         
                                     }
