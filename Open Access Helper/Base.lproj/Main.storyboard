@@ -550,6 +550,60 @@ URL of your institution's EZProxy Server</string>
             </objects>
             <point key="canvasLocation" x="943" y="453"/>
         </scene>
+        <!--Statistics-->
+        <scene sceneID="rSf-gM-oqJ">
+            <objects>
+                <viewController title="Statistics" id="MzQ-ai-HIa" customClass="StatisticsController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="HbZ-Jr-BW7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dNg-VD-ghF">
+                                <rect key="frame" x="38" y="248" width="125" height="32"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Statistics" id="8Tx-0Z-j7y">
+                                    <font key="font" size="23" name="Arial-Black"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-q2-L0V">
+                                <rect key="frame" x="38" y="212" width="347" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="So far we've helped you find 0 Open Access Documents!" id="kcf-c2-Ct3">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w6B-se-Ube">
+                                <rect key="frame" x="38" y="186" width="286" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="You've had help with 0 Open Access searches." id="HSH-Xf-PuA">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="SeD-q2-L0V" firstAttribute="top" secondItem="dNg-VD-ghF" secondAttribute="bottom" constant="20" id="2AD-aI-xHP"/>
+                            <constraint firstItem="SeD-q2-L0V" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="CPI-rb-YBT"/>
+                            <constraint firstItem="w6B-se-Ube" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="JK4-2C-gB2"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dNg-VD-ghF" secondAttribute="trailing" constant="40" id="dnX-Gc-jLY"/>
+                            <constraint firstItem="dNg-VD-ghF" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="kAD-HS-Y0q"/>
+                            <constraint firstItem="dNg-VD-ghF" firstAttribute="top" secondItem="HbZ-Jr-BW7" secondAttribute="top" constant="20" id="kSU-EP-Huk"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SeD-q2-L0V" secondAttribute="trailing" constant="40" id="keZ-BZ-5Tl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w6B-se-Ube" secondAttribute="trailing" constant="40" id="mqQ-Rr-IdS"/>
+                            <constraint firstItem="w6B-se-Ube" firstAttribute="top" secondItem="SeD-q2-L0V" secondAttribute="bottom" constant="10" id="oTM-Lb-AZK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="oaCount" destination="SeD-q2-L0V" id="KFH-sv-OcY"/>
+                        <outlet property="oaSearchCountLabel" destination="w6B-se-Ube" id="5gF-Mq-tgo"/>
+                    </connections>
+                </viewController>
+                <customObject id="cs6-sv-rke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602" y="453"/>
+        </scene>
         <!--Bookmarks-->
         <scene sceneID="0CC-nx-hC5">
             <objects>
@@ -786,22 +840,6 @@ URL of your institution's EZProxy Server</string>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="lbX-Ov-jUe"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="owU-kc-A61">
-                                <rect key="frame" x="38" y="46" width="347" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="So far we've helped you find 0 Open Access Documents!" id="upX-50-mCL">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7FZ-jx-6Z5">
-                                <rect key="frame" x="38" y="20" width="286" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="You've had help with 0 Open Access searches." id="irf-Mg-7VE">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dzx-R6-kVI">
                                 <rect key="frame" x="34" y="100" width="188" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yJ-gz-MNS">
@@ -824,15 +862,11 @@ URL of your institution's EZProxy Server</string>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="owU-kc-A61" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3E3-OW-ImE" secondAttribute="bottom" constant="26" id="56j-Tl-B4U"/>
-                            <constraint firstItem="owU-kc-A61" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="5Am-yU-eb2"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7FZ-jx-6Z5" secondAttribute="trailing" constant="40" id="AJ5-Ko-DCH"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Anl-fk-yAQ"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="3E3-OW-ImE" secondAttribute="trailing" constant="203" id="Awq-VY-Rr0"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="trailing" constant="40" id="BjA-pm-YLo"/>
-                            <constraint firstItem="7FZ-jx-6Z5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Cj2-dx-Lka"/>
+                            <constraint firstAttribute="bottom" secondItem="Dzx-R6-kVI" secondAttribute="bottom" constant="107" id="HmR-tX-Iwg"/>
                             <constraint firstItem="3E3-OW-ImE" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="30" id="K46-dq-3t0"/>
-                            <constraint firstItem="owU-kc-A61" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dzx-R6-kVI" secondAttribute="bottom" constant="26" id="QXr-gs-NQ3"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qa8-Lu-Lg5" secondAttribute="trailing" constant="30" id="TEt-jv-Hxt"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="10" id="X5k-Gn-k8b"/>
                             <constraint firstItem="3E3-OW-ImE" firstAttribute="leading" secondItem="Dzx-R6-kVI" secondAttribute="trailing" constant="25" id="Xte-62-YoW"/>
@@ -841,16 +875,9 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstItem="Dzx-R6-kVI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="bth-fd-9sn"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="heb-Zz-WcX"/>
                             <constraint firstItem="Dzx-R6-kVI" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="30" id="puM-fH-2Ck"/>
-                            <constraint firstItem="7FZ-jx-6Z5" firstAttribute="top" secondItem="owU-kc-A61" secondAttribute="bottom" constant="10" id="qTN-Q9-IRd"/>
-                            <constraint firstAttribute="bottom" secondItem="7FZ-jx-6Z5" secondAttribute="bottom" constant="20" id="rvV-G1-EXb"/>
                             <constraint firstItem="LZV-Q3-IEu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="u8K-8O-3SG"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="owU-kc-A61" secondAttribute="trailing" constant="30" id="z2S-2Y-Iu0"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="oaCount" destination="owU-kc-A61" id="3ch-G0-VWX"/>
-                        <outlet property="oaSearchCountLabel" destination="7FZ-jx-6Z5" id="eAN-ey-spy"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -927,6 +954,7 @@ URL of your institution's EZProxy Server</string>
                         <tabViewItem id="g3r-Pj-Ei3"/>
                         <tabViewItem id="Sok-of-F1q"/>
                         <tabViewItem id="WcF-PF-ajA"/>
+                        <tabViewItem id="hSX-9n-dU0"/>
                         <tabViewItem id="fxk-jD-gOy"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
@@ -944,6 +972,7 @@ URL of your institution's EZProxy Server</string>
                         <segue destination="d7Y-0M-Jnk" kind="relationship" relationship="tabItems" id="ivR-99-Asn"/>
                         <segue destination="of7-oY-NLd" kind="relationship" relationship="tabItems" id="byJ-bB-5mP"/>
                         <segue destination="kVE-Sp-sqG" kind="relationship" relationship="tabItems" id="9RC-7n-lhg"/>
+                        <segue destination="MzQ-ai-HIa" kind="relationship" relationship="tabItems" id="BSj-TQ-L0r"/>
                         <segue destination="5jK-gR-BaF" kind="relationship" relationship="tabItems" id="hYj-U4-jMt"/>
                     </connections>
                 </tabViewController>

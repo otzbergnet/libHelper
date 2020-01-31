@@ -11,42 +11,10 @@ import SafariServices.SFSafariApplication
 
 class ViewController: NSViewController {
     
-    @IBOutlet weak var oaCount: NSTextField!
-    @IBOutlet weak var oaSearchCountLabel: NSTextField!
-    
-    @IBOutlet weak var appStoreIcon: NSButton!
-    
-    
     let preferences = Preferences()
-    
-    func readSettings(file: String) -> String{
-        let file = file //this is the file. we will write to and read from it
-        
-        var text2 = ""
-        
-        let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
-            return ""
-        }
-        let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
-        let fileURL = safariExtDir.appendingPathComponent(file)
-        
-        //reading
-        do {
-            text2 = try String(contentsOf: fileURL, encoding: .utf8)
-        }
-        catch {
-            text2 = "0"
-        }
-        
-        
-        return text2
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateCount()
         if(!preferences.isSetup()){
             preferences.doSetup()
         }
@@ -76,15 +44,6 @@ class ViewController: NSViewController {
         }
     }
     
-    
-    func updateCount(){
-        let count = readSettings(file: "count.txt")
-        let myOASearchCount = readSettings(file: "oacount.txt")
-        oaCount.stringValue = String(format: NSLocalizedString("So far we've helped you find %@ Open Access Documents!", comment: "shows on main window, number of OpenAccess found"), count)
-        
-        oaSearchCountLabel.stringValue = String(format: NSLocalizedString("You've had help with %@ Open Access searches", comment: "shows on main window, number of OpenAccess Searches conducted"), myOASearchCount)
-        
-    }
     
     
     @IBAction func openSafariPreferences(_ sender: Any) {

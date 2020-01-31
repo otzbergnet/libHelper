@@ -12,6 +12,7 @@
 		2D08FE30222A5C630066949C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D08FE2F222A5C630066949C /* CloudKit.framework */; };
 		2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708921974B250050CFDD /* HelpViewController.swift */; };
 		2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28708B21975AAC0050CFDD /* AboutController.swift */; };
+		2D2C200C23E3FAD20030F433 /* StatisticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C200A23E3FAD20030F433 /* StatisticsController.swift */; };
 		2D3CA07B2235238300D5D531 /* BookMarkTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CA0792235238300D5D531 /* BookMarkTableView.swift */; };
 		2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA5218586290095ACD7 /* AppDelegate.swift */; };
 		2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA7218586290095ACD7 /* ViewController.swift */; };
@@ -80,6 +81,7 @@
 		2D08FE2F222A5C630066949C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2D28708921974B250050CFDD /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		2D28708B21975AAC0050CFDD /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		2D2C200A23E3FAD20030F433 /* StatisticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsController.swift; sourceTree = "<group>"; };
 		2D3CA0792235238300D5D531 /* BookMarkTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableView.swift; sourceTree = "<group>"; };
 		2D3F8FA2218586290095ACD7 /* Open Access Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Access Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3F8FA5218586290095ACD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				2D3CA0792235238300D5D531 /* BookMarkTableView.swift */,
 				2D643FCA23001F5B00A4FA14 /* SettingsController.swift */,
 				2DAF938923E15DAA0023FC51 /* EZProxyController.swift */,
+				2D2C200A23E3FAD20030F433 /* StatisticsController.swift */,
 				2D28708B21975AAC0050CFDD /* AboutController.swift */,
 				2D28708921974B250050CFDD /* HelpViewController.swift */,
 				2D08FE29222A59F10066949C /* DataSync.swift */,
@@ -410,6 +413,7 @@
 				2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */,
 				2DFE4F4023B732D7006CF1AB /* BartyCrouch.swift in Sources */,
 				2D3CA07B2235238300D5D531 /* BookMarkTableView.swift in Sources */,
+				2D2C200C23E3FAD20030F433 /* StatisticsController.swift in Sources */,
 				2D28708D21975AAC0050CFDD /* AboutController.swift in Sources */,
 				2D63EE8B233739890086BBA2 /* MainWindowController.swift in Sources */,
 				2D08FE2B222A59F10066949C /* DataSync.swift in Sources */,
@@ -625,7 +629,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 1202;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -634,7 +638,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.1;
+				MARKETING_VERSION = 2020.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -651,7 +655,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 1202;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -660,7 +664,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.1;
+				MARKETING_VERSION = 2020.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -674,7 +678,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 1202;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -684,7 +688,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.1;
+				MARKETING_VERSION = 2020.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -698,7 +702,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 1202;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -708,7 +712,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.1;
+				MARKETING_VERSION = 2020.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

@@ -126,7 +126,7 @@
 "XfG-lQ-9wD.title" = "Einführung";
 
 /* Class = "NSTextFieldCell"; title = "Double-Click to open document in default browser. ⌘⌫ to delete."; ObjectID = "Y9a-Pb-WdR"; */
-"Y9a-Pb-WdR.title" = "Dokument doppelt-klicken, um dieses zu öffnen. ⌘⌫ zum Löschen.";
+"Y9a-Pb-WdR.title" = "Dokument doppel-klicken, um dieses zu öffnen. ⌘⌫ zum Löschen.";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "Fenster";
@@ -155,9 +155,6 @@
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Dienste";
 
-/* Class = "NSTextFieldCell"; title = "You've had help with 0 Open Access searches."; ObjectID = "irf-Mg-7VE"; */
-"irf-Mg-7VE.title" = "Wir haben bei 0 Open Access Suchen geholfen.";
-
 /* Class = "NSViewController"; title = "Open Access Helper"; ObjectID = "jtC-8H-YpD"; */
 "jtC-8H-YpD.title" = "Open Access Helper";
 
@@ -184,9 +181,6 @@
 
 /* Class = "NSMenu"; title = "Open Access Helper"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Open Access Helper";
-
-/* Class = "NSTextFieldCell"; title = "So far we've helped you find 0 Open Access Documents!"; ObjectID = "upX-50-mCL"; */
-"upX-50-mCL.title" = "Bisher wurden 0 Open Access Dokumente gefunden!";
 
 /* Class = "NSButtonCell"; title = "Use Open Access Button to find even more Open Access"; ObjectID = "vwZ-Zm-K8p"; */
 "vwZ-Zm-K8p.title" = "Open Access Button: als weitere Open Access Quelle";
@@ -247,3 +241,15 @@
 
 /* Class = "NSButtonCell"; title = "Not sure? Look it up..."; ObjectID = "nqs-wV-UGi"; */
 "nqs-wV-UGi.title" = "EZProxy nachschlagen...";
+
+/* Class = "NSTextFieldCell"; title = "Statistics"; ObjectID = "8Tx-0Z-j7y"; */
+"8Tx-0Z-j7y.title" = "Statistiken";
+
+/* Class = "NSViewController"; title = "Statistics"; ObjectID = "MzQ-ai-HIa"; */
+"MzQ-ai-HIa.title" = "Statistiken";
+
+/* Class = "NSTextFieldCell"; title = "You've had help with 0 Open Access searches."; ObjectID = "HSH-Xf-PuA"; */
+"HSH-Xf-PuA.title" = "You've had help with 0 Open Access searches";
+
+/* Class = "NSTextFieldCell"; title = "So far we've helped you find 0 Open Access Documents!"; ObjectID = "kcf-c2-Ct3"; */
+"kcf-c2-Ct3.title" = "So far we've helped you find 0 Open Access Documents!";
