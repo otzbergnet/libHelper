@@ -225,7 +225,7 @@
 "3j0-df-eLV.title" = "z.B. https://login.university.edu/login?url=";
 
 /* Class = "NSTextFieldCell"; title = "If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in url= or qurl=\n\nURL of your institution's EZProxy Server"; ObjectID = "4SS-by-Tr0"; */
-"4SS-by-Tr0.title" = "Sofern Ihre Institution Fernzugang mittles EZProy anbietet, können Sie hier die URL des Servers hinterlegen. Bitte beachten Sie, dass die URL auf url= oder qurl= enden muss\n\nURL des institutionellen EZProxy Server";
+"4SS-by-Tr0.title" = "Sofern Ihre Institution Fernzugang mittles EZProxy anbietet, können Sie hier die URL des Servers hinterlegen. Bitte beachten Sie, dass die URL auf url= oder qurl= enden muss\n\nURL des institutionellen EZProxy Server";
 
 /* Class = "NSButtonCell"; title = "Save Setting"; ObjectID = "BDQ-uN-9q5"; */
 "BDQ-uN-9q5.title" = "Einstellungen speichern";
