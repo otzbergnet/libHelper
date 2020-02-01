@@ -73,7 +73,13 @@ class EZProxyController: NSViewController {
             self.showTestSettingsButton()
         }
         else{
-            print("invalid prefix")
+            if(url == ""){
+                self.preferences.setStringValue(key: "ezproxyPrefix", value: url)
+                self.showTestSettingsButton()
+            }
+            else{
+                self.testSettingsButton.isHidden = true
+            }
         }
     }
     

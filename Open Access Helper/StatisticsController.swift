@@ -10,8 +10,13 @@ import Cocoa
 
 class StatisticsController: NSViewController {
     
-    @IBOutlet weak var oaCount: NSTextField!
+    @IBOutlet weak var oaFoundCountExplanationLabel: NSTextField!
+    @IBOutlet weak var oaSearchCountExplanationLabel: NSTextField!
+    @IBOutlet weak var ezProxyCountExplanationLabel: NSTextField!
+    
+    @IBOutlet weak var oaFoundCountLabel: NSTextField!
     @IBOutlet weak var oaSearchCountLabel: NSTextField!
+    @IBOutlet weak var ezProxyCountLabel: NSTextField!
     
     
     let preferences = Preferences()
@@ -29,11 +34,22 @@ class StatisticsController: NSViewController {
     }
     
     func updateCount(){
-        let count = preferences.getIntVal(key: "oaFoundCount")
-        let myOASearchCount = preferences.getIntVal(key: "oaSearchCount")
-        oaCount.stringValue = String(format: NSLocalizedString("So far we've helped you find %@ Open Access Documents!", comment: "shows on main window, number of OpenAccess found"), "\(count)")
+        let oaFoundCount = preferences.getIntVal(key: "oaFoundCount")
+        let oaSearchCount = preferences.getIntVal(key: "oaSearchCount")
+        let ezProxyCount = preferences.getIntVal(key: "ezProxyCount")
         
-        oaSearchCountLabel.stringValue = String(format: NSLocalizedString("You've had help with %@ Open Access searches", comment: "shows on main window, number of OpenAccess Searches conducted"), "\(myOASearchCount)")
+        oaFoundCountLabel.stringValue = "\(oaFoundCount)"
+        oaSearchCountLabel.stringValue = "\(oaSearchCount)"
+        
+        let proxyPrefix = preferences.getStringValue(key: "ezproxyPrefix")
+        
+        if(proxyPrefix == ""){
+            ezProxyCountExplanationLabel.stringValue = NSLocalizedString("You did not setup Proxy Support yet", comment: "shown in stats, if no proxy prefix present")
+            ezProxyCountLabel.isHidden = true
+        }
+        else{
+            ezProxyCountLabel.stringValue = "\(ezProxyCount)"
+        }
         
     }
     

@@ -136,5 +136,8 @@
 /* used in JS confirm that you are on OA already */
 "You are at the Open Acccess Location!" = "Sie befinden sich am Open Access Zugangsort!";
 
+/* shown in stats, if no proxy prefix present */
+"You did not setup Proxy Support yet" = "Sie haben noch keinen Proxy eingerichtet";
+
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Sie hatten Hilfe mit %@ Open Access Suchen";

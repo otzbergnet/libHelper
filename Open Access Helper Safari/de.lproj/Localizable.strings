@@ -138,3 +138,6 @@
 
 /* infoString for waiting for recommendations to load */
 "We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)" = "Wir stellen gerade eine Liste an Ariktelempfehlungen zusammen. Bitte gedulden Sie sich!";
+
+/* shown in stats, if no proxy prefix present */
+"You did not setup Proxy Support yet" = "Sie haben noch keinen Proxy eingerichtet";

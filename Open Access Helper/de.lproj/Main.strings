@@ -248,8 +248,20 @@
 /* Class = "NSViewController"; title = "Statistics"; ObjectID = "MzQ-ai-HIa"; */
 "MzQ-ai-HIa.title" = "Statistiken";
 
-/* Class = "NSTextFieldCell"; title = "You've had help with 0 Open Access searches."; ObjectID = "HSH-Xf-PuA"; */
-"HSH-Xf-PuA.title" = "You've had help with 0 Open Access searches";
+/* Class = "NSTextFieldCell"; title = "Proxy requests handled"; ObjectID = "1hb-oh-Hh4"; */
+"1hb-oh-Hh4.title" = "Ausgeführte Proxy-Anfragen";
 
-/* Class = "NSTextFieldCell"; title = "So far we've helped you find 0 Open Access Documents!"; ObjectID = "kcf-c2-Ct3"; */
-"kcf-c2-Ct3.title" = "So far we've helped you find 0 Open Access Documents!";
+/* Class = "NSTextFieldCell"; title = "789"; ObjectID = "GGc-LF-WbA"; */
+"GGc-LF-WbA.title" = "789";
+
+/* Class = "NSTextFieldCell"; title = "123"; ObjectID = "NKu-4Z-yea"; */
+"NKu-4Z-yea.title" = "123";
+
+/* Class = "NSTextFieldCell"; title = "\"Highlight & Search\" searches executed"; ObjectID = "Qf4-r5-fbR"; */
+"Qf4-r5-fbR.title" = "Ausgeführte \"Highlight & Search\"-Anfragen";
+
+/* Class = "NSTextFieldCell"; title = "Open Access Documents identified"; ObjectID = "V7a-Xp-IGO"; */
+"V7a-Xp-IGO.title" = "Identifizierte Open Access Dokumente";
+
+/* Class = "NSTextFieldCell"; title = "456"; ObjectID = "X2h-lI-aE0"; */
+"X2h-lI-aE0.title" = "456";
