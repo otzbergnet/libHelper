@@ -95,6 +95,11 @@
                                                 <action selector="pasteAsPlainText:" target="Ady-hI-5gd" id="qAb-8M-msi"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="UMN-sC-jZJ">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="i9c-dt-bpL"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Delete" id="Xbj-lZ-EKE">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
@@ -271,7 +276,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="dbP-uY-Rvb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-321" y="453"/>
+            <point key="canvasLocation" x="1660" y="453"/>
         </scene>
         <!--Settings-->
         <scene sceneID="fhr-tX-ivf">
@@ -436,7 +441,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="Ppl-fj-736" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287" y="453"/>
+            <point key="canvasLocation" x="-304" y="453"/>
         </scene>
         <!--EZProxy-->
         <scene sceneID="sii-Mu-s8B">
@@ -548,7 +553,7 @@ URL of your institution's EZProxy Server</string>
                 </viewController>
                 <customObject id="GMQ-Il-ak8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="453"/>
+            <point key="canvasLocation" x="357" y="453"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="rSf-gM-oqJ">
@@ -647,7 +652,7 @@ URL of your institution's EZProxy Server</string>
                 </viewController>
                 <customObject id="cs6-sv-rke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1602" y="453"/>
+            <point key="canvasLocation" x="1011" y="453"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="0CC-nx-hC5">
@@ -680,7 +685,7 @@ URL of your institution's EZProxy Server</string>
                                             <tableColumns>
                                                 <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="xQe-Sg-ycL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -720,7 +725,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="Ses-Rj-Mtw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -760,7 +765,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="149" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1031,7 +1036,7 @@ URL of your institution's EZProxy Server</string>
         <image name="icon" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="byJ-bB-5mP"/>
-        <segue reference="hYj-U4-jMt"/>
+        <segue reference="cPE-3I-5As"/>
+        <segue reference="evb-Pl-laT"/>
     </inferredMetricsTieBreakers>
 </document>

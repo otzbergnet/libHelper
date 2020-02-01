@@ -265,3 +265,6 @@
 
 /* Class = "NSTextFieldCell"; title = "456"; ObjectID = "X2h-lI-aE0"; */
 "X2h-lI-aE0.title" = "456";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "UMN-sC-jZJ"; */
+"UMN-sC-jZJ.title" = "Alles auswählen";
