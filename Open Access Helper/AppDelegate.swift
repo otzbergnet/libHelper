@@ -55,6 +55,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 }
                             }
                         }
+                        if(queryItem.name == "id"){
+                            if let instituteId = queryItem.value{
+                                self.preferences.setStringValue(key: "instituteId", value: instituteId)
+                            }
+                        }
                     }
                 }
             }
