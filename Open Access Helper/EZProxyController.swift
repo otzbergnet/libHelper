@@ -187,14 +187,14 @@ extension EZProxyController: NSTouchBarDelegate {
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.customizationIdentifier = .bar5
-        touchBar.defaultItemIdentifiers = [.label5, .saveProxy, .lookupProxy, .testProxy]
-        touchBar.customizationAllowedItemIdentifiers = [.label5, .saveProxy, .lookupProxy, .testProxy]
+        touchBar.defaultItemIdentifiers = [.label6, .saveProxy, .lookupProxy, .testProxy]
+        touchBar.customizationAllowedItemIdentifiers = [.label6, .saveProxy, .lookupProxy, .testProxy]
         return touchBar
     }
     
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         switch identifier {
-        case NSTouchBarItem.Identifier.label5:
+        case NSTouchBarItem.Identifier.label6:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
             customViewItem.view = NSTextField(labelWithString: "EZProxy: ")
             return customViewItem
