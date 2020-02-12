@@ -9,11 +9,16 @@
 import Cocoa
 
 class EZProxyController: NSViewController {
-
+    
     let preferences = Preferences()
+    let proxyFind = ProxyFind()
     
     @IBOutlet weak var testSettingsButton: NSButton!
     @IBOutlet weak var proxyPrefixTextField: NSTextField!
+    @IBOutlet weak var domainTextField: NSTextField!
+    @IBOutlet weak var searchButton: NSButton!
+    
+    @IBOutlet weak var searchDomainLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +26,23 @@ class EZProxyController: NSViewController {
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
     
-    override func viewWillAppear() {
-        super.viewWillAppear()
+    deinit {
+        self.view.window?.unbind(NSBindingName(rawValue: #keyPath(touchBar)))
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.setupThisView()
+        if #available(OSX 10.12.1, *) {
+            self.view.window?.unbind(NSBindingName(rawValue: #keyPath(touchBar))) // unbind first
+            self.view.window?.bind(NSBindingName(rawValue: #keyPath(touchBar)), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+        }
+    }
+    
+    func setupThisView(){
         self.showTestSettingsButton()
+        self.searchDomainLabel.stringValue = NSLocalizedString("Search Settings by Domain (e.g. harvard.edu)", comment: "reset to default translation")
+        self.searchDomainLabel.textColor = .black
     }
     
     func showTestSettingsButton(){
@@ -65,6 +84,15 @@ class EZProxyController: NSViewController {
         return false
     }
     
+    func getProxyForTextfield(){
+        let newProxyPrefix = self.preferences.getStringValue(key: "ezproxyPrefix")
+        if(newProxyPrefix != ""){
+            DispatchQueue.main.async {
+                self.proxyPrefixTextField.stringValue = newProxyPrefix
+            }
+        }
+    }
+    
     
     @IBAction func saveClicked(_ sender: Any) {
         let url = self.proxyPrefixTextField.stringValue
@@ -98,5 +126,95 @@ class EZProxyController: NSViewController {
         }
     }
     
+    @IBAction func searchByDomainClicked(_ sender: Any) {
+        
+        self.searchDomainLabel.stringValue = NSLocalizedString("Searching...", comment: "show searching, when looking up settings")
+        let domain = domainTextField.stringValue
+        if(domain.count > 0){
+            proxyFind.askForProxy(domain: domain) { (res) in
+                switch res{
+                case .success(let proxyList):
+                    if(proxyList.count == 0){
+                        DispatchQueue.main.async {
+                            self.searchDomainLabel.stringValue = NSLocalizedString("No match was found", comment: "if 0 hits returned")
+                        }
+                    }
+                    else if(proxyList.count == 1){
+                        if let proxyPrefix = proxyList.first?.proxyUrl.replacingOccurrences(of: "{targetUrl}", with: ""){
+                            DispatchQueue.main.async {
+                                self.preferences.setStringValue(key: "ezproxyPrefix", value: proxyPrefix)
+                                if let instituteId = proxyList.first?.id{
+                                    self.preferences.setStringValue(key: "instituteId", value: instituteId)
+                                }
+                                self.getProxyForTextfield()
+                                self.searchDomainLabel.stringValue = NSLocalizedString("Successfuly, saved!", comment: "if proxy was successfully saved")
+                                self.searchDomainLabel.textColor = .blue
+                            }
+                        }
+                        else{
+                            DispatchQueue.main.async {
+                                self.searchDomainLabel.stringValue = NSLocalizedString("We found a match, but could not get the prefix", comment: "if unable to actually get to the proxyPrefix")
+                            }
+                        }
+                        
+                    }
+                    else{
+                        DispatchQueue.main.async {
+                            self.searchDomainLabel.stringValue = NSLocalizedString("Please review your domain-name, as we were unable to find just one match", comment: "if there are more than one result")
+                        }
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.searchDomainLabel.stringValue = NSLocalizedString("We encountered an unexpected error", comment: "if failure received")
+                        print(error)
+                    }
+                }
+            }
+        }
+        else{
+            DispatchQueue.main.async {
+                self.searchDomainLabel.stringValue = NSLocalizedString("Looks like the domain field was empty", comment: "if proxy field was empty")
+            }
+        }
+    }
     
+    
+}
+
+@available(OSX 10.12.1, *)
+extension EZProxyController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.customizationIdentifier = .bar5
+        touchBar.defaultItemIdentifiers = [.label5, .saveProxy, .lookupProxy, .testProxy]
+        touchBar.customizationAllowedItemIdentifiers = [.label5, .saveProxy, .lookupProxy, .testProxy]
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        switch identifier {
+        case NSTouchBarItem.Identifier.label5:
+            let customViewItem = NSCustomTouchBarItem(identifier: identifier)
+            customViewItem.view = NSTextField(labelWithString: "EZProxy: ")
+            return customViewItem
+        case NSTouchBarItem.Identifier.saveProxy:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Save", target: self, action: #selector(saveClicked(_:)))
+            saveItem.view = button
+            return saveItem
+        case NSTouchBarItem.Identifier.lookupProxy:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Lookup", target: self, action: #selector(lookupClicked(_:)))
+            saveItem.view = button
+            return saveItem
+        case NSTouchBarItem.Identifier.testProxy:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Test", target: self, action: #selector(testClicked(_:)))
+            saveItem.view = button
+            return saveItem
+        default:
+            return nil
+        }
+    }
 }

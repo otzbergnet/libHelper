@@ -452,7 +452,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-v2-1AU">
-                                <rect key="frame" x="38" y="248" width="221" height="32"/>
+                                <rect key="frame" x="38" y="248" width="524" height="32"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="EZProxy Settings" id="pUg-hB-6ak">
                                     <font key="font" size="23" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -493,7 +493,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-k2-dT2">
-                                <rect key="frame" x="34" y="74" width="117" height="32"/>
+                                <rect key="frame" x="34" y="13" width="117" height="32"/>
                                 <buttonCell key="cell" type="push" title="Save Setting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BDQ-uN-9q5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -503,7 +503,7 @@ URL of your institution's EZProxy Server</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f90-67-4gF">
-                                <rect key="frame" x="453" y="74" width="113" height="32"/>
+                                <rect key="frame" x="453" y="13" width="113" height="32"/>
                                 <buttonCell key="cell" type="push" title="Test Setting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1IN-JA-aq4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -513,7 +513,7 @@ URL of your institution's EZProxy Server</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-0i-JjY">
-                                <rect key="frame" x="214" y="74" width="173" height="32"/>
+                                <rect key="frame" x="214" y="13" width="173" height="32"/>
                                 <buttonCell key="cell" type="push" title="Not sure? Look it up..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nqs-wV-UGi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -522,32 +522,71 @@ URL of your institution's EZProxy Server</string>
                                     <action selector="lookupClicked:" target="kVE-Sp-sqG" id="kRZ-Rp-I2K"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vOx-gb-2Cv">
+                                <rect key="frame" x="38" y="89" width="524" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Search Settings by Domain (e.g. harvard.edu)" id="QQP-RM-dky">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rE0-i7-0Dt">
+                                <rect key="frame" x="40" y="60" width="341" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="e.g. harvard.edu" drawsBackground="YES" id="PZa-Xc-R55">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PnU-4o-uPV">
+                                <rect key="frame" x="397" y="53" width="83" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="55d-yH-ddJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="searchByDomainClicked:" target="kVE-Sp-sqG" id="bKJ-cu-H8B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="rE0-i7-0Dt" firstAttribute="trailing" secondItem="mkZ-0i-JjY" secondAttribute="trailing" id="0VD-5D-tvx"/>
+                            <constraint firstAttribute="bottom" secondItem="f90-67-4gF" secondAttribute="bottom" constant="20" id="0ea-wP-F1P"/>
                             <constraint firstItem="oW3-04-xxv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="3pM-kz-cST"/>
                             <constraint firstItem="JwW-v2-1AU" firstAttribute="top" secondItem="aEQ-HV-eUt" secondAttribute="top" constant="20" id="4Jb-h4-4Eh"/>
                             <constraint firstAttribute="trailing" secondItem="mzB-iY-dpx" secondAttribute="trailing" constant="40" id="D2Z-h6-Yxf"/>
+                            <constraint firstItem="PnU-4o-uPV" firstAttribute="top" secondItem="vOx-gb-2Cv" secondAttribute="bottom" constant="8" id="Dol-Lw-kqa"/>
+                            <constraint firstItem="rE0-i7-0Dt" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="F7O-LZ-XGh"/>
+                            <constraint firstItem="rE0-i7-0Dt" firstAttribute="top" secondItem="vOx-gb-2Cv" secondAttribute="bottom" constant="8" id="FL3-Bz-TwT"/>
                             <constraint firstItem="oW3-04-xxv" firstAttribute="top" secondItem="JwW-v2-1AU" secondAttribute="bottom" constant="10" id="Gyg-8Q-APw"/>
+                            <constraint firstAttribute="bottom" secondItem="mkZ-0i-JjY" secondAttribute="bottom" constant="20" id="H7a-by-ogL"/>
                             <constraint firstItem="JwW-v2-1AU" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="J55-dG-ykT"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JwW-v2-1AU" secondAttribute="trailing" constant="40" id="MRi-bD-ZV3"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JwW-v2-1AU" secondAttribute="trailing" constant="40" id="MRi-bD-ZV3"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5gf-DU-m1c" secondAttribute="trailing" constant="40" id="Mc6-Up-Znb"/>
                             <constraint firstItem="mkZ-0i-JjY" firstAttribute="centerX" secondItem="aEQ-HV-eUt" secondAttribute="centerX" id="NJ7-mX-05j"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="PnU-4o-uPV" secondAttribute="trailing" constant="252" id="Oae-cn-cHo"/>
+                            <constraint firstItem="PnU-4o-uPV" firstAttribute="leading" secondItem="rE0-i7-0Dt" secondAttribute="trailing" constant="22" id="Res-h7-PcT"/>
                             <constraint firstItem="5gf-DU-m1c" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="Rup-iw-0km"/>
-                            <constraint firstItem="f90-67-4gF" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="XsN-6N-l02"/>
+                            <constraint firstItem="vOx-gb-2Cv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="WoB-4f-tHc"/>
+                            <constraint firstItem="vOx-gb-2Cv" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="17" id="YBb-7G-6EL"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oW3-04-xxv" secondAttribute="trailing" constant="40" id="Z7Y-PA-70Q"/>
+                            <constraint firstAttribute="bottom" secondItem="OdL-k2-dT2" secondAttribute="bottom" constant="20" id="aRt-eq-NCq"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="azE-bY-R3l"/>
-                            <constraint firstItem="mkZ-0i-JjY" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="dfc-mm-XV1"/>
                             <constraint firstItem="5gf-DU-m1c" firstAttribute="top" secondItem="mzB-iY-dpx" secondAttribute="bottom" constant="5" id="fHq-Sh-gJI"/>
-                            <constraint firstItem="OdL-k2-dT2" firstAttribute="top" secondItem="5gf-DU-m1c" secondAttribute="bottom" constant="20" id="iLH-cJ-v7V"/>
                             <constraint firstItem="mzB-iY-dpx" firstAttribute="top" secondItem="oW3-04-xxv" secondAttribute="bottom" constant="10" id="nul-tc-aYY"/>
                             <constraint firstItem="mzB-iY-dpx" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="q1X-ZR-z3y"/>
                             <constraint firstItem="f90-67-4gF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mkZ-0i-JjY" secondAttribute="trailing" constant="20" id="sBD-BB-GxX"/>
                             <constraint firstAttribute="trailing" secondItem="f90-67-4gF" secondAttribute="trailing" constant="40" id="tbq-xa-3fA"/>
+                            <constraint firstItem="OdL-k2-dT2" firstAttribute="top" secondItem="rE0-i7-0Dt" secondAttribute="bottom" constant="19" id="wEH-Wu-a5u"/>
                             <constraint firstItem="mkZ-0i-JjY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="20" id="yIf-WD-GVM"/>
+                            <constraint firstAttribute="trailing" secondItem="vOx-gb-2Cv" secondAttribute="trailing" constant="40" id="zbd-8B-F9A"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="domainTextField" destination="rE0-i7-0Dt" id="3Yf-om-7Wx"/>
                         <outlet property="proxyPrefixTextField" destination="mzB-iY-dpx" id="amf-3M-OHB"/>
+                        <outlet property="searchButton" destination="PnU-4o-uPV" id="kWY-8Y-vyZ"/>
+                        <outlet property="searchDomainLabel" destination="vOx-gb-2Cv" id="1fY-m6-byM"/>
                         <outlet property="testSettingsButton" destination="f90-67-4gF" id="0fw-xk-Ies"/>
                     </connections>
                 </viewController>

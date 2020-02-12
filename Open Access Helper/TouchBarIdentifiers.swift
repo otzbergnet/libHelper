@@ -25,6 +25,9 @@ extension NSTouchBarItem.Identifier {
     static let label5 = NSTouchBarItem.Identifier("net.otzberg.libHelper.BookMarkTableView.label5")
     static let openBookmark = NSTouchBarItem.Identifier("net.otzberg.libHelper.BookMarkTableView.openBookmark")
     static let deleteBookmark = NSTouchBarItem.Identifier("net.otzberg.libHelper.BookMarkTableView.deleteBookmark")
+    static let saveProxy = NSTouchBarItem.Identifier("net.otzberg.libHelper.EZProxyController.saveProxy")
+    static let lookupProxy = NSTouchBarItem.Identifier("net.otzberg.libHelper.EZProxyController.lookupProxy")
+    static let testProxy = NSTouchBarItem.Identifier("net.otzberg.libHelper.EZProxyController.testProxy")
 }
 
 
@@ -33,4 +36,5 @@ extension NSTouchBar.CustomizationIdentifier {
     static let bar2 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.AboutController.bar2")
     static let bar3 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.SettingsController.bar3")
     static let bar4 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.BookMarkTableView.bar4")
+    static let bar5 = NSTouchBar.CustomizationIdentifier("net.otzberg.libHelper.EZProxyController.bar5")
 }

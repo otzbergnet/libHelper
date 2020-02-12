@@ -141,3 +141,27 @@
 
 /* shown in stats, if no proxy prefix present */
 "You did not setup Proxy Support yet" = "Sie haben noch keinen Proxy eingerichtet";
+
+/* if proxy field was empty */
+"Looks like the domain field was empty" = "Domain überprüfen, das Domain-Feld war leer";
+
+/* if 0 hits returned */
+"No match was found" = "Keine Treffer";
+
+/* if there are more than one result */
+"Please review your domain-name, as we were unable to find just one match" = "Domain überprüfen, wir haben mehrere Treffer gefunden";
+
+/* show searching, when looking up settings */
+"Searching..." = "Suche...";
+
+/* if proxy was successfully saved */
+"Successfuly, saved!" = "Erfolgreich gespeichert";
+
+/* if failure received */
+"We encountered an unexpected error" = "Unerwarteter Fehler";
+
+/* if unable to actually get to the proxyPrefix */
+"We found a match, but could not get the prefix" = "Wir haben einen Treffer gefunden, konnten jedoch den Prefix nicht extrahieren";
+
+/* reset to default translation */
+"Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
