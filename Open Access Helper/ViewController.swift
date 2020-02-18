@@ -8,6 +8,7 @@
 
 import Cocoa
 import SafariServices.SFSafariApplication
+import StoreKit
 
 class ViewController: NSViewController {
     
@@ -18,6 +19,7 @@ class ViewController: NSViewController {
         if(!preferences.isSetup()){
             preferences.doSetup()
         }
+        requestReview()
     }
     
     deinit {
@@ -44,6 +46,30 @@ class ViewController: NSViewController {
         }
     }
     
+    
+    func requestReview(){
+        if #available(macOS 10.14, *){
+            let oaFoundCount = self.preferences.getIntVal(key: "oaFoundCount")
+
+            // Get the current bundle version for the app
+            let infoDictionaryKey = kCFBundleVersionKey as String
+            guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else { fatalError("Expected to find a bundle version in the info dictionary")
+            }
+
+            // get the last reviewed version
+            let lastVersionPromptedForReview = self.preferences.getStringValue(key: "lastVersionPromptedForReview")
+
+            // Has the process been completed several times and the user has not already been prompted for this version?
+            if (oaFoundCount >= 200 && currentVersion != lastVersionPromptedForReview) {
+                let twoSecondsFromNow = DispatchTime.now() + 2.0
+                DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow, execute: {
+                    SKStoreReviewController.requestReview()
+                    self.preferences.setStringValue(key: "lastVersionPromptedForReview", value: currentVersion)
+                })
+            }
+        }
+        
+    }
     
     
     @IBAction func openSafariPreferences(_ sender: Any) {
