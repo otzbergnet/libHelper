@@ -98,9 +98,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func coreClicked(_ sender: Any) {
-        let state = coreCheckBox.state
-        if(state == .on){
+    @IBAction func coreClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "core", value: true)
         }
         else{
@@ -109,9 +108,8 @@ class SettingsController: NSViewController {
     }
     
     
-    @IBAction func oaButtonClicked(_ sender: Any) {
-        let state = oaButtonCheckBox.state
-        if(state == .on){
+    @IBAction func oaButtonClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "oabutton", value: true)
         }
         else{
@@ -119,9 +117,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func oaButtonRequestClicked(_ sender: Any) {
-        let state = oaButtonRequestCheckBox.state
-        if(state == .on){
+    @IBAction func oaButtonRequestClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "oabrequest", value: true)
         }
         else{
@@ -129,9 +126,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func coreRecomClicked(_ sender: Any) {
-        let state = coreRecomCheckBox.state
-        if(state == .on){
+    @IBAction func coreRecomClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "corerecom", value: true)
         }
         else{
@@ -140,9 +136,8 @@ class SettingsController: NSViewController {
         
     }
     
-    @IBAction func basesearchHSclicked(_ sender: Any) {
-        let state = basesearchHSCheckBox.state
-        if(state == .on){
+    @IBAction func basesearchHSclicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "basehs", value: true)
         }
         else{
@@ -150,9 +145,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func coreHSclicked(_ sender: Any) {
-        let state = coreHSCheckBox.state
-        if(state == .on){
+    @IBAction func coreHSclicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "corehs", value: true)
         }
         else{
@@ -160,9 +154,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func gettheresearchHSclicked(_ sender: Any) {
-        let state = gettheresearchHSCheckBox.state
-        if(state == .on){
+    @IBAction func gettheresearchHSclicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "gettheresearchhs", value: true)
         }
         else{
