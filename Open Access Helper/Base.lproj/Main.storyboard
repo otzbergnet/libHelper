@@ -523,7 +523,7 @@ URL of your institution's EZProxy Server</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vOx-gb-2Cv">
-                                <rect key="frame" x="38" y="89" width="524" height="16"/>
+                                <rect key="frame" x="38" y="89" width="280" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Search Settings by Domain (e.g. harvard.edu)" id="QQP-RM-dky">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -579,7 +579,7 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstAttribute="trailing" secondItem="f90-67-4gF" secondAttribute="trailing" constant="40" id="tbq-xa-3fA"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="top" secondItem="rE0-i7-0Dt" secondAttribute="bottom" constant="19" id="wEH-Wu-a5u"/>
                             <constraint firstItem="mkZ-0i-JjY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="20" id="yIf-WD-GVM"/>
-                            <constraint firstAttribute="trailing" secondItem="vOx-gb-2Cv" secondAttribute="trailing" constant="40" id="zbd-8B-F9A"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vOx-gb-2Cv" secondAttribute="trailing" constant="40" id="zbd-8B-F9A"/>
                         </constraints>
                     </view>
                     <connections>
@@ -658,8 +658,19 @@ URL of your institution's EZProxy Server</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Izj-dX-g4g">
+                                <rect key="frame" x="38" y="28" width="444" height="18"/>
+                                <buttonCell key="cell" type="check" title="It is ok to share some anonymous usage statistics with the app author" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mgb-TU-gH1">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="shareStatsClicked:" target="MzQ-ai-HIa" id="erU-77-I8i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Izj-dX-g4g" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="ArJ-Hr-mfU"/>
                             <constraint firstItem="oXy-kf-Ye6" firstAttribute="top" secondItem="PXw-vH-b1A" secondAttribute="bottom" constant="20" id="BaG-8P-AfZ"/>
                             <constraint firstItem="Y4E-h5-f1D" firstAttribute="top" secondItem="YB2-i0-I5X" secondAttribute="bottom" constant="20" id="EAO-Ji-Ift"/>
                             <constraint firstAttribute="trailing" secondItem="Y4E-h5-f1D" secondAttribute="trailing" constant="150" id="GgY-Zq-goi"/>
@@ -667,6 +678,8 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstItem="YB2-i0-I5X" firstAttribute="top" secondItem="BlJ-cP-zbi" secondAttribute="bottom" constant="20" id="KPq-fy-egd"/>
                             <constraint firstItem="Y4E-h5-f1D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kLV-Uj-EWb" secondAttribute="trailing" constant="20" id="NTc-fh-d7o"/>
                             <constraint firstItem="PXw-vH-b1A" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="PWd-MY-XRd"/>
+                            <constraint firstAttribute="bottom" secondItem="Izj-dX-g4g" secondAttribute="bottom" constant="30" id="WTu-p8-PST"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Izj-dX-g4g" secondAttribute="trailing" constant="40" id="X2y-nv-Qbd"/>
                             <constraint firstItem="PXw-vH-b1A" firstAttribute="top" secondItem="dNg-VD-ghF" secondAttribute="bottom" constant="20" id="ZGT-oZ-mle"/>
                             <constraint firstAttribute="trailing" secondItem="YB2-i0-I5X" secondAttribute="trailing" constant="150" id="Zhx-uf-NWp"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dNg-VD-ghF" secondAttribute="trailing" constant="40" id="dnX-Gc-jLY"/>
@@ -687,6 +700,7 @@ URL of your institution's EZProxy Server</string>
                         <outlet property="oaFoundCountLabel" destination="BlJ-cP-zbi" id="rg1-MG-ZDf"/>
                         <outlet property="oaSearchCountExplanationLabel" destination="oXy-kf-Ye6" id="g74-EU-4ll"/>
                         <outlet property="oaSearchCountLabel" destination="YB2-i0-I5X" id="bvH-Kj-tRc"/>
+                        <outlet property="shareStats" destination="Izj-dX-g4g" id="qYb-kN-khd"/>
                     </connections>
                 </viewController>
                 <customObject id="cs6-sv-rke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -724,7 +738,7 @@ URL of your institution's EZProxy Server</string>
                                             <tableColumns>
                                                 <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="xQe-Sg-ycL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -764,7 +778,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="Ses-Rj-Mtw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -804,7 +818,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="149" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>

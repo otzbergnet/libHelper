@@ -94,6 +94,9 @@
 /* iCloud record error */
 "Record Error" = "Datensatz-Fehler";
 
+/* reset to default translation */
+"Search Settings by Domain (e.g. harvard.edu)" = "Nach Domain suchen (z.B. uni-muenchen.de)";
+
 /* show searching, when looking up settings */
 "Searching..." = "Suche...";
 
@@ -162,6 +165,3 @@
 
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Sie hatten Hilfe mit %@ Open Access Suchen";
-
-/* reset to default translation */
-"Search Settings by Domain (e.g. harvard.edu)" = "";

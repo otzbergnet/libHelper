@@ -9,7 +9,7 @@
 import Cocoa
 
 class Preferences: NSViewController {
-
+    
     
     
     func isSetup() -> Bool{
@@ -53,6 +53,9 @@ class Preferences: NSViewController {
             defaults.set(true, forKey: "basehs")
             defaults.set(true, forKey: "corehs")
             defaults.set(false, forKey: "gettheresearchhs")
+            defaults.set(true, forKey: "shareStats")
+            let uuid = UUID().uuidString
+            defaults.set(uuid, forKey: "uuid")
         }
         
     }
@@ -106,7 +109,7 @@ class Preferences: NSViewController {
         }
         return 0
     }
-
+    
     func setIntVal(key: String, value: Int){
         if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
             defaults.set(value, forKey: key)
@@ -119,8 +122,27 @@ class Preferences: NSViewController {
         setIntVal(key: key, value: intValue)
     }
     
+    func setDate(date : String){
+        if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
+            defaults.set(date, forKey: "share_date")
+            defaults.synchronize()
+        }
+    }
+    
+    func getShareDate() -> String{
+        var date = "0"
+        if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
+            if let share_date = defaults.string(forKey: "share_date"){
+                if share_date != "-"{
+                    date = share_date
+                }
+            }
+        }
+        return date
+    }
+    
     // MARK: - Old Stats Related Functions
-       
+    
     func readSettings(file: String) -> String{
         let file = file //this is the file. we will write to and read from it
         

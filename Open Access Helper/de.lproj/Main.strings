@@ -277,3 +277,6 @@
 
 /* Class = "NSTextFieldCell"; placeholderString = "e.g. harvard.edu"; ObjectID = "PZa-Xc-R55"; */
 "PZa-Xc-R55.placeholderString" = "z.B. uni-muenchen.de";
+
+/* Class = "NSButtonCell"; title = "It is ok to share some anonymous usage statistics with the app author"; ObjectID = "mgb-TU-gH1"; */
+"mgb-TU-gH1.title" = "Anonymisierte Nutzungstatistiken mit dem Entwickler teilen";

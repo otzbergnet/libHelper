@@ -12,6 +12,7 @@ import SafariServices
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
     let preferences = Preferences()
+    let stats = StatisticSubmit()
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         if messageName == "found" {
@@ -296,6 +297,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func checkUnpaywall(doi: String, page: SFSafariPage, originUrl: String) {
+        self.stats.submitStats(force: false)
         toolbarAction(imgName: "oa_100a.pdf")
         let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=oahelper@otzberg.net"
         let url = URL(string: jsonUrlString)
