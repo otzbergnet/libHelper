@@ -43,6 +43,14 @@ class StatisticsController: NSViewController {
         }
     }
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        if #available(OSX 10.12.1, *) {
+            self.view.window?.unbind(NSBindingName(rawValue: #keyPath(touchBar))) // unbind first
+            self.view.window?.bind(NSBindingName(rawValue: #keyPath(touchBar)), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+        }
+    }
+    
     func updateCount(){
         let oaFoundCount = preferences.getIntVal(key: "oaFoundCount")
         let oaSearchCount = preferences.getIntVal(key: "oaSearchCount")
