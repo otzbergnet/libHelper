@@ -9,6 +9,9 @@
 "base-search.net search for: \"%@\"" = "base-search.net Suche nach: \"%@\"";
 
 /* No comment provided by engineer. */
+"Basic Usage Statistics" = "Grundlegende Statistiken";
+
+/* No comment provided by engineer. */
 "Bookmarks: Select a row to see options" = "Bookmarks: Wählen Sie eine Zeile, um Optionen zu sehen";
 
 /* Cancel button title */
@@ -29,6 +32,12 @@
 /* No comment provided by engineer. */
 "Delete Bookmark" = "Bookmark löschen";
 
+/* touchbar button */
+"Deselect All" = "Alle deaktivieren";
+
+/* No comment provided by engineer. */
+"EZProxy: " = "EZProxy: ";
+
 /* changes Context Label */
 "gettheresearch.org search for: \"%@\"" = "gettheresearch.org Suche nach: \"%@\"";
 
@@ -41,6 +50,9 @@
 
 /* if proxy field was empty */
 "Looks like the domain field was empty" = "Domain überprüfen, Feld war leer";
+
+/* No comment provided by engineer. */
+"Lookup" = "Nachschlagen";
 
 /* zoneNotFound or user deleted */
 "Missing Database" = "Fehlende Datenbank";
@@ -90,14 +102,23 @@
 /* Quit without saves error question info */
 "Quitting now will lose any changes you have made since the last successful save" = "Wenn Du das Programm jetzt beendest, werden Deine Änderungen verloren gehen";
 
+/* touchbar button */
+"Recommended Settings" = "Empfohlene Einstellungen";
+
 /* iCloud record error */
 "Record Error" = "Datensatzfehler";
+
+/* No comment provided by engineer. */
+"Save" = "Speichern";
 
 /* reset to default translation */
 "Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
 
 /* show searching, when looking up settings */
 "Searching..." = "Suche...";
+
+/* touchbar label */
+"Settings: " = "Einstellungen: ";
 
 /* No comment provided by engineer. */
 "Show Example" = "Ein Beispiel zeigen";
@@ -119,6 +140,12 @@
 
 /* if proxy was successfully saved */
 "Successfuly, saved!" = "Erfolgreich gespeichert";
+
+/* touchbar button */
+"Tell me more..." = "Mehr Informationen...";
+
+/* No comment provided by engineer. */
+"Test" = "Testen";
 
 /* changes Context Label, base-search-net */
 "Visit base-search.net" = "Besuchen Sie base-search.net";

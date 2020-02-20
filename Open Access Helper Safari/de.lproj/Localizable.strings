@@ -165,3 +165,30 @@
 
 /* reset to default translation */
 "Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
+
+/* No comment provided by engineer. */
+"Basic Usage Statistics" = "Grundlegende Statistiken";
+
+/* touchbar button */
+"Deselect All" = "Alle deaktivieren";
+
+/* No comment provided by engineer. */
+"EZProxy: " = "EZProxy: ";
+
+/* No comment provided by engineer. */
+"Lookup" = "Nachschlagen";
+
+/* touchbar button */
+"Recommended Settings" = "Empfohlene Einstellungen";
+
+/* No comment provided by engineer. */
+"Save" = "Speichern";
+
+/* touchbar label */
+"Settings: " = "Einstellungen: ";
+
+/* touchbar button */
+"Tell me more..." = "Mehr Informationen...";
+
+/* No comment provided by engineer. */
+"Test" = "Testen";

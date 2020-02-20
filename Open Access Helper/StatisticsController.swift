@@ -109,7 +109,8 @@ extension StatisticsController: NSTouchBarDelegate {
         switch identifier {
         case NSTouchBarItem.Identifier.label7:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-            customViewItem.view = NSTextField(labelWithString: "Basic Usage Statistics")
+            let customViewItemLabel = NSLocalizedString("Basic Usage Statistics", comment: "")
+            customViewItem.view = NSTextField(labelWithString: customViewItemLabel)
             return customViewItem
         default:
             return nil

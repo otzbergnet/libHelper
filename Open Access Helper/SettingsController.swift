@@ -209,22 +209,26 @@ extension SettingsController: NSTouchBarDelegate {
         switch identifier {
         case NSTouchBarItem.Identifier.label3:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-            customViewItem.view = NSTextField(labelWithString: "Settings: ")
+            let settingsTitle = NSLocalizedString("Settings: ", comment: "touchbar label")
+            customViewItem.view = NSTextField(labelWithString: settingsTitle)
             return customViewItem
         case NSTouchBarItem.Identifier.moreInfo:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Tell me more...", target: self, action: #selector(tellMeMoreClicked(_:)))
+            let buttonTitle = NSLocalizedString("Tell me more...", comment: "touchbar button")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(tellMeMoreClicked(_:)))
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.noneSelected:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Deselect All", target: self, action: #selector(noneSelected(_:)))
+            let buttonTitle = NSLocalizedString("Deselect All", comment: "touchbar button")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(noneSelected(_:)))
             button.bezelColor = NSColor.systemOrange
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.recommendedSelected:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Recommended Settings", target: self, action: #selector(recommendedSelected(_:)))
+            let buttonTitle = NSLocalizedString("Recommended Settings", comment: "touchbar button")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(recommendedSelected(_:)))
             button.bezelColor = NSColor.systemBlue
             saveItem.view = button
             return saveItem

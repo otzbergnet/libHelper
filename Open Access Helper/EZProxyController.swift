@@ -16,6 +16,7 @@ class EZProxyController: NSViewController {
     @IBOutlet weak var testSettingsButton: NSButton!
     @IBOutlet weak var proxyPrefixTextField: NSTextField!
     @IBOutlet weak var domainTextField: NSTextField!
+
     @IBOutlet weak var searchButton: NSButton!
     
     @IBOutlet weak var searchDomainLabel: NSTextField!
@@ -44,6 +45,7 @@ class EZProxyController: NSViewController {
         self.searchDomainLabel.stringValue = NSLocalizedString("Search Settings by Domain (e.g. harvard.edu)", comment: "reset to default translation")
         self.searchDomainLabel.textColor = .black
     }
+
     
     func showTestSettingsButton(){
         let proxyPrefix = preferences.getStringValue(key: "ezproxyPrefix") // always returns at least an empty String
@@ -178,6 +180,9 @@ class EZProxyController: NSViewController {
         }
     }
     
+
+    
+    
     
 }
 
@@ -196,21 +201,25 @@ extension EZProxyController: NSTouchBarDelegate {
         switch identifier {
         case NSTouchBarItem.Identifier.label6:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-            customViewItem.view = NSTextField(labelWithString: "EZProxy: ")
+            let customViewItemLabel = NSLocalizedString("EZProxy: ", comment: "")
+            customViewItem.view = NSTextField(labelWithString: customViewItemLabel)
             return customViewItem
         case NSTouchBarItem.Identifier.saveProxy:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Save", target: self, action: #selector(saveClicked(_:)))
+            let buttonTitle = NSLocalizedString("Save", comment: "")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(saveClicked(_:)))
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.lookupProxy:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Lookup", target: self, action: #selector(lookupClicked(_:)))
+            let buttonTitle = NSLocalizedString("Lookup", comment: "")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(lookupClicked(_:)))
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.testProxy:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Test", target: self, action: #selector(testClicked(_:)))
+            let buttonTitle = NSLocalizedString("Test", comment: "")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(testClicked(_:)))
             saveItem.view = button
             return saveItem
         default:

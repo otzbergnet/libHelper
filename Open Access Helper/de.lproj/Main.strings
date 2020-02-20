@@ -215,9 +215,6 @@
 /* Class = "NSButtonCell"; title = "Test Setting"; ObjectID = "1IN-JA-aq4"; */
 "1IN-JA-aq4.title" = "EZProxy testen";
 
-/* Class = "NSTextFieldCell"; title = "e.g. https://login.university.edu/login?url="; ObjectID = "3j0-df-eLV"; */
-"3j0-df-eLV.title" = "z.B. https://login.university.edu/login?url=";
-
 /* Class = "NSTextFieldCell"; title = "If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in url= or qurl=\n\nURL of your institution's EZProxy Server"; ObjectID = "4SS-by-Tr0"; */
 "4SS-by-Tr0.title" = "Sofern Ihre Institution Fernzugang mittles EZProxy anbietet, können Sie hier die URL des Servers hinterlegen. Bitte beachten Sie, dass die URL auf url= oder qurl= enden muss\n\nURL des institutionellen EZProxy Server";
 
@@ -280,3 +277,6 @@
 
 /* Class = "NSButtonCell"; title = "It is ok to share some anonymous usage statistics with the app author"; ObjectID = "mgb-TU-gH1"; */
 "mgb-TU-gH1.title" = "Anonymisierte Nutzungstatistiken mit dem Entwickler teilen";
+
+/* Class = "NSTextFieldCell"; placeholderString = "e.g. https://lib.uni.edu/login?url="; ObjectID = "Ggd-tc-Rne"; */
+"Ggd-tc-Rne.placeholderString" = "z.B. https://bib.uni.de/login?url=";
