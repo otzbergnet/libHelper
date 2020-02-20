@@ -38,6 +38,10 @@ This app is a hobby project, I am sure there is plenty in the code that isn't pe
 
 I guess there is Copyright and I guess it is mine ;)
 
+## Support my work
+
+[<img src="https://www.otzberg.net/img/buymeatea.png" width="250" height="80" >](https://www.buymeacoffee.com/otzberg)
+
 ## Contact
 
 [eMail](mailto:oahelper@otzberg.net)<br/>
