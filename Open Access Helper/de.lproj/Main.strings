@@ -215,9 +215,6 @@
 /* Class = "NSButtonCell"; title = "Test Setting"; ObjectID = "1IN-JA-aq4"; */
 "1IN-JA-aq4.title" = "EZProxy testen";
 
-/* Class = "NSTextFieldCell"; title = "e.g. https://login.university.edu/login?url="; ObjectID = "3j0-df-eLV"; */
-"3j0-df-eLV.title" = "z.B. https://login.university.edu/login?url=";
-
 /* Class = "NSTextFieldCell"; title = "If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in url= or qurl=\n\nURL of your institution's EZProxy Server"; ObjectID = "4SS-by-Tr0"; */
 "4SS-by-Tr0.title" = "Sofern Ihre Institution Fernzugang mittles EZProxy anbietet, können Sie hier die URL des Servers hinterlegen. Bitte beachten Sie, dass die URL auf url= oder qurl= enden muss\n\nURL des institutionellen EZProxy Server";
 
@@ -248,8 +245,38 @@
 /* Class = "NSViewController"; title = "Statistics"; ObjectID = "MzQ-ai-HIa"; */
 "MzQ-ai-HIa.title" = "Statistiken";
 
-/* Class = "NSTextFieldCell"; title = "You've had help with 0 Open Access searches."; ObjectID = "HSH-Xf-PuA"; */
-"HSH-Xf-PuA.title" = "You've had help with 0 Open Access searches";
+/* Class = "NSTextFieldCell"; title = "Proxy requests handled"; ObjectID = "1hb-oh-Hh4"; */
+"1hb-oh-Hh4.title" = "Ausgeführte Proxy-Anfragen";
 
-/* Class = "NSTextFieldCell"; title = "So far we've helped you find 0 Open Access Documents!"; ObjectID = "kcf-c2-Ct3"; */
-"kcf-c2-Ct3.title" = "So far we've helped you find 0 Open Access Documents!";
+/* Class = "NSTextFieldCell"; title = "789"; ObjectID = "GGc-LF-WbA"; */
+"GGc-LF-WbA.title" = "789";
+
+/* Class = "NSTextFieldCell"; title = "123"; ObjectID = "NKu-4Z-yea"; */
+"NKu-4Z-yea.title" = "123";
+
+/* Class = "NSTextFieldCell"; title = "\"Highlight & Search\" searches executed"; ObjectID = "Qf4-r5-fbR"; */
+"Qf4-r5-fbR.title" = "Ausgeführte \"Highlight & Search\"-Anfragen";
+
+/* Class = "NSTextFieldCell"; title = "Open Access Documents identified"; ObjectID = "V7a-Xp-IGO"; */
+"V7a-Xp-IGO.title" = "Identifizierte Open Access Dokumente";
+
+/* Class = "NSTextFieldCell"; title = "456"; ObjectID = "X2h-lI-aE0"; */
+"X2h-lI-aE0.title" = "456";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "UMN-sC-jZJ"; */
+"UMN-sC-jZJ.title" = "Alles auswählen";
+
+/* Class = "NSButtonCell"; title = "Search"; ObjectID = "55d-yH-ddJ"; */
+"55d-yH-ddJ.title" = "Suchen";
+
+/* Class = "NSTextFieldCell"; title = "Search Settings by Domain (e.g. harvard.edu)"; ObjectID = "QQP-RM-dky"; */
+"QQP-RM-dky.title" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
+
+/* Class = "NSTextFieldCell"; placeholderString = "e.g. harvard.edu"; ObjectID = "PZa-Xc-R55"; */
+"PZa-Xc-R55.placeholderString" = "z.B. uni-muenchen.de";
+
+/* Class = "NSButtonCell"; title = "It is ok to share some anonymous usage statistics with the app author"; ObjectID = "mgb-TU-gH1"; */
+"mgb-TU-gH1.title" = "Anonymisierte Nutzungstatistiken mit dem Entwickler teilen";
+
+/* Class = "NSTextFieldCell"; placeholderString = "e.g. https://lib.uni.edu/login?url="; ObjectID = "Ggd-tc-Rne"; */
+"Ggd-tc-Rne.placeholderString" = "z.B. https://bib.uni.de/login?url=";

@@ -9,6 +9,9 @@
 "base-search.net search for: \"%@\"" = "base-search.net Suche nach: \"%@\"";
 
 /* No comment provided by engineer. */
+"Basic Usage Statistics" = "Grundlegende Statistiken";
+
+/* No comment provided by engineer. */
 "Bookmarks: Select a row to see options" = "Bookmarks: Wählen Sie eine Zeile, um Optionen zu sehen";
 
 /* Cancel button title */
@@ -29,6 +32,12 @@
 /* No comment provided by engineer. */
 "Delete Bookmark" = "Bookmark löschen";
 
+/* touchbar button */
+"Deselect All" = "Alle deaktivieren";
+
+/* No comment provided by engineer. */
+"EZProxy: " = "EZProxy: ";
+
 /* changes Context Label */
 "gettheresearch.org search for: \"%@\"" = "gettheresearch.org Suche nach: \"%@\"";
 
@@ -39,11 +48,20 @@
    iCloud error - not authenticated */
 "iCloud Error" = "iCloud Fehler";
 
+/* if proxy field was empty */
+"Looks like the domain field was empty" = "Domain überprüfen, Feld war leer";
+
+/* No comment provided by engineer. */
+"Lookup" = "Nachschlagen";
+
 /* zoneNotFound or user deleted */
 "Missing Database" = "Fehlende Datenbank";
 
 /* 0 bookmarks retrieved */
 "No Bookmarks" = "Keine Bookmarks";
+
+/* if 0 hits returned */
+"No match was found" = "Keine Treffer gefunden";
 
 /* OK button in alert */
 "OK" = "OK";
@@ -72,6 +90,9 @@
 /* error message shown, when iCloud not logged in */
 "Please check that you are logged into iCloud" = "Bitte überprüfen, dass Du in iCloud eingeloggt bist";
 
+/* if there are more than one result */
+"Please review your domain-name, as we were unable to find just one match" = "Mehrere Treffer gefunden, bitte Domain überprüfen.";
+
 /* publishedVersion */
 "Published Version" = "Veröffentliche Version";
 
@@ -81,8 +102,23 @@
 /* Quit without saves error question info */
 "Quitting now will lose any changes you have made since the last successful save" = "Wenn Du das Programm jetzt beendest, werden Deine Änderungen verloren gehen";
 
+/* touchbar button */
+"Recommended Settings" = "Empfohlene Einstellungen";
+
 /* iCloud record error */
 "Record Error" = "Datensatzfehler";
+
+/* No comment provided by engineer. */
+"Save" = "Speichern";
+
+/* reset to default translation */
+"Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
+
+/* show searching, when looking up settings */
+"Searching..." = "Suche...";
+
+/* touchbar label */
+"Settings: " = "Einstellungen: ";
 
 /* No comment provided by engineer. */
 "Show Example" = "Ein Beispiel zeigen";
@@ -101,6 +137,15 @@
 
 /* submittedVersion */
 "Submitted Version" = "Eingereichte Version";
+
+/* if proxy was successfully saved */
+"Successfuly, saved!" = "Erfolgreich gespeichert";
+
+/* touchbar button */
+"Tell me more..." = "Mehr Informationen...";
+
+/* No comment provided by engineer. */
+"Test" = "Testen";
 
 /* changes Context Label, base-search-net */
 "Visit base-search.net" = "Besuchen Sie base-search.net";
@@ -123,6 +168,12 @@
 /* No comment provided by engineer. */
 "We are sorry, but there was a connection error. Please check your Internet Connection" = "Leider ist ein Verbindungsfehler aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung";
 
+/* if failure received */
+"We encountered an unexpected error" = "Unerwarteter Fehler";
+
+/* if unable to actually get to the proxyPrefix */
+"We found a match, but could not get the prefix" = "Wir haben einen Treffer gefunden, konnten jedoch den Prefix nicht extrahieren";
+
 /* to be shown in JavaScript Popover */
 "We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!" = "Wir haben eine kurze Liste mit Artikeln zusammengestellt, die dem von Ihnen angezeigten ähneln. Wir hoffen, dass diese nützlich sind!";
 
@@ -134,6 +185,9 @@
 
 /* used in JS confirm that you are on OA already */
 "You are at the Open Acccess Location!" = "Sie befinden sich an der Open Access Zugriffsort!";
+
+/* shown in stats, if no proxy prefix present */
+"You did not setup Proxy Support yet" = "Sie haben noch keinen Proxy konfiguriert";
 
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Wir haben Dir bei %@ Open Access Suchen geholfen";
