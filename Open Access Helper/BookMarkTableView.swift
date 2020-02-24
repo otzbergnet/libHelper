@@ -46,7 +46,7 @@ class BookMarkTableView: NSViewController {
         
         let directoryItem = BookMarkObject()
         directoryItem.title = "Open Access Helper"
-        directoryItem.url = "https://www.otzberg.net/oahelper"
+        directoryItem.url = "https://www.oahelper.org/"
         directoryItem.date = Date()
         directoryItems.append(directoryItem)
         

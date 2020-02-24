@@ -98,9 +98,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func coreClicked(_ sender: Any) {
-        let state = coreCheckBox.state
-        if(state == .on){
+    @IBAction func coreClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "core", value: true)
         }
         else{
@@ -109,9 +108,8 @@ class SettingsController: NSViewController {
     }
     
     
-    @IBAction func oaButtonClicked(_ sender: Any) {
-        let state = oaButtonCheckBox.state
-        if(state == .on){
+    @IBAction func oaButtonClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "oabutton", value: true)
         }
         else{
@@ -119,9 +117,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func oaButtonRequestClicked(_ sender: Any) {
-        let state = oaButtonRequestCheckBox.state
-        if(state == .on){
+    @IBAction func oaButtonRequestClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "oabrequest", value: true)
         }
         else{
@@ -129,9 +126,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func coreRecomClicked(_ sender: Any) {
-        let state = coreRecomCheckBox.state
-        if(state == .on){
+    @IBAction func coreRecomClicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "corerecom", value: true)
         }
         else{
@@ -140,9 +136,8 @@ class SettingsController: NSViewController {
         
     }
     
-    @IBAction func basesearchHSclicked(_ sender: Any) {
-        let state = basesearchHSCheckBox.state
-        if(state == .on){
+    @IBAction func basesearchHSclicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "basehs", value: true)
         }
         else{
@@ -150,9 +145,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func coreHSclicked(_ sender: Any) {
-        let state = coreHSCheckBox.state
-        if(state == .on){
+    @IBAction func coreHSclicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "corehs", value: true)
         }
         else{
@@ -160,9 +154,8 @@ class SettingsController: NSViewController {
         }
     }
     
-    @IBAction func gettheresearchHSclicked(_ sender: Any) {
-        let state = gettheresearchHSCheckBox.state
-        if(state == .on){
+    @IBAction func gettheresearchHSclicked(_ sender: NSButton) {
+        if(sender.state == .on){
             preferences.setValue(key: "gettheresearchhs", value: true)
         }
         else{
@@ -176,7 +169,7 @@ class SettingsController: NSViewController {
     
     
     @IBAction func tellMeMoreClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper/settings.html"),
+        if let url = URL(string: "https://www.oahelper.org/settings.html"),
             NSWorkspace.shared.open(url) {
         }
     }
@@ -216,22 +209,26 @@ extension SettingsController: NSTouchBarDelegate {
         switch identifier {
         case NSTouchBarItem.Identifier.label3:
             let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-            customViewItem.view = NSTextField(labelWithString: "Settings: ")
+            let settingsTitle = NSLocalizedString("Settings: ", comment: "touchbar label")
+            customViewItem.view = NSTextField(labelWithString: settingsTitle)
             return customViewItem
         case NSTouchBarItem.Identifier.moreInfo:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Tell me more...", target: self, action: #selector(tellMeMoreClicked(_:)))
+            let buttonTitle = NSLocalizedString("Tell me more...", comment: "touchbar button")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(tellMeMoreClicked(_:)))
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.noneSelected:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Deselect All", target: self, action: #selector(noneSelected(_:)))
+            let buttonTitle = NSLocalizedString("Deselect All", comment: "touchbar button")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(noneSelected(_:)))
             button.bezelColor = NSColor.systemOrange
             saveItem.view = button
             return saveItem
         case NSTouchBarItem.Identifier.recommendedSelected:
             let saveItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Recommended Settings", target: self, action: #selector(recommendedSelected(_:)))
+            let buttonTitle = NSLocalizedString("Recommended Settings", comment: "touchbar button")
+            let button = NSButton(title: buttonTitle, target: self, action: #selector(recommendedSelected(_:)))
             button.bezelColor = NSColor.systemBlue
             saveItem.view = button
             return saveItem

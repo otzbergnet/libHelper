@@ -12,6 +12,7 @@ import SafariServices
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
     let preferences = Preferences()
+    let stats = StatisticSubmit()
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         if messageName == "found" {
@@ -52,9 +53,28 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             updateBadge(text: "remove")
         }
         else if messageName == "oaURLReturn"{
-            if let url = userInfo?["oaurl"] {
-                goToOaUrl(url: "\(url)")
+            let ezproxyPrefix = self.preferences.getStringValue(key: "ezproxyPrefix")
+            guard let oaurl = userInfo?["oaurl"] else{
+                return
             }
+            let actionUrl = "\(oaurl)"
+            if(ezproxyPrefix != "" && actionUrl.contains(ezproxyPrefix)){
+                page.dispatchMessageToScript(withName: "removeProxy", userInfo: ["msg" : "removeproxy", "ezproxy" : ezproxyPrefix])
+            }
+            else if(actionUrl.contains("openaccessbutton") && ezproxyPrefix != ""){
+                updateEzProxyCount()
+                page.dispatchMessageToScript(withName: "addProxy", userInfo: ["msg" : "addproxy", "ezproxy" : ezproxyPrefix])
+            }
+            else if(actionUrl == "pleaseproxy" && ezproxyPrefix != ""){
+                updateEzProxyCount()
+                page.dispatchMessageToScript(withName: "addProxy", userInfo: ["msg" : "addproxy", "ezproxy" : ezproxyPrefix])
+            }
+            else{
+                if let url = userInfo?["oaurl"] {
+                    goToOaUrl(url: "\(url)")
+                }
+            }
+            
         }
         else if messageName == "searchOA"{
             searchOA(userInfo: (userInfo)!, type: "oasearch")
@@ -277,6 +297,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func checkUnpaywall(doi: String, page: SFSafariPage, originUrl: String) {
+        self.stats.submitStats(force: false)
         toolbarAction(imgName: "oa_100a.pdf")
         let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=oahelper@otzberg.net"
         let url = URL(string: jsonUrlString)
@@ -732,78 +753,39 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func returnIntlAlert(id: String, page: SFSafariPage){
+        let ezproxyPrefix = self.preferences.getStringValue(key: "ezproxyPrefix")
         var msg = ""
         var type = ""
-        if (id == "oahdoire_0") {
+        if(id == "oahdoire_0") {
             msg = NSLocalizedString("Open Access Helper could not find a legal open-access version of this article.", comment: "will show in JS Alert, when there was a doi, but no oadoi url")
             type = "alert"
         }
-        else if(id == "oahdoire_1"){
+        else if(id == "oahdoire_1" && ezproxyPrefix == ""){
             msg = NSLocalizedString("Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message", comment: "will show in JS Alert, when there no doi = inactive state")
             type = "confirm"
         }
+        else if(id == "oahdoire_1" && ezproxyPrefix != ""){
+            updateEzProxyCount()
+            msg = "proxy"
+            type = "proxy"
+        }
         if(msg != ""){
-            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type]);
+            page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type, "ezproxy" : ezproxyPrefix]);
         }
     }
 
-    
     func updateCount(){
-        let count = readCount(file: "count.txt")
-        let new = count + 1
-        writeCount(count: "\(new)", file: "count.txt")
+        preferences.incrementIntVal(key: "oaFoundCount")
     }
     
     func updateOASearchCount(){
-        let count = readCount(file: "oacount.txt")
-        let new = count + 1
-        writeCount(count: "\(new)", file: "oacount.txt")
+        preferences.incrementIntVal(key: "oaSearchCount")
     }
     
+    func updateEzProxyCount(){
+        preferences.incrementIntVal(key: "ezProxyCount")
+    }
     
-    func writeCount(count: String, file: String ) {
-        let file = file //this is the file. we will write to and read from it
-        
-        let text = count //just a text
-        
-        let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
-            return
-        }
-        let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
-        let fileURL = safariExtDir.appendingPathComponent(file)
-        
-        //writing
-        do {
-            try text.write(to: fileURL, atomically: false, encoding: .utf8)
-        }
-        catch {/* error handling here */}
-        
-        
-    }
-
-    func readCount(file: String) -> Int{
-        let file = file //this is the file. we will write to and read from it
-        
-        var text2 = "0"
-        
-        let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
-            return 0
-        }
-        let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
-        let fileURL = safariExtDir.appendingPathComponent(file)
-        
-        //reading
-        do {
-            text2 = try String(contentsOf: fileURL, encoding: .utf8)
-        }
-        catch {
-            text2 = "0"
-        }
-        
-        return Int(text2)!
-    }
     
     func getOpenAccessVersion(data: Unpaywall) -> String{
         if let version = data.best_oa_location?.version{
@@ -940,7 +922,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         urlconfig.timeoutIntervalForResource = 31
         
         let session = URLSession(configuration: urlconfig, delegate: self as? URLSessionDelegate, delegateQueue: nil)
-        print("start recommender task")
+        //print("start recommender task")
         let task = session.dataTask(with: request) {(data, response, error) in
             //print("The core recommender task took \(timer.stop()) seconds.")
             if let error = error{
@@ -950,7 +932,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             if let data = data {
                 //this worked just fine
-                print("this worked fine")
+                //print("this worked fine")
                 do {
                     print(data)
                     let recommendations = try JSONDecoder().decode(CoreRecommender.self, from: data)

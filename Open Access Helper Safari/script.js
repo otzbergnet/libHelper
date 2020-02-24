@@ -85,7 +85,10 @@ function messageHandler(event){
         alternativeOA(event.message.doi, event.message.oab, event.message.doistring);
     }
     else if (event.name == "showAlert"){
-        if(event.message.type == "alert"){
+        if(event.message.ezproxy != ""){
+            handleEzProxy(event.message.ezproxy);
+        }
+        else if(event.message.type == "alert"){
             alert(event.message.msg);
         }
         else if(event.message.type == "confirm"){
@@ -106,6 +109,15 @@ function messageHandler(event){
         else{
             showRecommendations(event.message.data, event.message.infoString);
         }
+    }
+    else if (event.name == "addProxy"){
+        handleEzProxy(event.message.ezproxy);
+    }
+    else if (event.name == "removeProxy"){
+        var url = window.location.href;
+        var prefix = event.message.ezproxy;
+        var newUrl = url.replace(prefix, "");
+        window.location.href = newUrl;
     }
 }
 
@@ -638,7 +650,7 @@ function fireOnKeypress(){
                 safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
             }
             else{
-                //
+                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : "pleaseproxy"});
             }
         }
     }
@@ -648,9 +660,22 @@ function fireOnKeypress(){
 function handleConfirmRequest(msg){
     if(window.confirm(msg)){
         //ask extension to go to user FAQ
-        var url = "https://www.otzberg.net/oahelper/userfaq.html";
+        var url = "https://www.oahelper.org/userfaq.html";
         safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
+}
+
+
+
+function handleEzProxy(ezproxy){
+    var currentUrl = window.location.href;
+    if(window.location.href.indexOf(ezproxy) > -1){
+        var url = currentUrl.replace(ezproxy, "");
+    }
+    else{
+        var url = ezproxy+currentUrl;
+    }
+    window.location.href = url;
 }
 
 
@@ -1029,3 +1054,4 @@ function doOaHelperLiveRegion(message){
         }
     } , 4000);
 }
+

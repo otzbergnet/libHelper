@@ -21,7 +21,7 @@ class HelpViewController: NSViewController {
     }
     
     @IBAction func onlineHelpClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper"),
+        if let url = URL(string: "https://www.oahelper.org/"),
             NSWorkspace.shared.open(url) {
             self.dismiss(self)
         }

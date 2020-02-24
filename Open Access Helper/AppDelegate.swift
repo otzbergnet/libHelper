@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    let preferences = Preferences()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -22,6 +22,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+    
+    // MARK: - URL Scheme Support
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        NSAppleEventManager
+            .shared()
+            .setEventHandler(
+                self,
+                andSelector: #selector(handleURL(event:reply:)),
+                forEventClass: AEEventClass(kInternetEventClass),
+                andEventID: AEEventID(kAEGetURL)
+            )
+
+    }
+
+    @objc func handleURL(event: NSAppleEventDescriptor, reply: NSAppleEventDescriptor) {
+        if let path = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue?.removingPercentEncoding {
+            let url = URL(string: "\(path)")!
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            if let components = components {
+                if let queryItems = components.queryItems {
+                    for queryItem in queryItems {
+                        if(queryItem.name == "proxy"){
+                            if let base64data = queryItem.value{
+                                if let data = Data(base64Encoded: base64data){
+                                    if let urlString = String(data: data, encoding: .utf8){
+                                        self.preferences.setStringValue(key: "ezproxyPrefix", value: urlString)
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        if(queryItem.name == "id"){
+                            if let instituteId = queryItem.value{
+                                self.preferences.setStringValue(key: "instituteId", value: instituteId)
+                            }
+                        }
+                    }
+                }
+            }
+            let myTabBar = NSApplication.shared.mainWindow?.windowController?.contentViewController?.children[0] as! NSTabViewController
+            myTabBar.tabView.selectTabViewItem(at: 3)
+            myTabBar.tabView.tabViewItem(at: 3).viewController?.viewWillAppear()
+        }
     }
 
     
@@ -127,17 +172,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func contactMeClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper#contactme"),
+        if let url = URL(string: "https://www.oahelper.org/#contactme"),
             NSWorkspace.shared.open(url) {
         }
     }
     @IBAction func onlineHelpClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper#faq"),
+        if let url = URL(string: "https://www.oahelper.org/#faq"),
             NSWorkspace.shared.open(url) {
         }
     }
     @IBAction func releaseNotesClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.otzberg.net/oahelper/releasenotes.html"),
+        if let url = URL(string: "https://www.oahelper.org/releasenotes.html"),
             NSWorkspace.shared.open(url) {
         }
     }

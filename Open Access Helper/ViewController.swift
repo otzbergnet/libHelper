@@ -8,48 +8,18 @@
 
 import Cocoa
 import SafariServices.SFSafariApplication
+import StoreKit
 
 class ViewController: NSViewController {
     
-    @IBOutlet weak var oaCount: NSTextField!
-    @IBOutlet weak var oaSearchCountLabel: NSTextField!
-    
-    @IBOutlet weak var appStoreIcon: NSButton!
-    
-    
     let preferences = Preferences()
-    
-    func readSettings(file: String) -> String{
-        let file = file //this is the file. we will write to and read from it
-        
-        var text2 = ""
-        
-        let fileManager = FileManager.default
-        guard let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "J3PNNM2UXC.otzshare") else {
-            return ""
-        }
-        let safariExtDir = groupURL.appendingPathComponent("Library/Caches/")
-        let fileURL = safariExtDir.appendingPathComponent(file)
-        
-        //reading
-        do {
-            text2 = try String(contentsOf: fileURL, encoding: .utf8)
-        }
-        catch {
-            text2 = "0"
-        }
-        
-        
-        return text2
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateCount()
         if(!preferences.isSetup()){
             preferences.doSetup()
         }
+        requestReview()
     }
     
     deinit {
@@ -77,12 +47,27 @@ class ViewController: NSViewController {
     }
     
     
-    func updateCount(){
-        let count = readSettings(file: "count.txt")
-        let myOASearchCount = readSettings(file: "oacount.txt")
-        oaCount.stringValue = String(format: NSLocalizedString("So far we've helped you find %@ Open Access Documents!", comment: "shows on main window, number of OpenAccess found"), count)
-        
-        oaSearchCountLabel.stringValue = String(format: NSLocalizedString("You've had help with %@ Open Access searches", comment: "shows on main window, number of OpenAccess Searches conducted"), myOASearchCount)
+    func requestReview(){
+        if #available(macOS 10.14, *){
+            let oaFoundCount = self.preferences.getIntVal(key: "oaFoundCount")
+
+            // Get the current bundle version for the app
+            let infoDictionaryKey = kCFBundleVersionKey as String
+            guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else { fatalError("Expected to find a bundle version in the info dictionary")
+            }
+
+            // get the last reviewed version
+            let lastVersionPromptedForReview = self.preferences.getStringValue(key: "lastVersionPromptedForReview")
+
+            // Has the process been completed several times and the user has not already been prompted for this version?
+            if (oaFoundCount >= 200 && currentVersion != lastVersionPromptedForReview) {
+                let twoSecondsFromNow = DispatchTime.now() + 2.0
+                DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow, execute: {
+                    SKStoreReviewController.requestReview()
+                    self.preferences.setStringValue(key: "lastVersionPromptedForReview", value: currentVersion)
+                })
+            }
+        }
         
     }
     
@@ -104,7 +89,7 @@ class ViewController: NSViewController {
     }
     
     func showMyExample(){
-        if let url = URL(string: "https://www.otzberg.net/oahelper/example.html"),
+        if let url = URL(string: "https://www.oahelper.org/example.html"),
             NSWorkspace.shared.open(url) {
         }
     }

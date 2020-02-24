@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rwG-Iq-qMP">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rwG-Iq-qMP">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,6 +80,26 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Edit" id="Lxn-iJ-B5r">
                                     <items>
+                                        <menuItem title="Cut" keyEquivalent="x" id="gia-fW-TaI">
+                                            <connections>
+                                                <action selector="cut:" target="Ady-hI-5gd" id="KpD-aH-xJl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="yKn-40-ZUX">
+                                            <connections>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="xHM-Zw-FvZ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="Btx-9V-MZO">
+                                            <connections>
+                                                <action selector="pasteAsPlainText:" target="Ady-hI-5gd" id="qAb-8M-msi"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="UMN-sC-jZJ">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="i9c-dt-bpL"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Delete" id="Xbj-lZ-EKE">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
@@ -156,19 +176,19 @@ CA
             <objects>
                 <viewController title="About" id="5jK-gR-BaF" customClass="AboutController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3Tv-5Z-anh">
-                        <rect key="frame" x="0.0" y="0.0" width="605" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-iZ-uLQ">
-                                <rect key="frame" x="38" y="248" width="79" height="32"/>
+                                <rect key="frame" x="38" y="262" width="69" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="About" id="g4U-2c-WI9">
-                                    <font key="font" size="23" name="Arial-Black"/>
+                                    <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
-                                <rect key="frame" x="38" y="84" width="522" height="144"/>
+                                <rect key="frame" x="38" y="108" width="517" height="144"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.
@@ -181,7 +201,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sGu-NU-4h3">
-                                <rect key="frame" x="34" y="39" width="111" height="32"/>
+                                <rect key="frame" x="34" y="13" width="111" height="32"/>
                                 <buttonCell key="cell" type="push" title="Contact Me" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pYZ-Bo-Lhq">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -191,7 +211,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-Gb-dZU">
-                                <rect key="frame" x="153" y="39" width="124" height="32"/>
+                                <rect key="frame" x="153" y="13" width="124" height="32"/>
                                 <buttonCell key="cell" type="push" title="unpaywall.org" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u7B-2x-O8I">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -201,7 +221,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yE6-V7-SE9">
-                                <rect key="frame" x="128" y="252" width="37" height="16"/>
+                                <rect key="frame" x="118" y="266" width="37" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="oRq-HL-zE8">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -209,7 +229,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mDD-6i-yKp">
-                                <rect key="frame" x="285" y="39" width="104" height="32"/>
+                                <rect key="frame" x="285" y="13" width="104" height="32"/>
                                 <buttonCell key="cell" type="push" title="core.ac.uk" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="No4-0T-VYZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -219,7 +239,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tOF-Ne-Wuz">
-                                <rect key="frame" x="397" y="39" width="164" height="32"/>
+                                <rect key="frame" x="397" y="13" width="164" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Access Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1f-WK-LIa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -232,21 +252,25 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <constraints>
                             <constraint firstItem="tOF-Ne-Wuz" firstAttribute="leading" secondItem="mDD-6i-yKp" secondAttribute="trailing" constant="20" id="0Ai-Yq-ROo"/>
                             <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="0Pb-Kj-lTZ"/>
-                            <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="yE6-V7-SE9" secondAttribute="bottom" constant="24" id="6qF-pS-dig"/>
+                            <constraint firstAttribute="bottom" secondItem="mDD-6i-yKp" secondAttribute="bottom" constant="20" id="3le-2w-4Q2"/>
+                            <constraint firstAttribute="bottom" secondItem="sGu-NU-4h3" secondAttribute="bottom" constant="20" id="552-pP-LRW"/>
+                            <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="yE6-V7-SE9" secondAttribute="bottom" constant="14" id="6qF-pS-dig"/>
+                            <constraint firstAttribute="bottom" secondItem="tOF-Ne-Wuz" secondAttribute="bottom" constant="20" id="6yX-E3-L6Z"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tOF-Ne-Wuz" secondAttribute="trailing" constant="38" id="9Iv-ox-4J5"/>
-                            <constraint firstItem="sGu-NU-4h3" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="DKM-eB-r50"/>
+                            <constraint firstItem="sGu-NU-4h3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="DKM-eB-r50"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yE6-V7-SE9" secondAttribute="trailing" constant="15" id="JDT-Ys-sQW"/>
-                            <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="20" id="LBe-yx-iLR"/>
-                            <constraint firstItem="tOF-Ne-Wuz" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="O4R-fk-GMg"/>
+                            <constraint firstItem="Dv7-iZ-uLQ" firstAttribute="top" secondItem="3Tv-5Z-anh" secondAttribute="top" constant="10" id="LBe-yx-iLR"/>
+                            <constraint firstItem="tOF-Ne-Wuz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="O4R-fk-GMg"/>
                             <constraint firstItem="mDD-6i-yKp" firstAttribute="leading" secondItem="w9o-Gb-dZU" secondAttribute="trailing" constant="20" id="Pcq-yr-nSq"/>
-                            <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="Dv7-iZ-uLQ" secondAttribute="bottom" constant="20" id="RjB-ym-vyv"/>
+                            <constraint firstItem="E43-sS-goO" firstAttribute="top" secondItem="Dv7-iZ-uLQ" secondAttribute="bottom" constant="10" id="RjB-ym-vyv"/>
                             <constraint firstItem="sGu-NU-4h3" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="X1Z-ll-2i5"/>
                             <constraint firstItem="w9o-Gb-dZU" firstAttribute="leading" secondItem="sGu-NU-4h3" secondAttribute="trailing" constant="20" id="XrV-en-HUx"/>
-                            <constraint firstItem="mDD-6i-yKp" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="qQe-5W-17P"/>
+                            <constraint firstAttribute="bottom" secondItem="w9o-Gb-dZU" secondAttribute="bottom" constant="20" id="pss-rF-PbH"/>
+                            <constraint firstItem="mDD-6i-yKp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="qQe-5W-17P"/>
                             <constraint firstItem="E43-sS-goO" firstAttribute="leading" secondItem="3Tv-5Z-anh" secondAttribute="leading" constant="40" id="qbf-Qz-oao"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E43-sS-goO" secondAttribute="trailing" constant="47" id="taw-xd-QgC"/>
                             <constraint firstItem="yE6-V7-SE9" firstAttribute="leading" secondItem="Dv7-iZ-uLQ" secondAttribute="trailing" constant="15" id="u8s-Xa-vQg"/>
-                            <constraint firstItem="w9o-Gb-dZU" firstAttribute="top" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="zDx-ir-vgv"/>
+                            <constraint firstItem="w9o-Gb-dZU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="E43-sS-goO" secondAttribute="bottom" constant="17" id="zDx-ir-vgv"/>
                         </constraints>
                     </view>
                     <connections>
@@ -256,7 +280,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="dbP-uY-Rvb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-321" y="453"/>
+            <point key="canvasLocation" x="1660" y="453"/>
         </scene>
         <!--Settings-->
         <scene sceneID="fhr-tX-ivf">
@@ -267,15 +291,15 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-uE-U3c">
-                                <rect key="frame" x="38" y="248" width="109" height="32"/>
+                                <rect key="frame" x="38" y="262" width="96" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Settings" id="HcR-jI-6Ct">
-                                    <font key="font" size="23" name="Arial-Black"/>
+                                    <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
-                                <rect key="frame" x="38" y="142" width="328" height="18"/>
+                                <rect key="frame" x="38" y="171" width="328" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use core Discovery to find additional Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CMq-iy-q6b">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -285,7 +309,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Job-2k-mWy">
-                                <rect key="frame" x="38" y="118" width="366" height="18"/>
+                                <rect key="frame" x="38" y="147" width="366" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use Open Access Button to find even more Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vwZ-Zm-K8p">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -295,7 +319,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-to-XHx">
-                                <rect key="frame" x="38" y="94" width="425" height="18"/>
+                                <rect key="frame" x="38" y="123" width="425" height="18"/>
                                 <buttonCell key="cell" type="check" title="Offer to take me to Open Access Button to make an article request" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fYC-2c-t0y">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -305,7 +329,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vuC-t1-To1">
-                                <rect key="frame" x="38" y="168" width="512" height="55"/>
+                                <rect key="frame" x="38" y="197" width="512" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="HhT-9Q-SRf"/>
                                     <constraint firstAttribute="width" constant="508" id="WOT-yl-HCZ"/>
@@ -328,7 +352,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-dj-mau">
-                                <rect key="frame" x="38" y="46" width="125" height="16"/>
+                                <rect key="frame" x="38" y="75" width="125" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Highlight &amp; Search" id="skg-S1-2HM">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -336,7 +360,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKs-DU-CRp">
-                                <rect key="frame" x="38" y="20" width="122" height="18"/>
+                                <rect key="frame" x="38" y="49" width="122" height="18"/>
                                 <buttonCell key="cell" type="check" title="base-search.net" bezelStyle="regularSquare" imagePosition="left" inset="2" id="E5Y-zn-Amu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -346,7 +370,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="diE-XJ-VAE">
-                                <rect key="frame" x="171" y="20" width="86" height="18"/>
+                                <rect key="frame" x="171" y="49" width="86" height="18"/>
                                 <buttonCell key="cell" type="check" title="core.ac.uk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="PmR-Jf-2Mz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -356,7 +380,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-s7-BpE">
-                                <rect key="frame" x="268" y="20" width="144" height="18"/>
+                                <rect key="frame" x="268" y="49" width="144" height="18"/>
                                 <buttonCell key="cell" type="check" title="gettheresearch.com" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yaq-Tp-X4R">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -366,7 +390,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jzs-mx-e5C">
-                                <rect key="frame" x="38" y="70" width="351" height="18"/>
+                                <rect key="frame" x="38" y="99" width="351" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show CORE Recommender, if there is no Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="evK-lJ-UtH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -379,7 +403,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <constraints>
                             <constraint firstItem="nKs-DU-CRp" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="6NT-DZ-dXj"/>
                             <constraint firstItem="yPo-s7-BpE" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="84g-YM-Qtx"/>
-                            <constraint firstItem="vuC-t1-To1" firstAttribute="top" secondItem="lKy-uE-U3c" secondAttribute="bottom" constant="25" id="88a-UA-9eB"/>
+                            <constraint firstItem="vuC-t1-To1" firstAttribute="top" secondItem="lKy-uE-U3c" secondAttribute="bottom" constant="10" id="88a-UA-9eB"/>
                             <constraint firstItem="nAf-MO-GuS" firstAttribute="top" secondItem="vuC-t1-To1" secondAttribute="bottom" constant="10" id="8oD-Yw-7GI"/>
                             <constraint firstItem="iwf-yg-VlJ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="yPo-s7-BpE" secondAttribute="trailing" constant="53" id="8or-2A-IzU"/>
                             <constraint firstItem="diE-XJ-VAE" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="9Gd-eN-5cg"/>
@@ -388,7 +412,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vuC-t1-To1" secondAttribute="trailing" constant="52" id="GqF-as-M8c"/>
                             <constraint firstAttribute="trailing" secondItem="iwf-yg-VlJ" secondAttribute="trailing" constant="20" id="JJC-le-MIl"/>
                             <constraint firstItem="1rJ-to-XHx" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="MAF-0x-kFn"/>
-                            <constraint firstItem="lKy-uE-U3c" firstAttribute="top" secondItem="MRn-52-FQI" secondAttribute="top" constant="20" id="Qaa-ro-rzG"/>
+                            <constraint firstItem="lKy-uE-U3c" firstAttribute="top" secondItem="MRn-52-FQI" secondAttribute="top" constant="10" id="Qaa-ro-rzG"/>
                             <constraint firstItem="nKs-DU-CRp" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="SXI-dZ-N4k"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jzs-mx-e5C" secondAttribute="trailing" constant="40" id="Vx9-au-2e2"/>
                             <constraint firstItem="1rJ-to-XHx" firstAttribute="top" secondItem="Job-2k-mWy" secondAttribute="bottom" constant="10" id="b0c-xO-msS"/>
@@ -421,7 +445,262 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="Ppl-fj-736" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287" y="453"/>
+            <point key="canvasLocation" x="-304" y="453"/>
+        </scene>
+        <!--EZProxy-->
+        <scene sceneID="sii-Mu-s8B">
+            <objects>
+                <viewController title="EZProxy" id="kVE-Sp-sqG" customClass="EZProxyController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aEQ-HV-eUt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-v2-1AU">
+                                <rect key="frame" x="38" y="262" width="524" height="28"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="EZProxy Settings" id="pUg-hB-6ak">
+                                    <font key="font" size="20" name="Arial-Black"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mzB-iY-dpx">
+                                <rect key="frame" x="40" y="157" width="520" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="520" id="Kjq-3k-sEB"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="e.g. https://lib.uni.edu/login?url=" drawsBackground="YES" id="Ggd-tc-Rne">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oW3-04-xxv">
+                                <rect key="frame" x="38" y="188" width="524" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="520" id="1Ww-Gj-MhR"/>
+                                </constraints>
+                                <textFieldCell key="cell" id="4SS-by-Tr0">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in url= or qurl=
+
+URL of your institution's EZProxy Server</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-k2-dT2">
+                                <rect key="frame" x="34" y="13" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save Setting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BDQ-uN-9q5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveClicked:" target="kVE-Sp-sqG" id="ovK-ak-iaJ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f90-67-4gF">
+                                <rect key="frame" x="453" y="13" width="113" height="32"/>
+                                <buttonCell key="cell" type="push" title="Test Setting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1IN-JA-aq4">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="testClicked:" target="kVE-Sp-sqG" id="ZVp-EV-F0E"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-0i-JjY">
+                                <rect key="frame" x="214" y="13" width="173" height="32"/>
+                                <buttonCell key="cell" type="push" title="Not sure? Look it up..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nqs-wV-UGi">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="lookupClicked:" target="kVE-Sp-sqG" id="kRZ-Rp-I2K"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vOx-gb-2Cv">
+                                <rect key="frame" x="38" y="126" width="280" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Search Settings by Domain (e.g. harvard.edu)" id="QQP-RM-dky">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rE0-i7-0Dt">
+                                <rect key="frame" x="40" y="97" width="341" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="e.g. harvard.edu" drawsBackground="YES" id="PZa-Xc-R55">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PnU-4o-uPV">
+                                <rect key="frame" x="397" y="90" width="83" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="55d-yH-ddJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="searchByDomainClicked:" target="kVE-Sp-sqG" id="bKJ-cu-H8B"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rE0-i7-0Dt" firstAttribute="trailing" secondItem="mkZ-0i-JjY" secondAttribute="trailing" id="0VD-5D-tvx"/>
+                            <constraint firstAttribute="bottom" secondItem="f90-67-4gF" secondAttribute="bottom" constant="20" id="0ea-wP-F1P"/>
+                            <constraint firstItem="oW3-04-xxv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="3pM-kz-cST"/>
+                            <constraint firstItem="JwW-v2-1AU" firstAttribute="top" secondItem="aEQ-HV-eUt" secondAttribute="top" constant="10" id="7u2-ci-dcV"/>
+                            <constraint firstAttribute="trailing" secondItem="mzB-iY-dpx" secondAttribute="trailing" constant="40" id="D2Z-h6-Yxf"/>
+                            <constraint firstItem="PnU-4o-uPV" firstAttribute="top" secondItem="vOx-gb-2Cv" secondAttribute="bottom" constant="8" id="Dol-Lw-kqa"/>
+                            <constraint firstItem="rE0-i7-0Dt" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="F7O-LZ-XGh"/>
+                            <constraint firstItem="rE0-i7-0Dt" firstAttribute="top" secondItem="vOx-gb-2Cv" secondAttribute="bottom" constant="8" id="FL3-Bz-TwT"/>
+                            <constraint firstItem="oW3-04-xxv" firstAttribute="top" secondItem="JwW-v2-1AU" secondAttribute="bottom" constant="10" id="Gyg-8Q-APw"/>
+                            <constraint firstAttribute="bottom" secondItem="mkZ-0i-JjY" secondAttribute="bottom" constant="20" id="H7a-by-ogL"/>
+                            <constraint firstItem="JwW-v2-1AU" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="J55-dG-ykT"/>
+                            <constraint firstItem="f90-67-4gF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rE0-i7-0Dt" secondAttribute="bottom" constant="19" id="L8P-b8-Bm0"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JwW-v2-1AU" secondAttribute="trailing" constant="40" id="MRi-bD-ZV3"/>
+                            <constraint firstItem="mkZ-0i-JjY" firstAttribute="centerX" secondItem="aEQ-HV-eUt" secondAttribute="centerX" id="NJ7-mX-05j"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="PnU-4o-uPV" secondAttribute="trailing" constant="252" id="Oae-cn-cHo"/>
+                            <constraint firstItem="vOx-gb-2Cv" firstAttribute="top" secondItem="mzB-iY-dpx" secondAttribute="bottom" constant="15" id="RJZ-Cu-F5K"/>
+                            <constraint firstItem="PnU-4o-uPV" firstAttribute="leading" secondItem="rE0-i7-0Dt" secondAttribute="trailing" constant="22" id="Res-h7-PcT"/>
+                            <constraint firstItem="vOx-gb-2Cv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="WoB-4f-tHc"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oW3-04-xxv" secondAttribute="trailing" constant="40" id="Z7Y-PA-70Q"/>
+                            <constraint firstAttribute="bottom" secondItem="OdL-k2-dT2" secondAttribute="bottom" constant="20" id="aRt-eq-NCq"/>
+                            <constraint firstItem="OdL-k2-dT2" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="azE-bY-R3l"/>
+                            <constraint firstItem="mkZ-0i-JjY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rE0-i7-0Dt" secondAttribute="bottom" constant="19" id="bGq-hT-jVG"/>
+                            <constraint firstItem="mzB-iY-dpx" firstAttribute="top" secondItem="oW3-04-xxv" secondAttribute="bottom" constant="10" id="nul-tc-aYY"/>
+                            <constraint firstItem="mzB-iY-dpx" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="q1X-ZR-z3y"/>
+                            <constraint firstItem="f90-67-4gF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mkZ-0i-JjY" secondAttribute="trailing" constant="20" id="sBD-BB-GxX"/>
+                            <constraint firstAttribute="trailing" secondItem="f90-67-4gF" secondAttribute="trailing" constant="40" id="tbq-xa-3fA"/>
+                            <constraint firstItem="OdL-k2-dT2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rE0-i7-0Dt" secondAttribute="bottom" constant="19" id="wEH-Wu-a5u"/>
+                            <constraint firstItem="mkZ-0i-JjY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OdL-k2-dT2" secondAttribute="trailing" constant="20" id="yIf-WD-GVM"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vOx-gb-2Cv" secondAttribute="trailing" constant="40" id="zbd-8B-F9A"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="domainTextField" destination="rE0-i7-0Dt" id="3Yf-om-7Wx"/>
+                        <outlet property="proxyPrefixTextField" destination="mzB-iY-dpx" id="amf-3M-OHB"/>
+                        <outlet property="searchButton" destination="PnU-4o-uPV" id="kWY-8Y-vyZ"/>
+                        <outlet property="searchDomainLabel" destination="vOx-gb-2Cv" id="1fY-m6-byM"/>
+                        <outlet property="testSettingsButton" destination="f90-67-4gF" id="0fw-xk-Ies"/>
+                    </connections>
+                </viewController>
+                <customObject id="GMQ-Il-ak8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="357" y="453"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="rSf-gM-oqJ">
+            <objects>
+                <viewController title="Statistics" id="MzQ-ai-HIa" customClass="StatisticsController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="HbZ-Jr-BW7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dNg-VD-ghF">
+                                <rect key="frame" x="38" y="262" width="110" height="28"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Statistics" id="8Tx-0Z-j7y">
+                                    <font key="font" size="20" name="Arial-Black"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PXw-vH-b1A">
+                                <rect key="frame" x="38" y="226" width="217" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Open Access Documents identified" id="V7a-Xp-IGO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-kf-Ye6">
+                                <rect key="frame" x="38" y="190" width="246" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="&quot;Highlight &amp; Search&quot; searches executed" id="Qf4-r5-fbR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kLV-Uj-EWb">
+                                <rect key="frame" x="38" y="154" width="147" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Proxy requests handled" id="1hb-oh-Hh4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BlJ-cP-zbi">
+                                <rect key="frame" x="426" y="226" width="26" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="123" id="NKu-4Z-yea">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YB2-i0-I5X">
+                                <rect key="frame" x="423" y="190" width="29" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="456" id="X2h-lI-aE0">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4E-h5-f1D">
+                                <rect key="frame" x="424" y="154" width="28" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="789" id="GGc-LF-WbA">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Izj-dX-g4g">
+                                <rect key="frame" x="38" y="28" width="444" height="18"/>
+                                <buttonCell key="cell" type="check" title="It is ok to share some anonymous usage statistics with the app author" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mgb-TU-gH1">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="shareStatsClicked:" target="MzQ-ai-HIa" id="erU-77-I8i"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Izj-dX-g4g" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="ArJ-Hr-mfU"/>
+                            <constraint firstItem="oXy-kf-Ye6" firstAttribute="top" secondItem="PXw-vH-b1A" secondAttribute="bottom" constant="20" id="BaG-8P-AfZ"/>
+                            <constraint firstItem="Y4E-h5-f1D" firstAttribute="top" secondItem="YB2-i0-I5X" secondAttribute="bottom" constant="20" id="EAO-Ji-Ift"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4E-h5-f1D" secondAttribute="trailing" constant="150" id="GgY-Zq-goi"/>
+                            <constraint firstItem="kLV-Uj-EWb" firstAttribute="top" secondItem="oXy-kf-Ye6" secondAttribute="bottom" constant="20" id="Jtq-0C-ZAa"/>
+                            <constraint firstItem="YB2-i0-I5X" firstAttribute="top" secondItem="BlJ-cP-zbi" secondAttribute="bottom" constant="20" id="KPq-fy-egd"/>
+                            <constraint firstItem="Y4E-h5-f1D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kLV-Uj-EWb" secondAttribute="trailing" constant="20" id="NTc-fh-d7o"/>
+                            <constraint firstItem="PXw-vH-b1A" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="PWd-MY-XRd"/>
+                            <constraint firstAttribute="bottom" secondItem="Izj-dX-g4g" secondAttribute="bottom" constant="30" id="WTu-p8-PST"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Izj-dX-g4g" secondAttribute="trailing" constant="40" id="X2y-nv-Qbd"/>
+                            <constraint firstItem="PXw-vH-b1A" firstAttribute="top" secondItem="dNg-VD-ghF" secondAttribute="bottom" constant="20" id="ZGT-oZ-mle"/>
+                            <constraint firstAttribute="trailing" secondItem="YB2-i0-I5X" secondAttribute="trailing" constant="150" id="Zhx-uf-NWp"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dNg-VD-ghF" secondAttribute="trailing" constant="40" id="dnX-Gc-jLY"/>
+                            <constraint firstItem="oXy-kf-Ye6" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="hxg-Ih-wbL"/>
+                            <constraint firstItem="dNg-VD-ghF" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="kAD-HS-Y0q"/>
+                            <constraint firstItem="dNg-VD-ghF" firstAttribute="top" secondItem="HbZ-Jr-BW7" secondAttribute="top" constant="10" id="kSU-EP-Huk"/>
+                            <constraint firstItem="BlJ-cP-zbi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PXw-vH-b1A" secondAttribute="trailing" constant="20" id="m1J-fy-waS"/>
+                            <constraint firstAttribute="trailing" secondItem="BlJ-cP-zbi" secondAttribute="trailing" constant="150" id="sBE-Cy-dLP"/>
+                            <constraint firstItem="BlJ-cP-zbi" firstAttribute="top" secondItem="dNg-VD-ghF" secondAttribute="bottom" constant="20" id="t9y-6R-r93"/>
+                            <constraint firstItem="YB2-i0-I5X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oXy-kf-Ye6" secondAttribute="trailing" constant="20" id="tNI-y0-mZq"/>
+                            <constraint firstItem="kLV-Uj-EWb" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="wkx-8o-NaX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ezProxyCountExplanationLabel" destination="kLV-Uj-EWb" id="p9m-LU-c2W"/>
+                        <outlet property="ezProxyCountLabel" destination="Y4E-h5-f1D" id="lWa-DS-j0p"/>
+                        <outlet property="oaFoundCountExplanationLabel" destination="PXw-vH-b1A" id="T8z-dj-NN1"/>
+                        <outlet property="oaFoundCountLabel" destination="BlJ-cP-zbi" id="rg1-MG-ZDf"/>
+                        <outlet property="oaSearchCountExplanationLabel" destination="oXy-kf-Ye6" id="g74-EU-4ll"/>
+                        <outlet property="oaSearchCountLabel" destination="YB2-i0-I5X" id="bvH-Kj-tRc"/>
+                        <outlet property="shareStats" destination="Izj-dX-g4g" id="qYb-kN-khd"/>
+                    </connections>
+                </viewController>
+                <customObject id="cs6-sv-rke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1011" y="453"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="0CC-nx-hC5">
@@ -431,6 +710,14 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Y2-OV-a5R">
+                                <rect key="frame" x="3" y="8" width="594" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Double-Click to open document in default browser. ⌘⌫ to delete." id="Y9a-Pb-WdR">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNZ-cE-SmH">
                                 <rect key="frame" x="0.0" y="30" width="600" height="270"/>
                                 <clipView key="contentView" id="EyY-MM-Mjj">
@@ -446,7 +733,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                             <tableColumns>
                                                 <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="xQe-Sg-ycL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -486,7 +773,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="Ses-Rj-Mtw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -526,7 +813,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                 </tableColumn>
                                                 <tableColumn width="149" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -568,11 +855,15 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </tableView>
                                     </subviews>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="3ce-dS-XQj"/>
+                                    <constraint firstAttribute="height" constant="270" id="oK4-qU-ySw"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="jbp-s3-DkI">
                                     <rect key="frame" x="1" y="353" width="598" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="JmE-5J-B7Z">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="JmE-5J-B7Z">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -581,24 +872,14 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Y2-OV-a5R">
-                                <rect key="frame" x="3" y="0.0" width="594" height="25"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Double-Click to open document in default browser. ⌘⌫ to delete." id="Y9a-Pb-WdR">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="2Y2-OV-a5R" secondAttribute="trailing" constant="5" id="1Z4-Fd-tt7"/>
-                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="top" secondItem="DNZ-cE-SmH" secondAttribute="bottom" constant="5" id="43b-BI-klp"/>
-                            <constraint firstAttribute="bottom" secondItem="2Y2-OV-a5R" secondAttribute="bottom" id="6XI-cl-mr2"/>
-                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" id="AoS-cr-A6C"/>
-                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="top" secondItem="fdF-d4-aFW" secondAttribute="top" id="Zp1-Iv-uOL"/>
-                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" constant="5" id="dbJ-ID-vA3"/>
-                            <constraint firstAttribute="trailing" secondItem="DNZ-cE-SmH" secondAttribute="trailing" id="uIv-kI-cUQ"/>
-                            <constraint firstAttribute="bottom" secondItem="DNZ-cE-SmH" secondAttribute="bottom" constant="30" id="vFl-Ck-B3d"/>
+                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" id="CEi-QC-b3s"/>
+                            <constraint firstAttribute="trailing" secondItem="2Y2-OV-a5R" secondAttribute="trailing" constant="5" id="TGT-25-nCd"/>
+                            <constraint firstAttribute="bottom" secondItem="2Y2-OV-a5R" secondAttribute="bottom" constant="8" id="YYj-M0-IXg"/>
+                            <constraint firstItem="2Y2-OV-a5R" firstAttribute="leading" secondItem="fdF-d4-aFW" secondAttribute="leading" constant="5" id="g1o-YY-ypp"/>
+                            <constraint firstAttribute="trailing" secondItem="DNZ-cE-SmH" secondAttribute="trailing" id="ggn-pM-0Ai"/>
+                            <constraint firstItem="DNZ-cE-SmH" firstAttribute="top" secondItem="fdF-d4-aFW" secondAttribute="top" id="vvy-lN-cyc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -616,18 +897,18 @@ If you need to reach me, please click the Contact Me button below!</string>
                     <defaultToolbarItems/>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="-938" y="452.5"/>
+            <point key="canvasLocation" x="-946" y="453"/>
         </scene>
         <!--Getting Started-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="Getting Started" id="XfG-lQ-9wD" customClass="ViewController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="286"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hre-mD-sm7">
-                                <rect key="frame" x="38" y="139" width="283" height="80"/>
+                                <rect key="frame" x="38" y="148" width="283" height="80"/>
                                 <textFieldCell key="cell" selectable="YES" id="FNM-3T-H4P">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">Getting started:
@@ -639,16 +920,16 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qa8-Lu-Lg5">
-                                <rect key="frame" x="38" y="234" width="260" height="32"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="qa8-Lu-Lg5">
+                                <rect key="frame" x="38" y="248" width="227" height="42"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Open Access Helper" id="qvY-WQ-5Ex">
-                                    <font key="font" size="23" name="Arial-Black"/>
+                                    <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Q3-IEu">
-                                <rect key="frame" x="486" y="192" width="64" height="64"/>
+                                <rect key="frame" x="486" y="206" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="8gs-jV-KYF"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="O47-aL-DoA"/>
@@ -657,24 +938,8 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="lbX-Ov-jUe"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="owU-kc-A61">
-                                <rect key="frame" x="38" y="46" width="347" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="So far we've helped you find 0 Open Access Documents!" id="upX-50-mCL">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7FZ-jx-6Z5">
-                                <rect key="frame" x="38" y="20" width="286" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="You've had help with 0 Open Access searches." id="irf-Mg-7VE">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dzx-R6-kVI">
-                                <rect key="frame" x="34" y="81" width="188" height="32"/>
+                                <rect key="frame" x="34" y="18" width="188" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yJ-gz-MNS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -684,7 +949,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3E3-OW-ImE">
-                                <rect key="frame" x="235" y="81" width="168" height="32"/>
+                                <rect key="frame" x="235" y="18" width="168" height="32"/>
                                 <buttonCell key="cell" type="push" title="Show me an example" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6F0-hJ-Tur">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -695,37 +960,27 @@ If you need to reach me, please click the Contact Me button below!</string>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="owU-kc-A61" firstAttribute="top" secondItem="3E3-OW-ImE" secondAttribute="bottom" constant="26" id="56j-Tl-B4U"/>
-                            <constraint firstItem="owU-kc-A61" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="5Am-yU-eb2"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7FZ-jx-6Z5" secondAttribute="trailing" constant="40" id="AJ5-Ko-DCH"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Anl-fk-yAQ"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="3E3-OW-ImE" secondAttribute="trailing" constant="203" id="Awq-VY-Rr0"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="trailing" constant="40" id="BjA-pm-YLo"/>
-                            <constraint firstItem="7FZ-jx-6Z5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Cj2-dx-Lka"/>
-                            <constraint firstItem="3E3-OW-ImE" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="30" id="K46-dq-3t0"/>
-                            <constraint firstItem="owU-kc-A61" firstAttribute="top" secondItem="Dzx-R6-kVI" secondAttribute="bottom" constant="26" id="QXr-gs-NQ3"/>
+                            <constraint firstAttribute="bottom" secondItem="Dzx-R6-kVI" secondAttribute="bottom" constant="25" id="HmR-tX-Iwg"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qa8-Lu-Lg5" secondAttribute="trailing" constant="30" id="TEt-jv-Hxt"/>
-                            <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="15" id="X5k-Gn-k8b"/>
+                            <constraint firstAttribute="bottom" secondItem="3E3-OW-ImE" secondAttribute="bottom" constant="25" id="Uru-yq-kdj"/>
+                            <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="20" id="X5k-Gn-k8b"/>
+                            <constraint firstItem="Dzx-R6-kVI" firstAttribute="top" relation="lessThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="102" id="Xoj-0E-EBi"/>
                             <constraint firstItem="3E3-OW-ImE" firstAttribute="leading" secondItem="Dzx-R6-kVI" secondAttribute="trailing" constant="25" id="Xte-62-YoW"/>
                             <constraint firstAttribute="trailing" secondItem="LZV-Q3-IEu" secondAttribute="trailing" constant="50" id="aU2-IC-BSC"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="aqX-zD-CJO"/>
                             <constraint firstItem="Dzx-R6-kVI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="bth-fd-9sn"/>
-                            <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="heb-Zz-WcX"/>
-                            <constraint firstItem="Dzx-R6-kVI" firstAttribute="top" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="30" id="puM-fH-2Ck"/>
-                            <constraint firstItem="7FZ-jx-6Z5" firstAttribute="top" secondItem="owU-kc-A61" secondAttribute="bottom" constant="10" id="qTN-Q9-IRd"/>
-                            <constraint firstAttribute="bottom" secondItem="7FZ-jx-6Z5" secondAttribute="bottom" constant="20" id="rvV-G1-EXb"/>
+                            <constraint firstAttribute="bottom" secondItem="LZV-Q3-IEu" secondAttribute="bottom" constant="206" id="chb-1D-zl9"/>
+                            <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="heb-Zz-WcX"/>
                             <constraint firstItem="LZV-Q3-IEu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="u8K-8O-3SG"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="owU-kc-A61" secondAttribute="trailing" constant="30" id="z2S-2Y-Iu0"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="oaCount" destination="owU-kc-A61" id="3ch-G0-VWX"/>
-                        <outlet property="oaSearchCountLabel" destination="7FZ-jx-6Z5" id="eAN-ey-spy"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1581" y="453"/>
+            <point key="canvasLocation" x="-1580" y="453"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="hlh-TD-x0o">
@@ -735,7 +990,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                     <window key="window" title="Open Access Helper" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vZx-Nd-Q7l">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="300"/>
+                        <rect key="contentRect" x="294" y="313" width="600" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <connections>
                             <outlet property="delegate" destination="rwG-Iq-qMP" id="Goi-BU-kMC"/>
@@ -797,6 +1052,8 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <tabViewItem id="JVa-K2-C0Y"/>
                         <tabViewItem id="g3r-Pj-Ei3"/>
                         <tabViewItem id="Sok-of-F1q"/>
+                        <tabViewItem id="WcF-PF-ajA"/>
+                        <tabViewItem id="hSX-9n-dU0"/>
                         <tabViewItem id="fxk-jD-gOy"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
@@ -813,6 +1070,8 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="ONz-9K-Gr5"/>
                         <segue destination="d7Y-0M-Jnk" kind="relationship" relationship="tabItems" id="ivR-99-Asn"/>
                         <segue destination="of7-oY-NLd" kind="relationship" relationship="tabItems" id="byJ-bB-5mP"/>
+                        <segue destination="kVE-Sp-sqG" kind="relationship" relationship="tabItems" id="9RC-7n-lhg"/>
+                        <segue destination="MzQ-ai-HIa" kind="relationship" relationship="tabItems" id="BSj-TQ-L0r"/>
                         <segue destination="5jK-gR-BaF" kind="relationship" relationship="tabItems" id="hYj-U4-jMt"/>
                     </connections>
                 </tabViewController>
