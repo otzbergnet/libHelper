@@ -159,7 +159,7 @@
 "jtC-8H-YpD.title" = "Open Access Helper";
 
 /* Class = "NSTextFieldCell"; title = "We will always use unpaywall.org to find legal Open Access copies, but you can select to add Core Discovery & Open Access Button to find even more copies. Lastly you can have us add a button to request copies from authors, if you'd like."; ObjectID = "nJJ-h3-n2K"; */
-"nJJ-h3-n2K.title" = "Ich werde immer unpaywall.org nutzen, um legale Open Access Versionen zu finden. Hier können Sie weitere Quellen aktivieren. Klicken Sie auf \"Mehr Inofs\" für weitere Details.";
+"nJJ-h3-n2K.title" = "Ich werde immer unpaywall.org nutzen, um legale Open Access Versionen zu finden. Hier können Sie weitere Quellen aktivieren. Klicken Sie auf \"Mehr Infos\" für weitere Details.";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "oRq-HL-zE8"; */
 "oRq-HL-zE8.title" = "Label";
@@ -280,3 +280,6 @@
 
 /* Class = "NSTextFieldCell"; placeholderString = "e.g. https://lib.uni.edu/login?url="; ObjectID = "Ggd-tc-Rne"; */
 "Ggd-tc-Rne.placeholderString" = "z.B. https://bib.uni.de/login?url=";
+
+/* Class = "NSButtonCell"; title = "Show citation counts from OpenCitations"; ObjectID = "1J1-cU-OSF"; */
+"1J1-cU-OSF.title" = "Zeige Zahl der Zitate von OpenCitations";

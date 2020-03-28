@@ -298,36 +298,72 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
-                                <rect key="frame" x="38" y="171" width="328" height="18"/>
-                                <buttonCell key="cell" type="check" title="Use core Discovery to find additional Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CMq-iy-q6b">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="coreClicked:" target="of7-oY-NLd" id="zDq-o2-mri"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Job-2k-mWy">
-                                <rect key="frame" x="38" y="147" width="366" height="18"/>
-                                <buttonCell key="cell" type="check" title="Use Open Access Button to find even more Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vwZ-Zm-K8p">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="oaButtonClicked:" target="of7-oY-NLd" id="frg-mG-mYa"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-to-XHx">
-                                <rect key="frame" x="38" y="123" width="425" height="18"/>
-                                <buttonCell key="cell" type="check" title="Offer to take me to Open Access Button to make an article request" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fYC-2c-t0y">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="oaButtonRequestClicked:" target="of7-oY-NLd" id="U3p-Pe-kGv"/>
-                                </connections>
-                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcp-rk-eyD">
+                                <rect key="frame" x="40" y="77" width="520" height="110"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
+                                        <rect key="frame" x="-2" y="94" width="328" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Use core Discovery to find additional Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CMq-iy-q6b">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="coreClicked:" target="of7-oY-NLd" id="zDq-o2-mri"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Job-2k-mWy">
+                                        <rect key="frame" x="-2" y="70" width="366" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Use Open Access Button to find even more Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vwZ-Zm-K8p">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="oaButtonClicked:" target="of7-oY-NLd" id="frg-mG-mYa"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-to-XHx">
+                                        <rect key="frame" x="-2" y="46" width="425" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Offer to take me to Open Access Button to make an article request" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fYC-2c-t0y">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="oaButtonRequestClicked:" target="of7-oY-NLd" id="U3p-Pe-kGv"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jzs-mx-e5C">
+                                        <rect key="frame" x="-2" y="22" width="351" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Show CORE Recommender, if there is no Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="evK-lJ-UtH">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="coreRecomClicked:" target="of7-oY-NLd" id="scz-ts-82k"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E7m-Au-t0F">
+                                        <rect key="frame" x="-2" y="-2" width="271" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Show citation counts from OpenCitations" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1J1-cU-OSF">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vuC-t1-To1">
                                 <rect key="frame" x="38" y="197" width="512" height="55"/>
                                 <constraints>
@@ -352,7 +388,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-dj-mau">
-                                <rect key="frame" x="38" y="75" width="125" height="16"/>
+                                <rect key="frame" x="38" y="51" width="125" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Highlight &amp; Search" id="skg-S1-2HM">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -360,7 +396,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKs-DU-CRp">
-                                <rect key="frame" x="38" y="49" width="122" height="18"/>
+                                <rect key="frame" x="38" y="25" width="122" height="18"/>
                                 <buttonCell key="cell" type="check" title="base-search.net" bezelStyle="regularSquare" imagePosition="left" inset="2" id="E5Y-zn-Amu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -370,7 +406,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="diE-XJ-VAE">
-                                <rect key="frame" x="171" y="49" width="86" height="18"/>
+                                <rect key="frame" x="171" y="25" width="86" height="18"/>
                                 <buttonCell key="cell" type="check" title="core.ac.uk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="PmR-Jf-2Mz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -380,7 +416,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-s7-BpE">
-                                <rect key="frame" x="268" y="49" width="144" height="18"/>
+                                <rect key="frame" x="268" y="25" width="144" height="18"/>
                                 <buttonCell key="cell" type="check" title="gettheresearch.com" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yaq-Tp-X4R">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -389,48 +425,29 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <action selector="gettheresearchHSclicked:" target="of7-oY-NLd" id="RvX-q1-gNB"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jzs-mx-e5C">
-                                <rect key="frame" x="38" y="99" width="351" height="18"/>
-                                <buttonCell key="cell" type="check" title="Show CORE Recommender, if there is no Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="evK-lJ-UtH">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="coreRecomClicked:" target="of7-oY-NLd" id="scz-ts-82k"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="nKs-DU-CRp" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="6NT-DZ-dXj"/>
                             <constraint firstItem="yPo-s7-BpE" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="84g-YM-Qtx"/>
                             <constraint firstItem="vuC-t1-To1" firstAttribute="top" secondItem="lKy-uE-U3c" secondAttribute="bottom" constant="10" id="88a-UA-9eB"/>
-                            <constraint firstItem="nAf-MO-GuS" firstAttribute="top" secondItem="vuC-t1-To1" secondAttribute="bottom" constant="10" id="8oD-Yw-7GI"/>
                             <constraint firstItem="iwf-yg-VlJ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="yPo-s7-BpE" secondAttribute="trailing" constant="53" id="8or-2A-IzU"/>
                             <constraint firstItem="diE-XJ-VAE" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="9Gd-eN-5cg"/>
-                            <constraint firstItem="nAf-MO-GuS" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="D1V-72-gqP"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lKy-uE-U3c" secondAttribute="trailing" constant="40" id="DIN-YS-uYX"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vuC-t1-To1" secondAttribute="trailing" constant="52" id="GqF-as-M8c"/>
                             <constraint firstAttribute="trailing" secondItem="iwf-yg-VlJ" secondAttribute="trailing" constant="20" id="JJC-le-MIl"/>
-                            <constraint firstItem="1rJ-to-XHx" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="MAF-0x-kFn"/>
                             <constraint firstItem="lKy-uE-U3c" firstAttribute="top" secondItem="MRn-52-FQI" secondAttribute="top" constant="10" id="Qaa-ro-rzG"/>
                             <constraint firstItem="nKs-DU-CRp" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="SXI-dZ-N4k"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jzs-mx-e5C" secondAttribute="trailing" constant="40" id="Vx9-au-2e2"/>
-                            <constraint firstItem="1rJ-to-XHx" firstAttribute="top" secondItem="Job-2k-mWy" secondAttribute="bottom" constant="10" id="b0c-xO-msS"/>
+                            <constraint firstAttribute="trailing" secondItem="dcp-rk-eyD" secondAttribute="trailing" constant="40" id="TCo-XT-ohm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uqp-dj-mau" secondAttribute="trailing" constant="40" id="c6Z-mR-ZSv"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Job-2k-mWy" secondAttribute="trailing" constant="40" id="eOJ-RM-nLE"/>
                             <constraint firstItem="lKy-uE-U3c" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="eQe-jw-PLu"/>
                             <constraint firstItem="yPo-s7-BpE" firstAttribute="leading" secondItem="diE-XJ-VAE" secondAttribute="trailing" constant="15" id="fyn-bD-1Pa"/>
                             <constraint firstItem="diE-XJ-VAE" firstAttribute="leading" secondItem="nKs-DU-CRp" secondAttribute="trailing" constant="15" id="gXJ-Oy-K0m"/>
-                            <constraint firstItem="jzs-mx-e5C" firstAttribute="top" secondItem="1rJ-to-XHx" secondAttribute="bottom" constant="10" id="ger-AR-Aqm"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1rJ-to-XHx" secondAttribute="trailing" constant="40" id="gqb-hA-Zaj"/>
-                            <constraint firstItem="uqp-dj-mau" firstAttribute="top" secondItem="jzs-mx-e5C" secondAttribute="bottom" constant="10" id="jhw-ls-LEq"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nAf-MO-GuS" secondAttribute="trailing" constant="40" id="jiY-47-Y85"/>
+                            <constraint firstItem="dcp-rk-eyD" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="iIM-wN-kWh"/>
+                            <constraint firstItem="uqp-dj-mau" firstAttribute="top" secondItem="dcp-rk-eyD" secondAttribute="bottom" constant="10" id="npu-Ji-IqT"/>
+                            <constraint firstItem="dcp-rk-eyD" firstAttribute="top" secondItem="vuC-t1-To1" secondAttribute="bottom" constant="10" id="oSU-xY-7XO"/>
                             <constraint firstItem="uqp-dj-mau" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="oyW-XY-e0B"/>
                             <constraint firstItem="vuC-t1-To1" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="ql6-KK-pTe"/>
-                            <constraint firstItem="Job-2k-mWy" firstAttribute="top" secondItem="nAf-MO-GuS" secondAttribute="bottom" constant="10" id="sQp-aU-2hw"/>
-                            <constraint firstItem="jzs-mx-e5C" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="twL-m6-p6M"/>
                             <constraint firstAttribute="bottom" secondItem="iwf-yg-VlJ" secondAttribute="bottom" constant="15" id="ty8-bz-u3M"/>
-                            <constraint firstItem="Job-2k-mWy" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="vO0-Us-SHg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -441,6 +458,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <outlet property="gettheresearchHSCheckBox" destination="yPo-s7-BpE" id="3EG-iX-ykr"/>
                         <outlet property="oaButtonCheckBox" destination="Job-2k-mWy" id="S2R-wd-Xar"/>
                         <outlet property="oaButtonRequestCheckBox" destination="1rJ-to-XHx" id="4Gx-HS-8w0"/>
+                        <outlet property="openCitationsCheckBox" destination="E7m-Au-t0F" id="Ite-on-qb3"/>
                     </connections>
                 </viewController>
                 <customObject id="Ppl-fj-736" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -465,9 +483,6 @@ If you need to reach me, please click the Contact Me button below!</string>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mzB-iY-dpx">
                                 <rect key="frame" x="40" y="157" width="520" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="520" id="Kjq-3k-sEB"/>
-                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="e.g. https://lib.uni.edu/login?url=" drawsBackground="YES" id="Ggd-tc-Rne">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -550,7 +565,6 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstAttribute="bottom" secondItem="f90-67-4gF" secondAttribute="bottom" constant="20" id="0ea-wP-F1P"/>
                             <constraint firstItem="oW3-04-xxv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="3pM-kz-cST"/>
                             <constraint firstItem="JwW-v2-1AU" firstAttribute="top" secondItem="aEQ-HV-eUt" secondAttribute="top" constant="10" id="7u2-ci-dcV"/>
-                            <constraint firstAttribute="trailing" secondItem="mzB-iY-dpx" secondAttribute="trailing" constant="40" id="D2Z-h6-Yxf"/>
                             <constraint firstItem="PnU-4o-uPV" firstAttribute="top" secondItem="vOx-gb-2Cv" secondAttribute="bottom" constant="8" id="Dol-Lw-kqa"/>
                             <constraint firstItem="rE0-i7-0Dt" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="F7O-LZ-XGh"/>
                             <constraint firstItem="rE0-i7-0Dt" firstAttribute="top" secondItem="vOx-gb-2Cv" secondAttribute="bottom" constant="8" id="FL3-Bz-TwT"/>
@@ -561,15 +575,16 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JwW-v2-1AU" secondAttribute="trailing" constant="40" id="MRi-bD-ZV3"/>
                             <constraint firstItem="mkZ-0i-JjY" firstAttribute="centerX" secondItem="aEQ-HV-eUt" secondAttribute="centerX" id="NJ7-mX-05j"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="PnU-4o-uPV" secondAttribute="trailing" constant="252" id="Oae-cn-cHo"/>
-                            <constraint firstItem="vOx-gb-2Cv" firstAttribute="top" secondItem="mzB-iY-dpx" secondAttribute="bottom" constant="15" id="RJZ-Cu-F5K"/>
                             <constraint firstItem="PnU-4o-uPV" firstAttribute="leading" secondItem="rE0-i7-0Dt" secondAttribute="trailing" constant="22" id="Res-h7-PcT"/>
                             <constraint firstItem="vOx-gb-2Cv" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="WoB-4f-tHc"/>
+                            <constraint firstItem="mzB-iY-dpx" firstAttribute="trailing" secondItem="oW3-04-xxv" secondAttribute="trailing" id="X6q-nG-mZG"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oW3-04-xxv" secondAttribute="trailing" constant="40" id="Z7Y-PA-70Q"/>
                             <constraint firstAttribute="bottom" secondItem="OdL-k2-dT2" secondAttribute="bottom" constant="20" id="aRt-eq-NCq"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="azE-bY-R3l"/>
                             <constraint firstItem="mkZ-0i-JjY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rE0-i7-0Dt" secondAttribute="bottom" constant="19" id="bGq-hT-jVG"/>
-                            <constraint firstItem="mzB-iY-dpx" firstAttribute="top" secondItem="oW3-04-xxv" secondAttribute="bottom" constant="10" id="nul-tc-aYY"/>
-                            <constraint firstItem="mzB-iY-dpx" firstAttribute="leading" secondItem="aEQ-HV-eUt" secondAttribute="leading" constant="40" id="q1X-ZR-z3y"/>
+                            <constraint firstItem="vOx-gb-2Cv" firstAttribute="top" secondItem="mzB-iY-dpx" secondAttribute="bottom" constant="15" id="fF4-Yd-18p"/>
+                            <constraint firstItem="mzB-iY-dpx" firstAttribute="leading" secondItem="vOx-gb-2Cv" secondAttribute="leading" id="kUD-cI-qml"/>
+                            <constraint firstItem="mzB-iY-dpx" firstAttribute="top" secondItem="oW3-04-xxv" secondAttribute="bottom" constant="10" id="s1b-dY-hVq"/>
                             <constraint firstItem="f90-67-4gF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mkZ-0i-JjY" secondAttribute="trailing" constant="20" id="sBD-BB-GxX"/>
                             <constraint firstAttribute="trailing" secondItem="f90-67-4gF" secondAttribute="trailing" constant="40" id="tbq-xa-3fA"/>
                             <constraint firstItem="OdL-k2-dT2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rE0-i7-0Dt" secondAttribute="bottom" constant="19" id="wEH-Wu-a5u"/>
@@ -733,7 +748,7 @@ URL of your institution's EZProxy Server</string>
                                             <tableColumns>
                                                 <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="xQe-Sg-ycL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -773,7 +788,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="Ses-Rj-Mtw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -813,7 +828,7 @@ URL of your institution's EZProxy Server</string>
                                                 </tableColumn>
                                                 <tableColumn width="149" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>

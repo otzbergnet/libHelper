@@ -336,6 +336,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     let oaVersion = self.getOpenAccessVersion(data: oaData)
                     let title = NSLocalizedString("Open Access Version Found from unpaywall.org! ", comment: "used in JS injection to indicate OA found")
                     page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title, "source" : "unpaywall.org", "version" : "\(oaVersion)"])
+                    self.findOpenCitations(doi: doi, page: page)
                 }
                 else{
                     toolbarAction(imgName: "oa_100.pdf")
@@ -403,6 +404,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             if let data = data {
                 self.handleCoreData(data: data, doi: doi, originUrl: originUrl, page: page, year: year)
+                self.findOpenCitations(doi: doi, page: page)
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_data" : "failed"])
@@ -511,6 +513,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         updateCount()
                         let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
                         page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button", "version" : ""])
+                        self.findOpenCitations(doi: doi, page: page)
                     }
                     else{
                         noOpenAccessFound(page: page, doi: doi, year: year)
@@ -616,7 +619,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
         catch let jsonError{
-            NSLog(jsonError as! String)
+            NSLog("\(jsonError)")
             noOpenAccessFound(page: page, doi: doi, year: year)
             return
         }
@@ -635,13 +638,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
             if(year == 0 || year > fiveYearsAgo){
                 page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y", "doistring" : doi])
+                self.findOpenCitations(doi: doi, page: page)
             }
             else if(year == 1){
-               page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e", "doistring" : doi])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e", "doistring" : doi])
+                self.findOpenCitations(doi: doi, page: page)
             }
             else{
                 page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o", "doistring" : doi])
             }
+            
             
         }
         else{
@@ -954,6 +960,78 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
         }
         task.resume()
+        
+    }
+    
+    //MARK: OpenCitations related
+    
+    func findOpenCitations(doi: String, page: SFSafariPage){
+        //check if OpenCitations desired
+        if(!preferences.getValue(key: "opencitations")){
+            //user does not require OpenCitations
+            return
+        }
+        
+        //execute
+        findCitations(doi: doi) { (res) in
+            switch res{
+                case .success(let openCitation):
+                    if let count = Int(openCitation.count) {
+                        if(count > 0){
+                            page.dispatchMessageToScript(withName: "opencitation_count", userInfo: ["citation_count" : count, "doi" : doi])
+                        }
+                    }
+                
+                case .failure(let error):
+                    //I hate my life right now
+                    print("openCitation: there was an error: \(error)")
+            }
+        }
+    }
+    
+    func findCitations(doi : String, completion: @escaping (Result<OpenCitationStruct, Error>) -> ()){
+        let urlString = "https://opencitations.net/index/api/v1/citation-count/\(doi)"
+        ///https://opencitations.net/index/api/v1/citation-count/10.1142/9789812701527_0009
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+
+            if let error = error{
+                //we got an error, let's tell the user
+                print("error")
+                completion(.failure(error))
+                print(error)
+            }
+            if let data = data {
+                //this worked just fine
+                do {
+                    let openCitations = try JSONDecoder().decode([OpenCitationStruct].self, from: data)
+                    if(openCitations.count > 0){
+                        print("data received \(openCitations.first!.count)")
+                        completion(.success(openCitations.first!))
+                    }
+                    else{
+                        print("Successful decode with 0 elements, should be impossible to be honest")
+                        completion(.failure(NSError(domain: "", code: 441, userInfo: ["description" : "failed to get any objects"])))
+                    }
+                    
+                }
+                catch let jsonError{
+                    print("JSON String: \(String(data: data, encoding: .utf8) ?? "JSON ERROR COULD NOT PRINT")")
+                    completion(.failure(jsonError))
+                }
+            }
+            else{
+                //another error
+                print("failed to get data")
+                completion(.failure(NSError(domain: "", code: 440, userInfo: ["description" : "failed to get data"])))
+                return
+            }
+            
+        }.resume()
         
     }
     

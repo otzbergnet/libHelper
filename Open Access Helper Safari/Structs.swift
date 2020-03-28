@@ -136,3 +136,9 @@ class CoreRequestObject{
     var fulltextUrl = ""
 }
 
+// MARK: OpenCitations Related Struct
+
+struct OpenCitationStruct : Decodable{
+    var count : String
+}
+
