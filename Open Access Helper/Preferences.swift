@@ -14,15 +14,21 @@ class Preferences: NSViewController {
     
     func isSetup() -> Bool{
         if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
-            if(defaults.bool(forKey: "setup_2020_02")){
+            if(defaults.bool(forKey: "setup_2020_03")){
                 //we are fully setup, nothing needs to happen
+                return true
+            }
+            if(defaults.bool(forKey: "setup_2020_02")){
+                //we are partially setup, need to do opencitations
+                defaults.set(true, forKey: "opencitations")
+                defaults.set(true, forKey: "setup_2020_03")
                 return true
             }
             if(defaults.bool(forKey: "setup_2020_01")){
                 //we are partially setup, need to convert stats
                 convertOldStatsToNewStats()
                 //now set true for current version
-                defaults.set(true, forKey: "setup_2020_02")
+                defaults.set(true, forKey: "setup_2020_03")
                 return true
             }
             if(defaults.bool(forKey: "setup")){
@@ -30,7 +36,7 @@ class Preferences: NSViewController {
                 defaults.set(true, forKey: "corerecom")
                 convertOldStatsToNewStats()
                 //now set true for current version
-                defaults.set(true, forKey: "setup_2020_02")
+                defaults.set(true, forKey: "setup_2020_03")
                 //now we can return true, as we are fully setup
                 return true
             }
@@ -45,7 +51,7 @@ class Preferences: NSViewController {
     
     func doSetup(){
         if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
-            defaults.set(true, forKey: "setup_2020_02")
+            defaults.set(true, forKey: "setup_2020_03")
             defaults.set(true, forKey: "core")
             defaults.set(false, forKey: "oabutton")
             defaults.set(true, forKey: "oabrequest")
@@ -54,6 +60,7 @@ class Preferences: NSViewController {
             defaults.set(true, forKey: "corehs")
             defaults.set(false, forKey: "gettheresearchhs")
             defaults.set(true, forKey: "shareStats")
+            defaults.set(true, forKey: "opencitations")
             let uuid = UUID().uuidString
             defaults.set(uuid, forKey: "uuid")
         }

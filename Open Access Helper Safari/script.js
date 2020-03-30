@@ -119,6 +119,12 @@ function messageHandler(event){
         var newUrl = url.replace(prefix, "");
         window.location.href = newUrl;
     }
+    else if(event.name == "opencitation_count"){
+        console.log("opencitation_count message received")
+        var count = event.message.citation_count;
+        var doi =   event.message.doi;
+        addCitationCount(count,doi);
+    }
 }
 
 function findDoi(){
@@ -412,7 +418,7 @@ function oafound(message){
     }
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+message.url+oaVersion+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left" title="'+message.title+message.url+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/><span id="oahelper_oahelpmsg">'+message.version+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+oaVersion+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left" title="'+message.title+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/><span id="oahelper_oahelpmsg">'+message.version+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_doifound_outer';
     div.className = 'oahelper_doifound_outer';
     
@@ -1053,5 +1059,23 @@ function doOaHelperLiveRegion(message){
             div.innerHTML = message;
         }
     } , 4000);
+}
+
+function addCitationCount(count, doi){
+    console.log("Open Access Helper (Safari Extension): This article was cited "+count+" times, according to OpenCitations.net");
+    
+    var url = "https://www.oahelper.org/doi/index.php?doi="+doi;
+    var message = "Times Cited: "+count;
+    var src = safari.extension.baseURI + "ocicon.png";
+    var div = document.createElement('div');
+    
+    div.innerHTML = '<div class="oahelper_opencitations" onclick="window.open(\''+url+'\')" title="OpenCitations '+message+'"><img id="oahelper_opencitations_logo" src="'+src+'" align="left" title="'+message+'" data-oaurl="'+url+'" data-badge=""/><span id="oahelper_opencitations_msg">'+message+'</span></div><span id="oahelper_opencitations_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.id = 'oahelper_opencitations_outer';
+    div.className = 'oahelper_opencitations_outer';
+    
+    if(document.body.parentNode.parentNode != "#document"){
+        document.body.appendChild(div);
+    }
+    
 }
 

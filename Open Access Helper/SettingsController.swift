@@ -19,6 +19,7 @@ class SettingsController: NSViewController {
     @IBOutlet weak var basesearchHSCheckBox: NSButton!
     @IBOutlet weak var coreHSCheckBox: NSButton!
     @IBOutlet weak var gettheresearchHSCheckBox: NSButton!
+    @IBOutlet weak var openCitationsCheckBox: NSButton!
     
     
     override func viewDidLoad() {
@@ -72,6 +73,13 @@ class SettingsController: NSViewController {
         else{
             coreRecomCheckBox.state = .off
         }
+        let openCitations = preferences.getValue(key: "opencitations")
+        if(openCitations){
+            openCitationsCheckBox.state = .on
+        }
+        else{
+            openCitationsCheckBox.state = .off
+        }
         
         let baseHS = preferences.getValue(key: "basehs")
         if(baseHS){
@@ -96,6 +104,8 @@ class SettingsController: NSViewController {
         else{
             gettheresearchHSCheckBox.state = .off
         }
+        
+        
     }
     
     @IBAction func coreClicked(_ sender: NSButton) {
@@ -178,18 +188,22 @@ class SettingsController: NSViewController {
         coreCheckBox.state = .off
         oaButtonCheckBox.state = .off
         oaButtonRequestCheckBox.state = .off
+        openCitationsCheckBox.state = .off
         preferences.setValue(key: "core", value: false)
         preferences.setValue(key: "oabutton", value: false)
         preferences.setValue(key: "oabrequest", value: false)
+        preferences.setValue(key: "opencitations", value: false)
     }
     
     @IBAction func recommendedSelected(_ sender: Any){
         coreCheckBox.state = .on
         oaButtonCheckBox.state = .off
         oaButtonRequestCheckBox.state = .on
+        openCitationsCheckBox.state = .on
         preferences.setValue(key: "core", value: true)
         preferences.setValue(key: "oabutton", value: false)
         preferences.setValue(key: "oabrequest", value: true)
+        preferences.setValue(key: "opencitations", value: true)
     }
     
 }
