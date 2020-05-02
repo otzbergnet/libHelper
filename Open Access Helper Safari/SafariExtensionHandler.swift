@@ -39,10 +39,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             var currentUrl = ""
             var goToUrl = ""
             if let current = userInfo?["current"] {
-                currentUrl = current as! String
+                currentUrl = current as? String ?? ""
             }
             if let next = userInfo?["goto"] {
-                goToUrl = next as! String
+                goToUrl = next as? String ?? ""
             }
             if(currentUrl != "" && goToUrl != ""){
                 followLink(current: currentUrl, next: goToUrl, page: page)
@@ -266,7 +266,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if let myUrl = URL(string: url) {
                 window?.openTab(with: myUrl, makeActiveIfPossible: true, completionHandler: nil)
             }
-            
         }
     }
     
