@@ -39,7 +39,7 @@ class AboutController: NSViewController {
     }
     
     @IBAction func contactMeClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.oahelper.org/#contactme"),
+        if let url = URL(string: "https://www.oahelper.org/support/"),
             NSWorkspace.shared.open(url) {
         }
     }

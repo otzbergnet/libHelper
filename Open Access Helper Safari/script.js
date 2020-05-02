@@ -666,7 +666,7 @@ function fireOnKeypress(){
 function handleConfirmRequest(msg){
     if(window.confirm(msg)){
         //ask extension to go to user FAQ
-        var url = "https://www.oahelper.org/userfaq.html";
+        var url = "https://www.oahelper.org/user-faq/";
         safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
     }
 }
@@ -1064,7 +1064,7 @@ function doOaHelperLiveRegion(message){
 function addCitationCount(count, doi){
     console.log("Open Access Helper (Safari Extension): This article was cited "+count+" times, according to OpenCitations.net");
     
-    var url = "https://www.oahelper.org/doi/index.php?doi="+doi;
+    var url = "https://www.oahelper.org/opencitations/?doi="+doi;
     var message = "Times Cited: "+count;
     var src = safari.extension.baseURI + "ocicon.png";
     var div = document.createElement('div');

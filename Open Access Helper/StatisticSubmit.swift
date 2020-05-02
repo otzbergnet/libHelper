@@ -53,7 +53,7 @@ class StatisticSubmit {
         }
         
         
-        let urlString = "https://www.oahelper.org/stat.php?oa_search=\(oa_search)&oa_found=\(oa_found)&core_pdf=\(core_pdf)&bookmark_count=\(bookmark_count)&recom_count=\(recom_count)&recom_view=\(recom_view)&proxy_count=\(proxy_count)&uid=\(self.uid)&os=macos"
+        let urlString = "https://www.oahelper.org/backend/stats/stat.php?oa_search=\(oa_search)&oa_found=\(oa_found)&core_pdf=\(core_pdf)&bookmark_count=\(bookmark_count)&recom_count=\(recom_count)&recom_view=\(recom_view)&proxy_count=\(proxy_count)&uid=\(self.uid)&os=macos"
         guard let url = URL(string: urlString) else {
             return
         }

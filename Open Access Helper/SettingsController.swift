@@ -179,7 +179,7 @@ class SettingsController: NSViewController {
     
     
     @IBAction func tellMeMoreClicked(_ sender: Any) {
-        if let url = URL(string: "https://www.oahelper.org/settings.html"),
+        if let url = URL(string: "https://www.oahelper.org/help-settings/"),
             NSWorkspace.shared.open(url) {
         }
     }
