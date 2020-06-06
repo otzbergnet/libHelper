@@ -115,9 +115,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
         
-//        page.getPropertiesWithCompletionHandler { properties in
-//            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
-//        }
+        //        page.getPropertiesWithCompletionHandler { properties in
+        //            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
+        //        }
     }
     
     override func toolbarItemClicked(in window: SFSafariWindow) {
@@ -131,7 +131,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 })
             })
         })
-
+        
     }
     
     // update context menu with the text selected by the user in Safari
@@ -170,29 +170,29 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             //validationHandler(false, myContextLabel)
             
             switch (command){
-                case "oasearch":
-                    if(preferences.getValue(key: "basehs")){
-                        validationHandler(false, myContextLabel)
-                    }
-                    else{
-                        validationHandler(true, myContextLabel)
-                    }
-                case "oasearch2":
-                    if(preferences.getValue(key: "corehs")){
-                        validationHandler(false, myContextLabel)
-                    }
-                    else{
-                        validationHandler(true, myContextLabel)
-                    }
-                case "oasearch3":
-                    if(preferences.getValue(key: "gettheresearchhs")){
-                        validationHandler(false, myContextLabel)
-                    }
-                    else{
-                        validationHandler(true, myContextLabel)
-                    }
-                default:
-                    NSLog("wbm_log: apparently we found a new command that we didn't code for. bummer...")
+            case "oasearch":
+                if(preferences.getValue(key: "basehs")){
+                    validationHandler(false, myContextLabel)
+                }
+                else{
+                    validationHandler(true, myContextLabel)
+                }
+            case "oasearch2":
+                if(preferences.getValue(key: "corehs")){
+                    validationHandler(false, myContextLabel)
+                }
+                else{
+                    validationHandler(true, myContextLabel)
+                }
+            case "oasearch3":
+                if(preferences.getValue(key: "gettheresearchhs")){
+                    validationHandler(false, myContextLabel)
+                }
+                else{
+                    validationHandler(true, myContextLabel)
+                }
+            default:
+                NSLog("wbm_log: apparently we found a new command that we didn't code for. bummer...")
             }
             
         }
@@ -208,7 +208,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             selectedText = myUserInfo["selectedText"] as! String
             
             let myurl = createOASearchURL(originalTextSelection: selectedText, command: command)
-        
+            
             if(command != ""){
                 if(selectedText.count > 0){
                     updateOASearchCount()
@@ -216,7 +216,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 goToOaUrl(url: myurl)
             }
         }
-
+        
     }
     
     
@@ -270,7 +270,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
-
+        
         // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
         window.getActiveTab { (activeTab) in
             activeTab?.getActivePage(completionHandler:  { (activePage) in
@@ -319,7 +319,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             
         }
-
+        
         task.resume()
     }
     
@@ -388,7 +388,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             return
         }
         // if we got here the client wants core
-
+        
         toolbarAction(imgName: "oa_100a.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "apikey")
         let jsonUrlString = "https://api.core.ac.uk/discovery/discover?doi=\(doi)&apiKey=\(apiKey)"
@@ -453,7 +453,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
     
-
+    
     func checkOAButton(doi: String, page: SFSafariPage, originUrl: String, year: Int) {
         let oaButtonSetting = preferences.getValue(key: "oabutton")
         if(!oaButtonSetting){
@@ -500,7 +500,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         task.resume()
     }
-
+    
     func handleOAButtonData(data: Data, page: SFSafariPage, originUrl : String, year: Int, doi: String){
         do{
             let oaButtonData = try JSONDecoder().decode(OaButton.self, from: data)
@@ -708,6 +708,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         //remove http and https to avoid trouble in the comparison
         let finalUrlString = "\(next)"
         
+        
         var myFinalUrl = finalUrlString.replacingOccurrences(of: "https://", with: "")
         myFinalUrl = myFinalUrl.replacingOccurrences(of: "http://", with: "")
         var myCurrent = current.replacingOccurrences(of: "https://", with: "")
@@ -725,6 +726,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             return true
         }
         else if (domain1 == "www.sciencedirect.com" && domain2 == "linkinghub.elsevier.com"){
+            return true
+        }
+        else if (domain1 == "psycnet.apa.org" && domain2 == "doi.apa.org"){
             return true
         }
         else if (current.contains("www.ncbi.nlm.nih.gov/pmc/")){
@@ -778,7 +782,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             page.dispatchMessageToScript(withName: "showAlert", userInfo: ["msg" : msg, "type" : type, "ezproxy" : ezproxyPrefix]);
         }
     }
-
+    
     func updateCount(){
         preferences.incrementIntVal(key: "oaFoundCount")
     }
@@ -796,14 +800,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         if let version = data.best_oa_location?.version{
             
             switch version{
-                case "submittedVersion":
-                    return NSLocalizedString("Submitted Version", comment: "submittedVersion")
-                case "acceptedVersion":
-                    return NSLocalizedString("Accepted Version", comment: "acceptedVersion")
-                case "publishedVersion":
-                    return NSLocalizedString("Published Version", comment: "publishedVersion")
-                default:
-                    return ""
+            case "submittedVersion":
+                return NSLocalizedString("Submitted Version", comment: "submittedVersion")
+            case "acceptedVersion":
+                return NSLocalizedString("Accepted Version", comment: "acceptedVersion")
+            case "publishedVersion":
+                return NSLocalizedString("Published Version", comment: "publishedVersion")
+            default:
+                return ""
             }
             
         }
@@ -850,7 +854,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         recommendationObject.doi = doi
         recommendationObject.aabstract = abstract
         recommendationObject.referer = currentUrl
-
+        
         self.askForRecommendation(metaData: recommendationObject) { (res) in
             switch res{
             case .success(let coreRecommends):
@@ -870,7 +874,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     else{
                         page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "unable to jsonEncode"])
                     }
-
+                    
                 }
                 else{
                     // there was nothing
@@ -910,7 +914,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue(apiKey, forHTTPHeaderField: "X-Token")
         request.httpMethod = "POST"
-                
+        
         let parameters: [String: Any] = [
             "title" : metaData.title,
             "aabstract" : metaData.aabstract,
@@ -974,16 +978,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         //execute
         findCitations(doi: doi) { (res) in
             switch res{
-                case .success(let openCitation):
-                    if let count = Int(openCitation.count) {
-                        if(count > 0){
-                            page.dispatchMessageToScript(withName: "opencitation_count", userInfo: ["citation_count" : count, "doi" : doi])
-                        }
+            case .success(let openCitation):
+                if let count = Int(openCitation.count) {
+                    if(count > 0){
+                        page.dispatchMessageToScript(withName: "opencitation_count", userInfo: ["citation_count" : count, "doi" : doi])
                     }
+                }
                 
-                case .failure(let error):
-                    //I hate my life right now
-                    print("openCitation: there was an error: \(error)")
+            case .failure(let error):
+                //I hate my life right now
+                print("openCitation: there was an error: \(error)")
             }
         }
     }
@@ -997,7 +1001,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-
+            
             if let error = error{
                 //we got an error, let's tell the user
                 print("error")
