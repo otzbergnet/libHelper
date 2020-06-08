@@ -40,7 +40,6 @@
 		2D655F1221A0036F0092E480 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D655F1421A0036F0092E480 /* Localizable.strings */; };
 		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
-		2DA6ECB424277E1000B5369A /* ocicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA6ECB324277E1000B5369A /* ocicon.png */; };
 		2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF938923E15DAA0023FC51 /* EZProxyController.swift */; };
 		2DC3AC0823FD54E000D41DF7 /* StatisticSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */; };
 		2DC3AC0923FD5C7F00D41DF7 /* StatisticSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */; };
@@ -52,6 +51,8 @@
 		2DF38072218D8BC200CF2A45 /* sec30.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38071218D8BC100CF2A45 /* sec30.png */; };
 		2DF38078218DAC0D00CF2A45 /* oa_100.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38077218DAC0D00CF2A45 /* oa_100.pdf */; };
 		2DF3807A218DB78700CF2A45 /* oa_100a.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DF38079218DB78600CF2A45 /* oa_100a.pdf */; };
+		2DF915FF245EA3A2002E49CE /* ocicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF915FE245EA3A1002E49CE /* ocicon.png */; };
+		2DF91600245EA3A2002E49CE /* ocicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF915FE245EA3A1002E49CE /* ocicon.png */; };
 		2DFE4F4023B732D7006CF1AB /* BartyCrouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */; };
 		2DFE4F4123B732D7006CF1AB /* BartyCrouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */; };
 /* End PBXBuildFile section */
@@ -117,7 +118,6 @@
 		2D924380219E790B000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SafariExtensionViewController.strings; sourceTree = "<group>"; };
 		2D924382219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D924385219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2DA6ECB324277E1000B5369A /* ocicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ocicon.png; path = ../../../../Desktop/ocicon.png; sourceTree = "<group>"; };
 		2DAF938923E15DAA0023FC51 /* EZProxyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZProxyController.swift; sourceTree = "<group>"; };
 		2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSubmit.swift; sourceTree = "<group>"; };
 		2DC8627B23C23330007DF1AA /* core_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = core_logo.svg; sourceTree = "<group>"; };
@@ -129,6 +129,7 @@
 		2DF38071218D8BC100CF2A45 /* sec30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sec30.png; sourceTree = "<group>"; };
 		2DF38077218DAC0D00CF2A45 /* oa_100.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100.pdf; sourceTree = "<group>"; };
 		2DF38079218DB78600CF2A45 /* oa_100a.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = oa_100a.pdf; sourceTree = "<group>"; };
+		2DF915FE245EA3A1002E49CE /* ocicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ocicon.png; sourceTree = "<group>"; };
 		2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BartyCrouch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,7 +227,7 @@
 				2DD336A623C1A3C6004A34C5 /* recom.png */,
 				2D643FD4230058A300A4FA14 /* ask.png */,
 				2DD336AC23C1C6FA004A34C5 /* loader.gif */,
-				2DA6ECB324277E1000B5369A /* ocicon.png */,
+				2DF915FE245EA3A1002E49CE /* ocicon.png */,
 				2DC8627B23C23330007DF1AA /* core_logo.svg */,
 				2D3F8FD52185867F0095ACD7 /* mycss.css */,
 				2D3F8FC92185863C0095ACD7 /* script.js */,
@@ -346,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3F8FAD218586290095ACD7 /* Assets.xcassets in Resources */,
+				2DF915FF245EA3A2002E49CE /* ocicon.png in Resources */,
 				2D17FB9523F4276400BF5620 /* apikey.plist in Resources */,
 				2D643FD5230058A300A4FA14 /* ask.png in Resources */,
 				2D06B57C219E841300E4A453 /* Localizable.strings in Resources */,
@@ -365,7 +367,7 @@
 				2D3F8FC72185863C0095ACD7 /* SafariExtensionViewController.xib in Resources */,
 				2D655F1221A0036F0092E480 /* Localizable.strings in Resources */,
 				2DF38078218DAC0D00CF2A45 /* oa_100.pdf in Resources */,
-				2DA6ECB424277E1000B5369A /* ocicon.png in Resources */,
+				2DF91600245EA3A2002E49CE /* ocicon.png in Resources */,
 				2D3F8FCA2185863C0095ACD7 /* script.js in Resources */,
 				2DF38072218D8BC200CF2A45 /* sec30.png in Resources */,
 				2D643FD6230058A300A4FA14 /* ask.png in Resources */,
@@ -645,7 +647,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 132;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -654,7 +656,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.3;
+				MARKETING_VERSION = 2020.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -671,7 +673,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 132;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -680,7 +682,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.3;
+				MARKETING_VERSION = 2020.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -694,7 +696,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 132;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -704,7 +706,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.3;
+				MARKETING_VERSION = 2020.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -718,7 +720,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 132;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -728,7 +730,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.3;
+				MARKETING_VERSION = 2020.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
