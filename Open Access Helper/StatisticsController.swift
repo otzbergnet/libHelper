@@ -91,6 +91,18 @@ class StatisticsController: NSViewController {
         
     }
     
+    @IBAction func privacyPolicyClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.oahelper.org/privacy-policy/"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
+    
+    @IBAction func tellMeMoreClicked(_ sender: Any) {
+        if let url = URL(string: "https://www.oahelper.org/2020/06/07/macos-what-statistics-do-you-collect/"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
+    
     
 }
 
@@ -100,8 +112,8 @@ extension StatisticsController: NSTouchBarDelegate {
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.customizationIdentifier = .bar6
-        touchBar.defaultItemIdentifiers = [.label7]
-        touchBar.customizationAllowedItemIdentifiers = [.label7]
+        touchBar.defaultItemIdentifiers = [.label7, .privacyPolicy, .privacyTellMeMore]
+        touchBar.customizationAllowedItemIdentifiers = [.label7, .privacyPolicy, .privacyTellMeMore]
         return touchBar
     }
     
@@ -112,6 +124,16 @@ extension StatisticsController: NSTouchBarDelegate {
             let customViewItemLabel = NSLocalizedString("Basic Usage Statistics", comment: "")
             customViewItem.view = NSTextField(labelWithString: customViewItemLabel)
             return customViewItem
+        case NSTouchBarItem.Identifier.privacyPolicy:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Privacy Policy", target: self, action: #selector(privacyPolicyClicked(_:)))
+            saveItem.view = button
+            return saveItem
+        case NSTouchBarItem.Identifier.privacyTellMeMore:
+            let saveItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Tell me more...", target: self, action: #selector(tellMeMoreClicked(_:)))
+            saveItem.view = button
+            return saveItem
         default:
             return nil
         }

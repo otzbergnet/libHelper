@@ -283,3 +283,9 @@
 
 /* Class = "NSButtonCell"; title = "Show citation counts from OpenCitations"; ObjectID = "1J1-cU-OSF"; */
 "1J1-cU-OSF.title" = "Zeige Zahl der Zitate von OpenCitations";
+
+/* Class = "NSButtonCell"; title = "Privacy Policy"; ObjectID = "AgS-JC-Lyt"; */
+"AgS-JC-Lyt.title" = "Datenschutzerklärung";
+
+/* Class = "NSButtonCell"; title = "Tell me more..."; ObjectID = "Fup-1k-vH1"; */
+"Fup-1k-vH1.title" = "Mehr infos...";

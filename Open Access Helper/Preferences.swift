@@ -14,8 +14,12 @@ class Preferences: NSViewController {
     
     func isSetup() -> Bool{
         if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
-            if(defaults.bool(forKey: "setup_2020_03")){
+            if(defaults.bool(forKey: "setup_2020_04")){
                 //we are fully setup, nothing needs to happen
+                return true
+            }
+            if(defaults.bool(forKey: "setup_2020_03")){
+                //we are partially setup...
                 return true
             }
             if(defaults.bool(forKey: "setup_2020_02")){
@@ -59,7 +63,7 @@ class Preferences: NSViewController {
             defaults.set(true, forKey: "basehs")
             defaults.set(true, forKey: "corehs")
             defaults.set(false, forKey: "gettheresearchhs")
-            defaults.set(true, forKey: "shareStats")
+            defaults.set(false, forKey: "shareStats")
             defaults.set(true, forKey: "opencitations")
             let uuid = UUID().uuidString
             defaults.set(uuid, forKey: "uuid")

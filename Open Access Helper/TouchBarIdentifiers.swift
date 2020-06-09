@@ -30,6 +30,8 @@ extension NSTouchBarItem.Identifier {
     static let lookupProxy = NSTouchBarItem.Identifier("net.otzberg.libHelper.EZProxyController.lookupProxy")
     static let testProxy = NSTouchBarItem.Identifier("net.otzberg.libHelper.EZProxyController.testProxy")
     static let label7 = NSTouchBarItem.Identifier("net.otzberg.libHelper.StatisticsController.label7")
+    static let privacyPolicy = NSTouchBarItem.Identifier("net.otzberg.libHelper.StatisticsController.privacyPolicy")
+    static let privacyTellMeMore = NSTouchBarItem.Identifier("net.otzberg.libHelper.StatisticsController.privacyTellMeMore")
 }
 
 
