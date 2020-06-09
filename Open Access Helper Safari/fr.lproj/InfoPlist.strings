@@ -5,5 +5,5 @@
 "CFBundleName" = "$(PRODUCT_NAME)";
 
 /* Copyright (human-readable) */
-"NSHumanReadableCopyright" = "Copyright © 2018-2020 Claus Wolf. Einige Rechte vorbehalten";
+"NSHumanReadableCopyright" = "Copyright © 2018-20 Claus Wolf. Certains droits réservés";
 

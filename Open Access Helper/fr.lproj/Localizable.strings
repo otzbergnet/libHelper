@@ -1,0 +1,193 @@
+
+/* No comment provided by engineer. */
+"About: " = "Über: ";
+
+/* acceptedVersion */
+"Accepted Version" = "Angenommene Version";
+
+/* changes Context Label */
+"base-search.net search for: \"%@\"" = "base-search.net Suche nach: \"%@\"";
+
+/* No comment provided by engineer. */
+"Basic Usage Statistics" = "Grundlegende Statistiken";
+
+/* No comment provided by engineer. */
+"Bookmarks: Select a row to see options" = "Bookmarks: Wählen Sie eine Zeile, um Optionen zu sehen";
+
+/* Cancel button title */
+"Cancel" = "Abbrechen";
+
+/* iCloud internet connection */
+"Connection Error" = "Verbindungsfehler";
+
+/* No comment provided by engineer. */
+"Contact Me" = "Kontakt";
+
+/* changes Context Label */
+"core.ac.uk search for: \"%@\"" = "core.ac.uk Suche nach: \"%@\"";
+
+/* Quit without saves error question message */
+"Could not save changes while quitting. Quit anyway?" = "Änderungen konnten nicht gespeichert werden, dennoch beenden?";
+
+/* No comment provided by engineer. */
+"Delete Bookmark" = "Bookmark löschen";
+
+/* touchbar button */
+"Deselect All" = "Alle deaktivieren";
+
+/* No comment provided by engineer. */
+"EZProxy: " = "EZProxy: ";
+
+/* changes Context Label */
+"gettheresearch.org search for: \"%@\"" = "gettheresearch.org Suche nach: \"%@\"";
+
+/* No comment provided by engineer. */
+"Getting Started: " = "So legen Sie los";
+
+/* error message title
+   iCloud error - not authenticated */
+"iCloud Error" = "iCloud Fehler";
+
+/* if proxy field was empty */
+"Looks like the domain field was empty" = "Domain überprüfen, Feld war leer";
+
+/* No comment provided by engineer. */
+"Lookup" = "Nachschlagen";
+
+/* zoneNotFound or user deleted */
+"Missing Database" = "Fehlende Datenbank";
+
+/* 0 bookmarks retrieved */
+"No Bookmarks" = "Keine Bookmarks";
+
+/* if 0 hits returned */
+"No match was found" = "Keine Treffer gefunden";
+
+/* OK button in alert */
+"OK" = "OK";
+
+/* will show in JS Alert, when there was a doi, but no oadoi url */
+"Open Access Helper could not find a legal open-access version of this article." = "Open Access Helper konnte keine legale Open Access Version für diesen Artikel finden";
+
+/* will show in JS Alert, when there no doi = inactive state */
+"Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message" = "Open Access Helper is auf dieser Seite nicht aktiv, da wir keinen DOI finden konnten\n\nKlicken Sie OK um mehr über diese App zu erfahren\nKlicken Sie abbrechen, um diese Nachricht zu schließen";
+
+/* used in JS injection to indicate OA found */
+"Open Access Version Found from core.ac.uk! " = "Open Access Version von core.ac.uk gefunden! ";
+
+/* used in JS injection to indicate OA found */
+"Open Access Version Found from Open Access Button " = "Open Access Version von Open Access Button gefunden! ";
+
+/* used in JS injection to indicate OA found */
+"Open Access Version Found from unpaywall.org! " = "Open Access Version von unpaywall.org gefunden! ";
+
+/* No comment provided by engineer. */
+"Open Bookmark" = "Bookmark öffnen";
+
+/* No comment provided by engineer. */
+"Open Safari Preferences" = "Safari Einstellungen öffnen";
+
+/* error message shown, when iCloud not logged in */
+"Please check that you are logged into iCloud" = "Bitte überprüfen, dass Du in iCloud eingeloggt bist";
+
+/* if there are more than one result */
+"Please review your domain-name, as we were unable to find just one match" = "Mehrere Treffer gefunden, bitte Domain überprüfen.";
+
+/* publishedVersion */
+"Published Version" = "Veröffentliche Version";
+
+/* Quit anyway button title */
+"Quit anyway" = "Beenden";
+
+/* Quit without saves error question info */
+"Quitting now will lose any changes you have made since the last successful save" = "Wenn Du das Programm jetzt beendest, werden Deine Änderungen verloren gehen";
+
+/* touchbar button */
+"Recommended Settings" = "Empfohlene Einstellungen";
+
+/* iCloud record error */
+"Record Error" = "Datensatzfehler";
+
+/* No comment provided by engineer. */
+"Save" = "Speichern";
+
+/* reset to default translation */
+"Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
+
+/* show searching, when looking up settings */
+"Searching..." = "Suche...";
+
+/* touchbar label */
+"Settings: " = "Einstellungen: ";
+
+/* No comment provided by engineer. */
+"Show Example" = "Ein Beispiel zeigen";
+
+/* shows on main window, number of OpenAccess found */
+"So far we've helped you find %@ Open Access Documents!" = "Bisher haben wir Dir geholfen %@ Open Access Dokumente zu finden!";
+
+/* 
+  localizable.strings
+  Open Access Helper
+
+  Created by Claus Wolf on 16.11.18.
+  Copyright © 2018 Claus Wolf. All rights reserved.
+*/
+"So far we've helped you find \(count) Open Access Documents!" = "Bisher haben wir Ihnen geholfen \(count) Open Access Dokumente zu finden!";
+
+/* submittedVersion */
+"Submitted Version" = "Eingereichte Version";
+
+/* if proxy was successfully saved */
+"Successfuly, saved!" = "Erfolgreich gespeichert";
+
+/* touchbar button */
+"Tell me more..." = "Mehr Informationen...";
+
+/* No comment provided by engineer. */
+"Test" = "Testen";
+
+/* changes Context Label, base-search-net */
+"Visit base-search.net" = "Besuchen Sie base-search.net";
+
+/* changes Context Label */
+"Visit core.ac.uk" = "Besuchen Sie core.ac.uk";
+
+/* changes Context Label */
+"Visit gettheresearch.org" = "Besuchen Sie gettheresearch.org";
+
+/* infoString for waiting for recommendations to load */
+"We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)" = "Wir stellen gerade eine Liste an Ariktelempfehlungen zusammen. Bitte gedulden Sie sich!";
+
+/* No comment provided by engineer. */
+"We are sorry, but it seems that you either do not have an iCloud account, or access is limited for Open Access Helper. Please check iCloud settings" = "Leider ist ein iCloud Fehler aufgetreten. Dieser Fehler legt es nahe, dass das iCloud Konto entweder nicht verfügbar ist, oder Open Access Helper dieses nicht nutzen darf.";
+
+/* No comment provided by engineer. */
+"We are sorry, but it seems you do not have a Open Access Helper Database in iCloud. Please add at least one bookmark in OpenAccess Helper for iOS" = "Wir konnten leider keine Open Access Helper Datenbank in iCloud finden. Bitte legen sie zu mindestens ein Bookmark mit Open Access Helper für iOS an.";
+
+/* No comment provided by engineer. */
+"We are sorry, but there was a connection error. Please check your Internet Connection" = "Leider ist ein Verbindungsfehler aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung";
+
+/* if failure received */
+"We encountered an unexpected error" = "Unerwarteter Fehler";
+
+/* if unable to actually get to the proxyPrefix */
+"We found a match, but could not get the prefix" = "Wir haben einen Treffer gefunden, konnten jedoch den Prefix nicht extrahieren";
+
+/* to be shown in JavaScript Popover */
+"We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!" = "Wir haben eine kurze Liste mit Artikeln zusammengestellt, die dem von Ihnen angezeigten ähneln. Wir hoffen, dass diese nützlich sind!";
+
+/* No comment provided by engineer. */
+"We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?" = "Wir konnten keine Bookmarks aus iCloud abrufen. Sind Sie sich sicher, dass Sie bereits Bookmarks über die Open Access Helper App für iOS angelegt haben?";
+
+/* No comment provided by engineer. */
+"We were unable to retrieve your bookmarks" = "Wir konnten die Bookmarks nicht abrufen";
+
+/* used in JS confirm that you are on OA already */
+"You are at the Open Acccess Location!" = "Sie befinden sich an der Open Access Zugriffsort!";
+
+/* shown in stats, if no proxy prefix present */
+"You did not setup Proxy Support yet" = "Sie haben noch keinen Proxy konfiguriert";
+
+/* shows on main window, number of OpenAccess Searches conducted */
+"You've had help with %@ Open Access searches" = "Wir haben Dir bei %@ Open Access Suchen geholfen";

@@ -1,0 +1,291 @@
+
+/* Class = "NSButtonCell"; title = "Test Setting"; ObjectID = "1IN-JA-aq4"; */
+"1IN-JA-aq4.title" = "Test Setting";
+
+/* Class = "NSButtonCell"; title = "Show citation counts from OpenCitations"; ObjectID = "1J1-cU-OSF"; */
+"1J1-cU-OSF.title" = "Show citation counts from OpenCitations";
+
+/* Class = "NSMenuItem"; title = "Open Access Helper"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Open Access Helper";
+
+/* Class = "NSTextFieldCell"; title = "Proxy requests handled"; ObjectID = "1hb-oh-Hh4"; */
+"1hb-oh-Hh4.title" = "Proxy requests handled";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "1lf-If-b1I"; */
+"1lf-If-b1I.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "45w-83-PZj"; */
+"45w-83-PZj.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in url= or qurl=\n\nURL of your institution's EZProxy Server"; ObjectID = "4SS-by-Tr0"; */
+"4SS-by-Tr0.title" = "If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in url= or qurl=\n\nURL of your institution's EZProxy Server";
+
+/* Class = "NSMenuItem"; title = "Quit Open Access Helper"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Open Access Helper";
+
+/* Class = "NSButtonCell"; title = "Search"; ObjectID = "55d-yH-ddJ"; */
+"55d-yH-ddJ.title" = "Search";
+
+/* Class = "NSViewController"; title = "About"; ObjectID = "5jK-gR-BaF"; */
+"5jK-gR-BaF.title" = "About";
+
+/* Class = "NSMenuItem"; title = "About Open Access Helper"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Open Access Helper";
+
+/* Class = "NSButtonCell"; title = "Show me an example"; ObjectID = "6F0-hJ-Tur"; */
+"6F0-hJ-Tur.title" = "Show me an example";
+
+/* Class = "NSButtonCell"; title = "Tell me more..."; ObjectID = "73V-Is-3jl"; */
+"73V-Is-3jl.title" = "Tell me more...";
+
+/* Class = "NSMenuItem"; title = "Release Notes"; ObjectID = "7Ez-AC-3or"; */
+"7Ez-AC-3or.title" = "Release Notes";
+
+/* Class = "NSButtonCell"; title = "Open Safari Preferences"; ObjectID = "7yJ-gz-MNS"; */
+"7yJ-gz-MNS.title" = "Open Safari Preferences";
+
+/* Class = "NSTextFieldCell"; title = "Statistics"; ObjectID = "8Tx-0Z-j7y"; */
+"8Tx-0Z-j7y.title" = "Statistics";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "9Ib-Zf-kgW"; */
+"9Ib-Zf-kgW.title" = "Text Cell";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSButtonCell"; title = "Privacy Policy"; ObjectID = "AgS-JC-Lyt"; */
+"AgS-JC-Lyt.title" = "Privacy Policy";
+
+/* Class = "NSButtonCell"; title = "Save Setting"; ObjectID = "BDQ-uN-9q5"; */
+"BDQ-uN-9q5.title" = "Save Setting";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Preferences…";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "Btx-9V-MZO"; */
+"Btx-9V-MZO.title" = "Paste";
+
+/* Class = "NSButtonCell"; title = "Use core Discovery to find additional Open Access"; ObjectID = "CMq-iy-q6b"; */
+"CMq-iy-q6b.title" = "Use core Discovery to find additional Open Access";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "D1z-42-zJY"; */
+"D1z-42-zJY.title" = "Table View Cell";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Close";
+
+/* Class = "NSButtonCell"; title = "base-search.net"; ObjectID = "E5Y-zn-Amu"; */
+"E5Y-zn-Amu.title" = "base-search.net";
+
+/* Class = "NSMenuItem"; ibExternalAccessibilityDescription = "Contact Details for App Author"; ObjectID = "EtY-qe-aEe"; */
+"EtY-qe-aEe.ibExternalAccessibilityDescription" = "Contact Details for App Author";
+
+/* Class = "NSMenuItem"; ibShadowedToolTip = "Go to Website"; ObjectID = "EtY-qe-aEe"; */
+"EtY-qe-aEe.ibShadowedToolTip" = "Go to Website";
+
+/* Class = "NSMenuItem"; title = "Contact Me"; ObjectID = "EtY-qe-aEe"; */
+"EtY-qe-aEe.title" = "Contact Me";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Help";
+
+/* Class = "NSTextFieldCell"; title = "Getting started:\n1) Click Open Safari Preferences below:\n2) Select Extensions\n3) Activate the Open Access Helper Extension\n4) That's it :)"; ObjectID = "FNM-3T-H4P"; */
+"FNM-3T-H4P.title" = "Getting started:\n1) Click Open Safari Preferences below:\n2) Select Extensions\n3) Activate the Open Access Helper Extension\n4) That's it :)";
+
+/* Class = "NSButtonCell"; title = "Tell me more..."; ObjectID = "Fup-1k-vH1"; */
+"Fup-1k-vH1.title" = "Tell me more...";
+
+/* Class = "NSTextFieldCell"; title = "789"; ObjectID = "GGc-LF-WbA"; */
+"GGc-LF-WbA.title" = "789";
+
+/* Class = "NSTextFieldCell"; placeholderString = "e.g. https://lib.uni.edu/login?url="; ObjectID = "Ggd-tc-Rne"; */
+"Ggd-tc-Rne.placeholderString" = "e.g. https://lib.uni.edu/login?url=";
+
+/* Class = "NSTextFieldCell"; title = "Settings"; ObjectID = "HcR-jI-6Ct"; */
+"HcR-jI-6Ct.title" = "Settings";
+
+/* Class = "NSMenuItem"; ibExternalAccessibilityDescription = "Online Help / Support"; ObjectID = "JOV-dD-lM6"; */
+"JOV-dD-lM6.ibExternalAccessibilityDescription" = "Online Help / Support";
+
+/* Class = "NSMenuItem"; ibShadowedToolTip = "Go to Website"; ObjectID = "JOV-dD-lM6"; */
+"JOV-dD-lM6.ibShadowedToolTip" = "Go to Website";
+
+/* Class = "NSMenuItem"; title = "Online Help"; ObjectID = "JOV-dD-lM6"; */
+"JOV-dD-lM6.title" = "Online Help";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSTextFieldCell"; title = "It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.\n\nThe app itself would not be possible without the awesome API from unpaywall.org,  core.ac.uk and Open Access Button - many thanks to the teams there for making this possible.\n\nIf you need to reach me, please click the Contact Me button below!"; ObjectID = "L7v-na-jJq"; */
+"L7v-na-jJq.title" = "It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.\n\nThe app itself would not be possible without the awesome API from unpaywall.org,  core.ac.uk and Open Access Button - many thanks to the teams there for making this possible.\n\nIf you need to reach me, please click the Contact Me button below!";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Bring All to Front";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "Lxn-iJ-B5r"; */
+"Lxn-iJ-B5r.title" = "Edit";
+
+/* Class = "NSViewController"; title = "Statistics"; ObjectID = "MzQ-ai-HIa"; */
+"MzQ-ai-HIa.title" = "Statistics";
+
+/* Class = "NSTextFieldCell"; title = "123"; ObjectID = "NKu-4Z-yea"; */
+"NKu-4Z-yea.title" = "123";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Services";
+
+/* Class = "NSButtonCell"; title = "core.ac.uk"; ObjectID = "No4-0T-VYZ"; */
+"No4-0T-VYZ.title" = "core.ac.uk";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimize";
+
+/* Class = "NSMenuItem"; title = "Hide Open Access Helper"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide Open Access Helper";
+
+/* Class = "NSTextFieldCell"; placeholderString = "e.g. harvard.edu"; ObjectID = "PZa-Xc-R55"; */
+"PZa-Xc-R55.placeholderString" = "e.g. harvard.edu";
+
+/* Class = "NSButtonCell"; title = "core.ac.uk"; ObjectID = "PmR-Jf-2Mz"; */
+"PmR-Jf-2Mz.title" = "core.ac.uk";
+
+/* Class = "NSTextFieldCell"; title = "Search Settings by Domain (e.g. harvard.edu)"; ObjectID = "QQP-RM-dky"; */
+"QQP-RM-dky.title" = "Search Settings by Domain (e.g. harvard.edu)";
+
+/* Class = "NSTextFieldCell"; title = "\"Highlight & Search\" searches executed"; ObjectID = "Qf4-r5-fbR"; */
+"Qf4-r5-fbR.title" = "\"Highlight & Search\" searches executed";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zoom";
+
+/* Class = "NSTableColumn"; headerCell.title = "Title"; ObjectID = "Ses-Rj-Mtw"; */
+"Ses-Rj-Mtw.headerCell.title" = "Title";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "Sno-BF-5Og"; */
+"Sno-BF-5Og.title" = "Edit";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "UMN-sC-jZJ"; */
+"UMN-sC-jZJ.title" = "Select All";
+
+/* Class = "NSTextFieldCell"; title = "Open Access Documents identified"; ObjectID = "V7a-Xp-IGO"; */
+"V7a-Xp-IGO.title" = "Open Access Documents identified";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
+
+/* Class = "NSTextFieldCell"; title = "456"; ObjectID = "X2h-lI-aE0"; */
+"X2h-lI-aE0.title" = "456";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "Xbj-lZ-EKE"; */
+"Xbj-lZ-EKE.title" = "Delete";
+
+/* Class = "NSToolbarItem"; label = "Toolbar Item"; ObjectID = "Xdg-To-i7R"; */
+"Xdg-To-i7R.label" = "Toolbar Item";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Toolbar Item"; ObjectID = "Xdg-To-i7R"; */
+"Xdg-To-i7R.paletteLabel" = "Toolbar Item";
+
+/* Class = "NSViewController"; title = "Getting Started"; ObjectID = "XfG-lQ-9wD"; */
+"XfG-lQ-9wD.title" = "Getting Started";
+
+/* Class = "NSTextFieldCell"; title = "Double-Click to open document in default browser. ⌘⌫ to delete."; ObjectID = "Y9a-Pb-WdR"; */
+"Y9a-Pb-WdR.title" = "Double-Click to open document in default browser. ⌘⌫ to delete.";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "bLi-tj-rQo"; */
+"bLi-tj-rQo.title" = "Table View Cell";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "File";
+
+/* Class = "NSButtonCell"; title = "Open Access Button"; ObjectID = "c1f-WK-LIa"; */
+"c1f-WK-LIa.title" = "Open Access Button";
+
+/* Class = "NSViewController"; title = "Bookmarks"; ObjectID = "d7Y-0M-Jnk"; */
+"d7Y-0M-Jnk.title" = "Bookmarks";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "File";
+
+/* Class = "NSButtonCell"; title = "Show CORE Recommender, if there is no Open Access"; ObjectID = "evK-lJ-UtH"; */
+"evK-lJ-UtH.title" = "Show CORE Recommender, if there is no Open Access";
+
+/* Class = "NSButtonCell"; title = "Offer to take me to Open Access Button to make an article request"; ObjectID = "fYC-2c-t0y"; */
+"fYC-2c-t0y.title" = "Offer to take me to Open Access Button to make an article request";
+
+/* Class = "NSTextFieldCell"; title = "About"; ObjectID = "g4U-2c-WI9"; */
+"g4U-2c-WI9.title" = "About";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "gia-fW-TaI"; */
+"gia-fW-TaI.title" = "Cut";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Services";
+
+/* Class = "NSViewController"; title = "Open Access Helper"; ObjectID = "jtC-8H-YpD"; */
+"jtC-8H-YpD.title" = "Open Access Helper";
+
+/* Class = "NSViewController"; title = "EZProxy"; ObjectID = "kVE-Sp-sqG"; */
+"kVE-Sp-sqG.title" = "EZProxy";
+
+/* Class = "NSButtonCell"; title = "It is ok to share some anonymous usage statistics with the app author"; ObjectID = "mgb-TU-gH1"; */
+"mgb-TU-gH1.title" = "It is ok to share some anonymous usage statistics with the app author";
+
+/* Class = "NSTextFieldCell"; title = "We will always use unpaywall.org to find legal Open Access copies, but you can select to add Core Discovery & Open Access Button to find even more copies. Lastly you can have us add a button to request copies from authors, if you'd like."; ObjectID = "nJJ-h3-n2K"; */
+"nJJ-h3-n2K.title" = "We will always use unpaywall.org to find legal Open Access copies, but you can select to add Core Discovery & Open Access Button to find even more copies. Lastly you can have us add a button to request copies from authors, if you'd like.";
+
+/* Class = "NSButtonCell"; title = "Not sure? Look it up..."; ObjectID = "nqs-wV-UGi"; */
+"nqs-wV-UGi.title" = "Not sure? Look it up...";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "oRq-HL-zE8"; */
+"oRq-HL-zE8.title" = "Label";
+
+/* Class = "NSViewController"; title = "Settings"; ObjectID = "of7-oY-NLd"; */
+"of7-oY-NLd.title" = "Settings";
+
+/* Class = "NSTextFieldCell"; title = "EZProxy Settings"; ObjectID = "pUg-hB-6ak"; */
+"pUg-hB-6ak.title" = "EZProxy Settings";
+
+/* Class = "NSButtonCell"; title = "Contact Me"; ObjectID = "pYZ-Bo-Lhq"; */
+"pYZ-Bo-Lhq.title" = "Contact Me";
+
+/* Class = "NSTableColumn"; headerCell.title = "URL"; ObjectID = "qGm-bQ-og1"; */
+"qGm-bQ-og1.headerCell.title" = "URL";
+
+/* Class = "NSTextFieldCell"; title = "Open Access Helper"; ObjectID = "qvY-WQ-5Ex"; */
+"qvY-WQ-5Ex.title" = "Open Access Helper";
+
+/* Class = "NSTextFieldCell"; title = "Highlight & Search"; ObjectID = "skg-S1-2HM"; */
+"skg-S1-2HM.title" = "Highlight & Search";
+
+/* Class = "NSButtonCell"; title = "unpaywall.org"; ObjectID = "u7B-2x-O8I"; */
+"u7B-2x-O8I.title" = "unpaywall.org";
+
+/* Class = "NSMenu"; title = "Open Access Helper"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Open Access Helper";
+
+/* Class = "NSWindow"; title = "Open Access Helper"; ObjectID = "vZx-Nd-Q7l"; */
+"vZx-Nd-Q7l.title" = "Open Access Helper";
+
+/* Class = "NSButtonCell"; title = "Use Open Access Button to find even more Open Access"; ObjectID = "vwZ-Zm-K8p"; */
+"vwZ-Zm-K8p.title" = "Use Open Access Button to find even more Open Access";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Help";
+
+/* Class = "NSTableColumn"; headerCell.title = "Date"; ObjectID = "xQe-Sg-ycL"; */
+"xQe-Sg-ycL.headerCell.title" = "Date";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "xpj-jN-908"; */
+"xpj-jN-908.title" = "Table View Cell";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "yKn-40-ZUX"; */
+"yKn-40-ZUX.title" = "Copy";
+
+/* Class = "NSButtonCell"; title = "gettheresearch.com"; ObjectID = "yaq-Tp-X4R"; */
+"yaq-Tp-X4R.title" = "gettheresearch.com";
