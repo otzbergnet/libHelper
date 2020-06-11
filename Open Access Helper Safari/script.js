@@ -99,7 +99,7 @@ function messageHandler(event){
         evaluateTab();
     }
     else if (event.name == "doCoreRecom"){
-        coreRecommenderStart(event.message.doistring, event.message.infoString);
+        coreRecommenderStart(event.message.doistring, event.message.infoString, event.message.closeLabel);
     }
     else if (event.name == "recomResults"){
         if(event.message.action == "dismiss"){
@@ -699,7 +699,7 @@ function evaluateTab(){
 
 // Core Recommender Related Functions
 
-function coreRecommenderStart(doistring, infoString){
+function coreRecommenderStart(doistring, infoString, closeLabel){
     if(isDOI(doistring)){
         var doi = doistring;
     }
@@ -728,14 +728,14 @@ function coreRecommenderStart(doistring, infoString){
     }
     const element = document.getElementById("oahelper_corerecom_outer");
     //element.addEventListener("click", doCORERecom, false);
-    addRecommenderClickHandler(element, infoString);
+    addRecommenderClickHandler(element, infoString, closeLabel);
     console.log("Open Access Helper (Safari Extension) did not find any Open Access, but you can review some CORE Open Access Recommendations")
     
 }
 
-function addRecommenderClickHandler(element, infoString) {
+function addRecommenderClickHandler(element, infoString, closeLabel) {
     element.addEventListener('click', function(e) {
-        doCORERecom(infoString);
+        doCORERecom(infoString, closeLabel);
     }, false);
 }
 
@@ -778,7 +778,7 @@ function findTitle(){
 }
 
 
-function doCORERecom(infoString){
+function doCORERecom(infoString, closeLabel){
 
     console.log("doCORERecom");
     
@@ -796,9 +796,9 @@ function doCORERecom(infoString){
     var imgSrc = safari.extension.baseURI + "loader.gif";
     var logoSrc = safari.extension.baseURI + "core_logo.svg";
     
-    //add sidebar
+    //add sidebar // TO DO: the X close needs to be translatable
     var div = document.createElement('div');
-    div.innerHTML = '<div id="oahelper_corerecommendations" ><div id="oahelper_corerecom_intro"><img src="'+logoSrc+'" id="oahelper_core_logo"> Recommender <div id="oahelper_core_x" title="close">X close</div></div><div id="oahelper_correcom_intro2">'+infoString+'</div><div id="oahelper_spinner"><img src="'+imgSrc+'"></div></div>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div id="oahelper_corerecommendations" ><div id="oahelper_corerecom_intro"><img src="'+logoSrc+'" id="oahelper_core_logo"> Recommender <div id="oahelper_core_x" title="close">X '+closeLabel+'</div></div><div id="oahelper_correcom_intro2">'+infoString+'</div><div id="oahelper_spinner"><img src="'+imgSrc+'"></div></div>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_corerecommender_outer';
     div.className = 'oahelper_corerecommender_outer';
     

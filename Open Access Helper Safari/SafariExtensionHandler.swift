@@ -104,7 +104,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if(preferences.getValue(key: "corerecom")){
                 if let doiString = userInfo?["doistring"]{
                     let infoString = NSLocalizedString("We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)", comment: "infoString for waiting for recommendations to load")
-                    page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doistring" : doiString, "infoString" : infoString])
+                    let closeLabel = NSLocalizedString("close", comment: "shows as part of the phras x Close in the Core Recommender")
+                    page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doistring" : doiString, "infoString" : infoString, "closeLabel" : closeLabel])
                 }
             }
         }
