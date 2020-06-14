@@ -1,3 +1,10 @@
+/*
+  Localizable.strings (French)
+  Open Access Helper
+
+  Created by François Renaville (francois.renaville@uliege.be)
+*/
+
 /* Copyright (human-readable) */
 "NSHumanReadableCopyright" = "Copyright © 2018-2020 Claus Wolf. Certains droits réservés";
 

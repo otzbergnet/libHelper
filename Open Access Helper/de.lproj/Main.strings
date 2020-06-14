@@ -60,7 +60,7 @@
 "F2S-fz-NVQ.title" = "Hilfe";
 
 /* Class = "NSTextFieldCell"; title = "Getting started:\n1) Click Open Safari Preferences below:\n2) Select Extensions\n3) Activate the Open Access Helper Extension\n4) That's it :)"; ObjectID = "FNM-3T-H4P"; */
-"FNM-3T-H4P.title" = "So geht es los:\n1) \"Safari Einstellungen öffnen\" klicken\n2) Erweiterungen auswählen\n3) Open Access Helper aktivieren\n5) Das war es schon :)";
+"FNM-3T-H4P.title" = "So geht es los:\n\n1) \"Safari Einstellungen öffnen\" klicken\n\n2) Erweiterungen auswählen\n\n3) Open Access Helper aktivieren\n\n5) Das war es schon :)";
 
 /* Class = "NSTextFieldCell"; title = "Settings"; ObjectID = "HcR-jI-6Ct"; */
 "HcR-jI-6Ct.title" = "Einstellungen";

@@ -176,11 +176,11 @@ CA
             <objects>
                 <viewController title="About" id="5jK-gR-BaF" customClass="AboutController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3Tv-5Z-anh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-iZ-uLQ">
-                                <rect key="frame" x="38" y="262" width="69" height="28"/>
+                                <rect key="frame" x="38" y="297" width="69" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="About" id="g4U-2c-WI9">
                                     <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -188,7 +188,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E43-sS-goO">
-                                <rect key="frame" x="38" y="108" width="517" height="144"/>
+                                <rect key="frame" x="38" y="143" width="517" height="144"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="justified" allowsEditingTextAttributes="YES" id="L7v-na-jJq">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">It is my expressed hope, that this little Safari App Extension will help you get to more Open Access content, more easily.  Let me know how I am doing or if you have suggestions to improve the app.
@@ -221,7 +221,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yE6-V7-SE9">
-                                <rect key="frame" x="118" y="266" width="37" height="16"/>
+                                <rect key="frame" x="118" y="301" width="37" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="oRq-HL-zE8">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -287,11 +287,11 @@ If you need to reach me, please click the Contact Me button below!</string>
             <objects>
                 <viewController title="Settings" id="of7-oY-NLd" customClass="SettingsController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="MRn-52-FQI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-uE-U3c">
-                                <rect key="frame" x="38" y="262" width="96" height="28"/>
+                                <rect key="frame" x="38" y="297" width="96" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Settings" id="HcR-jI-6Ct">
                                     <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -299,7 +299,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcp-rk-eyD">
-                                <rect key="frame" x="40" y="77" width="520" height="110"/>
+                                <rect key="frame" x="40" y="119" width="520" height="110"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
                                         <rect key="frame" x="-2" y="94" width="328" height="18"/>
@@ -365,9 +365,8 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </customSpacing>
                             </stackView>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vuC-t1-To1">
-                                <rect key="frame" x="38" y="197" width="512" height="55"/>
+                                <rect key="frame" x="38" y="239" width="512" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="HhT-9Q-SRf"/>
                                     <constraint firstAttribute="width" constant="508" id="WOT-yl-HCZ"/>
                                 </constraints>
                                 <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" id="nJJ-h3-n2K">
@@ -388,7 +387,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-dj-mau">
-                                <rect key="frame" x="38" y="51" width="125" height="16"/>
+                                <rect key="frame" x="38" y="93" width="125" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Highlight &amp; Search" id="skg-S1-2HM">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -396,7 +395,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKs-DU-CRp">
-                                <rect key="frame" x="38" y="25" width="122" height="18"/>
+                                <rect key="frame" x="38" y="67" width="122" height="18"/>
                                 <buttonCell key="cell" type="check" title="base-search.net" bezelStyle="regularSquare" imagePosition="left" inset="2" id="E5Y-zn-Amu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -406,7 +405,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="diE-XJ-VAE">
-                                <rect key="frame" x="171" y="25" width="86" height="18"/>
+                                <rect key="frame" x="171" y="67" width="86" height="18"/>
                                 <buttonCell key="cell" type="check" title="core.ac.uk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="PmR-Jf-2Mz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -416,7 +415,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-s7-BpE">
-                                <rect key="frame" x="268" y="25" width="144" height="18"/>
+                                <rect key="frame" x="268" y="67" width="144" height="18"/>
                                 <buttonCell key="cell" type="check" title="gettheresearch.com" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yaq-Tp-X4R">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -436,6 +435,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vuC-t1-To1" secondAttribute="trailing" constant="52" id="GqF-as-M8c"/>
                             <constraint firstAttribute="trailing" secondItem="iwf-yg-VlJ" secondAttribute="trailing" constant="20" id="JJC-le-MIl"/>
                             <constraint firstItem="lKy-uE-U3c" firstAttribute="top" secondItem="MRn-52-FQI" secondAttribute="top" constant="10" id="Qaa-ro-rzG"/>
+                            <constraint firstItem="iwf-yg-VlJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yPo-s7-BpE" secondAttribute="bottom" constant="5" id="RH2-f6-0uS"/>
                             <constraint firstItem="nKs-DU-CRp" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="SXI-dZ-N4k"/>
                             <constraint firstAttribute="trailing" secondItem="dcp-rk-eyD" secondAttribute="trailing" constant="40" id="TCo-XT-ohm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uqp-dj-mau" secondAttribute="trailing" constant="40" id="c6Z-mR-ZSv"/>
@@ -463,18 +463,18 @@ If you need to reach me, please click the Contact Me button below!</string>
                 </viewController>
                 <customObject id="Ppl-fj-736" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-304" y="453"/>
+            <point key="canvasLocation" x="-309" y="453"/>
         </scene>
         <!--EZProxy-->
         <scene sceneID="sii-Mu-s8B">
             <objects>
                 <viewController title="EZProxy" id="kVE-Sp-sqG" customClass="EZProxyController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="aEQ-HV-eUt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-v2-1AU">
-                                <rect key="frame" x="38" y="262" width="524" height="28"/>
+                                <rect key="frame" x="38" y="297" width="524" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="EZProxy Settings" id="pUg-hB-6ak">
                                     <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -482,7 +482,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mzB-iY-dpx">
-                                <rect key="frame" x="40" y="157" width="520" height="21"/>
+                                <rect key="frame" x="40" y="192" width="520" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="e.g. https://lib.uni.edu/login?url=" drawsBackground="YES" id="Ggd-tc-Rne">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -490,7 +490,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oW3-04-xxv">
-                                <rect key="frame" x="38" y="188" width="524" height="64"/>
+                                <rect key="frame" x="38" y="223" width="524" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="520" id="1Ww-Gj-MhR"/>
                                 </constraints>
@@ -534,7 +534,7 @@ URL of your institution's EZProxy Server</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vOx-gb-2Cv">
-                                <rect key="frame" x="38" y="126" width="280" height="16"/>
+                                <rect key="frame" x="38" y="161" width="280" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Search Settings by Domain (e.g. harvard.edu)" id="QQP-RM-dky">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -542,7 +542,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rE0-i7-0Dt">
-                                <rect key="frame" x="40" y="97" width="341" height="21"/>
+                                <rect key="frame" x="40" y="132" width="341" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="e.g. harvard.edu" drawsBackground="YES" id="PZa-Xc-R55">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -550,7 +550,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PnU-4o-uPV">
-                                <rect key="frame" x="397" y="90" width="83" height="32"/>
+                                <rect key="frame" x="397" y="125" width="83" height="32"/>
                                 <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="55d-yH-ddJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -609,11 +609,11 @@ URL of your institution's EZProxy Server</string>
             <objects>
                 <viewController title="Statistics" id="MzQ-ai-HIa" customClass="StatisticsController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="HbZ-Jr-BW7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dNg-VD-ghF">
-                                <rect key="frame" x="38" y="262" width="110" height="28"/>
+                                <rect key="frame" x="38" y="297" width="110" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Statistics" id="8Tx-0Z-j7y">
                                     <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -621,7 +621,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PXw-vH-b1A">
-                                <rect key="frame" x="38" y="226" width="217" height="16"/>
+                                <rect key="frame" x="38" y="261" width="217" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Open Access Documents identified" id="V7a-Xp-IGO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -629,7 +629,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-kf-Ye6">
-                                <rect key="frame" x="38" y="190" width="246" height="16"/>
+                                <rect key="frame" x="38" y="225" width="246" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="&quot;Highlight &amp; Search&quot; searches executed" id="Qf4-r5-fbR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -637,7 +637,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kLV-Uj-EWb">
-                                <rect key="frame" x="38" y="154" width="147" height="16"/>
+                                <rect key="frame" x="38" y="189" width="147" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Proxy requests handled" id="1hb-oh-Hh4">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -645,7 +645,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BlJ-cP-zbi">
-                                <rect key="frame" x="426" y="226" width="26" height="16"/>
+                                <rect key="frame" x="426" y="261" width="26" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="123" id="NKu-4Z-yea">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -653,7 +653,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YB2-i0-I5X">
-                                <rect key="frame" x="423" y="190" width="29" height="16"/>
+                                <rect key="frame" x="423" y="225" width="29" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="456" id="X2h-lI-aE0">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -661,7 +661,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4E-h5-f1D">
-                                <rect key="frame" x="424" y="154" width="28" height="16"/>
+                                <rect key="frame" x="424" y="189" width="28" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="789" id="GGc-LF-WbA">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -669,7 +669,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Izj-dX-g4g">
-                                <rect key="frame" x="38" y="56" width="444" height="18"/>
+                                <rect key="frame" x="38" y="56" width="524" height="18"/>
                                 <buttonCell key="cell" type="check" title="It is ok to share some anonymous usage statistics with the app author" bezelStyle="regularSquare" imagePosition="left" inset="2" id="mgb-TU-gH1">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -710,7 +710,7 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstItem="Y4E-h5-f1D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kLV-Uj-EWb" secondAttribute="trailing" constant="20" id="NTc-fh-d7o"/>
                             <constraint firstItem="PXw-vH-b1A" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="PWd-MY-XRd"/>
                             <constraint firstItem="bH1-WF-hYl" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="PYx-BO-9sg"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Izj-dX-g4g" secondAttribute="trailing" constant="40" id="X2y-nv-Qbd"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Izj-dX-g4g" secondAttribute="trailing" constant="40" id="X2y-nv-Qbd"/>
                             <constraint firstItem="PXw-vH-b1A" firstAttribute="top" secondItem="dNg-VD-ghF" secondAttribute="bottom" constant="20" id="ZGT-oZ-mle"/>
                             <constraint firstAttribute="trailing" secondItem="YB2-i0-I5X" secondAttribute="trailing" constant="150" id="Zhx-uf-NWp"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dNg-VD-ghF" secondAttribute="trailing" constant="40" id="dnX-Gc-jLY"/>
@@ -747,7 +747,7 @@ URL of your institution's EZProxy Server</string>
             <objects>
                 <viewController title="Bookmarks" id="d7Y-0M-Jnk" customClass="BookMarkTableView" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fdF-d4-aFW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Y2-OV-a5R">
@@ -759,13 +759,13 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNZ-cE-SmH">
-                                <rect key="frame" x="0.0" y="30" width="600" height="270"/>
+                                <rect key="frame" x="0.0" y="33" width="600" height="302"/>
                                 <clipView key="contentView" id="EyY-MM-Mjj">
-                                    <rect key="frame" x="1" y="0.0" width="598" height="269"/>
+                                    <rect key="frame" x="1" y="0.0" width="598" height="301"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="vZc-7v-cUQ" viewBased="YES" id="4L1-mb-9aB">
-                                            <rect key="frame" x="0.0" y="0.0" width="598" height="244"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="598" height="276"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -894,7 +894,7 @@ URL of your institution's EZProxy Server</string>
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="3ce-dS-XQj"/>
-                                    <constraint firstAttribute="height" constant="270" id="oK4-qU-ySw"/>
+                                    <constraint firstAttribute="height" constant="302" id="oK4-qU-ySw"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="jbp-s3-DkI">
                                     <rect key="frame" x="1" y="353" width="598" height="16"/>
@@ -940,12 +940,12 @@ URL of your institution's EZProxy Server</string>
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="Getting Started" id="XfG-lQ-9wD" customClass="ViewController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                    <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hre-mD-sm7">
-                                <rect key="frame" x="38" y="148" width="283" height="80"/>
+                                <rect key="frame" x="38" y="197" width="283" height="80"/>
                                 <textFieldCell key="cell" selectable="YES" id="FNM-3T-H4P">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">Getting started:
@@ -958,7 +958,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="qa8-Lu-Lg5">
-                                <rect key="frame" x="38" y="248" width="227" height="42"/>
+                                <rect key="frame" x="38" y="297" width="227" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Open Access Helper" id="qvY-WQ-5Ex">
                                     <font key="font" size="20" name="Arial-Black"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -966,7 +966,7 @@ URL of your institution's EZProxy Server</string>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Q3-IEu">
-                                <rect key="frame" x="486" y="206" width="64" height="64"/>
+                                <rect key="frame" x="486" y="241" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="8gs-jV-KYF"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="O47-aL-DoA"/>
@@ -1000,16 +1000,15 @@ URL of your institution's EZProxy Server</string>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="Anl-fk-yAQ"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="3E3-OW-ImE" secondAttribute="trailing" constant="203" id="Awq-VY-Rr0"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="trailing" constant="40" id="BjA-pm-YLo"/>
+                            <constraint firstAttribute="bottom" secondItem="LZV-Q3-IEu" secondAttribute="bottom" constant="241" id="Hh5-ap-LzN"/>
                             <constraint firstAttribute="bottom" secondItem="Dzx-R6-kVI" secondAttribute="bottom" constant="25" id="HmR-tX-Iwg"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qa8-Lu-Lg5" secondAttribute="trailing" constant="30" id="TEt-jv-Hxt"/>
                             <constraint firstAttribute="bottom" secondItem="3E3-OW-ImE" secondAttribute="bottom" constant="25" id="Uru-yq-kdj"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="top" secondItem="qa8-Lu-Lg5" secondAttribute="bottom" constant="20" id="X5k-Gn-k8b"/>
-                            <constraint firstItem="Dzx-R6-kVI" firstAttribute="top" relation="lessThanOrEqual" secondItem="Hre-mD-sm7" secondAttribute="bottom" constant="102" id="Xoj-0E-EBi"/>
                             <constraint firstItem="3E3-OW-ImE" firstAttribute="leading" secondItem="Dzx-R6-kVI" secondAttribute="trailing" constant="25" id="Xte-62-YoW"/>
                             <constraint firstAttribute="trailing" secondItem="LZV-Q3-IEu" secondAttribute="trailing" constant="50" id="aU2-IC-BSC"/>
                             <constraint firstItem="Hre-mD-sm7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="aqX-zD-CJO"/>
                             <constraint firstItem="Dzx-R6-kVI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="bth-fd-9sn"/>
-                            <constraint firstAttribute="bottom" secondItem="LZV-Q3-IEu" secondAttribute="bottom" constant="206" id="chb-1D-zl9"/>
                             <constraint firstItem="qa8-Lu-Lg5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="heb-Zz-WcX"/>
                             <constraint firstItem="LZV-Q3-IEu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="u8K-8O-3SG"/>
                         </constraints>
@@ -1027,7 +1026,7 @@ URL of your institution's EZProxy Server</string>
                     <window key="window" title="Open Access Helper" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vZx-Nd-Q7l">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="600" height="300"/>
+                        <rect key="contentRect" x="294" y="313" width="600" height="335"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <connections>
                             <outlet property="delegate" destination="rwG-Iq-qMP" id="Goi-BU-kMC"/>
@@ -1045,11 +1044,11 @@ URL of your institution's EZProxy Server</string>
             <objects>
                 <viewController title="Open Access Helper" showSeguePresentationStyle="single" id="jtC-8H-YpD" sceneMemberID="viewController">
                     <view key="view" id="bkk-7p-tQA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="7iE-pN-bH2">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                                 <connections>
                                     <segue destination="9yV-mt-10h" kind="embed" id="u8O-b1-qJ2"/>
                                 </connections>
@@ -1079,7 +1078,7 @@ URL of your institution's EZProxy Server</string>
                     </connections>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="-651" y="-689"/>
+            <point key="canvasLocation" x="-857" y="-693.5"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="alN-kg-hoV">
@@ -1095,7 +1094,7 @@ URL of your institution's EZProxy Server</string>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="Nm0-yH-eNb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>
                         <connections>
