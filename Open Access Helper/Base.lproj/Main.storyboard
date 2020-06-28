@@ -668,16 +668,6 @@ URL of your institution's EZProxy Server</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Izj-dX-g4g">
-                                <rect key="frame" x="38" y="56" width="524" height="18"/>
-                                <buttonCell key="cell" type="check" title="It is ok to share some anonymous usage statistics with the app author" bezelStyle="regularSquare" imagePosition="left" inset="2" id="mgb-TU-gH1">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="shareStatsClicked:" target="MzQ-ai-HIa" id="erU-77-I8i"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bH1-WF-hYl">
                                 <rect key="frame" x="34" y="13" width="124" height="32"/>
                                 <buttonCell key="cell" type="push" title="Privacy Policy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AgS-JC-Lyt">
@@ -700,17 +690,14 @@ URL of your institution's EZProxy Server</string>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Izj-dX-g4g" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="ArJ-Hr-mfU"/>
                             <constraint firstItem="oXy-kf-Ye6" firstAttribute="top" secondItem="PXw-vH-b1A" secondAttribute="bottom" constant="20" id="BaG-8P-AfZ"/>
                             <constraint firstItem="Y4E-h5-f1D" firstAttribute="top" secondItem="YB2-i0-I5X" secondAttribute="bottom" constant="20" id="EAO-Ji-Ift"/>
                             <constraint firstAttribute="trailing" secondItem="Y4E-h5-f1D" secondAttribute="trailing" constant="150" id="GgY-Zq-goi"/>
-                            <constraint firstItem="bH1-WF-hYl" firstAttribute="top" secondItem="Izj-dX-g4g" secondAttribute="bottom" constant="17" id="HwT-bS-EAj"/>
                             <constraint firstItem="kLV-Uj-EWb" firstAttribute="top" secondItem="oXy-kf-Ye6" secondAttribute="bottom" constant="20" id="Jtq-0C-ZAa"/>
                             <constraint firstItem="YB2-i0-I5X" firstAttribute="top" secondItem="BlJ-cP-zbi" secondAttribute="bottom" constant="20" id="KPq-fy-egd"/>
                             <constraint firstItem="Y4E-h5-f1D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kLV-Uj-EWb" secondAttribute="trailing" constant="20" id="NTc-fh-d7o"/>
                             <constraint firstItem="PXw-vH-b1A" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="PWd-MY-XRd"/>
                             <constraint firstItem="bH1-WF-hYl" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="PYx-BO-9sg"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Izj-dX-g4g" secondAttribute="trailing" constant="40" id="X2y-nv-Qbd"/>
                             <constraint firstItem="PXw-vH-b1A" firstAttribute="top" secondItem="dNg-VD-ghF" secondAttribute="bottom" constant="20" id="ZGT-oZ-mle"/>
                             <constraint firstAttribute="trailing" secondItem="YB2-i0-I5X" secondAttribute="trailing" constant="150" id="Zhx-uf-NWp"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dNg-VD-ghF" secondAttribute="trailing" constant="40" id="dnX-Gc-jLY"/>
@@ -735,7 +722,6 @@ URL of your institution's EZProxy Server</string>
                         <outlet property="oaFoundCountLabel" destination="BlJ-cP-zbi" id="rg1-MG-ZDf"/>
                         <outlet property="oaSearchCountExplanationLabel" destination="oXy-kf-Ye6" id="g74-EU-4ll"/>
                         <outlet property="oaSearchCountLabel" destination="YB2-i0-I5X" id="bvH-Kj-tRc"/>
-                        <outlet property="shareStats" destination="Izj-dX-g4g" id="qYb-kN-khd"/>
                     </connections>
                 </viewController>
                 <customObject id="cs6-sv-rke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -940,7 +926,7 @@ URL of your institution's EZProxy Server</string>
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="Getting Started" id="XfG-lQ-9wD" customClass="ViewController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

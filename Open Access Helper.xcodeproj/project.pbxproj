@@ -41,8 +41,6 @@
 		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF938923E15DAA0023FC51 /* EZProxyController.swift */; };
-		2DC3AC0823FD54E000D41DF7 /* StatisticSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */; };
-		2DC3AC0923FD5C7F00D41DF7 /* StatisticSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */; };
 		2DC8627C23C23330007DF1AA /* core_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DC8627B23C23330007DF1AA /* core_logo.svg */; };
 		2DD336A723C1A3C6004A34C5 /* recom.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD336A623C1A3C6004A34C5 /* recom.png */; };
 		2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD336A823C1B025004A34C5 /* Extensions.swift */; };
@@ -125,7 +123,6 @@
 		2D924382219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D924385219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DAF938923E15DAA0023FC51 /* EZProxyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZProxyController.swift; sourceTree = "<group>"; };
-		2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSubmit.swift; sourceTree = "<group>"; };
 		2DC8627B23C23330007DF1AA /* core_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = core_logo.svg; sourceTree = "<group>"; };
 		2DC9ED7A230729B80074D067 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2DD336A623C1A3C6004A34C5 /* recom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recom.png; sourceTree = "<group>"; };
@@ -202,7 +199,6 @@
 				2D63EE8D23375CA10086BBA2 /* TouchBarIdentifiers.swift */,
 				2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */,
 				2D17FB9323F426D000BF5620 /* ProxyFind.swift */,
-				2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */,
 			);
 			path = "Open Access Helper";
 			sourceTree = "<group>";
@@ -443,7 +439,6 @@
 				2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */,
 				2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */,
 				2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */,
-				2DC3AC0823FD54E000D41DF7 /* StatisticSubmit.swift in Sources */,
 				2D63EE8E23375CA10086BBA2 /* TouchBarIdentifiers.swift in Sources */,
 				2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */,
 				2D643FD0230020A800A4FA14 /* Preferences.swift in Sources */,
@@ -455,7 +450,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD336AB23C1B038004A34C5 /* Structs.swift in Sources */,
-				2DC3AC0923FD5C7F00D41DF7 /* StatisticSubmit.swift in Sources */,
 				2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */,
 				2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */,
 				2D3F8FC22185863C0095ACD7 /* SafariExtensionHandler.swift in Sources */,
