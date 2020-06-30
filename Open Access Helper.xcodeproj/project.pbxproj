@@ -41,8 +41,6 @@
 		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF938923E15DAA0023FC51 /* EZProxyController.swift */; };
-		2DC3AC0823FD54E000D41DF7 /* StatisticSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */; };
-		2DC3AC0923FD5C7F00D41DF7 /* StatisticSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */; };
 		2DC8627C23C23330007DF1AA /* core_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DC8627B23C23330007DF1AA /* core_logo.svg */; };
 		2DD336A723C1A3C6004A34C5 /* recom.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD336A623C1A3C6004A34C5 /* recom.png */; };
 		2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD336A823C1B025004A34C5 /* Extensions.swift */; };
@@ -89,6 +87,12 @@
 		2D28708921974B250050CFDD /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		2D28708B21975AAC0050CFDD /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		2D2C200A23E3FAD20030F433 /* StatisticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsController.swift; sourceTree = "<group>"; };
+		2D3A5620248F508B005BD876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		2D3A5621248F508B005BD876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SafariExtensionViewController.strings; sourceTree = "<group>"; };
+		2D3A5622248F508B005BD876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D3A5623248F508B005BD876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D3A5624248F508B005BD876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D3A5625248F508B005BD876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D3CA0792235238300D5D531 /* BookMarkTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableView.swift; sourceTree = "<group>"; };
 		2D3F8FA2218586290095ACD7 /* Open Access Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Access Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3F8FA5218586290095ACD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +123,6 @@
 		2D924382219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D924385219E7DCA000E8F74 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DAF938923E15DAA0023FC51 /* EZProxyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZProxyController.swift; sourceTree = "<group>"; };
-		2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSubmit.swift; sourceTree = "<group>"; };
 		2DC8627B23C23330007DF1AA /* core_logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = core_logo.svg; sourceTree = "<group>"; };
 		2DC9ED7A230729B80074D067 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2DD336A623C1A3C6004A34C5 /* recom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recom.png; sourceTree = "<group>"; };
@@ -196,7 +199,6 @@
 				2D63EE8D23375CA10086BBA2 /* TouchBarIdentifiers.swift */,
 				2DFE4F3F23B732D7006CF1AB /* BartyCrouch.swift */,
 				2D17FB9323F426D000BF5620 /* ProxyFind.swift */,
-				2DC3AC0723FD54E000D41DF7 /* StatisticSubmit.swift */,
 			);
 			path = "Open Access Helper";
 			sourceTree = "<group>";
@@ -329,6 +331,7 @@
 				en,
 				Base,
 				de,
+				fr,
 			);
 			mainGroup = 2D3F8F99218586290095ACD7;
 			productRefGroup = 2D3F8FA3218586290095ACD7 /* Products */;
@@ -436,7 +439,6 @@
 				2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */,
 				2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */,
 				2D28708A21974B250050CFDD /* HelpViewController.swift in Sources */,
-				2DC3AC0823FD54E000D41DF7 /* StatisticSubmit.swift in Sources */,
 				2D63EE8E23375CA10086BBA2 /* TouchBarIdentifiers.swift in Sources */,
 				2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */,
 				2D643FD0230020A800A4FA14 /* Preferences.swift in Sources */,
@@ -448,7 +450,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD336AB23C1B038004A34C5 /* Structs.swift in Sources */,
-				2DC3AC0923FD5C7F00D41DF7 /* StatisticSubmit.swift in Sources */,
 				2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */,
 				2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */,
 				2D3F8FC22185863C0095ACD7 /* SafariExtensionHandler.swift in Sources */,
@@ -472,6 +473,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2D06B57D219E841300E4A453 /* de */,
+				2D3A5623248F508B005BD876 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -481,6 +483,7 @@
 			children = (
 				2D3F8FAF218586290095ACD7 /* Base */,
 				2DC9ED7A230729B80074D067 /* de */,
+				2D3A5620248F508B005BD876 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 			children = (
 				2D3F8FC62185863C0095ACD7 /* Base */,
 				2D924380219E790B000E8F74 /* de */,
+				2D3A5621248F508B005BD876 /* fr */,
 			);
 			name = SafariExtensionViewController.xib;
 			sourceTree = "<group>";
@@ -498,6 +502,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2D655F1321A0036F0092E480 /* de */,
+				2D3A5625248F508B005BD876 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2D924382219E7DCA000E8F74 /* de */,
+				2D3A5624248F508B005BD876 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2D924385219E7DCA000E8F74 /* de */,
+				2D3A5622248F508B005BD876 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -647,7 +654,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 150;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -656,7 +663,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.4;
+				MARKETING_VERSION = 2020.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -673,7 +680,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 150;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -682,7 +689,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.4;
+				MARKETING_VERSION = 2020.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -696,7 +703,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 150;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -706,7 +713,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.4;
+				MARKETING_VERSION = 2020.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -720,7 +727,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 150;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -730,7 +737,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2020.4;
+				MARKETING_VERSION = 2020.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

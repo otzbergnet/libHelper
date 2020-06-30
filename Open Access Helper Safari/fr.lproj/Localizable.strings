@@ -1,0 +1,196 @@
+/*
+  Localizable.strings (French)
+  Open Access Helper
+
+  Created by François Renaville (francois.renaville@uliege.be)
+*/
+"base-search.net search for: \"%@\"" = "base-search.net recherche : \"%@\"";
+
+"base-search.net search for: \"%@…\"" = "base-search.net recherche : \"%@…\"";
+
+/* changes Context Label */
+"core.ac.uk search for: \"%@\"" = "core.ac.uk recherche : \"%@\"";
+
+"core.ac.uk search for: \"%@…\"" = "core.ac.uk recherche : \"%@…\"";
+
+/* used in JS injection to indicate OA found */
+"Open Access Version Found from unpaywall.org! " = "Version en accès libre trouvée via unpaywall.org ! ";
+
+/* used in JS injection to indicate OA found */
+"Open Access Version Found from core.ac.uk! " = "Version en accès libre trouvée via core.ac.uk ! ";
+
+/* used in JS confirm that you are on OA already */
+"You are at the Open Acccess Location!" = "Vous êtes déjà sur une version en accès libre !";
+
+/* will show in JS Alert, when there was a doi, but no oadoi url */
+"Open Access Helper could not find a legal open-access version of this article." = "Open Access Helper n'a pas pu trouver de version en accès libre légale pour cet article.";
+
+/* will show in JS Alert, when there no doi = inactive state */
+"Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message" = "Open Access Helper est inactif sur cette page car aucun DOI n'a été trouvé\n\nCliquez sur OK pour en savoir plus sur cette app\nCliquez sur Annuler pour fermer cette notification";
+
+/* changes Context Label */
+"Visit gettheresearch.org" = "Aller sur gettheresearch.org";
+
+/* changes Context Label */
+"Visit core.ac.uk" = "Aller sur core.ac.uk";
+
+/* changes Context Label, base-search-net */
+"Visit base-search.net" = "Aller sur base-search.net";
+
+/* submittedVersion */
+"Submitted Version" = "Version soumise";
+
+/* acceptedVersion */
+"Accepted Version" = "Version acceptée";
+
+/* publishedVersion */
+"Published Version" = "Version publiée";
+
+/* No comment provided by engineer. */
+"About: " = "À propos : ";
+
+/* No comment provided by engineer. */
+"Bookmarks: Select a row to see options" = "Favoris : Sélectionnez une ligne pour voir les options";
+
+/* Cancel button in alert
+   Cancel button title */
+"Cancel" = "Annuler";
+
+/* iCloud internet connection */
+"Connection Error" = "Erreur de connexion";
+
+/* No comment provided by engineer. */
+"Contact Me" = "Contact";
+
+/* Quit without saves error question message */
+"Could not save changes while quitting. Quit anyway?" = "Les modifications n'ont pas pu être enregistrées. Quitter quand même ?";
+
+/* No comment provided by engineer. */
+"Delete Bookmark" = "Supprimer le favori";
+
+/* changes Context Label */
+"gettheresearch.org search for: \"%@\"" = "gettheresearch.org recherche : \"%@\"";
+
+/* No comment provided by engineer. */
+"Getting Started: " = "Commencer :";
+
+/* error message title
+   iCloud error - not authenticated */
+"iCloud Error" = "Ereur iCloud";
+
+/* zoneNotFound or user deleted */
+"Missing Database" = "Base de données manquante";
+
+/* 0 bookmarks retrieved */
+"No Bookmarks" = "Pas de favoris";
+
+/* OK button in alert */
+"OK" = "OK";
+
+/* used in JS injection to indicate OA found */
+"Open Access Version Found from Open Access Button " = "Version en accès libre trouvée via Open Access Button ";
+
+/* No comment provided by engineer. */
+"Open Bookmark" = "Ouvrir le favori";
+
+/* No comment provided by engineer. */
+"Open Safari Preferences" = "Ouvrir les préférences Safari";
+
+/* error message shown, when iCloud not logged in */
+"Please check that you are logged into iCloud" = "Vérifiez que vous êtes bien identifié·e sur iCloud";
+
+/* Quit anyway button title */
+"Quit anyway" = "Quitter";
+
+/* Quit without saves error question info */
+"Quitting now will lose any changes you have made since the last successful save" = "Si vous quittez maintenant, les dernières modifications ne seront pas sauvegardées";
+
+/* iCloud record error */
+"Record Error" = "Erreur d'enregistrement";
+
+/* No comment provided by engineer. */
+"Show Example" = "Montrer un exemple";
+
+/* shows on main window, number of OpenAccess found */
+"So far we've helped you find %@ Open Access Documents!" = "Jusqu'ici, nous vous avons aidé·e à trouver %@ documents en accès libre !";
+
+/* No comment provided by engineer. */
+"We are sorry, but it seems that you either do not have an iCloud account, or access is limited for Open Access Helper. Please check iCloud settings" = "Désolé, mais il semble que vous n'ayez pas de compte iCloud ou que l'accès à Open Access Helper soit bloqué. Merci de vérifier vos paramètres iCloud.";
+
+/* No comment provided by engineer. */
+"We are sorry, but it seems you do not have a Open Access Helper Database in iCloud. Please add at least one bookmark in OpenAccess Helper for iOS" = "Désolé, mais il semble que vous n'ayez pas de base de données Open Access Helper dans iCloud. Veuillez ajouter au moins un favori dans Open Acccess Helper pour iOS.";
+
+/* No comment provided by engineer. */
+"We are sorry, but there was a connection error. Please check your Internet Connection" = "Erreur de connexion. Veuillez vérifier votre connexion à Internet.";
+
+/* No comment provided by engineer. */
+"We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?" = "Nous n'avons pas trouvé de favoris. Êtes-vous certain·e que vous avez déjà enregistré en favoris des articles via Open Access Helper App pour iOS ?";
+
+/* No comment provided by engineer. */
+"We were unable to retrieve your bookmarks" = "Nous n'avons pas trouvé vos favoris";
+
+/* shows on main window, number of OpenAccess Searches conducted */
+"You've had help with %@ Open Access searches" = "Nous vous avons aidé·e pour %@ recherches Open Access";
+
+/* to be shown in JavaScript Popover */
+"We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!" = "Nous avons établi une petite liste de recommandations semblables à l'article que vous consultez. Nous espérons qu'elles vous seront utiles !";
+
+/* infoString for waiting for recommendations to load */
+"We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)" = "Un peu de patience svp, nous établissons une liste de recommandations. :)";
+
+/* shown in stats, if no proxy prefix present */
+"You did not setup Proxy Support yet" = "Vous n'avez pas configuré de Proxy";
+
+/* if proxy field was empty */
+"Looks like the domain field was empty" = "Le nom de domaine était vide";
+
+/* if 0 hits returned */
+"No match was found" = "Aucun résultat trouvé";
+
+/* if there are more than one result */
+"Please review your domain-name, as we were unable to find just one match" = "Vérifiez le nom de domaine svp, plusieurs résultats ont été trouvés.";
+
+/* show searching, when looking up settings */
+"Searching..." = "Cherche...";
+
+/* if proxy was successfully saved */
+"Successfuly, saved!" = "Enregistré !";
+
+/* if failure received */
+"We encountered an unexpected error" = "Erreur inattendue";
+
+/* if unable to actually get to the proxyPrefix */
+"We found a match, but could not get the prefix" = "Nous avons trouvé un résultat, mais le préfixe n'a pas pu être extrait";
+
+/* reset to default translation */
+"Search Settings by Domain (e.g. harvard.edu)" = "Chercher les paramètres sur base du domaine (par ex. harvard.edu)";
+
+/* No comment provided by engineer. */
+"Basic Usage Statistics" = "Statistiques de base";
+
+/* touchbar button */
+"Deselect All" = "Tout désélectionner";
+
+/* No comment provided by engineer. */
+"EZProxy: " = "EZProxy : ";
+
+/* No comment provided by engineer. */
+"Lookup" = "Vérifier";
+
+/* touchbar button */
+"Recommended Settings" = "Paramètres recommandés";
+
+/* No comment provided by engineer. */
+"Save" = "Enregistrer";
+
+/* touchbar label */
+"Settings: " = "Paramètres : ";
+
+/* touchbar button */
+"Tell me more..." = "Plus d'infos...";
+
+/* No comment provided by engineer. */
+"Test" = "Tester";
+
+/*closeLabel for CoreRecommender*/
+"close" = "fermer";

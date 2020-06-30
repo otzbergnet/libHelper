@@ -1,0 +1,16 @@
+/*
+  Localizable.strings (French)
+  Open Access Helper
+
+  Created by François Renaville (francois.renaville@uliege.be)
+*/
+
+/* Bundle display name */
+"CFBundleDisplayName" = "Open Access Helper";
+
+/* Bundle name */
+"CFBundleName" = "$(PRODUCT_NAME)";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Copyright © 2018-20 Claus Wolf. Certains droits réservés";
+

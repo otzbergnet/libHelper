@@ -18,6 +18,9 @@
    Cancel button title */
 "Cancel" = "Abbrechen";
 
+/* shows as part of the phras x Close in the Core Recommender */
+"close" = "schließen";
+
 /* iCloud internet connection */
 "Connection Error" = "Verbindungsfehler";
 

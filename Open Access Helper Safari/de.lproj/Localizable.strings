@@ -104,7 +104,7 @@
 "Quit anyway" = "Trotdem schließen";
 
 /* Quit without saves error question info */
-"Quitting now will lose any changes you have made since the last successful save" = "Wenn Sie die App jetzt beenden, gehen alle Änderungen seit Ihrer letzten";
+"Quitting now will lose any changes you have made since the last successful save" = "Wenn Du das Programm jetzt beendest, werden Deine Änderungen verloren gehen";
 
 /* iCloud record error */
 "Record Error" = "Datensatz fehler";
@@ -192,3 +192,6 @@
 
 /* No comment provided by engineer. */
 "Test" = "Testen";
+
+/*closeLabel for CoreRecommender*/
+"close" = "schließen";

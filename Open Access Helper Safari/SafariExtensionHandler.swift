@@ -12,7 +12,6 @@ import SafariServices
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
     let preferences = Preferences()
-    let stats = StatisticSubmit()
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         if messageName == "found" {
@@ -104,7 +103,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if(preferences.getValue(key: "corerecom")){
                 if let doiString = userInfo?["doistring"]{
                     let infoString = NSLocalizedString("We are preparing a list of fresh papers similar to what you are looking for. Hang on tight :)", comment: "infoString for waiting for recommendations to load")
-                    page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doistring" : doiString, "infoString" : infoString])
+                    let closeLabel = NSLocalizedString("close", comment: "shows as part of the phras x Close in the Core Recommender")
+                    page.dispatchMessageToScript(withName: "doCoreRecom", userInfo: ["doistring" : doiString, "infoString" : infoString, "closeLabel" : closeLabel])
                 }
             }
         }
@@ -296,7 +296,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func checkUnpaywall(doi: String, page: SFSafariPage, originUrl: String) {
-        self.stats.submitStats(force: false)
         toolbarAction(imgName: "oa_100a.pdf")
         let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=oahelper@otzberg.net"
         let url = URL(string: jsonUrlString)
