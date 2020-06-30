@@ -59,7 +59,7 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Hilfe";
 
-/* Class = "NSTextFieldCell"; title = "Getting started:\n1) Click Open Safari Preferences below:\n2) Select Extensions\n3) Activate the Open Access Helper Extension\n4) That's it :)"; ObjectID = "FNM-3T-H4P"; */
+/* Class = "NSTextFieldCell"; title = "Getting started:\n\n1) Click Open Safari Preferences below:\n\n2) Select Extensions\n\n3) Activate the Open Access Helper Extension\n\n4) That's it :)"; ObjectID = "FNM-3T-H4P"; */
 "FNM-3T-H4P.title" = "So geht es los:\n\n1) \"Safari Einstellungen öffnen\" klicken\n\n2) Erweiterungen auswählen\n\n3) Open Access Helper aktivieren\n\n5) Das war es schon :)";
 
 /* Class = "NSTextFieldCell"; title = "Settings"; ObjectID = "HcR-jI-6Ct"; */
@@ -274,9 +274,6 @@
 
 /* Class = "NSTextFieldCell"; placeholderString = "e.g. harvard.edu"; ObjectID = "PZa-Xc-R55"; */
 "PZa-Xc-R55.placeholderString" = "z.B. uni-muenchen.de";
-
-/* Class = "NSButtonCell"; title = "It is ok to share some anonymous usage statistics with the app author"; ObjectID = "mgb-TU-gH1"; */
-"mgb-TU-gH1.title" = "Anonymisierte Nutzungstatistiken mit dem Entwickler teilen";
 
 /* Class = "NSTextFieldCell"; placeholderString = "e.g. https://lib.uni.edu/login?url="; ObjectID = "Ggd-tc-Rne"; */
 "Ggd-tc-Rne.placeholderString" = "z.B. https://bib.uni.de/login?url=";

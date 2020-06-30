@@ -931,13 +931,17 @@ URL of your institution's EZProxy Server</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hre-mD-sm7">
-                                <rect key="frame" x="38" y="197" width="283" height="80"/>
+                                <rect key="frame" x="38" y="133" width="283" height="144"/>
                                 <textFieldCell key="cell" selectable="YES" id="FNM-3T-H4P">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">Getting started:
+
 1) Click Open Safari Preferences below:
+
 2) Select Extensions
+
 3) Activate the Open Access Helper Extension
+
 4) That's it :)</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

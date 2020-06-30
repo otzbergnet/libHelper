@@ -89,7 +89,7 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Aide";
 
-/* Class = "NSTextFieldCell"; title = "Getting started:\n1) Click Open Safari Preferences below:\n2) Select Extensions\n3) Activate the Open Access Helper Extension\n4) That's it :)"; ObjectID = "FNM-3T-H4P"; */
+/* Class = "NSTextFieldCell"; title = "Getting started:\n\n1) Click Open Safari Preferences below:\n\n2) Select Extensions\n\n3) Activate the Open Access Helper Extension\n\n4) That's it :)"; ObjectID = "FNM-3T-H4P"; */
 "FNM-3T-H4P.title" = "Pour commencer :\n\n1) Cliquez sur les préférences Safari ci-dessous\n\n2) Sélectionnez Extensions\n\n3) Activez l'extension Open Access Helper\n\n4) C'est fait :)";
 
 /* Class = "NSButtonCell"; title = "Tell me more..."; ObjectID = "Fup-1k-vH1"; */
@@ -232,9 +232,6 @@
 
 /* Class = "NSViewController"; title = "EZProxy"; ObjectID = "kVE-Sp-sqG"; */
 "kVE-Sp-sqG.title" = "EZProxy";
-
-/* Class = "NSButtonCell"; title = "It is ok to share some anonymous usage statistics with the app author"; ObjectID = "mgb-TU-gH1"; */
-"mgb-TU-gH1.title" = "Je suis d'accord de partager des statistiques d'usage anonymes\navec le développeur de l'application";
 
 /* Class = "NSTextFieldCell"; title = "We will always use unpaywall.org to find legal Open Access copies, but you can select to add Core Discovery & Open Access Button to find even more copies. Lastly you can have us add a button to request copies from authors, if you'd like."; ObjectID = "nJJ-h3-n2K"; */
 "nJJ-h3-n2K.title" = "Nous utiliserons toujours unpaywall.org pour trouver des versions légales en accès libre, mais vous pouvez choisir d'ajouter Core Discovery et Open Access Button pour trouver plus de versions. Si vous le souhaitez, vous pouvez ajouter un bouton pour demander des versions aux auteurs.";
