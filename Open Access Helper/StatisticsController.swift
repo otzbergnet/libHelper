@@ -26,7 +26,6 @@ class StatisticsController: NSViewController {
         super.viewDidLoad()
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         updateCount()
-        setShareStatsValue()
     }
     
     deinit {
@@ -71,25 +70,7 @@ class StatisticsController: NSViewController {
         
     }
     
-    func setShareStatsValue(){
-        let shareStatsValue = self.preferences.getValue(key: "shareStats")
-        if(shareStatsValue){
-            self.shareStats.state = .on
-        }
-        else{
-            self.shareStats.state = .off
-        }
-    }
     
-    @IBAction func shareStatsClicked(_ sender: NSButton) {
-        if(sender.state == .on){
-            preferences.setValue(key: "shareStats", value: true)
-        }
-        else{
-            preferences.setValue(key: "shareStats", value: false)
-        }
-        
-    }
     
     @IBAction func privacyPolicyClicked(_ sender: Any) {
         if let url = URL(string: "https://www.oahelper.org/privacy-policy/"),
