@@ -673,33 +673,33 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func runUrlCall(current: String, next: String, page: SFSafariPage) {
-        let url = URL(string: next)
-        //NSLog("OAURLCALL: \(next)")
-        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            if let error = error{
-                //we got an error, let's tell the user
-                // known issue, as soon as we hit watermark.silverchair.com the connection is dropped :(
-                page.dispatchMessageToScript(withName: "printPls", userInfo: ["error" : error.localizedDescription])
-            }
-            guard let response = response else {
-                return
-            }
-            if let finalUrl = response.url{
-                
-                if(self.compareFinalURLs(current: current, next: "\(finalUrl)", page: page)){
-                    self.toolbarAction(imgName: "oa_100a.pdf")
-                    self.updateBadge(text: "✔")
-                    let title = NSLocalizedString("You are at the Open Acccess Location!", comment: "used in JS confirm that you are on OA already")
-                    page.dispatchMessageToScript(withName: "onoa", userInfo: ["title" : title]);
+        if let url = URL(string: next){
+            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                if let error = error{
+                    //we got an error, let's tell the user
+                    // known issue, as soon as we hit watermark.silverchair.com the connection is dropped :(
+                    page.dispatchMessageToScript(withName: "printPls", userInfo: ["error" : error.localizedDescription])
                 }
-                else{
-                    // do nothing, i.e. keep old state in tact
+                guard let response = response else {
+                    return
                 }
-                
+                if let finalUrl = response.url{
+                    
+                    if(self.compareFinalURLs(current: current, next: "\(finalUrl)", page: page)){
+                        self.toolbarAction(imgName: "oa_100a.pdf")
+                        self.updateBadge(text: "✔")
+                        let title = NSLocalizedString("You are at the Open Acccess Location!", comment: "used in JS confirm that you are on OA already")
+                        page.dispatchMessageToScript(withName: "onoa", userInfo: ["title" : title]);
+                    }
+                    else{
+                        // do nothing, i.e. keep old state in tact
+                    }
+                    
+                }
             }
+            
+            task.resume()
         }
-        
-        task.resume()
     }
     
     func compareFinalURLs(current: String, next: String, page: SFSafariPage) -> Bool{
@@ -993,7 +993,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     func findCitations(doi : String, completion: @escaping (Result<OpenCitationStruct, Error>) -> ()){
         let urlString = "https://opencitations.net/index/api/v1/citation-count/\(doi)"
-        ///https://opencitations.net/index/api/v1/citation-count/10.1142/9789812701527_0009
         
         guard let url = URL(string: urlString) else {
             return
@@ -1012,23 +1011,23 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 do {
                     let openCitations = try JSONDecoder().decode([OpenCitationStruct].self, from: data)
                     if(openCitations.count > 0){
-                        print("data received \(openCitations.first!.count)")
+                        //print("data received \(openCitations.first!.count)")
                         completion(.success(openCitations.first!))
                     }
                     else{
-                        print("Successful decode with 0 elements, should be impossible to be honest")
+                        //print("Successful decode with 0 elements, should be impossible to be honest")
                         completion(.failure(NSError(domain: "", code: 441, userInfo: ["description" : "failed to get any objects"])))
                     }
                     
                 }
                 catch let jsonError{
-                    print("JSON String: \(String(data: data, encoding: .utf8) ?? "JSON ERROR COULD NOT PRINT")")
+                    //print("JSON String: \(String(data: data, encoding: .utf8) ?? "JSON ERROR COULD NOT PRINT")")
                     completion(.failure(jsonError))
                 }
             }
             else{
                 //another error
-                print("failed to get data")
+                //print("failed to get data")
                 completion(.failure(NSError(domain: "", code: 440, userInfo: ["description" : "failed to get data"])))
                 return
             }
