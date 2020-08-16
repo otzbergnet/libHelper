@@ -260,11 +260,33 @@ function findDoi3(){
         if(document.querySelectorAll(".citation-text>a").length > 0){
             var doiElements = document.querySelectorAll(".citation-text>a");
             var potentialDoi = doiElements[0];
-            var potentialDoi = potentialDoi.replace('https://doi.org/', '');
+            potentialDoi = potentialDoi.replace('https://doi.org/', '');
             scrapedDoi(potentialDoi);
         }
         else{
             doPsycNet();
+        }
+    }
+    else if(host.indexOf("proquest.com") > -1){
+        console.log("Open Access Helper (Safari Extension) - support for proquest.com is experimental")
+        if(document.querySelectorAll(".abstract_Text").length > 0){
+            var doiElements = document.querySelectorAll(".abstract_Text");
+            var potentialDoi = doiElements[0];
+            var regex = new RegExp('DOI:(10\..*)');
+            var doi = runRegexOnText(potentialDoi.textContent, regex);
+            console.log(doi);
+            scrapedDoi(doi);
+        }
+    }
+    else if(host.indexOf("ebscohost.com") > -1 && document.location.href.indexOf("/detail") > -1){
+        console.log("Open Access Helper (Safari Extension) - support for ebscohost.com is experimental")
+        if(document.getElementsByTagName("dd").length > 0){
+            var doiElements = document.getElementsByTagName("dd");
+            [...doiElements].forEach(function(element){
+                if(element.textContent.indexOf("10.") == 0 && isDOI(element.textContent)){
+                    scrapedDoi(element.textContent);
+                }
+            });
         }
     }
     else{
@@ -595,6 +617,16 @@ function successfulAlternativeOAFound(pdf, type = "Open Access", onOaTest = fals
 function runRegexOnDoc(regEx){
     var m = regEx.exec(document.documentElement.innerHTML);
     if (m && m.length > 1){
+       return m[1];
+    }
+    return false
+}
+
+function runRegexOnText(text, regEx){
+    console.log(text)
+    var m = regEx.exec(text);
+    if (m && m.length > 1){
+        console.log(m)
        return m[1];
     }
     return false
