@@ -92,7 +92,7 @@
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2019 Claus Wolf. Some rights reserved.</string>
+	<string>Copyright © 2020 Claus Wolf. Some rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
 	<string>Finds legal Open Access versions of scientific articles based on Digital Object Identifiers (DOI)</string>
 </dict>
