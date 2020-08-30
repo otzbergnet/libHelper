@@ -89,7 +89,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 * No Badge: https://www.cambridge.org/core/journals/the-british-journal-of-psychiatry/article/cancer-and-depression/3B0E0259637B48B503908D2F7252A9F9
 * Orange: https://www.cambridge.org/core/journals/journal-of-laryngology-and-otology/article/topical-chemoprevention-of-skin-cancer-in-mice-using-combined-inhibitors-of-5lipoxygenase-and-cyclooxygenase2/B570AB399B995BD21221D405DADAD62B
-* No Badgeddd: https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/resistant-carbohydrates-stimulate-cell-proliferation-and-crypt-fission-in-wildtype-mice-and-in-the-apcmin-mouse-model-of-intestinal-cancer-association-with-enhanced-polyp-development/DBEB6AC22DEFADC33C73411520F8FCFA
+* No Badge: https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/resistant-carbohydrates-stimulate-cell-proliferation-and-crypt-fission-in-wildtype-mice-and-in-the-apcmin-mouse-model-of-intestinal-cancer-association-with-enhanced-polyp-development/DBEB6AC22DEFADC33C73411520F8FCFA
 
 ## GetTheResearch
 
@@ -102,3 +102,9 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * https://psycnet.apa.org -> search for -- adhd -- click an article
 * https://psycnet.apa.org/record/2019-80678-001 (recommendations & OAB)
 * https://psycnet.apa.org/doi/10.1037/neu0000590
+
+## ProQuest 
+* Orange: https://www.proquest.com/docview/2246651524/BAB1D866B3CE4895PQ/7
+
+## EBSCO example
+* Orange: Login through http://www.libraryresearch.com/ adnd search for AN 144426220
