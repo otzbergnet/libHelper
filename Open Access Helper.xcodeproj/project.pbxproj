@@ -26,10 +26,10 @@
 		2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FC32185863C0095ACD7 /* SafariExtensionViewController.swift */; };
 		2D3F8FC72185863C0095ACD7 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FC52185863C0095ACD7 /* SafariExtensionViewController.xib */; };
 		2D3F8FCA2185863C0095ACD7 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FC92185863C0095ACD7 /* script.js */; };
-		2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */; };
 		2D3F8FD02185863C0095ACD7 /* Open Access Helper Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2D3F8FBC2185863C0095ACD7 /* Open Access Helper Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */ = {isa = PBXBuildFile; fileRef = 2D3F8FD52185867F0095ACD7 /* mycss.css */; };
 		2D446A7D22E77A65001ECFA0 /* apikey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D446A7C22E77A65001ECFA0 /* apikey.plist */; };
+		2D5D2F2E25185CD500092454 /* oa_web.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D5D2F2D25185CD500092454 /* oa_web.svg */; };
 		2D63EE8B233739890086BBA2 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63EE89233739890086BBA2 /* MainWindowController.swift */; };
 		2D63EE8E23375CA10086BBA2 /* TouchBarIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63EE8D23375CA10086BBA2 /* TouchBarIdentifiers.swift */; };
 		2D643FCC23001F5B00A4FA14 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D643FCA23001F5B00A4FA14 /* SettingsController.swift */; };
@@ -109,10 +109,10 @@
 		2D3F8FC62185863C0095ACD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		2D3F8FC82185863C0095ACD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D3F8FC92185863C0095ACD7 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
-		2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		2D3F8FD52185867F0095ACD7 /* mycss.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = mycss.css; sourceTree = "<group>"; };
 		2D3F8FD721858AD10095ACD7 /* libHelper Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "libHelper Safari.entitlements"; sourceTree = "<group>"; };
 		2D446A7C22E77A65001ECFA0 /* apikey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = apikey.plist; sourceTree = "<group>"; };
+		2D5D2F2D25185CD500092454 /* oa_web.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = oa_web.svg; sourceTree = "<group>"; };
 		2D63EE89233739890086BBA2 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		2D63EE8D23375CA10086BBA2 /* TouchBarIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarIdentifiers.swift; sourceTree = "<group>"; };
 		2D643FCA23001F5B00A4FA14 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -226,6 +226,7 @@
 				2DF38077218DAC0D00CF2A45 /* oa_100.pdf */,
 				2DF38079218DB78600CF2A45 /* oa_100a.pdf */,
 				2DF38071218D8BC100CF2A45 /* sec30.png */,
+				2D5D2F2D25185CD500092454 /* oa_web.svg */,
 				2DD336A623C1A3C6004A34C5 /* recom.png */,
 				2D643FD4230058A300A4FA14 /* ask.png */,
 				2DD336AC23C1C6FA004A34C5 /* loader.gif */,
@@ -233,7 +234,6 @@
 				2DC8627B23C23330007DF1AA /* core_logo.svg */,
 				2D3F8FD52185867F0095ACD7 /* mycss.css */,
 				2D3F8FC92185863C0095ACD7 /* script.js */,
-				2D3F8FCB2185863C0095ACD7 /* ToolbarItemIcon.pdf */,
 				2D655F1421A0036F0092E480 /* Localizable.strings */,
 				2D446A7C22E77A65001ECFA0 /* apikey.plist */,
 			);
@@ -288,7 +288,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Claus Wolf";
 				TargetAttributes = {
 					2D3F8FA1218586290095ACD7 = {
@@ -364,7 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DC8627C23C23330007DF1AA /* core_logo.svg in Resources */,
-				2D3F8FCC2185863C0095ACD7 /* ToolbarItemIcon.pdf in Resources */,
+				2D5D2F2E25185CD500092454 /* oa_web.svg in Resources */,
 				2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */,
 				2DF3807A218DB78700CF2A45 /* oa_100a.pdf in Resources */,
 				2D3F8FC72185863C0095ACD7 /* SafariExtensionViewController.xib in Resources */,
@@ -555,6 +555,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -617,6 +618,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
