@@ -286,3 +286,6 @@
 
 /* Class = "NSButtonCell"; title = "Tell me more..."; ObjectID = "Fup-1k-vH1"; */
 "Fup-1k-vH1.title" = "Mehr infos...";
+
+/* Class = "NSButtonCell"; title = "Do not \"print\" info to browser console"; ObjectID = "fIT-g0-bHi"; */
+"fIT-g0-bHi.title" = "Keine Informationen in der Browser-Konsole ausgeben";

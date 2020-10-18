@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rwG-Iq-qMP">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rwG-Iq-qMP">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -299,10 +299,10 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcp-rk-eyD">
-                                <rect key="frame" x="40" y="119" width="520" height="110"/>
+                                <rect key="frame" x="40" y="95" width="520" height="134"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
-                                        <rect key="frame" x="-2" y="94" width="328" height="18"/>
+                                        <rect key="frame" x="-2" y="118" width="328" height="18"/>
                                         <buttonCell key="cell" type="check" title="Use core Discovery to find additional Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CMq-iy-q6b">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -312,7 +312,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Job-2k-mWy">
-                                        <rect key="frame" x="-2" y="70" width="366" height="18"/>
+                                        <rect key="frame" x="-2" y="94" width="366" height="18"/>
                                         <buttonCell key="cell" type="check" title="Use Open Access Button to find even more Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vwZ-Zm-K8p">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -322,7 +322,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-to-XHx">
-                                        <rect key="frame" x="-2" y="46" width="425" height="18"/>
+                                        <rect key="frame" x="-2" y="70" width="425" height="18"/>
                                         <buttonCell key="cell" type="check" title="Offer to take me to Open Access Button to make an article request" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fYC-2c-t0y">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -332,7 +332,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jzs-mx-e5C">
-                                        <rect key="frame" x="-2" y="22" width="351" height="18"/>
+                                        <rect key="frame" x="-2" y="46" width="351" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show CORE Recommender, if there is no Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="evK-lJ-UtH">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -342,11 +342,24 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E7m-Au-t0F">
-                                        <rect key="frame" x="-2" y="-2" width="271" height="18"/>
+                                        <rect key="frame" x="-2" y="22" width="271" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show citation counts from OpenCitations" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1J1-cU-OSF">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="openCitationsClicked:" target="of7-oY-NLd" id="hMF-CH-0IP"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Bt-Pf-GyI">
+                                        <rect key="frame" x="-2" y="-2" width="251" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Do not &quot;print&quot; info to browser console" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fIT-g0-bHi">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="noConsoleLogClicked:" target="of7-oY-NLd" id="Ql1-d5-oMv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <visibilityPriorities>
@@ -355,8 +368,10 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -387,7 +402,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-dj-mau">
-                                <rect key="frame" x="38" y="93" width="125" height="16"/>
+                                <rect key="frame" x="38" y="71" width="125" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Highlight &amp; Search" id="skg-S1-2HM">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -395,7 +410,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKs-DU-CRp">
-                                <rect key="frame" x="38" y="67" width="122" height="18"/>
+                                <rect key="frame" x="38" y="45" width="122" height="18"/>
                                 <buttonCell key="cell" type="check" title="base-search.net" bezelStyle="regularSquare" imagePosition="left" inset="2" id="E5Y-zn-Amu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -405,7 +420,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="diE-XJ-VAE">
-                                <rect key="frame" x="171" y="67" width="86" height="18"/>
+                                <rect key="frame" x="171" y="45" width="86" height="18"/>
                                 <buttonCell key="cell" type="check" title="core.ac.uk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="PmR-Jf-2Mz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -415,7 +430,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-s7-BpE">
-                                <rect key="frame" x="268" y="67" width="144" height="18"/>
+                                <rect key="frame" x="268" y="45" width="144" height="18"/>
                                 <buttonCell key="cell" type="check" title="gettheresearch.com" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yaq-Tp-X4R">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -438,12 +453,12 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstItem="iwf-yg-VlJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yPo-s7-BpE" secondAttribute="bottom" constant="5" id="RH2-f6-0uS"/>
                             <constraint firstItem="nKs-DU-CRp" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="SXI-dZ-N4k"/>
                             <constraint firstAttribute="trailing" secondItem="dcp-rk-eyD" secondAttribute="trailing" constant="40" id="TCo-XT-ohm"/>
+                            <constraint firstItem="uqp-dj-mau" firstAttribute="top" secondItem="dcp-rk-eyD" secondAttribute="bottom" constant="8" id="Z0a-SX-ZLI"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uqp-dj-mau" secondAttribute="trailing" constant="40" id="c6Z-mR-ZSv"/>
                             <constraint firstItem="lKy-uE-U3c" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="eQe-jw-PLu"/>
                             <constraint firstItem="yPo-s7-BpE" firstAttribute="leading" secondItem="diE-XJ-VAE" secondAttribute="trailing" constant="15" id="fyn-bD-1Pa"/>
                             <constraint firstItem="diE-XJ-VAE" firstAttribute="leading" secondItem="nKs-DU-CRp" secondAttribute="trailing" constant="15" id="gXJ-Oy-K0m"/>
                             <constraint firstItem="dcp-rk-eyD" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="iIM-wN-kWh"/>
-                            <constraint firstItem="uqp-dj-mau" firstAttribute="top" secondItem="dcp-rk-eyD" secondAttribute="bottom" constant="10" id="npu-Ji-IqT"/>
                             <constraint firstItem="dcp-rk-eyD" firstAttribute="top" secondItem="vuC-t1-To1" secondAttribute="bottom" constant="10" id="oSU-xY-7XO"/>
                             <constraint firstItem="uqp-dj-mau" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="oyW-XY-e0B"/>
                             <constraint firstItem="vuC-t1-To1" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="ql6-KK-pTe"/>
@@ -456,6 +471,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                         <outlet property="coreHSCheckBox" destination="diE-XJ-VAE" id="Vyo-jE-bMl"/>
                         <outlet property="coreRecomCheckBox" destination="jzs-mx-e5C" id="cjT-nY-zpE"/>
                         <outlet property="gettheresearchHSCheckBox" destination="yPo-s7-BpE" id="3EG-iX-ykr"/>
+                        <outlet property="noConsoleLogCheckBox" destination="2Bt-Pf-GyI" id="Hr9-Or-fno"/>
                         <outlet property="oaButtonCheckBox" destination="Job-2k-mWy" id="S2R-wd-Xar"/>
                         <outlet property="oaButtonRequestCheckBox" destination="1rJ-to-XHx" id="4Gx-HS-8w0"/>
                         <outlet property="openCitationsCheckBox" destination="E7m-Au-t0F" id="Ite-on-qb3"/>

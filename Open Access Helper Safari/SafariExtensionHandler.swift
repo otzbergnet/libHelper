@@ -114,6 +114,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 self.requestRecommendation(userInfo: (userInfo)!, page: page)
             }
         }
+        else if messageName == "getconsolelog"{
+            let consoleLogStatus = preferences.getValue(key: "noconsolelog");
+            page.dispatchMessageToScript(withName: "consolelog_configuration", userInfo: ["consolelog" : consoleLogStatus])
+        }
         
         //        page.getPropertiesWithCompletionHandler { properties in
         //            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
@@ -264,7 +268,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     func goToOaUrl(url: String){
         SFSafariApplication.getActiveWindow { (window) in
             if let myUrl = URL(string: url) {
-                window?.openTab(with: myUrl, makeActiveIfPossible: true, completionHandler: nil)
+                window?.openTab(with: myUrl, makeActiveIfPossible: true, completionHandler: { (tab) in
+                    //print("we opened that bug")
+                })
             }
         }
     }
