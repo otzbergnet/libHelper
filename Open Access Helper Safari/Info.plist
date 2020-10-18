@@ -77,7 +77,7 @@
 			<key>Identifier</key>
 			<string>Button</string>
 			<key>Image</key>
-			<string>oa_100.pdf</string>
+			<string>oahelper_black.pdf</string>
 			<key>Label</key>
 			<string>Open Access Helper Extension</string>
 		</dict>

@@ -471,7 +471,7 @@ function oafound(message){
     // here we inject the icon into the page
     // room for improvement, most Chrome extensions would inject an iFrame
     
-    var src = safari.extension.baseURI + "oa_web.svg"; // padlock
+    var src = safari.extension.baseURI + "oahelper_white.svg"; // padlock
 
     var oaVersion = "";
     if(message.version != ""){
@@ -519,7 +519,7 @@ function requestDocument(oab, doistring){
         return;
     }
     
-    var src = safari.extension.baseURI + "ask.png"; // padlock
+    var src = safari.extension.baseURI + "ask.svg"; // padlock
     var url = encodeURIComponent(location.href);
     var oabUrl = "https://openaccessbutton.org/request?url="
     var message = "We didn't find a legal Open Access Version, but you could try and request it via Open Access Button";
@@ -789,7 +789,7 @@ function coreRecommenderStart(doistring, infoString, closeLabel){
         return
     }
     
-    var src = safari.extension.baseURI + "recom.png"; // padlock
+    var src = safari.extension.baseURI + "recom.svg"; // padlock
     var message = "We didn't find a legal Open Access Version, but you could try and review some CORE Open Access Recommendations instead";
     
     var div = document.createElement('div');
@@ -1140,7 +1140,7 @@ function addCitationCount(count, doi){
     
     var url = "https://www.oahelper.org/opencitations/?doi="+doi;
     var message = "Times Cited: "+count;
-    var src = safari.extension.baseURI + "ocicon.png";
+    var src = safari.extension.baseURI + "ocicon.svg";
     var div = document.createElement('div');
     
     div.innerHTML = '<div class="oahelper_opencitations" onclick="window.open(\''+url+'\')" title="OpenCitations '+message+'"><img id="oahelper_opencitations_logo" src="'+src+'" align="left" title="'+message+'" data-oaurl="'+url+'" data-badge=""/><span id="oahelper_opencitations_msg">'+message+'</span></div><span id="oahelper_opencitations_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
