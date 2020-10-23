@@ -20,6 +20,7 @@ class SettingsController: NSViewController {
     @IBOutlet weak var coreHSCheckBox: NSButton!
     @IBOutlet weak var gettheresearchHSCheckBox: NSButton!
     @IBOutlet weak var openCitationsCheckBox: NSButton!
+    @IBOutlet weak var noConsoleLogCheckBox: NSButton!
     
     
     override func viewDidLoad() {
@@ -51,6 +52,7 @@ class SettingsController: NSViewController {
         else{
             coreCheckBox.state = .off
         }
+        
         let oaButton = preferences.getValue(key: "oabutton")
         if(oaButton){
             oaButtonCheckBox.state = .on
@@ -58,6 +60,7 @@ class SettingsController: NSViewController {
         else{
             oaButtonCheckBox.state = .off
         }
+        
         let oaButtonRequest = preferences.getValue(key: "oabrequest")
         if(oaButtonRequest){
             oaButtonRequestCheckBox.state = .on
@@ -73,12 +76,21 @@ class SettingsController: NSViewController {
         else{
             coreRecomCheckBox.state = .off
         }
+        
         let openCitations = preferences.getValue(key: "opencitations")
         if(openCitations){
             openCitationsCheckBox.state = .on
         }
         else{
             openCitationsCheckBox.state = .off
+        }
+        
+        let noConsoleLog = preferences.getValue(key: "noconsolelog")
+        if(noConsoleLog){
+            noConsoleLogCheckBox.state = .on
+        }
+        else{
+            noConsoleLogCheckBox.state = .off
         }
         
         let baseHS = preferences.getValue(key: "basehs")
@@ -143,8 +155,27 @@ class SettingsController: NSViewController {
         else{
             preferences.setValue(key: "corerecom", value: false)
         }
-        
     }
+    
+    @IBAction func openCitationsClicked(_ sender: NSButton) {
+        if(sender.state == .on){
+            preferences.setValue(key: "opencitations", value: true)
+        }
+        else{
+            preferences.setValue(key: "opencitations", value: false)
+        }
+    }
+    
+    @IBAction func noConsoleLogClicked(_ sender: NSButton) {
+        if(sender.state == .on){
+            preferences.setValue(key: "noconsolelog", value: true)
+        }
+        else{
+            preferences.setValue(key: "noconsolelog", value: false)
+        }
+    }
+    
+    
     
     @IBAction func basesearchHSclicked(_ sender: NSButton) {
         if(sender.state == .on){
@@ -189,10 +220,12 @@ class SettingsController: NSViewController {
         oaButtonCheckBox.state = .off
         oaButtonRequestCheckBox.state = .off
         openCitationsCheckBox.state = .off
+        noConsoleLogCheckBox.state = .off
         preferences.setValue(key: "core", value: false)
         preferences.setValue(key: "oabutton", value: false)
         preferences.setValue(key: "oabrequest", value: false)
         preferences.setValue(key: "opencitations", value: false)
+        preferences.setValue(key: "noconsolelog", value: false)
     }
     
     @IBAction func recommendedSelected(_ sender: Any){
@@ -200,10 +233,12 @@ class SettingsController: NSViewController {
         oaButtonCheckBox.state = .off
         oaButtonRequestCheckBox.state = .on
         openCitationsCheckBox.state = .on
+        noConsoleLogCheckBox.state = .on
         preferences.setValue(key: "core", value: true)
         preferences.setValue(key: "oabutton", value: false)
         preferences.setValue(key: "oabrequest", value: true)
         preferences.setValue(key: "opencitations", value: true)
+        preferences.setValue(key: "noconsolelog", value: true)
     }
     
 }

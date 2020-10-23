@@ -286,3 +286,6 @@
 
 /* Class = "NSButtonCell"; title = "gettheresearch.com"; ObjectID = "yaq-Tp-X4R"; */
 "yaq-Tp-X4R.title" = "gettheresearch.com";
+
+/* Class = "NSButtonCell"; title = "Do not \"print\" info to browser console"; ObjectID = "fIT-g0-bHi"; */
+"fIT-g0-bHi.title" = "Keine Informationen in der Browser-Konsole ausgeben";

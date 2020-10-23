@@ -48,7 +48,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
         else if messageName == "notfound" {
-            toolbarAction(imgName: "oa_100.pdf")
+            toolbarAction(imgName: "oahelper_black.pdf")
             updateBadge(text: "remove")
         }
         else if messageName == "oaURLReturn"{
@@ -93,10 +93,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let badge = userInfo?["badge"] as! String
             if(badge == "!" || badge == "✔"){
                 updateBadge(text: "\(badge)")
-                self.toolbarAction(imgName: "oa_100a.pdf")
+                self.toolbarAction(imgName: "oahelper_black_filled.pdf")
             }
             else{
-                self.toolbarAction(imgName: "oa_100.pdf")
+                self.toolbarAction(imgName: "oahelper_black.pdf")
             }
         }
         else if messageName == "doCoreRecom"{
@@ -113,6 +113,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if(preferences.getValue(key: "corerecom")){
                 self.requestRecommendation(userInfo: (userInfo)!, page: page)
             }
+        }
+        else if messageName == "getconsolelog"{
+            let consoleLogStatus = preferences.getValue(key: "noconsolelog");
+            page.dispatchMessageToScript(withName: "consolelog_configuration", userInfo: ["consolelog" : consoleLogStatus])
         }
         
         //        page.getPropertiesWithCompletionHandler { properties in
@@ -264,7 +268,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     func goToOaUrl(url: String){
         SFSafariApplication.getActiveWindow { (window) in
             if let myUrl = URL(string: url) {
-                window?.openTab(with: myUrl, makeActiveIfPossible: true, completionHandler: nil)
+                window?.openTab(with: myUrl, makeActiveIfPossible: true, completionHandler: { (tab) in
+                    print("opened the tab")
+                })
             }
         }
     }
@@ -277,7 +283,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 activePage?.dispatchMessageToScript(withName: "tabevaluate", userInfo: nil);
             })
         }
-        self.toolbarAction(imgName: "oa_100.pdf")
+        self.toolbarAction(imgName: "oahelper_black.pdf")
         validationHandler(true, "")
         
     }
@@ -296,14 +302,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func checkUnpaywall(doi: String, page: SFSafariPage, originUrl: String) {
-        toolbarAction(imgName: "oa_100a.pdf")
+        toolbarAction(imgName: "oahelper_black_filled.pdf")
         let jsonUrlString = "https://api.unpaywall.org/v2/\(doi)?email=oahelper@otzberg.net"
         let url = URL(string: jsonUrlString)
         
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
-                self.toolbarAction(imgName: "oa_100.pdf")
+                self.toolbarAction(imgName: "oahelper_black.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_error" : error.localizedDescription])
                 self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
             }
@@ -312,7 +318,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["unpaywall_data" : "failed"])
-                self.toolbarAction(imgName: "oa_100.pdf")
+                self.toolbarAction(imgName: "oahelper_black.pdf")
                 self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
                 return
             }
@@ -328,7 +334,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let oaData = try JSONDecoder().decode(Unpaywall.self, from: data)
             if let boa = oaData.best_oa_location {
                 if (boa.url != "") {
-                    toolbarAction(imgName: "oa_100a.pdf")
+                    toolbarAction(imgName: "oahelper_black_filled.pdf")
                     updateBadge(text: "!")
                     updateCount()
                     let oaVersion = self.getOpenAccessVersion(data: oaData)
@@ -337,7 +343,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     self.findOpenCitations(doi: doi, page: page)
                 }
                 else{
-                    toolbarAction(imgName: "oa_100.pdf")
+                    toolbarAction(imgName: "oahelper_black.pdf")
                     //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                     if let year = oaData.year {
                         self.checkCore(doi: doi, page: page, originUrl: originUrl, year: year)
@@ -349,7 +355,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 }
             }
             else {
-                toolbarAction(imgName: "oa_100.pdf")
+                toolbarAction(imgName: "oahelper_black.pdf")
                 //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 if let year = oaData.year {
                     self.checkCore(doi: doi, page: page, originUrl: originUrl, year: year)
@@ -364,7 +370,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         catch let jsonError{
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
-            toolbarAction(imgName: "oa_100.pdf")
+            toolbarAction(imgName: "oahelper_black.pdf")
             //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
             self.checkCore(doi: doi, page: page, originUrl: originUrl, year: 1)
             return
@@ -388,7 +394,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         // if we got here the client wants core
         
-        toolbarAction(imgName: "oa_100a.pdf")
+        toolbarAction(imgName: "oahelper_black_filled.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "apikey")
         let jsonUrlString = "https://api.core.ac.uk/discovery/discover?doi=\(doi)&apiKey=\(apiKey)"
         let url = URL(string: jsonUrlString)
@@ -396,7 +402,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
-                self.toolbarAction(imgName: "oa_100.pdf")
+                self.toolbarAction(imgName: "oahelper_black.pdf")
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_error" : error.localizedDescription])
                 self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
             }
@@ -406,7 +412,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             else{
                 page.dispatchMessageToScript(withName: "printPls", userInfo: ["core.ac.uk_data" : "failed"])
-                self.toolbarAction(imgName: "oa_100.pdf")
+                self.toolbarAction(imgName: "oahelper_black.pdf")
                 self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
                 return
             }
@@ -422,20 +428,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let coreData = try JSONDecoder().decode(Coredata.self, from: data)
             if let boa = coreData.fullTextLink {
                 if (boa != "") {
-                    toolbarAction(imgName: "oa_100a.pdf")
+                    toolbarAction(imgName: "oahelper_black_filled.pdf")
                     updateBadge(text: "!")
                     updateCount()
                     let title = NSLocalizedString("Open Access Version Found from core.ac.uk! ", comment: "used in JS injection to indicate OA found")
                     page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa)", "title" : title, "source" : "core.ac.uk", "version" : ""])
                 }
                 else{
-                    toolbarAction(imgName: "oa_100.pdf")
+                    toolbarAction(imgName: "oahelper_black.pdf")
                     //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                     self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
                 }
             }
             else {
-                toolbarAction(imgName: "oa_100.pdf")
+                toolbarAction(imgName: "oahelper_black.pdf")
                 //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
                 self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: year)
             }
@@ -445,7 +451,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         catch let jsonError{
             NSLog("\(jsonError)")
             //page.dispatchMessageToScript(withName: "printPls", userInfo: ["handleData_error" : "\(jsonError)"])
-            toolbarAction(imgName: "oa_100.pdf")
+            toolbarAction(imgName: "oahelper_black.pdf")
             //page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y"])
             self.checkOAButton(doi: doi, page: page, originUrl: originUrl, year: 1)
             return
@@ -461,10 +467,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
         //if user got here, they want the Open Access Button Check
-        toolbarAction(imgName: "oa_100a.pdf")
+        toolbarAction(imgName: "oahelper_black_filled.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
         if(apiKey == ""){
-            self.toolbarAction(imgName: "oa_100.pdf")
+            self.toolbarAction(imgName: "oahelper_black.pdf")
             return
         }
         
@@ -506,7 +512,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if let oabAvailability = oaButtonData.data.availability {
                 if let targetUrl = oabAvailability.first??.url{
                     if (targetUrl != "") {
-                        toolbarAction(imgName: "oa_100a.pdf")
+                        toolbarAction(imgName: "oahelper_black_filled.pdf")
                         updateBadge(text: "!")
                         updateCount()
                         let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
@@ -547,10 +553,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     
     func checkOAButtonRequest(request: String, page: SFSafariPage, originUrl: String, year: Int, doi: String) {
-        toolbarAction(imgName: "oa_100a.pdf")
+        toolbarAction(imgName: "oahelper_black_filled.pdf")
         let apiKey = self.getAPIKeyFromPlist(type: "oabutton")
         if(apiKey == ""){
-            self.toolbarAction(imgName: "oa_100.pdf")
+            self.toolbarAction(imgName: "oahelper_black.pdf")
             return
         }
         
@@ -593,7 +599,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     if let received = oaButtonData.data.received{
                         if let url = received.url{
                             if(url != ""){
-                                toolbarAction(imgName: "oa_100a.pdf")
+                                toolbarAction(imgName: "oahelper_black_filled.pdf")
                                 updateBadge(text: "!")
                                 updateCount()
                                 let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
@@ -629,7 +635,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let currentYear = calendar.component(.year, from: date)
         let fiveYearsAgo = currentYear - 6
         let oabRequestSetting = preferences.getValue(key: "oabrequest")
-        self.toolbarAction(imgName: "oa_100.pdf")
+        self.toolbarAction(imgName: "oahelper_black.pdf")
         if(oabRequestSetting){
             
             // oab: y = yes, e = error getting data, o = older than 5 years ago
@@ -664,7 +670,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             runUrlCall(current: current, next: next, page: page)
         }
         else{
-            self.toolbarAction(imgName: "oa_100a.pdf")
+            self.toolbarAction(imgName: "oahelper_black_filled.pdf")
             self.updateBadge(text: "✔")
             let title = NSLocalizedString("You are at the Open Acccess Location!", comment: "used in JS confirm that you are on OA already")
             page.dispatchMessageToScript(withName: "onoa", userInfo: ["title" : title]);
@@ -686,7 +692,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 if let finalUrl = response.url{
                     
                     if(self.compareFinalURLs(current: current, next: "\(finalUrl)", page: page)){
-                        self.toolbarAction(imgName: "oa_100a.pdf")
+                        self.toolbarAction(imgName: "oahelper_black_filled.pdf")
                         self.updateBadge(text: "✔")
                         let title = NSLocalizedString("You are at the Open Acccess Location!", comment: "used in JS confirm that you are on OA already")
                         page.dispatchMessageToScript(withName: "onoa", userInfo: ["title" : title]);
