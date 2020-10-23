@@ -269,7 +269,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         SFSafariApplication.getActiveWindow { (window) in
             if let myUrl = URL(string: url) {
                 window?.openTab(with: myUrl, makeActiveIfPossible: true, completionHandler: { (tab) in
-                    //print("we opened that bug")
+                    print("opened the tab")
                 })
             }
         }
