@@ -316,16 +316,21 @@ function findDoi4(){
             }
         });
         
-        if(isFullText){
-            doConsoleLog("Open Access Helper (Safari Extension) - This document is offered in full-text at this location (EBSCOhost)");
-            return;
-        }
         
         if(document.getElementsByTagName("dd").length > 0){
             var doiElements = document.getElementsByTagName("dd");
             [...doiElements].forEach(function(element){
                 if(element.textContent.indexOf("10.") == 0 && isDOI(element.textContent)){
-                    scrapedDoi(element.textContent);
+                    if(isFullText){
+                        doConsoleLog("Open Access Helper (Safari Extension) - This document is offered in full-text at this location (EBSCOhost)");
+                        if (isDOI(element.textContent)) {
+                            safari.extension.dispatchMessage("request_citations", {"doi" : element.textContent});
+                        }
+                    }
+                    else{
+                        scrapedDoi(element.textContent);
+                    }
+                    
                 }
             });
         }
@@ -505,6 +510,19 @@ function oafound(message){
 }
 
 function requestDocument(oab, doistring){
+    const preprintServers = ['arxiv.org', 'biorxiv.org'];
+      let isPreprint = false;
+      preprintServers.forEach((server) => {
+        if (document.location.href.indexOf(server) > -1) {
+          isPreprint = true;
+        }
+      });
+      // here we inject the icon into the page
+
+      if (isPreprint) {
+          handlePreprintSites();
+          return;
+      }
     
     // find out whether we are supposed to do CORE Recommender at All
     safari.extension.dispatchMessage("doCoreRecom", {"doistring" : doistring});
@@ -780,6 +798,10 @@ function evaluateTab(){
 // Core Recommender Related Functions
 
 function coreRecommenderStart(doistring, infoString, closeLabel){
+    console.log("coreRecommenderStart");
+    handlePreprintSites();
+    console.log("passed handlePreprintSites");
+    
     if(isDOI(doistring)){
         var doi = doistring;
     }
@@ -1131,6 +1153,42 @@ function doPsycNet(){
     }
 }
 
+
+function handlePreprintSites() {
+  if (document.location.href.indexOf('www.biorxiv.org') > -1 || document.location.href.indexOf('www.medrxiv.org') > -1 ) {
+    doBioMedArxiv();
+  } else if (document.location.href.indexOf('arxiv.org') > -1) {
+      doArxivOrg();
+  }
+}
+
+function doBioMedArxiv() {
+  var possibleDocs = document.getElementsByClassName('article-dl-pdf-link link-icon');
+  if (possibleDocs.length > 0) {
+    for (var link of possibleDocs) {
+      var href = link.getAttribute('href');
+      if (href.indexOf('pdf') > -1) {
+        // I am on Open Access
+        const url = window.location.protocol+"//"+window.location.hostname+href;
+        successfulAlternativeOAFound(url, 'Preprint Server', true);
+      }
+    }
+  }
+}
+
+function doArxivOrg() {
+  var possibleDocs = document.getElementsByClassName('abs-button download-pdf');
+    if (possibleDocs.length > 0) {
+      for (var link of possibleDocs) {
+        var href = link.getAttribute('href');
+        if (href.indexOf('pdf') > -1) {
+          // I am on Open Access
+          const url = window.location.protocol+"//"+window.location.hostname+href;
+          successfulAlternativeOAFound(url, 'Preprint Server', true);
+        }
+      }
+    }
+}
 
 function doOaHelperLiveRegion(message){
     setTimeout(function () {
