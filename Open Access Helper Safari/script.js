@@ -122,7 +122,6 @@ function messageHandler(event){
         window.location.href = newUrl;
     }
     else if(event.name == "opencitation_count"){
-        doConsoleLog("opencitation_count message received");
         var count = event.message.citation_count;
         var doi =   event.message.doi;
         addCitationCount(count,doi);
