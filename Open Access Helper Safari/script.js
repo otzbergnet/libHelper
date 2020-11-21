@@ -1,5 +1,5 @@
-var loaded = 0;
-var processedSinglePageApplication = false;
+var oah_loaded = 0;
+var oah_processedSinglePageApplication = false;
 var spaUrl = location.href;
 var configuration = [];
 
@@ -8,8 +8,8 @@ var preprintServers = ['arxiv.org', 'biorxiv.org', 'osf.io', 'engrxiv.org', 'psy
 document.addEventListener("DOMContentLoaded", function(event) {
     //check if we are in an iframe, if so do nothing, otherwise go and find yourself a DOI
 
-    if(!inIframe() && loaded == 0){
-        loaded++;
+    if(!inIframe() && oah_loaded == 0){
+        oah_loaded++;
         findDoi();
     }
                           
@@ -28,7 +28,7 @@ if(window.location.hostname == "gettheresearch.org" || window.location.hostname 
     document.addEventListener('click', ()=>{
         requestAnimationFrame(()=>{
             if(spaUrl !== location.href){
-                processedSinglePageApplication = false;
+                oah_processedSinglePageApplication = false;
                 removeMyself()
                 findDoi3();
             }
@@ -650,8 +650,8 @@ function alternativeOA(message, oab, doistring){
     else if (host.indexOf('agrirxiv.org') > -1) {
       setTimeout(doOSFArxiv, 2500);
     }
-    else if (!processedSinglePageApplication && preprintServers.includes(document.location.hostname)) {
-      processedSinglePageApplication = true;
+    else if (!oah_processedSinglePageApplication && preprintServers.includes(document.location.hostname)) {
+      oah_processedSinglePageApplication = true;
       setTimeout(findDoi, 2500);
     }
     else if(message != undefined && message == "y"){
@@ -1151,9 +1151,9 @@ function doSpringerLink(oab, doistring, host){
 }
 
 function doPsycNet(){
-    if(((window.location.pathname.indexOf("/search/display") > -1) || (window.location.pathname.indexOf("/record/") > - 1) || (window.location.pathname.indexOf("/fulltext/") > -1)) && processedSinglePageApplication == false){
+    if(((window.location.pathname.indexOf("/search/display") > -1) || (window.location.pathname.indexOf("/record/") > - 1) || (window.location.pathname.indexOf("/fulltext/") > -1)) && oah_processedSinglePageApplication == false){
         setTimeout(function () {
-            processedSinglePageApplication = true;
+            oah_processedSinglePageApplication = true;
             findDoi();
         } , 4500);
     }
