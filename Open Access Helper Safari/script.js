@@ -3,6 +3,8 @@ var processedSinglePageApplication = false;
 var spaUrl = location.href;
 var configuration = [];
 
+var preprintServers = ['arxiv.org', 'biorxiv.org', 'osf.io', 'engrxiv.org', 'psyarxiv.com', 'paleorxiv.org', 'eartharxiv.org', 'edarxiv.org', 'arabixiv.org', 'indiarxiv.org', 'biohackrxiv.org', 'ecoevorxiv.org', 'ecsarxiv.org', 'frenxiv.org', 'mediarxiv.org', 'thesiscommons.org'];
+
 document.addEventListener("DOMContentLoaded", function(event) {
     //check if we are in an iframe, if so do nothing, otherwise go and find yourself a DOI
 
@@ -330,7 +332,6 @@ function findDoi4(){
                     else{
                         scrapedDoi(element.textContent);
                     }
-                    
                 }
             });
         }
@@ -510,7 +511,6 @@ function oafound(message){
 }
 
 function requestDocument(oab, doistring){
-    const preprintServers = ['arxiv.org', 'biorxiv.org'];
       let isPreprint = false;
       preprintServers.forEach((server) => {
         if (document.location.href.indexOf(server) > -1) {
@@ -647,6 +647,13 @@ function alternativeOA(message, oab, doistring){
     }
     else if(generator.length > 0 && generator[0].indexOf('DSpace') > -1){
         doConsoleLog("Open Access Helper (Safari Extension): we are on a DSPACE respository - there is a chance the document is available here");
+    }
+    else if (host.indexOf('agrirxiv.org') > -1) {
+      setTimeout(doOSFArxiv, 2500);
+    }
+    else if (!processedSinglePageApplication && preprintServers.includes(document.location.hostname)) {
+      processedSinglePageApplication = true;
+      setTimeout(findDoi, 2500);
     }
     else if(message != undefined && message == "y"){
         doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1155,11 +1162,23 @@ function doPsycNet(){
 
 
 function handlePreprintSites() {
-  if (document.location.href.indexOf('www.biorxiv.org') > -1 || document.location.href.indexOf('www.medrxiv.org') > -1 ) {
-    doBioMedArxiv();
-  } else if (document.location.href.indexOf('arxiv.org') > -1) {
-      doArxivOrg();
-  }
+    if (document.location.href.indexOf('www.biorxiv.org') > -1 || document.location.href.indexOf('www.medrxiv.org') > -1) {
+        doBioMedArxiv();
+      } else if (
+        document.location.href.indexOf('osf.io/preprints') > -1 ||
+        document.location.href.indexOf('engrxiv.org/') > -1 ||
+        document.location.href.indexOf('biohackrxiv.org/') > -1 ||
+        document.location.href.indexOf('ecsarxiv.org') > -1 ||
+        document.location.href.indexOf('frenxiv.org/') > -1 ||
+        document.location.href.indexOf('mediarxiv.org/') > -1
+      ) {
+        doOSFArxiv();
+      } else if (document.location.href.indexOf('arxiv.org') > -1) {
+        doArxivOrg();
+      }
+      else{
+        console.log('hanldePreprintSites didn\'t match');
+      }
 }
 
 function doBioMedArxiv() {
@@ -1188,6 +1207,23 @@ function doArxivOrg() {
         }
       }
     }
+}
+
+function doOSFArxiv() {
+  const classArray = ['btn btn-primary p-v-xs', 'btn btn-primary p-v-xsf', 'pdf-download-link'];
+  classArray.forEach(className => {
+    const possibleDocs = document.getElementsByClassName(className);
+    if (possibleDocs.length > 0) {
+      for (const link of possibleDocs) {
+        const href = link.getAttribute('href');
+        if (href.indexOf('download') > -1) {
+          // I am on Open Access
+          const url = `${href}`;
+          successfulAlternativeOAFound(url, 'Preprint Server', true);
+        }
+      }
+    }
+  });
 }
 
 function doOaHelperLiveRegion(message){
