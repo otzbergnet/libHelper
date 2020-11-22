@@ -118,10 +118,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let consoleLogStatus = preferences.getValue(key: "noconsolelog");
             page.dispatchMessageToScript(withName: "consolelog_configuration", userInfo: ["consolelog" : consoleLogStatus])
         }
+        else if messageName == "request_citations"{
+            if let doi  = userInfo?["doi"]{
+                self.findOpenCitations(doi: doi as! String, page: page)
+            }
+        }
         
-        //        page.getPropertiesWithCompletionHandler { properties in
-        //            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
-        //        }
     }
     
     override func toolbarItemClicked(in window: SFSafariWindow) {
@@ -974,6 +976,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     //MARK: OpenCitations related
     
     func findOpenCitations(doi: String, page: SFSafariPage){
+        
+        print("findOpenCitations called")
+        print("findOpenCitations doi \(doi)")
+        
         //check if OpenCitations desired
         if(!preferences.getValue(key: "opencitations")){
             //user does not require OpenCitations
