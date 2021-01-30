@@ -637,27 +637,33 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let currentYear = calendar.component(.year, from: date)
         let fiveYearsAgo = currentYear - 6
         let oabRequestSetting = preferences.getValue(key: "oabrequest")
+        let illRequestSettingTmp = preferences.getValue(key: "ill")
+        var illRequestSetting = "n";
+        var illUrl = preferences.getStringValue(key: "illUrl")
+        if(illRequestSettingTmp){
+            illRequestSetting = "y";
+        }
         self.toolbarAction(imgName: "oahelper_black.pdf")
         if(oabRequestSetting){
             
             // oab: y = yes, e = error getting data, o = older than 5 years ago
             
             if(year == 0 || year > fiveYearsAgo){
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y", "doistring" : doi])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
                 self.findOpenCitations(doi: doi, page: page)
             }
             else if(year == 1){
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e", "doistring" : doi])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
                 self.findOpenCitations(doi: doi, page: page)
             }
             else{
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o", "doistring" : doi])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
             }
             
             
         }
         else{
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n", "doistring" : doi])
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
         }
         
         

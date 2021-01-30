@@ -114,7 +114,7 @@
 "Save" = "Speichern";
 
 /* reset to default translation */
-"Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
+"Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen suchen";
 
 /* show searching, when looking up settings */
 "Searching..." = "Suche...";

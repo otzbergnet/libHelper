@@ -16,7 +16,7 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "45w-83-PZj"; */
 "45w-83-PZj.title" = "Cellule de texte";
 
-/* Class = "NSTextFieldCell"; title = "If your institution provides remote access via EZProxy, you can enter the URL below. Please note that the URL needs to end in url= or qurl=\n\nURL of your institution's EZProxy Server"; ObjectID = "4SS-by-Tr0"; */
+/* Class = "NSTextFieldCell"; title = "If your institution is registered with Open Access Helper, this settings screen helps you activate your EZProxy Remote Access, or a Document Request Form."; ObjectID = "4SS-by-Tr0"; */
 "4SS-by-Tr0.title" = "Si votre institution fournit un accès distant via EZProxy, vous pouvez saisir l'URL ci-dessous. Elle doit se terminer par url= ou qurl=\n\nURL du serveur EZProxy de votre institution ";
 
 /* Class = "NSMenuItem"; title = "Quit Open Access Helper"; ObjectID = "4sb-4s-VLi"; */
@@ -148,7 +148,7 @@
 /* Class = "NSButtonCell"; title = "core.ac.uk"; ObjectID = "PmR-Jf-2Mz"; */
 "PmR-Jf-2Mz.title" = "core.ac.uk";
 
-/* Class = "NSTextFieldCell"; title = "Search Settings by Domain (e.g. harvard.edu)"; ObjectID = "QQP-RM-dky"; */
+/* Class = "NSTextFieldCell"; title = "Search Settings"; ObjectID = "QQP-RM-dky"; */
 "QQP-RM-dky.title" = "Chercher les paramètres sur base du domaine (par ex. harvard.edu)";
 
 /* Class = "NSTextFieldCell"; title = "\"Highlight & Search\" searches executed"; ObjectID = "Qf4-r5-fbR"; */
@@ -229,7 +229,7 @@
 /* Class = "NSViewController"; title = "Open Access Helper"; ObjectID = "jtC-8H-YpD"; */
 "jtC-8H-YpD.title" = "Open Access Helper";
 
-/* Class = "NSViewController"; title = "EZProxy"; ObjectID = "kVE-Sp-sqG"; */
+/* Class = "NSViewController"; title = "Institutional Settings"; ObjectID = "kVE-Sp-sqG"; */
 "kVE-Sp-sqG.title" = "EZProxy";
 
 /* Class = "NSTextFieldCell"; title = "We will always use unpaywall.org to find legal Open Access copies, but you can select to add Core Discovery & Open Access Button to find even more copies. Lastly you can have us add a button to request copies from authors, if you'd like."; ObjectID = "nJJ-h3-n2K"; */
@@ -244,7 +244,7 @@
 /* Class = "NSViewController"; title = "Settings"; ObjectID = "of7-oY-NLd"; */
 "of7-oY-NLd.title" = "Paramètres";
 
-/* Class = "NSTextFieldCell"; title = "EZProxy Settings"; ObjectID = "pUg-hB-6ak"; */
+/* Class = "NSTextFieldCell"; title = "Institutional Settings"; ObjectID = "pUg-hB-6ak"; */
 "pUg-hB-6ak.title" = "Paramètres EZProxy";
 
 /* Class = "NSButtonCell"; title = "Contact Me"; ObjectID = "pYZ-Bo-Lhq"; */
@@ -268,9 +268,6 @@
 /* Class = "NSWindow"; title = "Open Access Helper"; ObjectID = "vZx-Nd-Q7l"; */
 "vZx-Nd-Q7l.title" = "Open Access Helper";
 
-/* Class = "NSButtonCell"; title = "Use Open Access Button to find even more Open Access"; ObjectID = "vwZ-Zm-K8p"; */
-"vwZ-Zm-K8p.title" = "Utiliser Open Access Button pour trouver plus de versions en accès libre";
-
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Aide";
 
@@ -288,3 +285,24 @@
 
 /* Class = "NSButtonCell"; title = "Do not \"print\" info to browser console"; ObjectID = "fIT-g0-bHi"; */
 "fIT-g0-bHi.title" = "Keine Informationen in der Browser-Konsole ausgeben";
+
+/* Class = "NSTextFieldCell"; title = "Request Form"; ObjectID = "B3B-ra-LGo"; */
+"B3B-ra-LGo.title" = "Formulaire";
+
+/* Class = "NSTextFieldCell"; placeholderString = "e.g. https://lib.uni.edu/request?doi="; ObjectID = "FZ8-hB-RLd"; */
+"FZ8-hB-RLd.placeholderString" = "e.g. https://lib.uni.edu/request?doi=";
+
+/* Class = "NSMenuItem"; title = "Name"; ObjectID = "IxJ-Oe-WRd"; */
+"IxJ-Oe-WRd.title" = "Name";
+
+/* Class = "NSMenuItem"; title = "Domain"; ObjectID = "ud3-mG-AlH"; */
+"ud3-mG-AlH.title" = "Domain";
+
+/* Class = "NSButtonCell"; title = "Prefer institutional request form over Open Access Button"; ObjectID = "W4Q-gH-5dV"; */
+"W4Q-gH-5dV.title" = "Proposer de demander un document à mon institution au lieu du Open Access Button ";
+
+/* Class = "NSTextFieldCell"; title = "Manual Settings"; ObjectID = "kJg-QH-qDH"; */
+"kJg-QH-qDH.title" = "Paramètres manuels ";
+
+/* Class = "NSTextFieldCell"; title = "EZProxy Server"; ObjectID = "zaJ-1s-zoe"; */
+"zaJ-1s-zoe.title" = "EZProxy Server";

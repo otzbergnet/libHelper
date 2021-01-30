@@ -3,6 +3,7 @@ var oah_processedSinglePageApplication = false;
 var spaUrl = location.href;
 var configuration = [];
 
+
 var preprintServers = ['arxiv.org', 'biorxiv.org', 'osf.io', 'engrxiv.org', 'psyarxiv.com', 'paleorxiv.org', 'eartharxiv.org', 'edarxiv.org', 'arabixiv.org', 'indiarxiv.org', 'biohackrxiv.org', 'ecoevorxiv.org', 'ecsarxiv.org', 'frenxiv.org', 'mediarxiv.org', 'thesiscommons.org'];
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -84,6 +85,9 @@ function messageHandler(event){
     }
     else if (event.name == "notoadoi"){
         document.body.dataset.oahdoire = "0";
+        //let's put some stuff in sessionStorage
+        window.sessionStorage.setItem('ill', event.message.ill);
+        window.sessionStorage.setItem('illUrl', event.message.illUrl);
         alternativeOA(event.message.doi, event.message.oab, event.message.doistring);
     }
     else if (event.name == "showAlert"){
@@ -526,19 +530,26 @@ function requestDocument(oab, doistring){
     // find out whether we are supposed to do CORE Recommender at All
     safari.extension.dispatchMessage("doCoreRecom", {"doistring" : doistring});
     
-    // here we inject the icon into the page
+    // let's get data out of sessionStorage
+    var ill = window.sessionStorage.getItem('ill');
+    var illUrl = window.sessionStorage.getItem('illUrl');
     
-    if(oab == "n"){
+    // here we inject the icon into the page
+    if(oab == "n" && ill == "n"){
         return;
     }
     
-    if(oab == "e"){
+    if(oab == "e" && ill == "n"){
         doConsoleLog("Open Access Helper (Safari Extension): Open Access Button not possible, as there was an error obtaining pub data");
         return;
     }
     
-    if(oab == "o"){
+    if(oab == "o" && ill == "n"){
         doConsoleLog("Open Access Helper (Safari Extension): Open Access Button not possible, as Pub Year > 5 years ago");
+        return;
+    }
+    
+    if(doistring == "" || doistring == "-"){
         return;
     }
     
@@ -546,9 +557,20 @@ function requestDocument(oab, doistring){
     var url = encodeURIComponent(location.href);
     var oabUrl = "https://openaccessbutton.org/request?url="
     var message = "We didn't find a legal Open Access Version, but you could try and request it via Open Access Button";
+    var serviceName = "Open Access Button";
+    
+    if(ill == "y"){
+        console.log("apparently we prefer ILL form");
+        url = "";
+        oabUrl = illUrl+doistring;
+        message = "We didn't find a legal Open Access Version, but you could try and request it from your library";
+        serviceName = "Ask your Library";
+    }
+    // clean up session storage
+    window.sessionStorage.clear();
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge=""/><span id="oahelper_oahelpmsg">Open Access Button</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge=""/><span id="oahelper_oahelpmsg">'+serviceName+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_doifound_outer';
     div.className = 'oahelper_doifound_outer oahelper_doiblue';
     
@@ -804,9 +826,7 @@ function evaluateTab(){
 // Core Recommender Related Functions
 
 function coreRecommenderStart(doistring, infoString, closeLabel){
-    console.log("coreRecommenderStart");
     handlePreprintSites();
-    console.log("passed handlePreprintSites");
     
     if(isDOI(doistring)){
         var doi = doistring;
@@ -1176,7 +1196,7 @@ function handlePreprintSites() {
         doArxivOrg();
       }
       else{
-        console.log('hanldePreprintSites didn\'t match');
+        //console.log('hanldePreprintSites didn\'t match');
       }
 }
 

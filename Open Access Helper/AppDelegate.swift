@@ -50,7 +50,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 if let data = Data(base64Encoded: base64data){
                                     if let urlString = String(data: data, encoding: .utf8){
                                         self.preferences.setStringValue(key: "ezproxyPrefix", value: urlString)
-                                        
+                                    }
+                                }
+                            }
+                        }
+                        if(queryItem.name == "ill"){
+                            if let base64data = queryItem.value{
+                                if let data = Data(base64Encoded: base64data){
+                                    if let urlString = String(data: data, encoding: .utf8){
+                                        self.preferences.setStringValue(key: "illUrl", value: urlString)
                                     }
                                 }
                             }

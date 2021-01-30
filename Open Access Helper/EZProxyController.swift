@@ -15,6 +15,9 @@ class EZProxyController: NSViewController {
     
     @IBOutlet weak var testSettingsButton: NSButton!
     @IBOutlet weak var proxyPrefixTextField: NSTextField!
+    @IBOutlet weak var requestFormUrl: NSTextField!
+    
+    @IBOutlet weak var searchTypeDropDown: NSPopUpButton!
     @IBOutlet weak var domainTextField: NSTextField!
 
     @IBOutlet weak var searchButton: NSButton!
@@ -49,14 +52,17 @@ class EZProxyController: NSViewController {
     
     func showTestSettingsButton(){
         let proxyPrefix = preferences.getStringValue(key: "ezproxyPrefix") // always returns at least an empty String
+        let illUrl = preferences.getStringValue(key: "illUrl")
         //print(proxyPrefix)
         if (proxyPrefix != "" && validateProxyPrefix(urlString: proxyPrefix)){
             self.testSettingsButton.isHidden = false
             self.proxyPrefixTextField.stringValue = "\(proxyPrefix)"
         }
         else{
+            self.proxyPrefixTextField.stringValue = "\(proxyPrefix)"
             self.testSettingsButton.isHidden = true
         }
+        self.requestFormUrl.stringValue = "\(illUrl)"
         
     }
     
@@ -88,13 +94,17 @@ class EZProxyController: NSViewController {
     
     func getProxyForTextfield(){
         let newProxyPrefix = self.preferences.getStringValue(key: "ezproxyPrefix")
-        if(newProxyPrefix != ""){
             DispatchQueue.main.async {
                 self.proxyPrefixTextField.stringValue = newProxyPrefix
             }
-        }
     }
-    
+
+    func getIllForTextField(){
+        let newProxyPrefix = self.preferences.getStringValue(key: "illUrl")
+            DispatchQueue.main.async {
+                self.requestFormUrl.stringValue = newProxyPrefix
+            }
+    }
     
     @IBAction func saveClicked(_ sender: Any) {
         let url = self.proxyPrefixTextField.stringValue
@@ -131,9 +141,12 @@ class EZProxyController: NSViewController {
     @IBAction func searchByDomainClicked(_ sender: Any) {
         
         self.searchDomainLabel.stringValue = NSLocalizedString("Searching...", comment: "show searching, when looking up settings")
+        guard let searchType = searchTypeDropDown.selectedItem?.title else {
+            return
+        }
         let domain = domainTextField.stringValue
         if(domain.count > 0){
-            proxyFind.askForProxy(domain: domain) { (res) in
+            proxyFind.askForProxy(domain: domain, searchType: searchType) { (res) in
                 switch res{
                 case .success(let proxyList):
                     if(proxyList.count == 0){
@@ -145,10 +158,14 @@ class EZProxyController: NSViewController {
                         if let proxyPrefix = proxyList.first?.proxyUrl.replacingOccurrences(of: "{targetUrl}", with: ""){
                             DispatchQueue.main.async {
                                 self.preferences.setStringValue(key: "ezproxyPrefix", value: proxyPrefix)
+                                if let ill = proxyList.first?.ill {
+                                    self.preferences.setStringValue(key: "illUrl", value: ill.replacingOccurrences(of: "{doi}", with: ""))
+                                }
                                 if let instituteId = proxyList.first?.id{
                                     self.preferences.setStringValue(key: "instituteId", value: instituteId)
                                 }
                                 self.getProxyForTextfield()
+                                self.getIllForTextField()
                                 self.searchDomainLabel.stringValue = NSLocalizedString("Successfuly, saved!", comment: "if proxy was successfully saved")
                                 self.searchDomainLabel.textColor = .blue
                             }

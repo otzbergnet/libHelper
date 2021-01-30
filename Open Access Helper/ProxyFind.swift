@@ -24,8 +24,13 @@ class ProxyFind {
         return ""
     }
         
-        func askForProxy(domain : String, completion: @escaping (Result<[ProxyInstitute], Error>) -> ()){
-            let apiKey = self.getAPIKeyFromPlist(type: "coreRecommender")
+    func askForProxy(domain : String, searchType: String, completion: @escaping (Result<[ProxyInstitute], Error>) -> ()){
+        var type = "domain"
+        if(searchType == "Name"){
+            type = "query"
+        }
+        
+        let apiKey = self.getAPIKeyFromPlist(type: "coreRecommender")
             let apiEndPoint = self.getAPIKeyFromPlist(type: "proxyApi")
             if (apiKey == "") {
                 //print("no API Key")
@@ -47,7 +52,7 @@ class ProxyFind {
             var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
 
             components.queryItems = [
-                URLQueryItem(name: "domain", value: domain)
+                URLQueryItem(name: type, value: domain)
             ]
 
             let query = components.url!.query
@@ -119,5 +124,6 @@ struct ProxyInstitute : Decodable{
     var id = ""
     var institution = ""
     var proxyUrl = ""
+    var ill = ""
     var country = ""
 }
