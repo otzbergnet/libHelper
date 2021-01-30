@@ -577,7 +577,7 @@ function requestDocument(oab, doistring){
     if(document.body.parentNode.parentNode != "#document"){
         document.body.appendChild(div);
     }
-    doConsoleLog("Open Access Helper (Safari Extension) did not find any Open Access, but you can try to request from Open Access Button");
+    doConsoleLog("Open Access Helper (Safari Extension) did not find any Open Access, but you can try to request from "+serviceName);
     var currentUrl = window.location.href;
     
     doOaHelperLiveRegion(message.title);
