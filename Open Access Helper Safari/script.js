@@ -514,7 +514,7 @@ function oafound(message){
 }
 
 function requestDocument(oab, doistring){
-      let isPreprint = false;
+    var isPreprint = false;
       preprintServers.forEach((server) => {
         if (document.location.href.indexOf(server) > -1) {
           isPreprint = true;
@@ -560,7 +560,6 @@ function requestDocument(oab, doistring){
     var serviceName = "Open Access Button";
     
     if(ill == "y"){
-        console.log("apparently we prefer ILL form");
         url = "";
         oabUrl = illUrl+doistring;
         message = "We didn't find a legal Open Access Version, but you could try and request it from your library";
@@ -1037,6 +1036,10 @@ function doIngentaConnect(oab, doistring, host){
             }
         }
         
+    }
+    else{
+        doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found (web scraper)");
+        requestDocument(oab, doistring);
     }
 }
 

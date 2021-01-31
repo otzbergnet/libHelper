@@ -639,7 +639,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let oabRequestSetting = preferences.getValue(key: "oabrequest")
         let illRequestSettingTmp = preferences.getValue(key: "ill")
         var illRequestSetting = "n";
-        var illUrl = preferences.getStringValue(key: "illUrl")
+        let illUrl = preferences.getStringValue(key: "illUrl")
         if(illRequestSettingTmp){
             illRequestSetting = "y";
         }
@@ -982,9 +982,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     //MARK: OpenCitations related
     
     func findOpenCitations(doi: String, page: SFSafariPage){
-        
-        print("findOpenCitations called")
-        print("findOpenCitations doi \(doi)")
         
         //check if OpenCitations desired
         if(!preferences.getValue(key: "opencitations")){
