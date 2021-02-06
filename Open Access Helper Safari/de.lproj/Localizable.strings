@@ -164,7 +164,7 @@
 "We found a match, but could not get the prefix" = "Wir haben einen Treffer gefunden, konnten jedoch den Prefix nicht extrahieren";
 
 /* reset to default translation */
-"Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen anhand der Domain nachschlagen (z.B. uni-muenchen.de)";
+"Search Settings by Domain (e.g. harvard.edu)" = "Einstellungen suchen";
 
 /* No comment provided by engineer. */
 "Basic Usage Statistics" = "Grundlegende Statistiken";

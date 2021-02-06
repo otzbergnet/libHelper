@@ -13,7 +13,6 @@ class SettingsController: NSViewController {
     let preferences = Preferences()
     
     @IBOutlet weak var coreCheckBox: NSButton!
-    @IBOutlet weak var oaButtonCheckBox: NSButton!
     @IBOutlet weak var oaButtonRequestCheckBox: NSButton!
     @IBOutlet weak var coreRecomCheckBox: NSButton!
     @IBOutlet weak var basesearchHSCheckBox: NSButton!
@@ -21,6 +20,7 @@ class SettingsController: NSViewController {
     @IBOutlet weak var gettheresearchHSCheckBox: NSButton!
     @IBOutlet weak var openCitationsCheckBox: NSButton!
     @IBOutlet weak var noConsoleLogCheckBox: NSButton!
+    @IBOutlet weak var illRequestCheckBox: NSButton!
     
     
     override func viewDidLoad() {
@@ -53,20 +53,20 @@ class SettingsController: NSViewController {
             coreCheckBox.state = .off
         }
         
-        let oaButton = preferences.getValue(key: "oabutton")
-        if(oaButton){
-            oaButtonCheckBox.state = .on
-        }
-        else{
-            oaButtonCheckBox.state = .off
-        }
-        
         let oaButtonRequest = preferences.getValue(key: "oabrequest")
         if(oaButtonRequest){
             oaButtonRequestCheckBox.state = .on
         }
         else{
             oaButtonRequestCheckBox.state = .off
+        }
+        
+        let illRequest = preferences.getValue(key: "ill")
+        if(illRequest){
+            illRequestCheckBox.state = .on
+        }
+        else{
+            illRequestCheckBox.state = .off
         }
         
         let coreRecom = preferences.getValue(key: "corerecom")
@@ -130,14 +130,15 @@ class SettingsController: NSViewController {
     }
     
     
-    @IBAction func oaButtonClicked(_ sender: NSButton) {
+    @IBAction func illRequestClicked(_ sender: NSButton) {
         if(sender.state == .on){
-            preferences.setValue(key: "oabutton", value: true)
+            preferences.setValue(key: "ill", value: true)
         }
         else{
-            preferences.setValue(key: "oabutton", value: false)
+            preferences.setValue(key: "ill", value: false)
         }
     }
+    
     
     @IBAction func oaButtonRequestClicked(_ sender: NSButton) {
         if(sender.state == .on){
@@ -217,7 +218,6 @@ class SettingsController: NSViewController {
     
     @IBAction func noneSelected(_ sender: Any){
         coreCheckBox.state = .off
-        oaButtonCheckBox.state = .off
         oaButtonRequestCheckBox.state = .off
         openCitationsCheckBox.state = .off
         noConsoleLogCheckBox.state = .off
@@ -230,7 +230,6 @@ class SettingsController: NSViewController {
     
     @IBAction func recommendedSelected(_ sender: Any){
         coreCheckBox.state = .on
-        oaButtonCheckBox.state = .off
         oaButtonRequestCheckBox.state = .on
         openCitationsCheckBox.state = .on
         noConsoleLogCheckBox.state = .on
