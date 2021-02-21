@@ -195,3 +195,9 @@
 
 /*closeLabel for CoreRecommender*/
 "close" = "schließen";
+
+/* changes Context Label */
+" search for: \"%@\"" = "";
+
+/* changes Context Label, base-search-net */
+"Visit " = "";

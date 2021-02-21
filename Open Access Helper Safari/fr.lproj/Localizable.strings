@@ -194,3 +194,9 @@
 
 /*closeLabel for CoreRecommender*/
 "close" = "fermer";
+
+/* changes Context Label */
+" search for: \"%@\"" = "";
+
+/* changes Context Label, base-search-net */
+"Visit " = "";

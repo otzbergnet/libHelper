@@ -286,7 +286,7 @@ If you need to reach me, please click the Contact Me button below!</string>
         <scene sceneID="fhr-tX-ivf">
             <objects>
                 <viewController title="Settings" id="of7-oY-NLd" customClass="SettingsController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="MRn-52-FQI">
+                    <view key="view" id="MRn-52-FQI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="339"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -383,6 +383,9 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                     </menuItem>
                                                     <menuItem title="CORE" tag="2" id="0zJ-o0-hZu">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Dimensions.ai" tag="5" id="mBB-6u-BIB">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                     </menuItem>
                                                     <menuItem title="Google Scholar" tag="3" id="6h3-GV-iKv">

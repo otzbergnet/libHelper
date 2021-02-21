@@ -193,3 +193,9 @@
 
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Wir haben Dir bei %@ Open Access Suchen geholfen";
+
+/* changes Context Label */
+" search for: \"%@\"" = "";
+
+/* changes Context Label, base-search-net */
+"Visit " = "";

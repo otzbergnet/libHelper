@@ -78,12 +78,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         else if messageName == "searchOA"{
             searchOA(userInfo: (userInfo)!, type: "oasearch")
         }
-        else if messageName == "searchOA2"{
-            searchOA(userInfo: (userInfo)!, type: "oasearch2")
-        }
-        else if messageName == "searchOA3"{
-            searchOA(userInfo: (userInfo)!, type: "oasearch3")
-        }
         else if messageName == "needIntlAlert"{
             if let msgId = userInfo?["msgId"] {
                 returnIntlAlert(id: msgId as! String, page: page)
@@ -143,6 +137,19 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     // update context menu with the text selected by the user in Safari
     override func validateContextMenuItem(withCommand command: String, in page: SFSafariPage, userInfo: [String : Any]? = nil, validationHandler: @escaping (Bool, String?) -> Void){
         var selectedText = ""
+        
+        //get search engine
+        let searchEngineTag = preferences.getIntVal(key: "searchengine")
+        
+        var searchEngine = [String]()
+        searchEngine.insert("Open Access", at: 0)
+        searchEngine.insert("base-search.net", at: 1)
+        searchEngine.insert("core.ac.uk", at: 2)
+        searchEngine.insert("scholar.google.com", at: 3)
+        searchEngine.insert("semanticscholar.org", at: 4)
+        searchEngine.insert("app.dimensions.ai", at: 5) 
+        
+        
         if let myUserInfo = userInfo{
             selectedText = myUserInfo["selectedText"] as! String
             var mySubstring = ""
@@ -153,48 +160,25 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             else{
                 mySubstring = selectedText
             }
-            var myContextLabel = String(format: NSLocalizedString("base-search.net search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+            var myContextLabel = "\(searchEngine[searchEngineTag]) \(String(format: NSLocalizedString(" search for: \"%@\"", comment: "changes Context Label"), String(mySubstring)))"
             if(command == "oasearch" && selectedText.count > 0){
-                myContextLabel = String(format: NSLocalizedString("base-search.net search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
+                myContextLabel = "\(searchEngine[searchEngineTag]) \(String(format: NSLocalizedString(" search for: \"%@\"", comment: "changes Context Label"), String(mySubstring)))"
             }
             else if(command == "oasearch" && selectedText.count == 0){
-                myContextLabel = String(format: NSLocalizedString("Visit base-search.net", comment: "changes Context Label, base-search-net"), String(mySubstring))
+                myContextLabel = "\(String(format: NSLocalizedString("Visit ", comment: "changes Context Label, base-search-net"), String(mySubstring))) \(searchEngine[searchEngineTag])"
             }
-            else if(command == "oasearch2" && selectedText.count > 0){
-                myContextLabel = String(format: NSLocalizedString("core.ac.uk search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
-            }
-            else if(command == "oasearch2" && selectedText.count == 0){
-                myContextLabel = String(format: NSLocalizedString("Visit core.ac.uk", comment: "changes Context Label"), String(mySubstring))
-            }
-            else if(command == "oasearch3" && selectedText.count > 0){
-                myContextLabel = String(format: NSLocalizedString("gettheresearch.org search for: \"%@\"", comment: "changes Context Label"), String(mySubstring))
-            }
-            else if(command == "oasearch3" && selectedText.count == 0){
-                myContextLabel = String(format: NSLocalizedString("Visit gettheresearch.org", comment: "changes Context Label"), String(mySubstring))
-            }
+            
             
             //validationHandler(false, myContextLabel)
             
             switch (command){
             case "oasearch":
-                if(preferences.getValue(key: "basehs")){
+                if(searchEngineTag > 0){
+                    print("searchEngineTag greater 0")
                     validationHandler(false, myContextLabel)
                 }
                 else{
-                    validationHandler(true, myContextLabel)
-                }
-            case "oasearch2":
-                if(preferences.getValue(key: "corehs")){
-                    validationHandler(false, myContextLabel)
-                }
-                else{
-                    validationHandler(true, myContextLabel)
-                }
-            case "oasearch3":
-                if(preferences.getValue(key: "gettheresearchhs")){
-                    validationHandler(false, myContextLabel)
-                }
-                else{
+                    print("searchEngineTag equals 0")
                     validationHandler(true, myContextLabel)
                 }
             default:
@@ -241,27 +225,39 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     func createOASearchURL(originalTextSelection: String, command: String) -> String{
         let searchTerm = originalTextSelection.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         let count = originalTextSelection.count
-        
+        let searchEngineTag = preferences.getIntVal(key: "searchengine")
         //default to always return something
         var myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
         
-        if(command == "oasearch" && count > 0){
+        if(command == "oasearch" && count > 0 && searchEngineTag == 1){ // base-search-net
             myurl = "https://www.base-search.net/Search/Results?lookfor=%22\(searchTerm!)%22&name=&oaboost=1&newsearch=1&l=en"
         }
-        else if(command == "oasearch" && count == 0){
+        else if(command == "oasearch" && count == 0 && searchEngineTag == 1){
             myurl = "https://www.base-search.net/"
         }
-        else if(command == "oasearch2" && count > 0){
-            myurl = "https://core.ac.uk/search?q=%22\(searchTerm!)%22"
+        else if(command == "oasearch" && count > 0 && searchEngineTag == 2){ //core.ac.uk
+            myurl = "https://core.ac.uk/search?q=\(searchTerm!)"
         }
-        else if(command == "oasearch2" && count == 0){
+        else if(command == "oasearch" && count == 0 && searchEngineTag == 2){
             myurl = "https://core.ac.uk/"
         }
-        else if(command == "oasearch3" && count > 0){
-            myurl = "https://gettheresearch.org/search?q=\(searchTerm!)"
+        else if(command == "oasearch" && count > 0 && searchEngineTag == 3){ // microsoft academic
+            myurl = "https://academic.microsoft.com/search?q=\(searchTerm!)"
         }
-        else if(command == "oasearch3" && count == 0){
-            myurl = "https://gettheresearch.org"
+        else if(command == "oasearch" && count == 0 && searchEngineTag == 3){
+            myurl = "https://academic.microsoft.com/"
+        }
+        else if(command == "oasearch" && count > 0 && searchEngineTag == 4){ // semantic
+            myurl = "https://www.semanticscholar.org/search?q=\(searchTerm!)&sort=relevance"
+        }
+        else if(command == "oasearch" && count == 0 && searchEngineTag == 4){
+            myurl = "https://www.semanticscholar.org/"
+        }
+        else if(command == "oasearch" && count > 0 && searchEngineTag == 5){  // Dimensions
+            myurl = "https://app.dimensions.ai/discover/publication?search_mode=content&search_text=\(searchTerm!)&search_type=kws&search_field=full_search"
+        }
+        else if(command == "oasearch" && count == 0 && searchEngineTag == 5){
+            myurl = "https://app.dimensions.ai/"
         }
         
         return myurl
