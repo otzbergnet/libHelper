@@ -15,12 +15,10 @@ class SettingsController: NSViewController {
     @IBOutlet weak var coreCheckBox: NSButton!
     @IBOutlet weak var oaButtonRequestCheckBox: NSButton!
     @IBOutlet weak var coreRecomCheckBox: NSButton!
-    @IBOutlet weak var basesearchHSCheckBox: NSButton!
-    @IBOutlet weak var coreHSCheckBox: NSButton!
-    @IBOutlet weak var gettheresearchHSCheckBox: NSButton!
     @IBOutlet weak var openCitationsCheckBox: NSButton!
     @IBOutlet weak var noConsoleLogCheckBox: NSButton!
     @IBOutlet weak var illRequestCheckBox: NSButton!
+    @IBOutlet weak var searchEngineSelect: NSPopUpButton!
     
     
     override func viewDidLoad() {
@@ -30,6 +28,7 @@ class SettingsController: NSViewController {
             preferences.doSetup()
         }
         setAllCheckBoxes()
+        setSearchEngine()
     }
     
     deinit {
@@ -92,32 +91,15 @@ class SettingsController: NSViewController {
         else{
             noConsoleLogCheckBox.state = .off
         }
-        
-        let baseHS = preferences.getValue(key: "basehs")
-        if(baseHS){
-            basesearchHSCheckBox.state = .on
-        }
-        else{
-            basesearchHSCheckBox.state = .off
-        }
-        
-        let coreHS = preferences.getValue(key: "corehs")
-        if(coreHS){
-            coreHSCheckBox.state = .on
-        }
-        else{
-            coreHSCheckBox.state = .off
-        }
-        
-        let gettheresearchHS = preferences.getValue(key: "gettheresearchhs")
-        if(gettheresearchHS){
-            gettheresearchHSCheckBox.state = .on
-        }
-        else{
-            gettheresearchHSCheckBox.state = .off
-        }
-        
-        
+
+    }
+    
+    func setSearchEngine() {
+        let searchEngineTag = preferences.getIntVal(key: "searchengine")
+        let searchEngineIndex = searchEngineSelect.indexOfItem(withTag: searchEngineTag)
+        searchEngineSelect.itemArray[0].state = .off
+        searchEngineSelect.itemArray[searchEngineIndex].state = .on
+        searchEngineSelect.select(searchEngineSelect.itemArray[searchEngineIndex])
     }
     
     @IBAction func coreClicked(_ sender: NSButton) {
@@ -177,33 +159,13 @@ class SettingsController: NSViewController {
     }
     
     
-    
-    @IBAction func basesearchHSclicked(_ sender: NSButton) {
-        if(sender.state == .on){
-            preferences.setValue(key: "basehs", value: true)
-        }
-        else{
-            preferences.setValue(key: "basehs", value: false)
+    @IBAction func selectSearchEngineChange(_ sender: NSPopUpButton) {
+        if let tag = sender.selectedItem?.tag {
+            preferences.setIntVal(key: "searchengine", value: tag)
         }
     }
     
-    @IBAction func coreHSclicked(_ sender: NSButton) {
-        if(sender.state == .on){
-            preferences.setValue(key: "corehs", value: true)
-        }
-        else{
-            preferences.setValue(key: "corehs", value: false)
-        }
-    }
-    
-    @IBAction func gettheresearchHSclicked(_ sender: NSButton) {
-        if(sender.state == .on){
-            preferences.setValue(key: "gettheresearchhs", value: true)
-        }
-        else{
-            preferences.setValue(key: "gettheresearchhs", value: false)
-        }
-    }
+
     
 
     

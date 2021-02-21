@@ -16,7 +16,7 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "45w-83-PZj"; */
 "45w-83-PZj.title" = "Cellule de texte";
 
-/* Class = "NSTextFieldCell"; title = "If your institution is registered with Open Access Helper, this settings screen helps you activate your EZProxy Remote Access, or a Document Request Form."; ObjectID = "4SS-by-Tr0"; */
+/* Class = "NSTextFieldCell"; title = "If your institution is registered with Open Access Helper, this settings screen helps you activate Remote Access, or a Document Request Form."; ObjectID = "4SS-by-Tr0"; */
 "4SS-by-Tr0.title" = "Si votre institution fournit un accès distant via EZProxy, vous pouvez saisir l'URL ci-dessous. Elle doit se terminer par url= ou qurl=\n\nURL du serveur EZProxy de votre institution ";
 
 /* Class = "NSMenuItem"; title = "Quit Open Access Helper"; ObjectID = "4sb-4s-VLi"; */
@@ -72,9 +72,6 @@
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Fermer";
-
-/* Class = "NSButtonCell"; title = "base-search.net"; ObjectID = "E5Y-zn-Amu"; */
-"E5Y-zn-Amu.title" = "base-search.net";
 
 /* Class = "NSMenuItem"; ibExternalAccessibilityDescription = "Contact Details for App Author"; ObjectID = "EtY-qe-aEe"; */
 "EtY-qe-aEe.ibExternalAccessibilityDescription" = "Détails de contact du développeur";
@@ -144,9 +141,6 @@
 
 /* Class = "NSTextFieldCell"; placeholderString = "e.g. harvard.edu"; ObjectID = "PZa-Xc-R55"; */
 "PZa-Xc-R55.placeholderString" = "par ex. harvard.edu";
-
-/* Class = "NSButtonCell"; title = "core.ac.uk"; ObjectID = "PmR-Jf-2Mz"; */
-"PmR-Jf-2Mz.title" = "core.ac.uk";
 
 /* Class = "NSTextFieldCell"; title = "Search Settings"; ObjectID = "QQP-RM-dky"; */
 "QQP-RM-dky.title" = "Chercher les paramètres sur base du domaine (par ex. harvard.edu)";
@@ -280,9 +274,6 @@
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "yKn-40-ZUX"; */
 "yKn-40-ZUX.title" = "Copier";
 
-/* Class = "NSButtonCell"; title = "gettheresearch.com"; ObjectID = "yaq-Tp-X4R"; */
-"yaq-Tp-X4R.title" = "gettheresearch.com";
-
 /* Class = "NSButtonCell"; title = "Do not \"print\" info to browser console"; ObjectID = "fIT-g0-bHi"; */
 "fIT-g0-bHi.title" = "Keine Informationen in der Browser-Konsole ausgeben";
 
@@ -306,3 +297,27 @@
 
 /* Class = "NSTextFieldCell"; title = "EZProxy Server"; ObjectID = "zaJ-1s-zoe"; */
 "zaJ-1s-zoe.title" = "EZProxy Server";
+
+/* Class = "NSMenuItem"; title = "CORE"; ObjectID = "0zJ-o0-hZu"; */
+"0zJ-o0-hZu.title" = "";
+
+/* Class = "NSMenuItem"; title = "Disable this feature"; ObjectID = "28A-l1-fgl"; */
+"28A-l1-fgl.title" = "";
+
+/* Class = "NSMenu"; title = "Select Search Engine"; ObjectID = "6OS-yV-cKY"; */
+"6OS-yV-cKY.title" = "";
+
+/* Class = "NSMenuItem"; title = "Google Scholar"; ObjectID = "6h3-GV-iKv"; */
+"6h3-GV-iKv.title" = "";
+
+/* Class = "NSMenuItem"; title = "Microsoft Academic"; ObjectID = "9v3-ju-nvY"; */
+"9v3-ju-nvY.title" = "";
+
+/* Class = "NSMenuItem"; title = "BASE"; ObjectID = "Fdz-Ja-zIB"; */
+"Fdz-Ja-zIB.title" = "";
+
+/* Class = "NSMenuItem"; title = "Select Search Engine"; ObjectID = "Ubk-KE-dgE"; */
+"Ubk-KE-dgE.title" = "";
+
+/* Class = "NSMenuItem"; title = "Semantic Scholar"; ObjectID = "gc9-dJ-gJU"; */
+"gc9-dJ-gJU.title" = "";
