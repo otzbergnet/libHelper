@@ -299,28 +299,28 @@
 "zaJ-1s-zoe.title" = "EZProxy Server";
 
 /* Class = "NSMenuItem"; title = "CORE"; ObjectID = "0zJ-o0-hZu"; */
-"0zJ-o0-hZu.title" = "";
+"0zJ-o0-hZu.title" = "CORE";
 
 /* Class = "NSMenuItem"; title = "Disable this feature"; ObjectID = "28A-l1-fgl"; */
-"28A-l1-fgl.title" = "";
+"28A-l1-fgl.title" = "Désactivez cette fonctionnalité";
 
 /* Class = "NSMenu"; title = "Select Search Engine"; ObjectID = "6OS-yV-cKY"; */
-"6OS-yV-cKY.title" = "";
+"6OS-yV-cKY.title" = "Sélectionnez un moteur de recherche";
 
 /* Class = "NSMenuItem"; title = "Google Scholar"; ObjectID = "6h3-GV-iKv"; */
-"6h3-GV-iKv.title" = "";
+"6h3-GV-iKv.title" = "Google Scholar";
 
 /* Class = "NSMenuItem"; title = "Microsoft Academic"; ObjectID = "9v3-ju-nvY"; */
-"9v3-ju-nvY.title" = "";
+"9v3-ju-nvY.title" = "Microsoft Academic";
 
 /* Class = "NSMenuItem"; title = "BASE"; ObjectID = "Fdz-Ja-zIB"; */
-"Fdz-Ja-zIB.title" = "";
+"Fdz-Ja-zIB.title" = "BASE";
 
 /* Class = "NSMenuItem"; title = "Select Search Engine"; ObjectID = "Ubk-KE-dgE"; */
-"Ubk-KE-dgE.title" = "";
+"Ubk-KE-dgE.title" = "Sélectionnez un moteur de recherche";
 
 /* Class = "NSMenuItem"; title = "Semantic Scholar"; ObjectID = "gc9-dJ-gJU"; */
-"gc9-dJ-gJU.title" = "";
+"gc9-dJ-gJU.title" = "Semantic Scholar";
 
 /* Class = "NSMenuItem"; title = "Dimensions.ai"; ObjectID = "mBB-6u-BIB"; */
-"mBB-6u-BIB.title" = "";
+"mBB-6u-BIB.title" = "Dimensions.ai";

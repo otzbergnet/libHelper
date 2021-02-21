@@ -196,7 +196,7 @@
 "close" = "fermer";
 
 /* changes Context Label */
-" search for: \"%@\"" = "";
+" search for: \"%@\"" = " rechercher: \"%@\"";
 
 /* changes Context Label, base-search-net */
-"Visit " = "";
+"Visit " = "Aller à ";

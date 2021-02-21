@@ -1,3 +1,6 @@
+/* changes Context Label */
+" search for: \"%@\"" = " rechercher: \"%@\"";
+
 /* No comment provided by engineer. */
 "About: " = "À propos : ";
 
@@ -150,6 +153,9 @@
 "Test" = "Tester";
 
 /* changes Context Label, base-search-net */
+"Visit " = "Aller à ";
+
+/* changes Context Label, base-search-net */
 "Visit base-search.net" = "Aller sur base-search.net";
 
 /* changes Context Label */
@@ -193,9 +199,3 @@
 
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Nous vous avons aidé·e pour %@ recherches Open Access";
-
-/* changes Context Label */
-" search for: \"%@\"" = "";
-
-/* changes Context Label, base-search-net */
-"Visit " = "";
