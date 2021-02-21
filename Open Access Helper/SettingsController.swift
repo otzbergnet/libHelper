@@ -221,11 +221,15 @@ class SettingsController: NSViewController {
         oaButtonRequestCheckBox.state = .off
         openCitationsCheckBox.state = .off
         noConsoleLogCheckBox.state = .off
+        illRequestCheckBox.state = .off
+        coreRecomCheckBox.state = .off
         preferences.setValue(key: "core", value: false)
         preferences.setValue(key: "oabutton", value: false)
         preferences.setValue(key: "oabrequest", value: false)
         preferences.setValue(key: "opencitations", value: false)
         preferences.setValue(key: "noconsolelog", value: false)
+        preferences.setValue(key: "corerecom", value: false)
+        preferences.setValue(key: "ill", value: false)
     }
     
     @IBAction func recommendedSelected(_ sender: Any){
