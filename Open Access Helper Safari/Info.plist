@@ -48,19 +48,7 @@
 				<key>Command</key>
 				<string>oasearch</string>
 				<key>Text</key>
-				<string>Search at base-search.net</string>
-			</dict>
-			<dict>
-				<key>Command</key>
-				<string>oasearch2</string>
-				<key>Text</key>
-				<string>Search at core.ac.uk</string>
-			</dict>
-			<dict>
-				<key>Command</key>
-				<string>oasearch3</string>
-				<key>Text</key>
-				<string>Search at gettheresearch.org</string>
+				<string>Search Open Access</string>
 			</dict>
 		</array>
 		<key>SFSafariStyleSheet</key>
