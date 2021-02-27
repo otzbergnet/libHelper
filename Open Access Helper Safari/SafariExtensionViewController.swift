@@ -116,7 +116,15 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
     }
     
     func onProxiedDomain(ezproxyPrefix: String, currentUrl: String) -> Bool{
-        //TODO: MUST actually check this
+        let ezproxyUrl = URL(string: ezproxyPrefix)
+        if let urlParts = ezproxyUrl?.host?.components(separatedBy: ".") {
+            var newUrlParts = urlParts
+            newUrlParts.removeFirst(1)
+            let testUrl = newUrlParts.joined(separator: ".")
+            if(currentUrl.contains(testUrl)){
+                return true;
+            }
+        }
         return false
     }
     
