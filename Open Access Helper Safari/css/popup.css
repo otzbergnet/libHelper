@@ -47,16 +47,16 @@ label{
 }
 
 #popupanswer{
-    width: 250px;
+    max-width: 250px;
     margin-left: auto;
     margin-right: auto;
 }
 
-button {
+.button {
     background-image: linear-gradient(to right, #3a7bd5 0%, #3a6073  51%, #3a7bd5  100%);
 }
-button {
-    width: 250px;
+.button {
+    max-width: 250px;
     margin: 0.5em;
     padding: 1em;
     text-align: center;
@@ -68,9 +68,10 @@ button {
     display: block;
     border: 2px solid #fff;
     cursor: pointer;
+    text-decoration: none;
 }
 
-button:hover {
+.button:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
@@ -139,7 +140,7 @@ button:hover {
     background-image: linear-gradient(to right, #3a7bd5 0%, #3a6073  51%, #3a7bd5  100%);
 }
 #oabuttonrequest {
-    width: 250px;
+    max-width: 250px;
     margin: 0.5em;
     padding: 1em;
     text-align: center;
@@ -160,7 +161,7 @@ button:hover {
 }
 #ezproxybutton {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
 #ezproxybutton {
-    width: 250px;
+    max-width: 250px;
     margin: 0.5em;
     padding: 1em;
     text-align: center;
