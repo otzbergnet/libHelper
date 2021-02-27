@@ -21,6 +21,7 @@
 		2D3EAC4B25EA55DE00AC25D6 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 2D3EAC4A25EA55DE00AC25D6 /* popup.css */; };
 		2D3EAC5525EA567800AC25D6 /* gear.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D3EAC5325EA567800AC25D6 /* gear.svg */; };
 		2D3EAC5625EA567800AC25D6 /* oahelper_black.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D3EAC5425EA567800AC25D6 /* oahelper_black.svg */; };
+		2D3EAC8225EAA42800AC25D6 /* student.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D3EAC8125EAA42800AC25D6 /* student.svg */; };
 		2D3F8FA6218586290095ACD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA5218586290095ACD7 /* AppDelegate.swift */; };
 		2D3F8FA8218586290095ACD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA7218586290095ACD7 /* ViewController.swift */; };
 		2D3F8FAB218586290095ACD7 /* libHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F8FA9218586290095ACD7 /* libHelper.xcdatamodeld */; };
@@ -100,6 +101,7 @@
 		2D3EAC4A25EA55DE00AC25D6 /* popup.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
 		2D3EAC5325EA567800AC25D6 /* gear.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = gear.svg; sourceTree = "<group>"; };
 		2D3EAC5425EA567800AC25D6 /* oahelper_black.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = oahelper_black.svg; sourceTree = "<group>"; };
+		2D3EAC8125EAA42800AC25D6 /* student.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = student.svg; sourceTree = "<group>"; };
 		2D3F8FA2218586290095ACD7 /* Open Access Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Access Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3F8FA5218586290095ACD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D3F8FA7218586290095ACD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		2D3EAC5025EA563B00AC25D6 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2D3EAC8125EAA42800AC25D6 /* student.svg */,
 				2D3EAC5325EA567800AC25D6 /* gear.svg */,
 				2D3EAC5425EA567800AC25D6 /* oahelper_black.svg */,
 			);
@@ -409,6 +412,7 @@
 				2D3EAC5625EA567800AC25D6 /* oahelper_black.svg in Resources */,
 				2D3F8FD62185867F0095ACD7 /* mycss.css in Resources */,
 				2D446A7D22E77A65001ECFA0 /* apikey.plist in Resources */,
+				2D3EAC8225EAA42800AC25D6 /* student.svg in Resources */,
 				2DD336AD23C1C6FA004A34C5 /* loader.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

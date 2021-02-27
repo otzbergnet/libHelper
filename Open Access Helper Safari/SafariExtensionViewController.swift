@@ -93,7 +93,16 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
           }
         }
 
-        let buttons = "\(oabutton)\(citationbutton)\(proxybutton)\(addonbutton)"
+        var buttons = "\(oabutton)\(citationbutton)\(proxybutton)\(addonbutton)"
+        
+        if (buttons == "" && onProxiedDomain(ezproxyPrefix: ezproxyPrefix, currentUrl: popupAnswer.currentUrl)) {
+            buttons = "<img src=\"student.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. </p>"
+        }
+        else if(buttons == "") {
+            buttons = "<img src=\"student.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">Open Access Helper could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!</p>";
+        }
+        
+        
         let popupHtml = """
         <!DOCTYPE HTML>
             <html>
