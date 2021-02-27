@@ -42,21 +42,21 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
         
         if (popupAnswer.oaurl != "" && popupAnswer.oastatus != "") {
           if (popupAnswer.oaurl.contains("https://openaccessbutton.org/request?")) {
-            oabutton = "We didn't find an Open Access copy :(<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
+            oabutton = "\(NSLocalizedString("We didn't find an Open Access copy :(", comment: "no OA found"))<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
             buttonCount += 1;
           }
           else if(popupAnswer.isIll == "ill") {
-            oabutton = "We didn't find an Open Access copy :(<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
+            oabutton = "\(NSLocalizedString("We didn't find an Open Access copy :(", comment: "no OA found"))<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
             buttonCount += 1;
             illButtonCount += 1;
           }
           else {
-            oabutton = "We found an Open Access copy!<br><a class=\"button\" id=\"oabutton\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
+            oabutton = "\(NSLocalizedString("We found an Open Access copy!", comment: "oa found"))<br><a class=\"button\" id=\"oabutton\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
             buttonCount += 1;
           }
         }
         if (popupAnswer.citationCount > 0) {
-            citationbutton = "See who cited this paper:<br><a class=\"button\" id=\"citationbutton\" href=\"https://www.oahelper.org/opencitations/?doi=\(popupAnswer.doi)\" target=\"_blank\">Times Cited: \(popupAnswer.citationCount)</a>"
+            citationbutton = "\(NSLocalizedString("See who cited this paper:", comment: "OpenCitations.net Intro"))<br><a class=\"button\" id=\"citationbutton\" href=\"https://www.oahelper.org/opencitations/?doi=\(popupAnswer.doi)\" target=\"_blank\">Times Cited: \(popupAnswer.citationCount)</a>"
           buttonCount += 1;
         }
 
@@ -72,7 +72,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
                   urltoproxy = "\(domain.prefix(25))&hellip;"
                 }
                 let proxyUrl = "\(ezproxyPrefix)\(popupAnswer.currentUrl)"
-                proxybutton = "Your <em>\(instituteName)</em> Access:<br><a class=\"button\" id=\"ezproxybutton\" href=\"\(proxyUrl)\" target=\"_blank\">\(urltoproxy)</a>"
+                proxybutton = "\(NSLocalizedString("Your", comment: "used in YOUR university access label")) <em>\(instituteName)</em> \(NSLocalizedString("Access", comment: "used in your university ACCESS label")):<br><a class=\"button\" id=\"ezproxybutton\" href=\"\(proxyUrl)\" target=\"_blank\">\(urltoproxy)</a>"
                 buttonCount += 1;
             }
         }
@@ -82,24 +82,24 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
         
         if(ill && popupAnswer.doi != "" && popupAnswer.doi != "" && illButtonCount == 0){
             let illRequestUrl = "\(illUrl)\(popupAnswer.doi)"
-            let illLabel = "Ask your Library"
+            let illLabel = NSLocalizedString("Ask your Library", comment: "ask your library String")
 
           if(buttonCount < 3){
             //we will simply add a new button
-            addonbutton = "Still no access?<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(illRequestUrl)\" target=\"_blank\">\(illLabel)</a>"
+            addonbutton = "\(NSLocalizedString("Still no access?", comment: "still no access label"))<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(illRequestUrl)\" target=\"_blank\">\(illLabel)</a>"
           }
           else{
-            addonbutton = "Still no access? <a class=\"button\" id=\"oabuttonrequestlink\" href=\"\(illRequestUrl)\" target=\"_blank\">\(illLabel)</a>"
+            addonbutton = "\(NSLocalizedString("Still no access?", comment: "still no access label")) <a class=\"button\" id=\"oabuttonrequestlink\" href=\"\(illRequestUrl)\" target=\"_blank\">\(illLabel)</a>"
           }
         }
 
         var buttons = "\(oabutton)\(citationbutton)\(proxybutton)\(addonbutton)"
         
         if (buttons == "" && onProxiedDomain(ezproxyPrefix: ezproxyPrefix, currentUrl: popupAnswer.currentUrl)) {
-            buttons = "<img src=\"student.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. </p>"
+            buttons = "<img src=\"student.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">\(NSLocalizedString("You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. ", comment: "longer string shown when there are no options, but you likely have access"))</p>"
         }
         else if(buttons == "") {
-            buttons = "<img src=\"student.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">Open Access Helper could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!</p>";
+            buttons = "<img src=\"student.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">\(NSLocalizedString("Open Access Helper could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!", comment: "longer string shown when there are no options to show"))</p>";
         }
         
         
@@ -117,7 +117,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
                     <img src="oahelper_black.svg" id="oahelpericon">Open Access Helper
                 </div>
                 <div id="popupanswer">\(buttons)</div>
-                <div id="footer"><a href="https://www.oahelper.org/support/" id="supportlink" target="_blank">Contact Support </a> | <a href="oahelper://settings/" id="configurationlink" target="_blank">Configuration</a><span id="hidebadgespan"> | <a href="oahelper://clearBadge/" id="hidebadges" target="_blank">Hide Badges</a></span></div>
+                <div id="footer"><a href="https://www.oahelper.org/support/" id="supportlink" target="_blank">\(NSLocalizedString("Contact Support", comment: "contact support")) </a> | <a href="oahelper://settings/" id="configurationlink" target="_blank">\(NSLocalizedString("Configuration", comment: "configuration"))</a><span id="hidebadgespan"> | <a href="oahelper://clearBadge/" id="hidebadges" target="_blank">\(NSLocalizedString("Hide Badges", comment: "hide badges"))</a></span></div>
             </body>
             </html>
         """
