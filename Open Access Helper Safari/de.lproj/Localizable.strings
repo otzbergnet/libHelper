@@ -237,3 +237,6 @@
 
 /* used in YOUR university access label */
 "Your" = "Dein";
+
+/* times cited */
+"Times Cited:" = "Zitiert von: ";

@@ -176,6 +176,9 @@
 /* No comment provided by engineer. */
 "Test" = "Testen";
 
+/* times cited */
+"Times Cited:" = "Zitiert von: ";
+
 /* changes Context Label, base-search-net */
 "Visit " = "Seite aufrufen: ";
 

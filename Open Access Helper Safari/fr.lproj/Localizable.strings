@@ -236,3 +236,6 @@
 
 /* used in YOUR university access label LEAVE EMPTY*/
 "Your" = "&nbsp;";
+
+/* times cited */
+"Times Cited:" = "Nombre de fois cité&nbsp;:";

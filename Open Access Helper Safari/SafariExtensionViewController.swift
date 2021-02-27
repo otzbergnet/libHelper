@@ -56,7 +56,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
           }
         }
         if (popupAnswer.citationCount > 0) {
-            citationbutton = "\(NSLocalizedString("See who cited this paper:", comment: "OpenCitations.net Intro"))<br><a class=\"button\" id=\"citationbutton\" href=\"https://www.oahelper.org/opencitations/?doi=\(popupAnswer.doi)\" target=\"_blank\">Times Cited: \(popupAnswer.citationCount)</a>"
+            citationbutton = "\(NSLocalizedString("See who cited this paper:", comment: "OpenCitations.net Intro"))<br><a class=\"button\" id=\"citationbutton\" href=\"https://www.oahelper.org/opencitations/?doi=\(popupAnswer.doi)\" target=\"_blank\">\(NSLocalizedString("Times Cited:", comment: "times cited")) \(popupAnswer.citationCount)</a>"
           buttonCount += 1;
         }
 
