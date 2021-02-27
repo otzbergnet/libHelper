@@ -25,7 +25,7 @@ if(!inIframe()){
     document.addEventListener("keydown", fireOnKeypress, false);
 }
 
-if(window.location.hostname == "gettheresearch.org" || window.location.hostname == "psycnet.apa.org"){
+if(window.location.hostname == "gettheresearch.org" || onSupportedDomain('psycnet.apa.org')){
     document.addEventListener('click', ()=>{
         requestAnimationFrame(()=>{
             if(spaUrl !== location.href){
@@ -33,14 +33,12 @@ if(window.location.hostname == "gettheresearch.org" || window.location.hostname 
                 removeMyself()
                 findDoi3();
             }
-            else{
-                if(window.location.hostname == "psycnet.apa.org"){
+            else if(onSupportedDomain('psycnet.apa.org')){
                     //moving from search results to first result never triggered the URL change
                     doConsoleLog("OAHELPER: I am on psycnet");
                     setTimeout(function () {
                         doPsycNet();
                     },1500);
-                }
             }
             spaUrl = location.href;
         });
@@ -259,7 +257,7 @@ function findDoi4(){
     // to avoid doing this on every page, we specify the pages we support
     
     var host = window.location.hostname;
-    if(host.indexOf("ieeexplore.ieee.org") > -1){
+    if(onSupportedDomain("ieeexplore.ieee.org")){
         // IEEE
         // this is a Single Page Application and the delay helps catch the DOI
         setTimeout(function (){
@@ -275,7 +273,7 @@ function findDoi4(){
         }, 1500);
         
     }
-    else if(host.indexOf("nber.org") > -1){
+    else if(onSupportedDomain("nber.org")){
         //National Bureau of Economic Research
         var regex = new RegExp('Document Object Identifier \\(DOI\\): (10.*?)<\\/p>');
         var doi = runRegexOnDoc(regex);
@@ -283,7 +281,7 @@ function findDoi4(){
         scrapedDoi(doi);
         
     }
-    else if(host.indexOf("base-search.net") > -1){
+    else if(onSupportedDomain("base-search.net")){
         // BASE SEARCH - for detail view, really quite superflous, but I like base
         if (document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]").length > 0){
             var doi = document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]")[0].href.replace('https://doi.org/','').replace('http://doi.org/','');
@@ -293,7 +291,7 @@ function findDoi4(){
             alternativeOA("n", "n", "-");
         }
     }
-    else if(host.indexOf("gettheresearch.org") > -1){
+    else if(onSupportedDomain("gettheresearch.org")){
         doConsoleLog("Open Access Helper (Safari Extension) - support for gettheresearch.org is experimental");
         // GetTheResearch.org- for detail view, really quite superflous, but I like base
         if(window.location.search.indexOf("zoom=") > -1){
@@ -301,7 +299,7 @@ function findDoi4(){
             scrapedDoi(potentialDoi);
         }
     }
-    else if(host.indexOf("psycnet.apa.org") > -1){
+    else if(onSupportedDomain("psycnet.apa.org")){
         doConsoleLog("Open Access Helper (Safari Extension) - support for psycnet.apa.org is experimental");
         
         if(document.querySelectorAll(".citation-text>a").length > 0){
@@ -314,7 +312,7 @@ function findDoi4(){
             doPsycNet();
         }
     }
-    else if(host.indexOf("proquest.com") > -1){
+    else if(onSupportedDomain("proquest.com")){
         doConsoleLog("Open Access Helper (Safari Extension) - support for proquest.com is experimental");
         if(document.querySelectorAll(".abstract_Text").length > 0){
             var doiElements = document.querySelectorAll(".abstract_Text");
@@ -325,7 +323,7 @@ function findDoi4(){
             scrapedDoi(doi);
         }
     }
-    else if(host.indexOf("ebscohost.com") > -1 && document.location.href.indexOf("/detail") > -1){
+    else if(onSupportedDomain("ebscohost.com") && document.location.href.indexOf("/detail") > -1){
         doConsoleLog("Open Access Helper (Safari Extension) - support for ebscohost.com is experimental");
         const fullTextIndicators = ['pdf-ft', 'html-ft', 'html-ftwg'];
         let isFullText = false;
@@ -354,7 +352,7 @@ function findDoi4(){
             });
         }
     }
-    else if(host.indexOf("dl.acm.org") > -1 && document.location.href.indexOf("/doi/") > -1){
+    else if(onSupportedDomain("dl.acm.org") && document.location.href.indexOf("/doi/") > -1){
         doConsoleLog("Open Access Helper (Safari Extension) - support for dl.acm.org is experimental");
         var urlParts = document.location.href.split("/doi/");
         if(isDOI(urlParts[1])){
@@ -370,6 +368,17 @@ function findDoi4(){
     }
 }
 
+function onSupportedDomain(domain){
+  const host = window.location.hostname;
+  if(host.indexOf(domain) > -1){
+    return true;
+  }
+  const proxiedDomain = domain.replaceAll('.', '-')+'.';
+  if(host.indexOf(proxiedDomain) > -1){
+    return true;
+  }
+  return false;
+}
 
 function getMeta(metaName) {
     // get meta tags and loop through them. Looking for the name attribute and see if it is the metaName
