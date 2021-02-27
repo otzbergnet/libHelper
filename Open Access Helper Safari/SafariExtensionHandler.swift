@@ -117,6 +117,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 self.findOpenCitations(doi: doi as! String, page: page)
             }
         }
+        else if messageName == "currentState"{
+
+            let myPopupAnswer = PopupAnswer()
+            print(userInfo?["citationcount"])
+            myPopupAnswer.citationCount = userInfo?["citationcount"] as! Int
+            myPopupAnswer.citationUrl = userInfo?["citationurl"] as! String
+            myPopupAnswer.currentUrl = userInfo?["currenturl"] as! String
+            myPopupAnswer.doi = userInfo?["doi"] as! String
+            myPopupAnswer.isIll = userInfo?["isIll"] as! String
+            myPopupAnswer.oastatus = userInfo?["oastatus"] as! String
+            myPopupAnswer.oaurl = userInfo?["oaurl"] as! String
+            SafariExtensionViewController.shared.createPopover(popupAnswer: myPopupAnswer)
+            
+        }
         
     }
     

@@ -133,6 +133,19 @@ function messageHandler(event){
     else if(event.name == "consolelog_configuration"){
         configuration['consolelog'] = event.message.consolelog;
     }
+    else if(event.name == "getCurrentState"){
+        let popupAnswer = getPopupAnswer();
+        console.log(popupAnswer);
+        safari.extension.dispatchMessage("currentState", {
+            "oaurl": popupAnswer.oaurl,
+            "oastatus": popupAnswer.oastatus,
+            "citationcount": popupAnswer.citationcount,
+            "citationurl": popupAnswer.citationurl,
+            "currenturl": popupAnswer.currenturl,
+            "isIll": popupAnswer.isIll,
+            "doi": popupAnswer.doi}
+        );
+    }
 }
 
 function findDoi(){
@@ -569,7 +582,7 @@ function requestDocument(oab, doistring){
     window.sessionStorage.clear();
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge=""/><span id="oahelper_oahelpmsg">'+serviceName+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge="" data-doi="'+doistring+'"/><span id="oahelper_oahelpmsg">'+serviceName+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_doifound_outer';
     div.className = 'oahelper_doifound_outer oahelper_doiblue';
     
@@ -1265,7 +1278,7 @@ function addCitationCount(count, doi){
     var src = safari.extension.baseURI + "ocicon.svg";
     var div = document.createElement('div');
     
-    div.innerHTML = '<div class="oahelper_opencitations" onclick="window.open(\''+url+'\')" title="OpenCitations '+message+'"><img id="oahelper_opencitations_logo" src="'+src+'" align="left" title="'+message+'" data-oaurl="'+url+'" data-badge=""/><span id="oahelper_opencitations_msg">'+message+'</span></div><span id="oahelper_opencitations_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_opencitations" onclick="window.open(\''+url+'\')" title="OpenCitations '+message+'"><img id="oahelper_opencitations_logo" src="'+src+'" align="left" title="'+message+'" data-oaurl="'+url+'" data-badge="" data-citcount="'+count+'"/><span id="oahelper_opencitations_msg">'+message+'</span></div><span id="oahelper_opencitations_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_opencitations_outer';
     div.className = 'oahelper_opencitations_outer';
     
@@ -1279,4 +1292,49 @@ function doConsoleLog(message) {
   if (configuration['consolelog'] != undefined && !configuration['consolelog']) {
     console.log(message);
   }
+}
+
+function getPopupAnswer() {
+  let response = {
+    oaurl: '',
+    oastatus: '',
+    citationcount: 0,
+    citationurl: '',
+    currenturl: window.location.href,
+    isIll: '',
+    doi: ''
+  };
+
+  const oaurlElement = document.getElementById('oahelper_doicheckmark');
+  const oaStatusElement = document.getElementById('oahelper_oahelpmsg');
+  const citationElement = document.getElementById('oahelper_opencitations_msg');
+  const citationUrlElement = document.getElementById('oahelper_opencitations_logo');
+  
+  if(oaurlElement != undefined){
+    if (oaurlElement.dataset.badge != undefined) {
+        response.isIll = oaurlElement.dataset.badge;
+    }
+      
+    if (oaurlElement.dataset.doi != undefined) {
+        response.doi = oaurlElement.dataset.doi;
+    }
+      
+    if (oaurlElement.dataset.oaurl) {
+        response.oaurl = oaurlElement.dataset.oaurl;
+    }
+  }
+
+  if (oaStatusElement != undefined) {
+    response.oastatus = oaStatusElement.innerText;
+  }
+
+  if (citationUrlElement != undefined) {
+      response.citationcount = parseInt(citationUrlElement.dataset.citcount);
+  }
+
+  if (citationUrlElement != undefined) {
+      response.citationurl = citationUrlElement.dataset.oaurl;
+  }
+
+  return response;
 }
