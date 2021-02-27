@@ -133,19 +133,19 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
     }
     
-    override func toolbarItemClicked(in window: SFSafariWindow) {
-        
-        window.getActiveTab(completionHandler: { (activeTab) in
-            
-            activeTab?.getActivePage(completionHandler:  { (activePage) in
-                
-                activePage?.getPropertiesWithCompletionHandler( { (properties) in
-                    activePage?.dispatchMessageToScript(withName: "getOAUrl", userInfo: [:])
-                })
-            })
-        })
-        
-    }
+//    override func toolbarItemClicked(in window: SFSafariWindow) {
+//
+//        window.getActiveTab(completionHandler: { (activeTab) in
+//
+//            activeTab?.getActivePage(completionHandler:  { (activePage) in
+//
+//                activePage?.getPropertiesWithCompletionHandler( { (properties) in
+//                    activePage?.dispatchMessageToScript(withName: "getOAUrl", userInfo: [:])
+//                })
+//            })
+//        })
+//
+//    }
     
     // update context menu with the text selected by the user in Safari
     override func validateContextMenuItem(withCommand command: String, in page: SFSafariPage, userInfo: [String : Any]? = nil, validationHandler: @escaping (Bool, String?) -> Void){
@@ -306,10 +306,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     override func popoverDidClose(in window: SFSafariWindow){
         window.getActiveTab { (activeTab) in
             activeTab?.getActivePage(completionHandler:  { (activePage) in
-                activePage?.dispatchMessageToScript(withName: "doi", userInfo: nil);
+                //activePage?.dispatchMessageToScript(withName: "doi", userInfo: nil);
             })
         }
-        
     }
     
     func checkUnpaywall(doi: String, page: SFSafariPage, originUrl: String) {

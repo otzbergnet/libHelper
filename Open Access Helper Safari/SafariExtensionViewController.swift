@@ -126,10 +126,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
             let navRequest = "\(navigationAction.request)"
             switch navRequest {
             case "oahelper://settings/":
-                print(navRequest)
                 self.dismissPopover()
+                if let url = URL(string: "oahelper:settings"),
+                   NSWorkspace.shared.open(url) {
+                }
             case "oahelper://clearBadge/":
-                print(navRequest)
+                sendHideBadgeRequest()
                 self.dismissPopover()
             default:
                 openExternalUrl(url: navRequest)
@@ -155,6 +157,18 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
                 activeTab?.getActivePage(completionHandler:  { (activePage) in
                     activePage?.getPropertiesWithCompletionHandler( { (properties) in
                         activePage?.dispatchMessageToScript(withName: "getCurrentState", userInfo: [:])
+                    })
+                })
+            })
+        }
+    }
+    
+    func sendHideBadgeRequest(){
+        SFSafariApplication.getActiveWindow { (window) in
+            window?.getActiveTab(completionHandler: { (activeTab) in
+                activeTab?.getActivePage(completionHandler:  { (activePage) in
+                    activePage?.getPropertiesWithCompletionHandler( { (properties) in
+                        activePage?.dispatchMessageToScript(withName: "hideBadge", userInfo: [:])
                     })
                 })
             })

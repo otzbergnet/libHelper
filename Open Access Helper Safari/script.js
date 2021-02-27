@@ -135,7 +135,6 @@ function messageHandler(event){
     }
     else if(event.name == "getCurrentState"){
         let popupAnswer = getPopupAnswer();
-        console.log(popupAnswer);
         safari.extension.dispatchMessage("currentState", {
             "oaurl": popupAnswer.oaurl,
             "oastatus": popupAnswer.oastatus,
@@ -145,6 +144,9 @@ function messageHandler(event){
             "isIll": popupAnswer.isIll,
             "doi": popupAnswer.doi}
         );
+    }
+    else if(event.name == "hideBadge"){
+        hideBadgeRequest();
     }
 }
 
@@ -1338,4 +1340,16 @@ function getPopupAnswer() {
   }
 
   return response;
+}
+
+function hideBadgeRequest() {
+  if (document.getElementById('oahelper_doifound_outer') != null) {
+    document.getElementById('oahelper_doifound_outer').style.display = 'none';
+  }
+  if (document.getElementById('oahelper_opencitations_outer') != null) {
+    document.getElementById('oahelper_opencitations_outer').style.display = 'none';
+  }
+  if (document.getElementById('oahelper_corerecom_outer') != null) {
+    document.getElementById('oahelper_corerecom_outer').style.display = 'none';
+  }
 }
