@@ -16,7 +16,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
     
     static let shared: SafariExtensionViewController = {
         let shared = SafariExtensionViewController()
-        shared.preferredContentSize = NSSize(width:300, height:400)
+        shared.preferredContentSize = NSSize(width:310, height:420)
         return shared
     }()
     
@@ -42,21 +42,21 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
         
         if (popupAnswer.oaurl != "" && popupAnswer.oastatus != "") {
           if (popupAnswer.oaurl.contains("https://openaccessbutton.org/request?")) {
-            oabutton = "We didn't find an Open Access copy :(<br><button id=\"oabuttonrequest\" data-url=\"\(popupAnswer.oaurl)\">\(popupAnswer.oastatus)</button>"
+            oabutton = "We didn't find an Open Access copy :(<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
             buttonCount += 1;
           }
           else if(popupAnswer.isIll == "ill") {
-            oabutton = "We didn't find an Open Access copy :(<br><button id=\"oabuttonrequest\" data-url=\"\(popupAnswer.oaurl)\">\(popupAnswer.oastatus)</button>"
+            oabutton = "We didn't find an Open Access copy :(<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
             buttonCount += 1;
             illButtonCount += 1;
           }
           else {
-            oabutton = "We found an Open Access copy!<br><button id=\"oabutton\" data-url=\"\(popupAnswer.oaurl)\">\(popupAnswer.oastatus)</button>"
+            oabutton = "We found an Open Access copy!<br><a class=\"button\" id=\"oabutton\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
             buttonCount += 1;
           }
         }
         if (popupAnswer.citationCount > 0) {
-            citationbutton = "See who cited this paper:<br><button id=\"citationbutton\" data-url=\"\(popupAnswer.oaurl)\">Times Cited: \(popupAnswer.citationCount)</button>"
+            citationbutton = "See who cited this paper:<br><a class=\"button\" id=\"citationbutton\" href=\"https://www.oahelper.org/opencitations/?doi=\(popupAnswer.doi)\" target=\"_blank\">Times Cited: \(popupAnswer.citationCount)</a>"
           buttonCount += 1;
         }
 
@@ -72,7 +72,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
                   urltoproxy = "\(domain.prefix(25))&hellip;"
                 }
                 let proxyUrl = "\(ezproxyPrefix)\(popupAnswer.currentUrl)"
-                proxybutton = "Your <em>\(instituteName)</em> Access:<br><button id=\"ezproxybutton\" data-url=\"\(proxyUrl)\">\(urltoproxy)</button>"
+                proxybutton = "Your <em>\(instituteName)</em> Access:<br><a class=\"button\" id=\"ezproxybutton\" href=\"\(proxyUrl)\" target=\"_blank\">\(urltoproxy)</a>"
                 buttonCount += 1;
             }
         }
@@ -86,10 +86,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
 
           if(buttonCount < 3){
             //we will simply add a new button
-            addonbutton = "Still no access?<br><button id=\"oabuttonrequest\" data-url=\"\(illRequestUrl)\">\(illLabel)</button>"
+            addonbutton = "Still no access?<br><a class=\"button\" id=\"oabuttonrequest\" href=\"\(illRequestUrl)\" target=\"_blank\">\(illLabel)</a>"
           }
           else{
-            addonbutton = "Still no access? <button id=\"oabuttonrequestlink\" data-url=\"\(illRequestUrl)\">\(illLabel)</button>"
+            addonbutton = "Still no access? <a class=\"button\" id=\"oabuttonrequestlink\" href=\"\(illRequestUrl)\" target=\"_blank\">\(illLabel)</a>"
           }
         }
 

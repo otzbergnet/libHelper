@@ -508,9 +508,8 @@ function oafound(message){
     else{
         message.version = "CORE Discovery";
     }
-    
     var div = document.createElement('div');
-    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+oaVersion+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left" title="'+message.title+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/><span id="oahelper_oahelpmsg">'+message.version+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+oaVersion+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left" title="'+message.title+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!" data-doi="'+message.doi+'"/><span id="oahelper_oahelpmsg">'+message.version+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_doifound_outer';
     div.className = 'oahelper_doifound_outer';
     
@@ -700,12 +699,13 @@ function alternativeOA(message, oab, doistring){
 
 //
 
-function successfulAlternativeOAFound(pdf, type = "Open Access", onOaTest = false){
+function successfulAlternativeOAFound(pdf, type = "Open Access", onOaTest = false, doistring){
     var message = new Array();
     message['url'] = pdf;
     message['title'] = type+" found at: ";
     message['version'] = type+" (*)";
     message['source'] = "Page Analysis";
+    message['doi'] = doistring;
     oafound(message);
     var currentUrl = window.location.href;
     if(onOaTest){
@@ -761,6 +761,7 @@ function webscraperBadge(selector, onoa, oab){
         message['url'] = href;
         message['title'] = "Open Access found at: ";
         message['version'] = "Free Access (*)";
+        message['doi'] = "x";
         oafound(message);
         if(onoa){
             onOa("This is the Open Access location!");
@@ -1024,7 +1025,7 @@ function doIngentaConnect(oab, doistring, host){
             var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
             if(href != null && href != ""){
                 var url = window.location.protocol+'//'+host+href;
-                successfulAlternativeOAFound(url, "Free Access", true);
+                successfulAlternativeOAFound(url, "Free Access", true, doistring);
             }
             else{
                 doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1036,7 +1037,7 @@ function doIngentaConnect(oab, doistring, host){
             if(popup != null && popup != "" && popup.indexOf("download" > -1)){
                 if(popup != null && popup != ""){
                     var url = window.location.protocol+'//'+host+popup;
-                    successfulAlternativeOAFound(url, "Free Access", true);
+                    successfulAlternativeOAFound(url, "Free Access", true, doistring);
                 }
                 else{
                     doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1062,7 +1063,7 @@ function doBmj(oab, doistring, host){
     var pdf = getMeta("citation_pdf_url")
     if(document.querySelectorAll("svg.icon-open-access").length > 0){
         if(pdf != "" && pdf.indexOf("http" == 0)){
-            successfulAlternativeOAFound(pdf, "Open Access", true);
+            successfulAlternativeOAFound(pdf, "Open Access", true, doistring);
         }
         else{
             doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1074,7 +1075,7 @@ function doBmj(oab, doistring, host){
         var bmjFree = false;
         for(i=0; i<freeAccess.length; i++){
             if(freeAccess[i].textContent == "Free" && !bmjFree){
-                successfulAlternativeOAFound(pdf, "Free Access", true);
+                successfulAlternativeOAFound(pdf, "Free Access", true, doistring);
             }
         }
         if(!bmjFree){
@@ -1143,7 +1144,7 @@ function doCambridge(oab, doistring, host){
     if(document.querySelectorAll("span.entitled").length > 0){
         var pdf = getMeta("citation_pdf_url")
         if(pdf != "" && pdf.indexOf("http" == 0)){
-            successfulAlternativeOAFound(pdf, "Free / Subscription Access", true)
+            successfulAlternativeOAFound(pdf, "Free / Subscription Access", true, doistring)
         }
     }
     else{
@@ -1160,7 +1161,7 @@ function doWiley(oab, doistring, host){
         if(toCheck2 === null){
             doConsoleLog("Open Access Helper (Safari Extension): We found FREE Access");
             var pdf = getMeta("citation_pdf_url");
-            successfulAlternativeOAFound(pdf, "Free Access", true);
+            successfulAlternativeOAFound(pdf, "Free Access", true, doistring);
         }
     }
     else{
@@ -1178,7 +1179,7 @@ function doSpringerLink(oab, doistring, host){
     if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Download") > -1){
         doConsoleLog("Open Access Helper (Safari Extension): We found FREE / Subscription Access");
         var pdf = getMeta("citation_pdf_url");
-        successfulAlternativeOAFound(pdf, "Free / Subscription Access", true);
+        successfulAlternativeOAFound(pdf, "Free / Subscription Access", true, doistring);
     }
     else{
         doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1224,7 +1225,7 @@ function doBioMedArxiv() {
       if (href.indexOf('pdf') > -1) {
         // I am on Open Access
         const url = window.location.protocol+"//"+window.location.hostname+href;
-        successfulAlternativeOAFound(url, 'Preprint Server', true);
+        successfulAlternativeOAFound(url, 'Preprint Server', true, doistring);
       }
     }
   }
@@ -1238,7 +1239,7 @@ function doArxivOrg() {
         if (href.indexOf('pdf') > -1) {
           // I am on Open Access
           const url = window.location.protocol+"//"+window.location.hostname+href;
-          successfulAlternativeOAFound(url, 'Preprint Server', true);
+          successfulAlternativeOAFound(url, 'Preprint Server', true, doistring);
         }
       }
     }
@@ -1254,7 +1255,7 @@ function doOSFArxiv() {
         if (href.indexOf('download') > -1) {
           // I am on Open Access
           const url = `${href}`;
-          successfulAlternativeOAFound(url, 'Preprint Server', true);
+          successfulAlternativeOAFound(url, 'Preprint Server', true, doistring);
         }
       }
     }

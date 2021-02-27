@@ -120,7 +120,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         else if messageName == "currentState"{
 
             let myPopupAnswer = PopupAnswer()
-            print(userInfo?["citationcount"])
             myPopupAnswer.citationCount = userInfo?["citationcount"] as! Int
             myPopupAnswer.citationUrl = userInfo?["citationurl"] as! String
             myPopupAnswer.currentUrl = userInfo?["currenturl"] as! String
@@ -351,7 +350,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     updateCount()
                     let oaVersion = self.getOpenAccessVersion(data: oaData)
                     let title = NSLocalizedString("Open Access Version Found from unpaywall.org! ", comment: "used in JS injection to indicate OA found")
-                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title, "source" : "unpaywall.org", "version" : "\(oaVersion)"])
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa.url)", "title" : title, "source" : "unpaywall.org", "version" : "\(oaVersion)", "doi" : doi])
                     self.findOpenCitations(doi: doi, page: page)
                 }
                 else{
@@ -444,7 +443,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     updateBadge(text: "!")
                     updateCount()
                     let title = NSLocalizedString("Open Access Version Found from core.ac.uk! ", comment: "used in JS injection to indicate OA found")
-                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa)", "title" : title, "source" : "core.ac.uk", "version" : ""])
+                    page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(boa)", "title" : title, "source" : "core.ac.uk", "version" : "", "doi" : doi])
                 }
                 else{
                     toolbarAction(imgName: "oahelper_black.pdf")
@@ -528,7 +527,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         updateBadge(text: "!")
                         updateCount()
                         let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
-                        page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button", "version" : ""])
+                        page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(targetUrl)", "title" : title, "source" : "Open Access Button", "version" : "", "doi" : doi])
                         self.findOpenCitations(doi: doi, page: page)
                     }
                     else{
@@ -615,7 +614,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                                 updateBadge(text: "!")
                                 updateCount()
                                 let title = NSLocalizedString("Open Access Version Found from Open Access Button ", comment: "used in JS injection to indicate OA found")
-                                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button", "version" : ""])
+                                page.dispatchMessageToScript(withName: "oafound", userInfo: [ "url" : "\(url)", "title" : title, "source" : "Open Access Button", "version" : "", "doi" : doi])
                             }
                             else{
                                 noOpenAccessFound(page: page, doi: doi, year: year)
