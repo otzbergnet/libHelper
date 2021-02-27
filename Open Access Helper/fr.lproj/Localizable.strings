@@ -7,6 +7,12 @@
 /* acceptedVersion */
 "Accepted Version" = "Version acceptée";
 
+/* used in your university ACCESS label */
+"Access" = "Zugang";
+
+/* ask your library String */
+"Ask your Library" = "Frag die Bibliothek";
+
 /* changes Context Label */
 "base-search.net search for: \"%@\"" = "base-search.net recherche : \"%@\"";
 
@@ -22,11 +28,17 @@
 /* shows as part of the phras x Close in the Core Recommender */
 "close" = "fermer";
 
+/* configuration */
+"Configuration" = "Einstellungen";
+
 /* iCloud internet connection */
 "Connection Error" = "Erreur de connexion";
 
 /* No comment provided by engineer. */
 "Contact Me" = "Contact";
+
+/* contact support */
+"Contact Support" = "Support";
 
 /* changes Context Label */
 "core.ac.uk search for: \"%@\"" = "core.ac.uk recherche : \"%@\"";
@@ -48,6 +60,9 @@
 
 /* No comment provided by engineer. */
 "Getting Started: " = "Commencer :";
+
+/* hide badges */
+"Hide Badges" = "Icons entf.";
 
 /* error message title
    iCloud error - not authenticated */
@@ -73,6 +88,9 @@
 
 /* will show in JS Alert, when there was a doi, but no oadoi url */
 "Open Access Helper could not find a legal open-access version of this article." = "Open Access Helper n'a pas pu trouver de version en accès libre légale pour cet article.";
+
+/* longer string shown when there are no options to show */
+"Open Access Helper could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!" = "Open Access Helper konnte keinen relevanten Dienst finden und ist daher inaktiv. Ändere die Einstellungen oder kontaktiere den Support!";
 
 /* will show in JS Alert, when there no doi = inactive state */
 "Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message" = "Open Access Helper est inactif sur cette page car aucun DOI n'a été trouvé\n\nCliquez sur OK pour en savoir plus sur cette app\nCliquez sur Annuler pour fermer cette notification";
@@ -122,6 +140,9 @@
 /* show searching, when looking up settings */
 "Searching..." = "Cherche...";
 
+/* OpenCitations.net Intro */
+"See who cited this paper:" = "Wer hat diesen Artikel zitiert:";
+
 /* touchbar label */
 "Settings: " = "Paramètres : ";
 
@@ -139,6 +160,9 @@
   Copyright © 2018 Claus Wolf. All rights reserved.
 */
 "So far we've helped you find \(count) Open Access Documents!" = "Jusqu'ici, nous vous avons aidé·e à trouver \(count) documents en accès libre !";
+
+/* still no access label */
+"Still no access?" = "Noch kein Zugang?";
 
 /* submittedVersion */
 "Submitted Version" = "Version soumise";
@@ -176,6 +200,9 @@
 /* No comment provided by engineer. */
 "We are sorry, but there was a connection error. Please check your Internet Connection" = "Erreur de connexion. Veuillez vérifier votre connexion à Internet.";
 
+/* no OA found */
+"We didn't find an Open Access copy :(" = "Leider kein Open Access :(";
+
 /* if failure received */
 "We encountered an unexpected error" = "Erreur inattendue";
 
@@ -184,6 +211,9 @@
 
 /* to be shown in JavaScript Popover */
 "We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!" = "Nous avons établi une petite liste de recommandations semblables à l'article que vous consultez. Nous espérons qu'elles vous seront utiles !";
+
+/* oa found */
+"We found an Open Access copy!" = "Open Access Kopie gefunden!";
 
 /* No comment provided by engineer. */
 "We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?" = "Nous n'avons pas trouvé de favoris. Êtes-vous certain·e que vous avez déjà enregistré en favoris des articles via Open Access Helper App pour iOS ?";
@@ -194,8 +224,14 @@
 /* used in JS confirm that you are on OA already */
 "You are at the Open Acccess Location!" = "Vous êtes déjà sur une version en accès libre !";
 
+/* longer string shown when there are no options, but you likely have access */
+"You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. " = "Du nutzt bereits den Proxy, oder befindest Dich auf einer Institutswebseite.<br><br>Open Access Helper konnte keinen relevanten Dienst finden und ist daher inaktiv.";
+
 /* shown in stats, if no proxy prefix present */
 "You did not setup Proxy Support yet" = "Vous n'avez pas configuré de Proxy";
 
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Nous vous avons aidé·e pour %@ recherches Open Access";
+
+/* used in YOUR university access label */
+"Your" = "Dein";
