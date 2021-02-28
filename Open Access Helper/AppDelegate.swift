@@ -70,6 +70,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 self.preferences.setStringValue(key: "instituteId", value: instituteId)
                             }
                         }
+                        if(queryItem.name == "name"){
+                            if let instituteName = queryItem.value{
+                                self.preferences.setStringValue(key: "instituteName", value: instituteName)
+                            }
+                        }
                     }
                 }
             }
