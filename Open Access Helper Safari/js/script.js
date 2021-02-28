@@ -581,18 +581,20 @@ function requestDocument(oab, doistring){
     var oabUrl = "https://openaccessbutton.org/request?url="
     var message = "We didn't find a legal Open Access Version, but you could try and request it via Open Access Button";
     var serviceName = "Open Access Button";
+    var badge = "oab";
     
     if(ill == "y"){
         url = "";
         oabUrl = illUrl+doistring;
         message = "We didn't find a legal Open Access Version, but you could try and request it from your library";
         serviceName = "Ask your Library";
+        badge = "ill";
     }
     // clean up session storage
     window.sessionStorage.clear();
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge="" data-doi="'+doistring+'"/><span id="oahelper_oahelpmsg">'+serviceName+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge="'+badge+'" data-doi="'+doistring+'"/><span id="oahelper_oahelpmsg">'+serviceName+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_doifound_outer';
     div.className = 'oahelper_doifound_outer oahelper_doiblue';
     
@@ -1347,7 +1349,7 @@ function getPopupAnswer() {
   if (citationUrlElement != undefined) {
       response.citationurl = citationUrlElement.dataset.oaurl;
   }
-
+    console.log(response);
   return response;
 }
 
