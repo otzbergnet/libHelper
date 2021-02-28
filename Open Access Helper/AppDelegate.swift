@@ -71,8 +71,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                             }
                         }
                         if(queryItem.name == "name"){
-                            if let instituteName = queryItem.value{
-                                self.preferences.setStringValue(key: "instituteName", value: instituteName)
+                            if let base64data = queryItem.value{
+                                if let data = Data(base64Encoded: base64data){
+                                    if let instituteName = String(data: data, encoding: .utf8){
+                                        self.preferences.setStringValue(key: "instituteName", value: instituteName)
+                                    }
+                                }
                             }
                         }
                     }
