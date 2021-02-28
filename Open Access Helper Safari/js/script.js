@@ -1349,7 +1349,6 @@ function getPopupAnswer() {
   if (citationUrlElement != undefined) {
       response.citationurl = citationUrlElement.dataset.oaurl;
   }
-    console.log(response);
   return response;
 }
 
