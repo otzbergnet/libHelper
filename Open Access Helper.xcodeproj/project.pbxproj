@@ -165,6 +165,7 @@
 		2D3EAC4E25EA562800AC25D6 /* css */ = {
 			isa = PBXGroup;
 			children = (
+				2D3F8FD52185867F0095ACD7 /* mycss.css */,
 				2D3EAC4A25EA55DE00AC25D6 /* popup.css */,
 			);
 			path = css;
@@ -173,6 +174,7 @@
 		2D3EAC4F25EA563200AC25D6 /* js */ = {
 			isa = PBXGroup;
 			children = (
+				2D3F8FC92185863C0095ACD7 /* script.js */,
 			);
 			path = js;
 			sourceTree = "<group>";
@@ -180,6 +182,15 @@
 		2D3EAC5025EA563B00AC25D6 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2D1F7442253C9BE70068EFAF /* oahelper_black_filled.pdf */,
+				2D1F7441253C9BE70068EFAF /* oahelper_black.pdf */,
+				2DDD74FA253C39A400386311 /* ask.svg */,
+				2DDD74FB253C39A400386311 /* ocicon.svg */,
+				2DDD74FC253C39A400386311 /* recom.svg */,
+				2D5D2F2D25185CD500092454 /* oa_web.svg */,
+				2DDD750A253C3D8900386311 /* oahelper_white.svg */,
+				2DD336AC23C1C6FA004A34C5 /* loader.gif */,
+				2DC8627B23C23330007DF1AA /* core_logo.svg */,
 				2D3EAC8125EAA42800AC25D6 /* student.svg */,
 				2D3EAC5325EA567800AC25D6 /* gear.svg */,
 				2D3EAC5425EA567800AC25D6 /* oahelper_black.svg */,
@@ -257,17 +268,6 @@
 				2D3F8FC52185863C0095ACD7 /* SafariExtensionViewController.xib */,
 				2D3F8FC82185863C0095ACD7 /* Info.plist */,
 				2D924381219E7DCA000E8F74 /* InfoPlist.strings */,
-				2DDD74FA253C39A400386311 /* ask.svg */,
-				2DDD74FB253C39A400386311 /* ocicon.svg */,
-				2DDD74FC253C39A400386311 /* recom.svg */,
-				2D5D2F2D25185CD500092454 /* oa_web.svg */,
-				2DDD750A253C3D8900386311 /* oahelper_white.svg */,
-				2D1F7442253C9BE70068EFAF /* oahelper_black_filled.pdf */,
-				2D1F7441253C9BE70068EFAF /* oahelper_black.pdf */,
-				2DD336AC23C1C6FA004A34C5 /* loader.gif */,
-				2DC8627B23C23330007DF1AA /* core_logo.svg */,
-				2D3F8FD52185867F0095ACD7 /* mycss.css */,
-				2D3F8FC92185863C0095ACD7 /* script.js */,
 				2D655F1421A0036F0092E480 /* Localizable.strings */,
 				2D446A7C22E77A65001ECFA0 /* apikey.plist */,
 			);
