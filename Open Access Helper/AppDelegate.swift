@@ -82,9 +82,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     }
                 }
             }
-            let myTabBar = NSApplication.shared.mainWindow?.windowController?.contentViewController?.children[0] as! NSTabViewController
-            myTabBar.tabView.selectTabViewItem(at: tabToShow)
-            myTabBar.tabView.tabViewItem(at: tabToShow).viewController?.viewWillAppear()
+            if let myTabBar = NSApplication.shared.mainWindow?.windowController?.contentViewController?.children[0] as? NSTabViewController {
+                myTabBar.tabView.selectTabViewItem(at: tabToShow)
+                myTabBar.tabView.tabViewItem(at: tabToShow).viewController?.viewWillAppear()
+            }
+            
         }
     }
 

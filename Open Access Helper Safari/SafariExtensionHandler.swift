@@ -302,7 +302,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     override func popoverViewController() -> SFSafariExtensionViewController {
         return SafariExtensionViewController.shared
     }
-    
+       
     override func popoverDidClose(in window: SFSafariWindow){
         window.getActiveTab { (activeTab) in
             activeTab?.getActivePage(completionHandler:  { (activePage) in
