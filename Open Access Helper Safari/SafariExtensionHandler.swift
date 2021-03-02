@@ -130,6 +130,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             SafariExtensionViewController.shared.createPopover(popupAnswer: myPopupAnswer)
             
         }
+        else if messageName == "popoverAction" {
+            SFSafariApplication.getActiveWindow { (window) in
+                window?.getToolbarItem { $0?.showPopover()}
+            }
+        }
         
     }
     

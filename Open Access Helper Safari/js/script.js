@@ -803,12 +803,13 @@ function fireOnKeypress(){
             if(selectedText != ""){
                 safari.extension.dispatchMessage("searchOA", {"selected" : selectedText});
             }
-            else if(div != null){
-                var url = div.dataset.oaurl;
-                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
-            }
+//            else if(div != null){
+//                var url = div.dataset.oaurl;
+//                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
+//            }
             else{
-                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : "pleaseproxy"});
+//                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : "pleaseproxy"});
+                safari.extension.dispatchMessage("popoverAction");
             }
         }
     }
