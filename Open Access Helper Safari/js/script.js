@@ -86,6 +86,7 @@ function messageHandler(event){
         //let's put some stuff in sessionStorage
         window.sessionStorage.setItem('ill', event.message.ill);
         window.sessionStorage.setItem('illUrl', event.message.illUrl);
+        window.sessionStorage.setItem('illLabel', event.message.illLabel);
         alternativeOA(event.message.doi, event.message.oab, event.message.doistring);
     }
     else if (event.name == "showAlert"){
@@ -556,6 +557,7 @@ function requestDocument(oab, doistring){
     // let's get data out of sessionStorage
     var ill = window.sessionStorage.getItem('ill');
     var illUrl = window.sessionStorage.getItem('illUrl');
+    var illLabel = window.sessionStorage.getItem('illLabel');
     
     // here we inject the icon into the page
     if(oab == "n" && ill == "n"){
@@ -587,7 +589,7 @@ function requestDocument(oab, doistring){
         url = "";
         oabUrl = illUrl+doistring;
         message = "We didn't find a legal Open Access Version, but you could try and request it from your library";
-        serviceName = "Ask your Library";
+        serviceName = illLabel;
         badge = "ill";
     }
     // clean up session storage

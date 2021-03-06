@@ -657,26 +657,27 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             illRequestSetting = "y";
         }
         self.toolbarAction(imgName: "oahelper_black.pdf")
+        let illLabel = NSLocalizedString("Ask your Library!", comment: "Ask your library");
         if(oabRequestSetting){
             
             // oab: y = yes, e = error getting data, o = older than 5 years ago
             
             if(year == 0 || year > fiveYearsAgo){
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "y", "oab" : "y", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl, "illLabel" : illLabel])
                 self.findOpenCitations(doi: doi, page: page)
             }
             else if(year == 1){
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "e", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl, "illLabel" : illLabel])
                 self.findOpenCitations(doi: doi, page: page)
             }
             else{
-                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
+                page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "o", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl, "illLabel" : illLabel])
             }
             
             
         }
         else{
-            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl])
+            page.dispatchMessageToScript(withName: "notoadoi", userInfo: ["doi" : "n", "oab" : "n", "doistring" : doi, "ill" : illRequestSetting, "illUrl" : illUrl, "illLabel" : illLabel])
         }
         
         

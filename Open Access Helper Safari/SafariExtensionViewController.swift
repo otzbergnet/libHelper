@@ -50,6 +50,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
             buttonCount += 1;
             illButtonCount += 1;
           }
+          else if(popupAnswer.isIll == "✔"){
+            oabutton = "\(NSLocalizedString("You are at the Open Access Copy!", comment: "oa found"))<br><a class=\"button oabuttongreen\" id=\"oabutton\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
+            buttonCount += 1;
+          }
           else {
             oabutton = "\(NSLocalizedString("We found an Open Access copy!", comment: "oa found"))<br><a class=\"button\" id=\"oabutton\" href=\"\(popupAnswer.oaurl)\" target=\"_blank\">\(popupAnswer.oastatus)</a>"
             buttonCount += 1;

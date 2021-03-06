@@ -240,3 +240,9 @@
 
 /* times cited */
 "Times Cited:" = "Zitiert von: ";
+
+/* oa found */
+"You are at the Open Access Copy!" = "Das Open Access Dokument sollte hier verfügbar sein";
+
+/* Ask your library */
+"Ask your Library!" = "Frag die Bibliothek!";

@@ -13,6 +13,9 @@
 /* ask your library String */
 "Ask your Library" = "Frag die Bibliothek";
 
+/* Ask your library */
+"Ask your Library!" = "Demandez à votre bibliothèque!";
+
 /* changes Context Label */
 "base-search.net search for: \"%@\"" = "base-search.net recherche : \"%@\"";
 
@@ -227,6 +230,9 @@
 /* used in JS confirm that you are on OA already */
 "You are at the Open Acccess Location!" = "Vous êtes déjà sur une version en accès libre !";
 
+/* oa found */
+"You are at the Open Access Copy!" = "Vous êtes à la copie Open Access!";
+
 /* longer string shown when there are no options, but you likely have access */
 "You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. " = "Du nutzt bereits den Proxy, oder befindest Dich auf einer Institutswebseite.<br><br>Open Access Helper konnte keinen relevanten Dienst finden und ist daher inaktiv.";
 
@@ -237,4 +243,4 @@
 "You've had help with %@ Open Access searches" = "Nous vous avons aidé·e pour %@ recherches Open Access";
 
 /* used in YOUR university access label */
-"Your" = "Dein";
+"Your" = "Votre";

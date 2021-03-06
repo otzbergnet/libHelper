@@ -55,6 +55,7 @@ label{
 .button {
     background-image: linear-gradient(to right, #3a7bd5 0%, #3a6073  51%, #3a7bd5  100%);
 }
+
 .button {
     max-width: 250px;
     margin: 0.5em;
@@ -88,6 +89,10 @@ label{
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
     display: block;
+}
+
+.oabuttongreen {
+    background-image: linear-gradient(to right, #76b852 0%, #8DC26F  51%, #76b852  100%) !important;
 }
 
 #oabutton:hover {
