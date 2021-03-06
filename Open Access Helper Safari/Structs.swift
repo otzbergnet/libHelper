@@ -142,3 +142,13 @@ struct OpenCitationStruct : Decodable{
     var count : String
 }
 
+class PopupAnswer {
+    var citationCount = 0
+    var citationUrl = ""
+    var currentUrl = ""
+    var doi = ""
+    var isIll = ""
+    var oastatus = ""
+    var oaurl = ""
+}
+

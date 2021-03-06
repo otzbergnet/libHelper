@@ -42,10 +42,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let path = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue?.removingPercentEncoding {
             let url = URL(string: "\(path)")!
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            var tabToShow = 2
             if let components = components {
                 if let queryItems = components.queryItems {
                     for queryItem in queryItems {
                         if(queryItem.name == "proxy"){
+                            tabToShow = 3
                             if let base64data = queryItem.value{
                                 if let data = Data(base64Encoded: base64data){
                                     if let urlString = String(data: data, encoding: .utf8){
@@ -68,12 +70,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 self.preferences.setStringValue(key: "instituteId", value: instituteId)
                             }
                         }
+                        if(queryItem.name == "name"){
+                            if let base64data = queryItem.value{
+                                if let data = Data(base64Encoded: base64data){
+                                    if let instituteName = String(data: data, encoding: .utf8){
+                                        self.preferences.setStringValue(key: "instituteName", value: instituteName)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
-            let myTabBar = NSApplication.shared.mainWindow?.windowController?.contentViewController?.children[0] as! NSTabViewController
-            myTabBar.tabView.selectTabViewItem(at: 3)
-            myTabBar.tabView.tabViewItem(at: 3).viewController?.viewWillAppear()
+            if let myTabBar = NSApplication.shared.mainWindow?.windowController?.contentViewController?.children[0] as? NSTabViewController {
+                myTabBar.tabView.selectTabViewItem(at: tabToShow)
+                myTabBar.tabView.tabViewItem(at: tabToShow).viewController?.viewWillAppear()
+            }
+            
         }
     }
 

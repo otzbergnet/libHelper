@@ -1,8 +1,20 @@
+/* changes Context Label */
+" search for: \"%@\"" = " suche nach \"%@\"";
+
 /* No comment provided by engineer. */
 "About: " = "Über: ";
 
 /* acceptedVersion */
 "Accepted Version" = "Angenommene Version";
+
+/* used in your university ACCESS label */
+"Access" = "Zugang";
+
+/* ask your library String */
+"Ask your Library" = "Frag die Bibliothek";
+
+/* Ask your library */
+"Ask your Library!" = "Frag die Bibliothek!";
 
 /* changes Context Label */
 "base-search.net search for: \"%@\"" = "base-search.net Suche nach: \"%@\"";
@@ -20,11 +32,17 @@
 /* shows as part of the phras x Close in the Core Recommender */
 "close" = "schließen";
 
+/* configuration */
+"Configuration" = "Einstellungen";
+
 /* iCloud internet connection */
 "Connection Error" = "Verbindungsfehler";
 
 /* No comment provided by engineer. */
 "Contact Me" = "Kontakt";
+
+/* contact support */
+"Contact Support" = "Support";
 
 /* changes Context Label */
 "core.ac.uk search for: \"%@\"" = "core.ac.uk Suche nach: \"%@\"";
@@ -46,6 +64,9 @@
 
 /* No comment provided by engineer. */
 "Getting Started: " = "So legen Sie los:";
+
+/* hide badges */
+"Hide Badges" = "Icons entf.";
 
 /* error message title
    iCloud error - not authenticated */
@@ -71,6 +92,9 @@
 
 /* will show in JS Alert, when there was a doi, but no oadoi url */
 "Open Access Helper could not find a legal open-access version of this article." = "Open Access Helper konnte keine legale Open Access Version des Artikels finden.";
+
+/* longer string shown when there are no options to show */
+"Open Access Helper could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!" = "Open Access Helper konnte keinen relevanten Dienst finden und ist daher inaktiv. Ändere die Einstellungen oder kontaktiere den Support!";
 
 /* will show in JS Alert, when there no doi = inactive state */
 "Open Access Helper is inactive on this page, as we could not identify a DOI\n\nClick OK to learn more about this app\nClick Cancel to dismiss this message" = "Open Access Helper ist auf dieser Seite nicht aktiv, da wir keinen DOI finden konnten\n\nWählen Sie OK für mehr Informationen\nWählen Sie abbrechen, um diese Meldung zu schließen.";
@@ -120,6 +144,9 @@
 /* show searching, when looking up settings */
 "Searching..." = "Suche...";
 
+/* OpenCitations.net Intro */
+"See who cited this paper:" = "Wer hat diesen Artikel zitiert:";
+
 /* touchbar label */
 "Settings: " = "Einstellungen: ";
 
@@ -138,6 +165,9 @@
 */
 "So far we've helped you find \(count) Open Access Documents!" = "Bisher haben wir Ihnen geholfen \(count) Open Access Dokumente zu finden!";
 
+/* still no access label */
+"Still no access?" = "Noch kein Zugang?";
+
 /* submittedVersion */
 "Submitted Version" = "Eingereichte Version";
 
@@ -149,6 +179,12 @@
 
 /* No comment provided by engineer. */
 "Test" = "Testen";
+
+/* times cited */
+"Times Cited:" = "Zitiert von: ";
+
+/* changes Context Label, base-search-net */
+"Visit " = "Seite aufrufen: ";
 
 /* changes Context Label, base-search-net */
 "Visit base-search.net" = "Besuchen Sie base-search.net";
@@ -171,6 +207,9 @@
 /* No comment provided by engineer. */
 "We are sorry, but there was a connection error. Please check your Internet Connection" = "Bitte entschuldigen Sie die Unannehmlichkeiten, aber es gab einen Verbindungs-Fehler. Bitte überprüfen Sie Ihre Internetverbindung";
 
+/* no OA found */
+"We didn't find an Open Access copy :(" = "Leider kein Open Access :(";
+
 /* if failure received */
 "We encountered an unexpected error" = "Unerwarteter Fehler";
 
@@ -179,6 +218,9 @@
 
 /* to be shown in JavaScript Popover */
 "We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!" = "Wir haben eine kurze Liste mit Artikeln zusammengestellt, die dem von Ihnen angezeigten ähneln. Wir hoffen, dass diese nützlich sind!";
+
+/* oa found */
+"We found an Open Access copy!" = "Open Access Kopie gefunden!";
 
 /* No comment provided by engineer. */
 "We were unable to retrieve any bookmarks for you. Are you sure you have bookmarked articles via the Open Access Helper App for iOS?" = "Wir konnten keine Bookmakrs abrufen. Sind Sie sich sicher, dass Sie Bookmarks in Open Access Helper für iOS hinzugefügt haben!";
@@ -189,8 +231,17 @@
 /* used in JS confirm that you are on OA already */
 "You are at the Open Acccess Location!" = "Sie befinden sich am Open Access Zugangsort!";
 
+/* oa found */
+"You are at the Open Access Copy!" = "Das Open Access Dokument sollte hier verfügbar sein";
+
+/* longer string shown when there are no options, but you likely have access */
+"You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. " = "Du nutzt bereits den Proxy, oder befindest Dich auf einer Institutswebseite.<br><br>Open Access Helper konnte keinen relevanten Dienst finden und ist daher inaktiv.";
+
 /* shown in stats, if no proxy prefix present */
 "You did not setup Proxy Support yet" = "Sie haben noch keinen Proxy eingerichtet";
 
 /* shows on main window, number of OpenAccess Searches conducted */
 "You've had help with %@ Open Access searches" = "Sie hatten Hilfe mit %@ Open Access Suchen";
+
+/* used in YOUR university access label */
+"Your" = "Dein";

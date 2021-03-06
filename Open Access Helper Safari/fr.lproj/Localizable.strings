@@ -194,3 +194,54 @@
 
 /*closeLabel for CoreRecommender*/
 "close" = "fermer";
+
+/* changes Context Label */
+" search for: \"%@\"" = " rechercher: \"%@\"";
+
+/* changes Context Label, base-search-net */
+"Visit " = "Aller à ";
+
+/* used in your university ACCESS label */
+"Access" = "Votre accès ";
+
+/* ask your library String */
+"Ask your Library" = "Demandez à votre bibliothèque!";
+
+/* configuration */
+"Configuration" = "Paramètres";
+
+/* contact support */
+"Contact Support" = "Aide";
+
+/* hide badges */
+"Hide Badges" = "Masquer les badges";
+
+/* longer string shown when there are no options to show */
+"Open Access Helper could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!" = "Open Access Helper n'a pas pu trouver un service pertinent et est désactivé. Veuillez modifier les paramètres. Si vous pensez qu'il s'agit d'une erreur, signalez-le nous&nbsp;!";
+
+/* OpenCitations.net Intro */
+"See who cited this paper:" = "Regardez qui cite cet article&nbsp;:";
+
+/* still no access label */
+"Still no access?" = "Pas encore d'accès?";
+
+/* no OA found */
+"We didn't find an Open Access copy :(" = "Nous n'avons pas trouvé de version en accès libre&nbsp;:(";
+
+/* oa found */
+"We found an Open Access copy!" = "Nous avons trouvé une version en accès libre&nbsp;!";
+
+/* longer string shown when there are no options, but you likely have access */
+"You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. " = "Vous naviguez avec le serveur proxy de la bibliothèque ou vous êtes sur un site web institutionnel!<br><br>Open Access Helper n'a pas pu trouver de services supplémentaires pertinents et est donc inactif.";
+
+/* used in YOUR university access label LEAVE EMPTY*/
+"Your" = "&nbsp;";
+
+/* times cited */
+"Times Cited:" = "Nombre de fois cité&nbsp;:";
+
+/* oa found */
+"You are at the Open Access Copy!" = "Vous êtes à la copie Open Access!";
+
+/* Ask your library */
+"Ask your Library!" = "Demandez à votre bibliothèque!";

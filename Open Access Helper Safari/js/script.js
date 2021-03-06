@@ -25,7 +25,7 @@ if(!inIframe()){
     document.addEventListener("keydown", fireOnKeypress, false);
 }
 
-if(window.location.hostname == "gettheresearch.org" || window.location.hostname == "psycnet.apa.org"){
+if(window.location.hostname == "gettheresearch.org" || onSupportedDomain('psycnet.apa.org')){
     document.addEventListener('click', ()=>{
         requestAnimationFrame(()=>{
             if(spaUrl !== location.href){
@@ -33,14 +33,12 @@ if(window.location.hostname == "gettheresearch.org" || window.location.hostname 
                 removeMyself()
                 findDoi3();
             }
-            else{
-                if(window.location.hostname == "psycnet.apa.org"){
+            else if(onSupportedDomain('psycnet.apa.org')){
                     //moving from search results to first result never triggered the URL change
                     doConsoleLog("OAHELPER: I am on psycnet");
                     setTimeout(function () {
                         doPsycNet();
                     },1500);
-                }
             }
             spaUrl = location.href;
         });
@@ -88,6 +86,7 @@ function messageHandler(event){
         //let's put some stuff in sessionStorage
         window.sessionStorage.setItem('ill', event.message.ill);
         window.sessionStorage.setItem('illUrl', event.message.illUrl);
+        window.sessionStorage.setItem('illLabel', event.message.illLabel);
         alternativeOA(event.message.doi, event.message.oab, event.message.doistring);
     }
     else if (event.name == "showAlert"){
@@ -132,6 +131,21 @@ function messageHandler(event){
     }
     else if(event.name == "consolelog_configuration"){
         configuration['consolelog'] = event.message.consolelog;
+    }
+    else if(event.name == "getCurrentState"){
+        let popupAnswer = getPopupAnswer();
+        safari.extension.dispatchMessage("currentState", {
+            "oaurl": popupAnswer.oaurl,
+            "oastatus": popupAnswer.oastatus,
+            "citationcount": popupAnswer.citationcount,
+            "citationurl": popupAnswer.citationurl,
+            "currenturl": popupAnswer.currenturl,
+            "isIll": popupAnswer.isIll,
+            "doi": popupAnswer.doi}
+        );
+    }
+    else if(event.name == "hideBadge"){
+        hideBadgeRequest();
     }
 }
 
@@ -244,7 +258,7 @@ function findDoi4(){
     // to avoid doing this on every page, we specify the pages we support
     
     var host = window.location.hostname;
-    if(host.indexOf("ieeexplore.ieee.org") > -1){
+    if(onSupportedDomain("ieeexplore.ieee.org")){
         // IEEE
         // this is a Single Page Application and the delay helps catch the DOI
         setTimeout(function (){
@@ -260,7 +274,7 @@ function findDoi4(){
         }, 1500);
         
     }
-    else if(host.indexOf("nber.org") > -1){
+    else if(onSupportedDomain("nber.org")){
         //National Bureau of Economic Research
         var regex = new RegExp('Document Object Identifier \\(DOI\\): (10.*?)<\\/p>');
         var doi = runRegexOnDoc(regex);
@@ -268,7 +282,7 @@ function findDoi4(){
         scrapedDoi(doi);
         
     }
-    else if(host.indexOf("base-search.net") > -1){
+    else if(onSupportedDomain("base-search.net")){
         // BASE SEARCH - for detail view, really quite superflous, but I like base
         if (document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]").length > 0){
             var doi = document.querySelectorAll("a.link-orange[href^=\"https://doi.org/\"]")[0].href.replace('https://doi.org/','').replace('http://doi.org/','');
@@ -278,7 +292,7 @@ function findDoi4(){
             alternativeOA("n", "n", "-");
         }
     }
-    else if(host.indexOf("gettheresearch.org") > -1){
+    else if(onSupportedDomain("gettheresearch.org")){
         doConsoleLog("Open Access Helper (Safari Extension) - support for gettheresearch.org is experimental");
         // GetTheResearch.org- for detail view, really quite superflous, but I like base
         if(window.location.search.indexOf("zoom=") > -1){
@@ -286,7 +300,7 @@ function findDoi4(){
             scrapedDoi(potentialDoi);
         }
     }
-    else if(host.indexOf("psycnet.apa.org") > -1){
+    else if(onSupportedDomain("psycnet.apa.org")){
         doConsoleLog("Open Access Helper (Safari Extension) - support for psycnet.apa.org is experimental");
         
         if(document.querySelectorAll(".citation-text>a").length > 0){
@@ -299,7 +313,7 @@ function findDoi4(){
             doPsycNet();
         }
     }
-    else if(host.indexOf("proquest.com") > -1){
+    else if(onSupportedDomain("proquest.com")){
         doConsoleLog("Open Access Helper (Safari Extension) - support for proquest.com is experimental");
         if(document.querySelectorAll(".abstract_Text").length > 0){
             var doiElements = document.querySelectorAll(".abstract_Text");
@@ -310,7 +324,7 @@ function findDoi4(){
             scrapedDoi(doi);
         }
     }
-    else if(host.indexOf("ebscohost.com") > -1 && document.location.href.indexOf("/detail") > -1){
+    else if(onSupportedDomain("ebscohost.com") && document.location.href.indexOf("/detail") > -1){
         doConsoleLog("Open Access Helper (Safari Extension) - support for ebscohost.com is experimental");
         const fullTextIndicators = ['pdf-ft', 'html-ft', 'html-ftwg'];
         let isFullText = false;
@@ -339,7 +353,7 @@ function findDoi4(){
             });
         }
     }
-    else if(host.indexOf("dl.acm.org") > -1 && document.location.href.indexOf("/doi/") > -1){
+    else if(onSupportedDomain("dl.acm.org") && document.location.href.indexOf("/doi/") > -1){
         doConsoleLog("Open Access Helper (Safari Extension) - support for dl.acm.org is experimental");
         var urlParts = document.location.href.split("/doi/");
         if(isDOI(urlParts[1])){
@@ -355,6 +369,17 @@ function findDoi4(){
     }
 }
 
+function onSupportedDomain(domain){
+  const host = window.location.hostname;
+  if(host.indexOf(domain) > -1){
+    return true;
+  }
+  const proxiedDomain = domain.replaceAll('.', '-')+'.';
+  if(host.indexOf(proxiedDomain) > -1){
+    return true;
+  }
+  return false;
+}
 
 function getMeta(metaName) {
     // get meta tags and loop through them. Looking for the name attribute and see if it is the metaName
@@ -495,9 +520,8 @@ function oafound(message){
     else{
         message.version = "CORE Discovery";
     }
-    
     var div = document.createElement('div');
-    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+oaVersion+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left" title="'+message.title+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!"/><span id="oahelper_oahelpmsg">'+message.version+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+message.url+'\')" title="'+message.title+oaVersion+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left" title="'+message.title+oaVersion+'" data-oaurl="'+message.url+'" data-badge="!" data-doi="'+message.doi+'"/><span id="oahelper_oahelpmsg">'+message.version+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_doifound_outer';
     div.className = 'oahelper_doifound_outer';
     
@@ -533,6 +557,7 @@ function requestDocument(oab, doistring){
     // let's get data out of sessionStorage
     var ill = window.sessionStorage.getItem('ill');
     var illUrl = window.sessionStorage.getItem('illUrl');
+    var illLabel = window.sessionStorage.getItem('illLabel');
     
     // here we inject the icon into the page
     if(oab == "n" && ill == "n"){
@@ -558,18 +583,20 @@ function requestDocument(oab, doistring){
     var oabUrl = "https://openaccessbutton.org/request?url="
     var message = "We didn't find a legal Open Access Version, but you could try and request it via Open Access Button";
     var serviceName = "Open Access Button";
+    var badge = "oab";
     
     if(ill == "y"){
         url = "";
         oabUrl = illUrl+doistring;
         message = "We didn't find a legal Open Access Version, but you could try and request it from your library";
-        serviceName = "Ask your Library";
+        serviceName = illLabel;
+        badge = "ill";
     }
     // clean up session storage
     window.sessionStorage.clear();
     
     var div = document.createElement('div');
-    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge=""/><span id="oahelper_oahelpmsg">'+serviceName+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_doifound" onclick="window.open(\''+oabUrl+url+'\')" title="'+message+'"><img id="oahelper_doicheckmark" src="'+src+'" align="left"  title="'+message+'" data-oaurl="'+oabUrl+url+'" data-badge="'+badge+'" data-doi="'+doistring+'"/><span id="oahelper_oahelpmsg">'+serviceName+'</span></div><span id="oahelper_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_doifound_outer';
     div.className = 'oahelper_doifound_outer oahelper_doiblue';
     
@@ -687,12 +714,13 @@ function alternativeOA(message, oab, doistring){
 
 //
 
-function successfulAlternativeOAFound(pdf, type = "Open Access", onOaTest = false){
+function successfulAlternativeOAFound(pdf, type = "Open Access", onOaTest = false, doistring){
     var message = new Array();
     message['url'] = pdf;
     message['title'] = type+" found at: ";
     message['version'] = type+" (*)";
     message['source'] = "Page Analysis";
+    message['doi'] = doistring;
     oafound(message);
     var currentUrl = window.location.href;
     if(onOaTest){
@@ -748,6 +776,7 @@ function webscraperBadge(selector, onoa, oab){
         message['url'] = href;
         message['title'] = "Open Access found at: ";
         message['version'] = "Free Access (*)";
+        message['doi'] = "x";
         oafound(message);
         if(onoa){
             onOa("This is the Open Access location!");
@@ -776,12 +805,13 @@ function fireOnKeypress(){
             if(selectedText != ""){
                 safari.extension.dispatchMessage("searchOA", {"selected" : selectedText});
             }
-            else if(div != null){
-                var url = div.dataset.oaurl;
-                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
-            }
+//            else if(div != null){
+//                var url = div.dataset.oaurl;
+//                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : url});
+//            }
             else{
-                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : "pleaseproxy"});
+//                safari.extension.dispatchMessage("oaURLReturn", {"oaurl" : "pleaseproxy"});
+                safari.extension.dispatchMessage("popoverAction");
             }
         }
     }
@@ -1011,7 +1041,7 @@ function doIngentaConnect(oab, doistring, host){
             var href = onclick.replace("javascript:popup('", "").replace("','downloadWindow','900','800')", "");
             if(href != null && href != ""){
                 var url = window.location.protocol+'//'+host+href;
-                successfulAlternativeOAFound(url, "Free Access", true);
+                successfulAlternativeOAFound(url, "Free Access", true, doistring);
             }
             else{
                 doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1023,7 +1053,7 @@ function doIngentaConnect(oab, doistring, host){
             if(popup != null && popup != "" && popup.indexOf("download" > -1)){
                 if(popup != null && popup != ""){
                     var url = window.location.protocol+'//'+host+popup;
-                    successfulAlternativeOAFound(url, "Free Access", true);
+                    successfulAlternativeOAFound(url, "Free Access", true, doistring);
                 }
                 else{
                     doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1049,7 +1079,7 @@ function doBmj(oab, doistring, host){
     var pdf = getMeta("citation_pdf_url")
     if(document.querySelectorAll("svg.icon-open-access").length > 0){
         if(pdf != "" && pdf.indexOf("http" == 0)){
-            successfulAlternativeOAFound(pdf, "Open Access", true);
+            successfulAlternativeOAFound(pdf, "Open Access", true, doistring);
         }
         else{
             doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1061,7 +1091,7 @@ function doBmj(oab, doistring, host){
         var bmjFree = false;
         for(i=0; i<freeAccess.length; i++){
             if(freeAccess[i].textContent == "Free" && !bmjFree){
-                successfulAlternativeOAFound(pdf, "Free Access", true);
+                successfulAlternativeOAFound(pdf, "Free Access", true, doistring);
             }
         }
         if(!bmjFree){
@@ -1130,7 +1160,7 @@ function doCambridge(oab, doistring, host){
     if(document.querySelectorAll("span.entitled").length > 0){
         var pdf = getMeta("citation_pdf_url")
         if(pdf != "" && pdf.indexOf("http" == 0)){
-            successfulAlternativeOAFound(pdf, "Free / Subscription Access", true)
+            successfulAlternativeOAFound(pdf, "Free / Subscription Access", true, doistring)
         }
     }
     else{
@@ -1147,7 +1177,7 @@ function doWiley(oab, doistring, host){
         if(toCheck2 === null){
             doConsoleLog("Open Access Helper (Safari Extension): We found FREE Access");
             var pdf = getMeta("citation_pdf_url");
-            successfulAlternativeOAFound(pdf, "Free Access", true);
+            successfulAlternativeOAFound(pdf, "Free Access", true, doistring);
         }
     }
     else{
@@ -1165,7 +1195,7 @@ function doSpringerLink(oab, doistring, host){
     if(toCheck.length > 0 && toCheck[0].innerHTML.indexOf("Download") > -1){
         doConsoleLog("Open Access Helper (Safari Extension): We found FREE / Subscription Access");
         var pdf = getMeta("citation_pdf_url");
-        successfulAlternativeOAFound(pdf, "Free / Subscription Access", true);
+        successfulAlternativeOAFound(pdf, "Free / Subscription Access", true, doistring);
     }
     else{
         doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
@@ -1211,7 +1241,7 @@ function doBioMedArxiv() {
       if (href.indexOf('pdf') > -1) {
         // I am on Open Access
         const url = window.location.protocol+"//"+window.location.hostname+href;
-        successfulAlternativeOAFound(url, 'Preprint Server', true);
+        successfulAlternativeOAFound(url, 'Preprint Server', true, doistring);
       }
     }
   }
@@ -1225,7 +1255,7 @@ function doArxivOrg() {
         if (href.indexOf('pdf') > -1) {
           // I am on Open Access
           const url = window.location.protocol+"//"+window.location.hostname+href;
-          successfulAlternativeOAFound(url, 'Preprint Server', true);
+          successfulAlternativeOAFound(url, 'Preprint Server', true, doistring);
         }
       }
     }
@@ -1241,7 +1271,7 @@ function doOSFArxiv() {
         if (href.indexOf('download') > -1) {
           // I am on Open Access
           const url = `${href}`;
-          successfulAlternativeOAFound(url, 'Preprint Server', true);
+          successfulAlternativeOAFound(url, 'Preprint Server', true, doistring);
         }
       }
     }
@@ -1265,7 +1295,7 @@ function addCitationCount(count, doi){
     var src = safari.extension.baseURI + "ocicon.svg";
     var div = document.createElement('div');
     
-    div.innerHTML = '<div class="oahelper_opencitations" onclick="window.open(\''+url+'\')" title="OpenCitations '+message+'"><img id="oahelper_opencitations_logo" src="'+src+'" align="left" title="'+message+'" data-oaurl="'+url+'" data-badge=""/><span id="oahelper_opencitations_msg">'+message+'</span></div><span id="oahelper_opencitations_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
+    div.innerHTML = '<div class="oahelper_opencitations" onclick="window.open(\''+url+'\')" title="OpenCitations '+message+'"><img id="oahelper_opencitations_logo" src="'+src+'" align="left" title="'+message+'" data-oaurl="'+url+'" data-badge="" data-citcount="'+count+'"/><span id="oahelper_opencitations_msg">'+message+'</span></div><span id="oahelper_opencitations_LiveRegion" role="alert" aria-live="assertive" aria-atomic="true"></span>'; // data-oaurl is a gift to ourselves
     div.id = 'oahelper_opencitations_outer';
     div.className = 'oahelper_opencitations_outer';
     
@@ -1278,5 +1308,61 @@ function addCitationCount(count, doi){
 function doConsoleLog(message) {
   if (configuration['consolelog'] != undefined && !configuration['consolelog']) {
     console.log(message);
+  }
+}
+
+function getPopupAnswer() {
+  let response = {
+    oaurl: '',
+    oastatus: '',
+    citationcount: 0,
+    citationurl: '',
+    currenturl: window.location.href,
+    isIll: '',
+    doi: ''
+  };
+
+  const oaurlElement = document.getElementById('oahelper_doicheckmark');
+  const oaStatusElement = document.getElementById('oahelper_oahelpmsg');
+  const citationElement = document.getElementById('oahelper_opencitations_msg');
+  const citationUrlElement = document.getElementById('oahelper_opencitations_logo');
+  
+  if(oaurlElement != undefined){
+    if (oaurlElement.dataset.badge != undefined) {
+        response.isIll = oaurlElement.dataset.badge;
+    }
+      
+    if (oaurlElement.dataset.doi != undefined) {
+        response.doi = oaurlElement.dataset.doi;
+    }
+      
+    if (oaurlElement.dataset.oaurl) {
+        response.oaurl = oaurlElement.dataset.oaurl;
+    }
+  }
+
+  if (oaStatusElement != undefined) {
+    response.oastatus = oaStatusElement.innerText;
+  }
+
+  if (citationUrlElement != undefined) {
+      response.citationcount = parseInt(citationUrlElement.dataset.citcount);
+  }
+
+  if (citationUrlElement != undefined) {
+      response.citationurl = citationUrlElement.dataset.oaurl;
+  }
+  return response;
+}
+
+function hideBadgeRequest() {
+  if (document.getElementById('oahelper_doifound_outer') != null) {
+    document.getElementById('oahelper_doifound_outer').style.display = 'none';
+  }
+  if (document.getElementById('oahelper_opencitations_outer') != null) {
+    document.getElementById('oahelper_opencitations_outer').style.display = 'none';
+  }
+  if (document.getElementById('oahelper_corerecom_outer') != null) {
+    document.getElementById('oahelper_corerecom_outer').style.display = 'none';
   }
 }

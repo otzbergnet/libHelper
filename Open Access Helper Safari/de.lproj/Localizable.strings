@@ -195,3 +195,54 @@
 
 /*closeLabel for CoreRecommender*/
 "close" = "schließen";
+
+/* changes Context Label */
+" search for: \"%@\"" = " suche nach \"%@\"";
+
+/* changes Context Label, base-search-net */
+"Visit " = "Seite aufrufen: ";
+
+/* used in your university ACCESS label */
+"Access" = "Zugang";
+
+/* ask your library String */
+"Ask your Library" = "Frag die Bibliothek";
+
+/* configuration */
+"Configuration" = "Einstellungen";
+
+/* contact support */
+"Contact Support" = "Support";
+
+/* hide badges */
+"Hide Badges" = "Icons entf.";
+
+/* longer string shown when there are no options to show */
+"Open Access Helper could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!" = "Open Access Helper konnte keinen relevanten Dienst finden und ist daher inaktiv. Ändere die Einstellungen oder kontaktiere den Support!";
+
+/* OpenCitations.net Intro */
+"See who cited this paper:" = "Wer hat diesen Artikel zitiert:";
+
+/* still no access label */
+"Still no access?" = "Noch kein Zugang?";
+
+/* no OA found */
+"We didn't find an Open Access copy :(" = "Leider kein Open Access :(";
+
+/* oa found */
+"We found an Open Access copy!" = "Open Access Kopie gefunden!";
+
+/* longer string shown when there are no options, but you likely have access */
+"You are browsing with the library's proxy server or are at a library website!<br><br>Open Access Helper could not find additional relevant services and thus is inactive. " = "Du nutzt bereits den Proxy, oder befindest Dich auf einer Institutswebseite.<br><br>Open Access Helper konnte keinen relevanten Dienst finden und ist daher inaktiv.";
+
+/* used in YOUR university access label */
+"Your" = "Dein";
+
+/* times cited */
+"Times Cited:" = "Zitiert von: ";
+
+/* oa found */
+"You are at the Open Access Copy!" = "Das Open Access Dokument sollte hier verfügbar sein";
+
+/* Ask your library */
+"Ask your Library!" = "Frag die Bibliothek!";

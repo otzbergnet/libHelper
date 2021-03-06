@@ -287,11 +287,11 @@ If you need to reach me, please click the Contact Me button below!</string>
             <objects>
                 <viewController title="Settings" id="of7-oY-NLd" customClass="SettingsController" customModule="Open_Access_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="MRn-52-FQI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="368"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-uE-U3c">
-                                <rect key="frame" x="38" y="334" width="84" height="24"/>
+                                <rect key="frame" x="38" y="301" width="84" height="24"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Settings" id="HcR-jI-6Ct">
                                     <font key="font" metaFont="systemBold" size="20"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -299,10 +299,10 @@ If you need to reach me, please click the Contact Me button below!</string>
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcp-rk-eyD">
-                                <rect key="frame" x="40" y="120" width="520" height="146"/>
+                                <rect key="frame" x="40" y="40" width="520" height="193"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-MO-GuS">
-                                        <rect key="frame" x="-2" y="129" width="332" height="18"/>
+                                        <rect key="frame" x="-2" y="176" width="332" height="18"/>
                                         <buttonCell key="cell" type="check" title="Use core Discovery to find additional Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CMq-iy-q6b">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -312,7 +312,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-to-XHx">
-                                        <rect key="frame" x="-2" y="103" width="429" height="18"/>
+                                        <rect key="frame" x="-2" y="150" width="429" height="18"/>
                                         <buttonCell key="cell" type="check" title="Offer to take me to Open Access Button to make an article request" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fYC-2c-t0y">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -322,7 +322,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bBT-Ls-4o2">
-                                        <rect key="frame" x="-2" y="77" width="376" height="18"/>
+                                        <rect key="frame" x="-2" y="124" width="376" height="18"/>
                                         <buttonCell key="cell" type="check" title="Prefer institutional request form over Open Access Button" bezelStyle="regularSquare" imagePosition="left" inset="2" id="W4Q-gH-5dV">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -332,7 +332,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jzs-mx-e5C">
-                                        <rect key="frame" x="-2" y="51" width="355" height="18"/>
+                                        <rect key="frame" x="-2" y="98" width="355" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show CORE Recommender, if there is no Open Access" bezelStyle="regularSquare" imagePosition="left" inset="2" id="evK-lJ-UtH">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -342,7 +342,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E7m-Au-t0F">
-                                        <rect key="frame" x="-2" y="25" width="275" height="18"/>
+                                        <rect key="frame" x="-2" y="72" width="275" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show citation counts from OpenCitations" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1J1-cU-OSF">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -352,7 +352,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Bt-Pf-GyI">
-                                        <rect key="frame" x="-2" y="-1" width="256" height="18"/>
+                                        <rect key="frame" x="-2" y="46" width="256" height="18"/>
                                         <buttonCell key="cell" type="check" title="Do not &quot;print&quot; info to browser console" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fIT-g0-bHi">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -361,8 +361,71 @@ If you need to reach me, please click the Contact Me button below!</string>
                                             <action selector="noConsoleLogClicked:" target="of7-oY-NLd" id="Ql1-d5-oMv"/>
                                         </connections>
                                     </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQZ-en-up7">
+                                        <rect key="frame" x="0.0" y="0.0" width="379" height="37"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-dj-mau">
+                                                <rect key="frame" x="-2" y="21" width="125" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Highlight &amp; Search" id="skg-S1-2HM">
+                                                    <font key="font" metaFont="systemBold"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o5z-Br-HzB">
+                                                <rect key="frame" x="126" y="13" width="257" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="z1P-o7-ihY"/>
+                                                </constraints>
+                                                <popUpButtonCell key="cell" type="push" title="Select Search Engine" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="Ubk-KE-dgE" id="3DF-Zn-LSa">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <menu key="menu" title="Select Search Engine" id="6OS-yV-cKY">
+                                                        <items>
+                                                            <menuItem title="Select Search Engine" state="on" id="Ubk-KE-dgE">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="BASE" tag="1" id="Fdz-Ja-zIB">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="CORE" tag="2" id="0zJ-o0-hZu">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Dimensions.ai" tag="5" id="mBB-6u-BIB">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Google Scholar" tag="3" id="6h3-GV-iKv">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Microsoft Academic" tag="4" id="9v3-ju-nvY">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Semantic Scholar" tag="5" id="gc9-dJ-gJU">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Disable this feature" id="28A-l1-fgl">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="selectSearchEngineChange:" target="of7-oY-NLd" id="Lb1-nS-6li"/>
+                                                </connections>
+                                            </popUpButton>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <visibilityPriorities>
+                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -377,10 +440,11 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vuC-t1-To1">
-                                <rect key="frame" x="38" y="276" width="512" height="48"/>
+                                <rect key="frame" x="38" y="243" width="512" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="508" id="WOT-yl-HCZ"/>
                                 </constraints>
@@ -401,85 +465,35 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <action selector="tellMeMoreClicked:" target="of7-oY-NLd" id="JDl-9l-omm"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-dj-mau">
-                                <rect key="frame" x="38" y="96" width="125" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Highlight &amp; Search" id="skg-S1-2HM">
-                                    <font key="font" metaFont="systemBold"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKs-DU-CRp">
-                                <rect key="frame" x="38" y="69" width="126" height="18"/>
-                                <buttonCell key="cell" type="check" title="base-search.net" bezelStyle="regularSquare" imagePosition="left" inset="2" id="E5Y-zn-Amu">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="basesearchHSclicked:" target="of7-oY-NLd" id="hYZ-0g-yGT"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="diE-XJ-VAE">
-                                <rect key="frame" x="177" y="69" width="90" height="18"/>
-                                <buttonCell key="cell" type="check" title="core.ac.uk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="PmR-Jf-2Mz">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="coreHSclicked:" target="of7-oY-NLd" id="5wa-1O-h9R"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-s7-BpE">
-                                <rect key="frame" x="280" y="69" width="148" height="18"/>
-                                <buttonCell key="cell" type="check" title="gettheresearch.com" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yaq-Tp-X4R">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="gettheresearchHSclicked:" target="of7-oY-NLd" id="RvX-q1-gNB"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="nKs-DU-CRp" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="6NT-DZ-dXj"/>
-                            <constraint firstItem="yPo-s7-BpE" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="84g-YM-Qtx"/>
                             <constraint firstItem="vuC-t1-To1" firstAttribute="top" secondItem="lKy-uE-U3c" secondAttribute="bottom" constant="10" id="88a-UA-9eB"/>
-                            <constraint firstItem="iwf-yg-VlJ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="yPo-s7-BpE" secondAttribute="trailing" constant="53" id="8or-2A-IzU"/>
-                            <constraint firstItem="diE-XJ-VAE" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="9Gd-eN-5cg"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lKy-uE-U3c" secondAttribute="trailing" constant="40" id="DIN-YS-uYX"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vuC-t1-To1" secondAttribute="trailing" constant="52" id="GqF-as-M8c"/>
+                            <constraint firstItem="iwf-yg-VlJ" firstAttribute="top" secondItem="dcp-rk-eyD" secondAttribute="bottom" constant="5" id="J0R-hJ-WRc"/>
                             <constraint firstAttribute="trailing" secondItem="iwf-yg-VlJ" secondAttribute="trailing" constant="20" id="JJC-le-MIl"/>
                             <constraint firstItem="lKy-uE-U3c" firstAttribute="top" secondItem="MRn-52-FQI" secondAttribute="top" constant="10" id="Qaa-ro-rzG"/>
-                            <constraint firstItem="iwf-yg-VlJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yPo-s7-BpE" secondAttribute="bottom" constant="5" id="RH2-f6-0uS"/>
-                            <constraint firstItem="nKs-DU-CRp" firstAttribute="top" secondItem="uqp-dj-mau" secondAttribute="bottom" constant="10" id="SXI-dZ-N4k"/>
                             <constraint firstAttribute="trailing" secondItem="dcp-rk-eyD" secondAttribute="trailing" constant="40" id="TCo-XT-ohm"/>
-                            <constraint firstItem="uqp-dj-mau" firstAttribute="top" secondItem="dcp-rk-eyD" secondAttribute="bottom" constant="8" id="Z0a-SX-ZLI"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uqp-dj-mau" secondAttribute="trailing" constant="40" id="c6Z-mR-ZSv"/>
                             <constraint firstItem="lKy-uE-U3c" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="eQe-jw-PLu"/>
-                            <constraint firstItem="yPo-s7-BpE" firstAttribute="leading" secondItem="diE-XJ-VAE" secondAttribute="trailing" constant="15" id="fyn-bD-1Pa"/>
-                            <constraint firstItem="diE-XJ-VAE" firstAttribute="leading" secondItem="nKs-DU-CRp" secondAttribute="trailing" constant="15" id="gXJ-Oy-K0m"/>
                             <constraint firstItem="dcp-rk-eyD" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="iIM-wN-kWh"/>
                             <constraint firstItem="dcp-rk-eyD" firstAttribute="top" secondItem="vuC-t1-To1" secondAttribute="bottom" constant="10" id="oSU-xY-7XO"/>
-                            <constraint firstItem="uqp-dj-mau" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="oyW-XY-e0B"/>
                             <constraint firstItem="vuC-t1-To1" firstAttribute="leading" secondItem="MRn-52-FQI" secondAttribute="leading" constant="40" id="ql6-KK-pTe"/>
                             <constraint firstAttribute="bottom" secondItem="iwf-yg-VlJ" secondAttribute="bottom" constant="15" id="ty8-bz-u3M"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="basesearchHSCheckBox" destination="nKs-DU-CRp" id="ogb-iX-dLD"/>
                         <outlet property="coreCheckBox" destination="nAf-MO-GuS" id="B7L-Lk-Tjf"/>
-                        <outlet property="coreHSCheckBox" destination="diE-XJ-VAE" id="Vyo-jE-bMl"/>
                         <outlet property="coreRecomCheckBox" destination="jzs-mx-e5C" id="cjT-nY-zpE"/>
-                        <outlet property="gettheresearchHSCheckBox" destination="yPo-s7-BpE" id="3EG-iX-ykr"/>
                         <outlet property="illRequestCheckBox" destination="bBT-Ls-4o2" id="GZX-mH-DyH"/>
                         <outlet property="noConsoleLogCheckBox" destination="2Bt-Pf-GyI" id="Hr9-Or-fno"/>
                         <outlet property="oaButtonRequestCheckBox" destination="1rJ-to-XHx" id="4Gx-HS-8w0"/>
                         <outlet property="openCitationsCheckBox" destination="E7m-Au-t0F" id="Ite-on-qb3"/>
+                        <outlet property="searchEngineSelect" destination="o5z-Br-HzB" id="eFo-9C-MEW"/>
                     </connections>
                 </viewController>
                 <customObject id="Ppl-fj-736" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-309" y="453"/>
+            <point key="canvasLocation" x="-312" y="452.5"/>
         </scene>
         <!--Institutional Settings-->
         <scene sceneID="sii-Mu-s8B">
@@ -507,7 +521,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                 <rect key="frame" x="-2" y="0.0" width="529" height="32"/>
                                                 <textFieldCell key="cell" id="4SS-by-Tr0">
                                                     <font key="font" metaFont="system"/>
-                                                    <string key="title">If your institution is registered with Open Access Helper, this settings screen helps you activate your EZProxy Remote Access, or a Document Request Form.</string>
+                                                    <string key="title">If your institution is registered with Open Access Helper, this settings screen helps you activate Remote Access, or a Document Request Form.</string>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -913,7 +927,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                     <action selector="privacyPolicyClicked:" target="MzQ-ai-HIa" id="gOw-Gl-ycy"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jyR-kC-Ywr">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jyR-kC-Ywr">
                                 <rect key="frame" x="172" y="13" width="123" height="32"/>
                                 <buttonCell key="cell" type="push" title="Tell me more..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fup-1k-vH1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -934,7 +948,8 @@ If you need to reach me, please click the Contact Me button below!</string>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ESB-2p-HiO" secondAttribute="trailing" constant="40" id="0Hd-9i-ovb"/>
-                            <constraint firstItem="jyR-kC-Ywr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bH1-WF-hYl" secondAttribute="trailing" constant="35" id="4dC-Bs-Ufe"/>
+                            <constraint firstItem="jyR-kC-Ywr" firstAttribute="leading" secondItem="bH1-WF-hYl" secondAttribute="trailing" constant="35" id="4dC-Bs-Ufe"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dNg-VD-ghF" secondAttribute="trailing" constant="20" symbolic="YES" id="8ir-4e-uNw"/>
                             <constraint firstItem="dNg-VD-ghF" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="EiA-gA-I4d"/>
                             <constraint firstItem="bH1-WF-hYl" firstAttribute="baseline" secondItem="jyR-kC-Ywr" secondAttribute="baseline" id="FJl-e5-HAl"/>
                             <constraint firstItem="ESB-2p-HiO" firstAttribute="leading" secondItem="HbZ-Jr-BW7" secondAttribute="leading" constant="40" id="RWF-D3-yDg"/>
@@ -942,6 +957,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                             <constraint firstItem="ESB-2p-HiO" firstAttribute="top" secondItem="HbZ-Jr-BW7" secondAttribute="top" constant="50" id="eys-TP-UEc"/>
                             <constraint firstAttribute="bottom" secondItem="bH1-WF-hYl" secondAttribute="bottom" constant="20" symbolic="YES" id="rb2-ai-Vk8"/>
                             <constraint firstItem="dNg-VD-ghF" firstAttribute="top" secondItem="HbZ-Jr-BW7" secondAttribute="top" constant="10" id="wa8-pf-sty"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jyR-kC-Ywr" secondAttribute="trailing" constant="20" symbolic="YES" id="xCa-kh-ZAi"/>
                             <constraint firstItem="bH1-WF-hYl" firstAttribute="leading" secondItem="ESB-2p-HiO" secondAttribute="leading" id="yfx-EW-wRc"/>
                         </constraints>
                     </view>
@@ -1000,7 +1016,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="DateCellId" id="GpD-yP-8Ti">
-                                                            <rect key="frame" x="1" y="1" width="115" height="17"/>
+                                                            <rect key="frame" x="11" y="1" width="115" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8oI-Ym-L9E">
@@ -1039,7 +1055,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="TitleCellId" id="BtW-NJ-Qhh">
-                                                            <rect key="frame" x="119" y="1" width="330" height="17"/>
+                                                            <rect key="frame" x="129" y="1" width="330" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-oG-Sxb">
@@ -1065,7 +1081,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="140" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
+                                                <tableColumn width="111" minWidth="40" maxWidth="1000" id="qGm-bQ-og1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="URL">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -1078,11 +1094,11 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="UrlCellId" id="ekT-g3-87C">
-                                                            <rect key="frame" x="452" y="1" width="144" height="17"/>
+                                                            <rect key="frame" x="462" y="1" width="115" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="box-k0-Vhn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="144" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="lvO-vG-6qw"/>
                                                                     </constraints>
@@ -1254,7 +1270,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                     </connections>
                 </windowController>
             </objects>
-            <point key="canvasLocation" x="-1504" y="-696"/>
+            <point key="canvasLocation" x="-1606" y="-686"/>
         </scene>
         <!--Open Access Helper-->
         <scene sceneID="11Y-1U-yYL">

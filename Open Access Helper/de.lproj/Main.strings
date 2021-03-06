@@ -190,20 +190,11 @@
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "xpj-jN-908"; */
 "xpj-jN-908.title" = "Table View Cell";
 
-/* Class = "NSButtonCell"; title = "base-search.net"; ObjectID = "E5Y-zn-Amu"; */
-"E5Y-zn-Amu.title" = "base-search.net";
-
-/* Class = "NSButtonCell"; title = "core.ac.uk"; ObjectID = "PmR-Jf-2Mz"; */
-"PmR-Jf-2Mz.title" = "core.ac.uk";
-
 /* Class = "NSTextFieldCell"; title = "Highlight & Search"; ObjectID = "skg-S1-2HM"; */
 "skg-S1-2HM.title" = "Highlight & Search";
 
 /* Class = "NSWindow"; title = "Open Access Helper"; ObjectID = "vZx-Nd-Q7l"; */
 "vZx-Nd-Q7l.title" = "Open Access Helper";
-
-/* Class = "NSButtonCell"; title = "gettheresearch.com"; ObjectID = "yaq-Tp-X4R"; */
-"yaq-Tp-X4R.title" = "gettheresearch.com";
 
 /* Class = "NSButtonCell"; title = "Show CORE Recommender, if there is no Open Access"; ObjectID = "evK-lJ-UtH"; */
 "evK-lJ-UtH.title" = "CORE Recommender zeigen, wenn kein Open Access gefunden wurde";
@@ -211,7 +202,7 @@
 /* Class = "NSButtonCell"; title = "Test Setting"; ObjectID = "1IN-JA-aq4"; */
 "1IN-JA-aq4.title" = "EZProxy testen";
 
-/* Class = "NSTextFieldCell"; title = "If your institution is registered with Open Access Helper, this settings screen helps you activate your EZProxy Remote Access, or a Document Request Form."; ObjectID = "4SS-by-Tr0"; */
+/* Class = "NSTextFieldCell"; title = "If your institution is registered with Open Access Helper, this settings screen helps you activate Remote Access, or a Document Request Form."; ObjectID = "4SS-by-Tr0"; */
 "4SS-by-Tr0.title" = "Sofern Ihre Institution bei Open Access Helper registriert ist, können Sie die Daten für Ihren EZProxy Server oder das Anfrageformular hier nachschlagen.";
 
 /* Class = "NSButtonCell"; title = "Save Setting"; ObjectID = "BDQ-uN-9q5"; */
@@ -306,3 +297,30 @@
 
 /* Class = "NSTextFieldCell"; title = "EZProxy Server"; ObjectID = "zaJ-1s-zoe"; */
 "zaJ-1s-zoe.title" = "EZProxy Server";
+
+/* Class = "NSMenuItem"; title = "CORE"; ObjectID = "0zJ-o0-hZu"; */
+"0zJ-o0-hZu.title" = "CORE";
+
+/* Class = "NSMenuItem"; title = "Disable this feature"; ObjectID = "28A-l1-fgl"; */
+"28A-l1-fgl.title" = "Diese Funktion deaktivieren";
+
+/* Class = "NSMenu"; title = "Select Search Engine"; ObjectID = "6OS-yV-cKY"; */
+"6OS-yV-cKY.title" = "Suchmaschine auswählen";
+
+/* Class = "NSMenuItem"; title = "Google Scholar"; ObjectID = "6h3-GV-iKv"; */
+"6h3-GV-iKv.title" = "Google Scholar";
+
+/* Class = "NSMenuItem"; title = "Microsoft Academic"; ObjectID = "9v3-ju-nvY"; */
+"9v3-ju-nvY.title" = "Microsoft Academic";
+
+/* Class = "NSMenuItem"; title = "BASE"; ObjectID = "Fdz-Ja-zIB"; */
+"Fdz-Ja-zIB.title" = "BASE";
+
+/* Class = "NSMenuItem"; title = "Select Search Engine"; ObjectID = "Ubk-KE-dgE"; */
+"Ubk-KE-dgE.title" = "Suchmaschine auswählen";
+
+/* Class = "NSMenuItem"; title = "Semantic Scholar"; ObjectID = "gc9-dJ-gJU"; */
+"gc9-dJ-gJU.title" = "Semantic Scholar";
+
+/* Class = "NSMenuItem"; title = "Dimensions.ai"; ObjectID = "mBB-6u-BIB"; */
+"mBB-6u-BIB.title" = "Dimensions.ai";
