@@ -11,7 +11,7 @@ import WebKit
 
 class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelegate{
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet var webView: WKWebView!
     let preferences = Preferences()
     
     static let shared: SafariExtensionViewController = {
@@ -25,7 +25,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
     }
     
     override func viewDidLoad() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
+        view = webView
     }
 
     override func viewWillAppear() {
@@ -117,7 +120,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
             </head>
             <body>
                 <div id="header">
-                    <a href="oahelper://settings/" id="configurationlink" target="_blank"><img src="gear.svg" id="oah_settings_icon" alt="settings icon" title="Configure the extension"></a>
+                    <a href="oahelper://settings/" id="configurationlinktop" target="_blank"><img src="gear.svg" id="oah_settings_icon" alt="settings icon" title="Configure the extension"></a>
                     <img src="oahelper_black.svg" id="oahelpericon">Open Access Helper
                 </div>
                 <div id="popupanswer">\(buttons)</div>
@@ -125,7 +128,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
             </body>
             </html>
         """
-        webView.loadHTMLString(popupHtml, baseURL: Bundle.main.resourceURL)
+        if let baseUrl = Bundle.main.resourceURL {
+            webView.loadHTMLString(popupHtml, baseURL: baseUrl)
+        }
+        else{
+            print("could not unwrap baseUrl")
+        }
+        
     }
     
     func onProxiedDomain(ezproxyPrefix: String, currentUrl: String) -> Bool{
