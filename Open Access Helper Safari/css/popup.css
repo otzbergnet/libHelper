@@ -194,6 +194,14 @@ label{
     font-style: italic;
 }
 
+#configurationlinktop > img {
+    padding: 2px;
+    border-bottom: 1px solid #ffffff;
+}
+#configurationlinktop > img:hover{
+    border-bottom: 1px solid #F09819;
+}
+
 #sadbabyimg{
     width: 33%;
     display: block;
