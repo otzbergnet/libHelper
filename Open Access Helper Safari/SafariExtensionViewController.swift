@@ -11,7 +11,7 @@ import WebKit
 
 class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelegate{
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet var webView: WKWebView!
     let preferences = Preferences()
     
     static let shared: SafariExtensionViewController = {
@@ -25,7 +25,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
     }
     
     override func viewDidLoad() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
+        view = webView
     }
 
     override func viewWillAppear() {
@@ -125,7 +128,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
             </body>
             </html>
         """
-        webView.loadHTMLString(popupHtml, baseURL: Bundle.main.resourceURL)
+        if let baseUrl = Bundle.main.resourceURL {
+            webView.loadHTMLString(popupHtml, baseURL: baseUrl)
+        }
+        else{
+            print("could not unwrap baseUrl")
+        }
+        
     }
     
     func onProxiedDomain(ezproxyPrefix: String, currentUrl: String) -> Bool{
