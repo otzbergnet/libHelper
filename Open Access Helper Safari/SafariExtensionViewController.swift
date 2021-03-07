@@ -120,7 +120,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
             </head>
             <body>
                 <div id="header">
-                    <a href="oahelper://settings/" id="configurationlink" target="_blank"><img src="gear.svg" id="oah_settings_icon" alt="settings icon" title="Configure the extension"></a>
+                    <a href="oahelper://settings/" id="configurationlinktop" target="_blank"><img src="gear.svg" id="oah_settings_icon" alt="settings icon" title="Configure the extension"></a>
                     <img src="oahelper_black.svg" id="oahelpericon">Open Access Helper
                 </div>
                 <div id="popupanswer">\(buttons)</div>
