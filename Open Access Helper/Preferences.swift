@@ -14,18 +14,27 @@ class Preferences: NSViewController {
     
     func isSetup() -> Bool{
         if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
+            if(defaults.bool(forKey: "setup_2021_01")){
+                //we are fully setup, nothing needs to happen
+                return true
+            }
             if(defaults.bool(forKey: "setup_2020_04")){
                 //we are fully setup, nothing needs to happen
+                defaults.set(1, forKey: "searchengine")
+                defaults.set(true, forKey: "setup_2021_01")
                 return true
             }
             if(defaults.bool(forKey: "setup_2020_03")){
                 //we are partially setup...
+                defaults.set(1, forKey: "searchengine")
+                defaults.set(true, forKey: "setup_2021_01")
                 return true
             }
             if(defaults.bool(forKey: "setup_2020_02")){
                 //we are partially setup, need to do opencitations
                 defaults.set(true, forKey: "opencitations")
                 defaults.set(true, forKey: "setup_2020_03")
+                defaults.set(1, forKey: "searchengine")
                 return true
             }
             if(defaults.bool(forKey: "setup_2020_01")){
@@ -33,6 +42,7 @@ class Preferences: NSViewController {
                 convertOldStatsToNewStats()
                 //now set true for current version
                 defaults.set(true, forKey: "setup_2020_03")
+                defaults.set(1, forKey: "searchengine")
                 return true
             }
             if(defaults.bool(forKey: "setup")){
@@ -41,6 +51,7 @@ class Preferences: NSViewController {
                 convertOldStatsToNewStats()
                 //now set true for current version
                 defaults.set(true, forKey: "setup_2020_03")
+                defaults.set(1, forKey: "searchengine")
                 //now we can return true, as we are fully setup
                 return true
             }
@@ -55,7 +66,7 @@ class Preferences: NSViewController {
     
     func doSetup(){
         if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
-            defaults.set(true, forKey: "setup_2020_03")
+            defaults.set(true, forKey: "setup_2021_01")
             defaults.set(true, forKey: "core")
             defaults.set(false, forKey: "oabutton")
             defaults.set(true, forKey: "oabrequest")
