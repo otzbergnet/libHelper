@@ -160,6 +160,8 @@ class EZProxyController: NSViewController {
                                 self.preferences.setStringValue(key: "ezproxyPrefix", value: proxyPrefix)
                                 if let ill = proxyList.first?.ill {
                                     self.preferences.setStringValue(key: "illUrl", value: ill.replacingOccurrences(of: "{doi}", with: ""))
+                                    self.preferences.setValue(key: "ill", value: true)
+                                    self.preferences.setValue(key: "oabrequest", value: false)
                                 }
                                 if let instituteId = proxyList.first?.id{
                                     self.preferences.setStringValue(key: "instituteId", value: instituteId)
