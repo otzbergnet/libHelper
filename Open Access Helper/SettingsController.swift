@@ -27,6 +27,9 @@ class SettingsController: NSViewController {
         if(!preferences.isSetup()){
             preferences.doSetup()
         }
+    }
+    
+    override func viewWillAppear() {
         setAllCheckBoxes()
         setSearchEngine()
     }
