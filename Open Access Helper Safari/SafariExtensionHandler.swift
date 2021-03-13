@@ -3,7 +3,7 @@
 //  libHelper Safari
 //
 //  Created by Claus Wolf on 28.10.18.
-//  Copyright © 2018 Claus Wolf. All rights reserved.
+//  Copyright © 2018-2021 Claus Wolf. All rights reserved.
 //
 
 import Foundation
@@ -165,7 +165,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         searchEngine.insert("core.ac.uk", at: 2)
         searchEngine.insert("scholar.google.com", at: 3)
         searchEngine.insert("semanticscholar.org", at: 4)
-        searchEngine.insert("app.dimensions.ai", at: 5) 
+        searchEngine.insert("app.dimensions.ai", at: 5)
+        searchEngine.insert("Microsoft Academic", at: 6)
         
         
         if let myUserInfo = userInfo{
@@ -178,29 +179,25 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             else{
                 mySubstring = selectedText
             }
-            var myContextLabel = "\(searchEngine[searchEngineTag]) \(String(format: NSLocalizedString(" search for: \"%@\"", comment: "changes Context Label"), String(mySubstring)))"
+            
+            var myContextLabel = "\(searchEngine[searchEngineTag])\(String(format: NSLocalizedString(" search for: \"%@\"", comment: "changes Context Label"), String(mySubstring)))"
+            
             if(command == "oasearch" && selectedText.count > 0){
-                myContextLabel = "\(searchEngine[searchEngineTag]) \(String(format: NSLocalizedString(" search for: \"%@\"", comment: "changes Context Label"), String(mySubstring)))"
+                myContextLabel = "\(searchEngine[searchEngineTag])\(String(format: NSLocalizedString(" search for: \"%@\"", comment: "changes Context Label"), String(mySubstring)))"
             }
             else if(command == "oasearch" && selectedText.count == 0){
-                myContextLabel = "\(String(format: NSLocalizedString("Visit ", comment: "changes Context Label, base-search-net"), String(mySubstring))) \(searchEngine[searchEngineTag])"
+                myContextLabel = "\(String(format: NSLocalizedString("Visit ", comment: "changes Context Label, base-search-net"), String(mySubstring)))\(searchEngine[searchEngineTag])"
             }
+
+            //we only have one command so we are not even going to check
             
-            
-            //validationHandler(false, myContextLabel)
-            
-            switch (command){
-            case "oasearch":
-                if(searchEngineTag > 0){
-                    print("searchEngineTag greater 0")
-                    validationHandler(false, myContextLabel)
-                }
-                else{
-                    print("searchEngineTag equals 0")
-                    validationHandler(true, myContextLabel)
-                }
-            default:
-                NSLog("wbm_log: apparently we found a new command that we didn't code for. bummer...")
+            if(searchEngineTag > 0){
+//                print("searchEngineTag \(searchEngineTag) greater 0")
+                validationHandler(false, myContextLabel)
+            }
+            else{
+//                print("searchEngineTag equals 0")
+                validationHandler(true, nil)
             }
             
         }
@@ -260,10 +257,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             myurl = "https://core.ac.uk/"
         }
         else if(command == "oasearch" && count > 0 && searchEngineTag == 3){ // microsoft academic
-            myurl = "https://academic.microsoft.com/search?q=\(searchTerm!)"
+            myurl = "https://scholar.google.com/scholar?q=\(searchTerm!)"
         }
         else if(command == "oasearch" && count == 0 && searchEngineTag == 3){
-            myurl = "https://academic.microsoft.com/"
+            myurl = "https://scholar.google.com"
         }
         else if(command == "oasearch" && count > 0 && searchEngineTag == 4){ // semantic
             myurl = "https://www.semanticscholar.org/search?q=\(searchTerm!)&sort=relevance"
@@ -276,6 +273,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         else if(command == "oasearch" && count == 0 && searchEngineTag == 5){
             myurl = "https://app.dimensions.ai/"
+        }
+        else if(command == "oasearch" && count > 0 && searchEngineTag == 6){  // Dimensions
+            myurl = "https://academic.microsoft.com/search?q=\(searchTerm!)&f=&orderBy=0&skip=0&take=10"
+        }
+        else if(command == "oasearch" && count == 0 && searchEngineTag == 6){
+            myurl = "https://academic.microsoft.com/home"
         }
         
         return myurl

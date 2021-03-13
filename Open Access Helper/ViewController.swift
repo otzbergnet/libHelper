@@ -3,7 +3,7 @@
 //  libHelper
 //
 //  Created by Claus Wolf on 28.10.18.
-//  Copyright © 2018 Claus Wolf. All rights reserved.
+//  Copyright © 2018-2021 Claus Wolf. All rights reserved.
 //
 
 import Cocoa

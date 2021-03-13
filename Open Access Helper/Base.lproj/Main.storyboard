@@ -379,7 +379,7 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                 </constraints>
                                                 <popUpButtonCell key="cell" type="push" title="Select Search Engine" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="Ubk-KE-dgE" id="3DF-Zn-LSa">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
+                                                    <font key="font" metaFont="menu"/>
                                                     <menu key="menu" title="Select Search Engine" id="6OS-yV-cKY">
                                                         <items>
                                                             <menuItem title="Select Search Engine" state="on" id="Ubk-KE-dgE">
@@ -397,10 +397,10 @@ If you need to reach me, please click the Contact Me button below!</string>
                                                             <menuItem title="Google Scholar" tag="3" id="6h3-GV-iKv">
                                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                                             </menuItem>
-                                                            <menuItem title="Microsoft Academic" tag="4" id="9v3-ju-nvY">
+                                                            <menuItem title="Microsoft Academic" tag="6" id="9v3-ju-nvY">
                                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                                             </menuItem>
-                                                            <menuItem title="Semantic Scholar" tag="5" id="gc9-dJ-gJU">
+                                                            <menuItem title="Semantic Scholar" tag="4" id="gc9-dJ-gJU">
                                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                                             </menuItem>
                                                             <menuItem title="Disable this feature" id="28A-l1-fgl">
