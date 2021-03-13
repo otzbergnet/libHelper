@@ -3,7 +3,7 @@
 //  Open Access Helper
 //
 //  Created by Claus Wolf on 10.11.18.
-//  Copyright © 2018 Claus Wolf. All rights reserved.
+//  Copyright © 2018-2021 Claus Wolf. All rights reserved.
 //
 
 import Cocoa

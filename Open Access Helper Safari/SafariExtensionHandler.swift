@@ -3,7 +3,7 @@
 //  libHelper Safari
 //
 //  Created by Claus Wolf on 28.10.18.
-//  Copyright © 2018 Claus Wolf. All rights reserved.
+//  Copyright © 2018-2021 Claus Wolf. All rights reserved.
 //
 
 import Foundation
@@ -192,11 +192,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             //we only have one command so we are not even going to check
             
             if(searchEngineTag > 0){
-                print("searchEngineTag \(searchEngineTag) greater 0")
+//                print("searchEngineTag \(searchEngineTag) greater 0")
                 validationHandler(false, myContextLabel)
             }
             else{
-                print("searchEngineTag equals 0")
+//                print("searchEngineTag equals 0")
                 validationHandler(true, nil)
             }
             
