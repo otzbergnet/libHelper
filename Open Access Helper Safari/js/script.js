@@ -702,6 +702,9 @@ function alternativeOA(message, oab, doistring){
       oah_processedSinglePageApplication = true;
       setTimeout(findDoi, 2500);
     }
+    else if (host.indexOf('tandfonline.com') > -1 && path.indexOf('/doi/full/')){
+        doTandFOnline(oab, doistring, host);
+    }
     else if(message != undefined && message == "y"){
         doConsoleLog("Open Access Helper (Safari Extension): no Open Access Found");
         requestDocument(oab, doistring);
@@ -1202,6 +1205,19 @@ function doSpringerLink(oab, doistring, host){
         requestDocument(oab, doistring);
     }
 }
+
+function doTandFOnline(oab, doistring, host){
+   doConsoleLog(chrome.i18n.getMessage('content_console_013', host));
+   const toCheck = document.querySelectorAll('div.accessIconLocation');
+   if (toCheck.length > 0 && toCheck[0].alt == 'Open access' && getMeta('citation_fulltext_world_readable').length > 0){
+     doConsoleLog('Open Access Helper (Chrome Extension): We found Open Access');
+     successfulAlternativeOAFound(window.location.href, 'Open Access', true, doistring);
+   }
+   else{
+     doConsoleLog(chrome.i18n.getMessage('content_console_012'));
+     requestDocument(oab, doistring);
+   }
+ }
 
 function doPsycNet(){
     if(((window.location.pathname.indexOf("/search/display") > -1) || (window.location.pathname.indexOf("/record/") > - 1) || (window.location.pathname.indexOf("/fulltext/") > -1)) && oah_processedSinglePageApplication == false){
