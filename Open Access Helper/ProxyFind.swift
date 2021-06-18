@@ -125,5 +125,6 @@ struct ProxyInstitute : Decodable{
     var institution = ""
     var proxyUrl = ""
     var ill = ""
+    var domainUrl = ""
     var country = ""
 }

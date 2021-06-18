@@ -701,7 +701,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.3;
+				MARKETING_VERSION = 2021.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -727,7 +727,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.3;
+				MARKETING_VERSION = 2021.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -751,7 +751,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.3;
+				MARKETING_VERSION = 2021.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -775,7 +775,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.3;
+				MARKETING_VERSION = 2021.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
