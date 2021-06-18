@@ -169,6 +169,9 @@ class EZProxyController: NSViewController {
                                 if let instituteName = proxyList.first?.institution{
                                     self.preferences.setStringValue(key: "instituteName", value: instituteName)
                                 }
+                                if let domainUrl = proxyList.first?.proxyUrl {
+                                    self.preferences.setStringValue(key: "domainUrl", value: domainUrl)
+                                }
                                 self.getProxyForTextfield()
                                 self.getIllForTextField()
                                 self.searchDomainLabel.stringValue = NSLocalizedString("Successfuly, saved!", comment: "if proxy was successfully saved")
