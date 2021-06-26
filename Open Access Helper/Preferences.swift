@@ -161,6 +161,22 @@ class Preferences: NSViewController {
         return date
     }
     
+    func setStringArray(array : [String], key: String){
+        if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
+            defaults.set(array, forKey: key)
+        }
+    }
+    
+    func getStringArray(key: String) -> [String] {
+        if let defaults = UserDefaults(suiteName: "J3PNNM2UXC.otzshare"){
+            if let stringArray = defaults.stringArray(forKey: key) {
+                return stringArray
+            }
+        }
+        
+        return [""]
+    }
+    
     // MARK: - Old Stats Related Functions
     
     func readSettings(file: String) -> String{
