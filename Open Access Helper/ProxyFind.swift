@@ -25,9 +25,13 @@ class ProxyFind {
     }
         
     func askForProxy(domain : String, searchType: String, completion: @escaping (Result<[ProxyInstitute], Error>) -> ()){
+        //supported "domain", "query", "id"
         var type = "domain"
         if(searchType == "Name"){
             type = "query"
+        }
+        else if(searchType == "id"){
+            type = "id"
         }
         
         let apiKey = self.getAPIKeyFromPlist(type: "coreRecommender")

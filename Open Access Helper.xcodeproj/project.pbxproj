@@ -46,6 +46,7 @@
 		2D655F1221A0036F0092E480 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D655F1421A0036F0092E480 /* Localizable.strings */; };
 		2D924383219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924381219E7DCA000E8F74 /* InfoPlist.strings */; };
 		2D924386219E7DCA000E8F74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D924384219E7DCA000E8F74 /* InfoPlist.strings */; };
+		2DA8D4742688937800BAF569 /* ProxyFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17FB9323F426D000BF5620 /* ProxyFind.swift */; };
 		2DAF938B23E15DAA0023FC51 /* EZProxyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAF938923E15DAA0023FC51 /* EZProxyController.swift */; };
 		2DC8627C23C23330007DF1AA /* core_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DC8627B23C23330007DF1AA /* core_logo.svg */; };
 		2DD336A923C1B025004A34C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD336A823C1B025004A34C5 /* Extensions.swift */; };
@@ -495,6 +496,7 @@
 				2D3F8FC42185863C0095ACD7 /* SafariExtensionViewController.swift in Sources */,
 				2D3F8FC22185863C0095ACD7 /* SafariExtensionHandler.swift in Sources */,
 				2D1710D626873219007B90A5 /* domainHelper.swift in Sources */,
+				2DA8D4742688937800BAF569 /* ProxyFind.swift in Sources */,
 				2DFE4F4123B732D7006CF1AB /* BartyCrouch.swift in Sources */,
 				2D643FD1230020A800A4FA14 /* Preferences.swift in Sources */,
 			);

@@ -1073,23 +1073,33 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     func updateSettingsFromServer() {
         let compareTime = "\(NSDate().timeIntervalSince1970 - 7*24*60*60)"
         let lastUpdateTime = self.preferences.getStringValue(key: "lastUpdate")
+        let instituteId = self.preferences.getStringValue(key: "instituteId")
         
         if (compareTime < lastUpdateTime) {
             return
         }
         
-        if(self.preferences.getStringValue(key: "domainUrl") == "") {
+        if (instituteId == ""){
             return
         }
         
-        let domainHelper = DomainHelper()
-        domainHelper.saveDomainList { (res) in
+        let proxyFind = ProxyFind()
+        print("\(instituteId)")
+        proxyFind.askForProxy(domain: "\(instituteId)", searchType: "id") { (res) in
             switch (res) {
-            case .success(_):
-                print("successfully saved proxy domains")
-                self.preferences.setStringValue(key: "lastUpdate", value: "\(NSDate().timeIntervalSince1970)")
+            case .success(let proxyList):
+                if(proxyList.count == 1){
+                    proxyFind.processProxyList(proxyList: proxyList) { (res1) in
+                        switch res1 {
+                        case .success(_):
+                            print("Successfully processed Proxy List")
+                        case .failure(_):
+                            print("Failed processed Proxy List")
+                        }
+                    }
+                }
             case .failure(_):
-                print("failed to save proxy domains")
+                print("Failed to get proxy list")
             }
         }
 
