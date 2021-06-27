@@ -153,6 +153,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
     func shouldProxy(currentUrl: String) -> Bool {
         
         let domainUrls = self.preferences.getStringArray(key: "instituteDomains")
+                
+        if (domainUrls.count == 0){
+            return true
+        }
         for url in domainUrls {
             if currentUrl.contains(url) {
                 return true
