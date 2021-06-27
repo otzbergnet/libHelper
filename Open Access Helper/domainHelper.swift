@@ -64,5 +64,10 @@ class DomainHelper {
         
     }
     
+    func clearDomainList(completion: @escaping (Result<Bool, Error>) -> ()){
+        self.preferences.setStringArray(array: [], key: "instituteDomains")
+        completion(.success(true))
+    }
+    
     
 }

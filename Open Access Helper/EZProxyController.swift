@@ -197,7 +197,12 @@ class EZProxyController: NSViewController {
             }
             if let domainUrl = proxyList.first?.domainUrl {
                 self.preferences.setStringValue(key: "domainUrl", value: domainUrl)
-                self.saveDomains()
+                if(domainUrl != ""){
+                    self.saveDomains()
+                }
+                else {
+                    self.clearDomains()
+                }
             }
             self.preferences.setStringValue(key: "lastUpdate", value: "\(NSDate().timeIntervalSince1970)")
             completion(.success([true]))
@@ -223,6 +228,20 @@ class EZProxyController: NSViewController {
                     print("successfully saved domainList")
                 case .failure(_):
                     print("failure while saving domainList")
+                }
+            }
+        }
+    }
+    
+    func clearDomains(){
+        DispatchQueue.main.async {
+            let domainHelper = DomainHelper()
+            domainHelper.clearDomainList() { (res2) in
+                switch res2 {
+                case .success(_):
+                    print("successfully cleared domainList")
+                case .failure(_):
+                    print("failure while clearing domainList")
                 }
             }
         }

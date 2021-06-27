@@ -71,7 +71,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
         let instituteName = self.preferences.getStringValue(key: "instituteName")
         
 
-        if (ezproxyPrefix != "" && popupAnswer.currentUrl != "" && !onProxiedDomain(ezproxyPrefix: ezproxyPrefix, currentUrl: popupAnswer.currentUrl)) {
+        if (ezproxyPrefix != "" && popupAnswer.currentUrl != "" && !onProxiedDomain(ezproxyPrefix: ezproxyPrefix, currentUrl: popupAnswer.currentUrl) && shouldProxy(currentUrl: popupAnswer.currentUrl)) {
             let currentUrl = URL(string: popupAnswer.currentUrl)
             if let domain = currentUrl?.host{
                 var urltoproxy = domain;
@@ -145,6 +145,17 @@ class SafariExtensionViewController: SFSafariExtensionViewController, WKUIDelega
             let testUrl = newUrlParts.joined(separator: ".")
             if(currentUrl.contains(testUrl)){
                 return true;
+            }
+        }
+        return false
+    }
+    
+    func shouldProxy(currentUrl: String) -> Bool {
+        
+        let domainUrls = self.preferences.getStringArray(key: "instituteDomains")
+        for url in domainUrls {
+            if currentUrl.contains(url) {
+                return true
             }
         }
         return false
