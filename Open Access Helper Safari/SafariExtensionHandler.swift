@@ -136,6 +136,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
         
+        updateSettingsFromServer()
+        
     }
     
 //    override func toolbarItemClicked(in window: SFSafariWindow) {
@@ -1066,6 +1068,29 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
         }.resume()
         
+    }
+    
+    func updateSettingsFromServer() {
+        let compareTime = "\(NSDate().timeIntervalSince1970 - 7*24*60*60)"
+        let lastUpdateTime = self.preferences.getStringValue(key: "lastUpdate")
+        
+        if (compareTime < lastUpdateTime) {
+            return
+        }
+        if(self.preferences.getStringValue(key: "domainUrl") == "") {
+            return
+        }
+        
+        let domainHelper = DomainHelper()
+        domainHelper.saveDomainList { (res) in
+            switch (res) {
+            case .success(_):
+                print("successfully saved proxy domains")
+            case .failure(_):
+                print("failed to save proxy domains")
+            }
+        }
+
     }
     
 }
