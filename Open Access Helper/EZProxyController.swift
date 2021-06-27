@@ -153,7 +153,7 @@ class EZProxyController: NSViewController {
                         self.updateSearchDomainLabel(stringValue: NSLocalizedString("No match was found", comment: "if 0 hits returned"), textColor: .black)
                     }
                     else if(proxyList.count == 1){
-                        self.processProxyList(proxyList: proxyList) { (res1) in
+                        self.proxyFind.processProxyList(proxyList: proxyList) { (res1) in
                             switch res1 {
                             case .success(_):
                                 DispatchQueue.main.async {
@@ -181,36 +181,7 @@ class EZProxyController: NSViewController {
         }
     }
     
-    func  processProxyList(proxyList: [ProxyInstitute], completion: @escaping (Result<[Bool], Error>) -> ()){
-        if let proxyPrefix = proxyList.first?.proxyUrl.replacingOccurrences(of: "{targetUrl}", with: ""){
-            self.preferences.setStringValue(key: "ezproxyPrefix", value: proxyPrefix)
-            if let ill = proxyList.first?.ill {
-                self.preferences.setStringValue(key: "illUrl", value: ill.replacingOccurrences(of: "{doi}", with: ""))
-                self.preferences.setValue(key: "ill", value: true)
-                self.preferences.setValue(key: "oabrequest", value: false)
-            }
-            if let instituteId = proxyList.first?.id{
-                self.preferences.setStringValue(key: "instituteId", value: instituteId)
-            }
-            if let instituteName = proxyList.first?.institution{
-                self.preferences.setStringValue(key: "instituteName", value: instituteName)
-            }
-            if let domainUrl = proxyList.first?.domainUrl {
-                self.preferences.setStringValue(key: "domainUrl", value: domainUrl)
-                if(domainUrl != ""){
-                    self.saveDomains()
-                }
-                else {
-                    self.clearDomains()
-                }
-            }
-            self.preferences.setStringValue(key: "lastUpdate", value: "\(NSDate().timeIntervalSince1970)")
-            completion(.success([true]))
-        }
-        else {
-            completion(.failure(NSError(domain: "", code: 400, userInfo: ["description" : "no valid proxyPrefix found"])))
-        }
-    }
+    
     
     func updateSearchDomainLabel(stringValue: String, textColor: NSColor) {
         DispatchQueue.main.async {
@@ -219,33 +190,7 @@ class EZProxyController: NSViewController {
         }
     }
     
-    func saveDomains() {
-        DispatchQueue.main.async {
-            let domainHelper = DomainHelper()
-            domainHelper.saveDomainList() { (res2) in
-                switch res2 {
-                case .success(_):
-                    print("successfully saved domainList")
-                case .failure(_):
-                    print("failure while saving domainList")
-                }
-            }
-        }
-    }
     
-    func clearDomains(){
-        DispatchQueue.main.async {
-            let domainHelper = DomainHelper()
-            domainHelper.clearDomainList() { (res2) in
-                switch res2 {
-                case .success(_):
-                    print("successfully cleared domainList")
-                case .failure(_):
-                    print("failure while clearing domainList")
-                }
-            }
-        }
-    }
     
 }
 

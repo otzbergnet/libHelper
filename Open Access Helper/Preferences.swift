@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Preferences: NSViewController {
+class Preferences {
     
     
     

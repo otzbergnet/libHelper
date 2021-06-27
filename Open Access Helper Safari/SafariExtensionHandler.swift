@@ -1077,6 +1077,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         if (compareTime < lastUpdateTime) {
             return
         }
+        
         if(self.preferences.getStringValue(key: "domainUrl") == "") {
             return
         }
@@ -1086,6 +1087,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             switch (res) {
             case .success(_):
                 print("successfully saved proxy domains")
+                self.preferences.setStringValue(key: "lastUpdate", value: "\(NSDate().timeIntervalSince1970)")
             case .failure(_):
                 print("failed to save proxy domains")
             }

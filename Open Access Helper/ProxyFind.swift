@@ -112,6 +112,67 @@ class ProxyFind {
             
         }
     
+    func  processProxyList(proxyList: [ProxyInstitute], completion: @escaping (Result<[Bool], Error>) -> ()){
+        let preferences = Preferences();
+        
+        if let proxyPrefix = proxyList.first?.proxyUrl.replacingOccurrences(of: "{targetUrl}", with: ""){
+            preferences.setStringValue(key: "ezproxyPrefix", value: proxyPrefix)
+            if let ill = proxyList.first?.ill {
+                preferences.setStringValue(key: "illUrl", value: ill.replacingOccurrences(of: "{doi}", with: ""))
+                preferences.setValue(key: "ill", value: true)
+                preferences.setValue(key: "oabrequest", value: false)
+            }
+            if let instituteId = proxyList.first?.id{
+                preferences.setStringValue(key: "instituteId", value: instituteId)
+            }
+            if let instituteName = proxyList.first?.institution{
+                preferences.setStringValue(key: "instituteName", value: instituteName)
+            }
+            if let domainUrl = proxyList.first?.domainUrl {
+                preferences.setStringValue(key: "domainUrl", value: domainUrl)
+                if(domainUrl != ""){
+                    self.saveDomains()
+                }
+                else {
+                    self.clearDomains()
+                }
+            }
+            preferences.setStringValue(key: "lastUpdate", value: "\(NSDate().timeIntervalSince1970)")
+            completion(.success([true]))
+        }
+        else {
+            completion(.failure(NSError(domain: "", code: 400, userInfo: ["description" : "no valid proxyPrefix found"])))
+        }
+    }
+    
+    func saveDomains() {
+        DispatchQueue.main.async {
+            let domainHelper = DomainHelper()
+            domainHelper.saveDomainList() { (res2) in
+                switch res2 {
+                case .success(_):
+                    print("successfully saved domainList")
+                case .failure(_):
+                    print("failure while saving domainList")
+                }
+            }
+        }
+    }
+    
+    func clearDomains(){
+        DispatchQueue.main.async {
+            let domainHelper = DomainHelper()
+            domainHelper.clearDomainList() { (res2) in
+                switch res2 {
+                case .success(_):
+                    print("successfully cleared domainList")
+                case .failure(_):
+                    print("failure while clearing domainList")
+                }
+            }
+        }
+    }
+    
 }
 
 struct ProxyList : Decodable{
