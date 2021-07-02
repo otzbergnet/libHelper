@@ -19,7 +19,7 @@ class EZProxyController: NSViewController {
     
     @IBOutlet weak var searchTypeDropDown: NSPopUpButton!
     @IBOutlet weak var domainTextField: NSTextField!
-
+    
     @IBOutlet weak var searchButton: NSButton!
     
     @IBOutlet weak var searchDomainLabel: NSTextField!
@@ -48,7 +48,7 @@ class EZProxyController: NSViewController {
         self.searchDomainLabel.stringValue = NSLocalizedString("Search Settings by Domain (e.g. harvard.edu)", comment: "reset to default translation")
         self.searchDomainLabel.textColor = .black
     }
-
+    
     
     func showTestSettingsButton(){
         let proxyPrefix = preferences.getStringValue(key: "ezproxyPrefix") // always returns at least an empty String
@@ -94,16 +94,16 @@ class EZProxyController: NSViewController {
     
     func getProxyForTextfield(){
         let newProxyPrefix = self.preferences.getStringValue(key: "ezproxyPrefix")
-            DispatchQueue.main.async {
-                self.proxyPrefixTextField.stringValue = newProxyPrefix
-            }
+        DispatchQueue.main.async {
+            self.proxyPrefixTextField.stringValue = newProxyPrefix
+        }
     }
-
+    
     func getIllForTextField(){
         let newProxyPrefix = self.preferences.getStringValue(key: "illUrl")
-            DispatchQueue.main.async {
-                self.requestFormUrl.stringValue = newProxyPrefix
-            }
+        DispatchQueue.main.async {
+            self.requestFormUrl.stringValue = newProxyPrefix
+        }
     }
     
     @IBAction func saveClicked(_ sender: Any) {
@@ -128,13 +128,13 @@ class EZProxyController: NSViewController {
         let testService = "https://www.jstor.org"
         let testUrl = proxyPrefix+testService
         if let url = URL(string: testUrl),
-            NSWorkspace.shared.open(url) {
+           NSWorkspace.shared.open(url) {
         }
     }
     
     @IBAction func lookupClicked(_ sender: Any) {
         if let url = URL(string: "https://www.oahelper.org/proxy/"),
-            NSWorkspace.shared.open(url) {
+           NSWorkspace.shared.open(url) {
         }
     }
     
@@ -150,59 +150,45 @@ class EZProxyController: NSViewController {
                 switch res{
                 case .success(let proxyList):
                     if(proxyList.count == 0){
-                        DispatchQueue.main.async {
-                            self.searchDomainLabel.stringValue = NSLocalizedString("No match was found", comment: "if 0 hits returned")
-                        }
+                        self.updateSearchDomainLabel(stringValue: NSLocalizedString("No match was found", comment: "if 0 hits returned"), textColor: .black)
                     }
                     else if(proxyList.count == 1){
-                        if let proxyPrefix = proxyList.first?.proxyUrl.replacingOccurrences(of: "{targetUrl}", with: ""){
-                            DispatchQueue.main.async {
-                                self.preferences.setStringValue(key: "ezproxyPrefix", value: proxyPrefix)
-                                if let ill = proxyList.first?.ill {
-                                    self.preferences.setStringValue(key: "illUrl", value: ill.replacingOccurrences(of: "{doi}", with: ""))
-                                    self.preferences.setValue(key: "ill", value: true)
-                                    self.preferences.setValue(key: "oabrequest", value: false)
+                        self.proxyFind.processProxyList(proxyList: proxyList) { (res1) in
+                            switch res1 {
+                            case .success(_):
+                                DispatchQueue.main.async {
+                                    self.getProxyForTextfield()
+                                    self.getIllForTextField()
                                 }
-                                if let instituteId = proxyList.first?.id{
-                                    self.preferences.setStringValue(key: "instituteId", value: instituteId)
-                                }
-                                if let instituteName = proxyList.first?.institution{
-                                    self.preferences.setStringValue(key: "instituteName", value: instituteName)
-                                }
-                                self.getProxyForTextfield()
-                                self.getIllForTextField()
-                                self.searchDomainLabel.stringValue = NSLocalizedString("Successfuly, saved!", comment: "if proxy was successfully saved")
-                                self.searchDomainLabel.textColor = .blue
+                                self.updateSearchDomainLabel(stringValue:NSLocalizedString("Successfuly, saved!", comment: "if proxy was successfully saved"), textColor: .blue)
+                            case .failure(_):
+                                self.updateSearchDomainLabel(stringValue: NSLocalizedString("We found a match, but could not get the prefix", comment: "if unable to actually get to the proxyPrefix"), textColor: .black)
                             }
                         }
-                        else{
-                            DispatchQueue.main.async {
-                                self.searchDomainLabel.stringValue = NSLocalizedString("We found a match, but could not get the prefix", comment: "if unable to actually get to the proxyPrefix")
-                            }
-                        }
-                        
                     }
                     else{
-                        DispatchQueue.main.async {
-                            self.searchDomainLabel.stringValue = NSLocalizedString("Please review your domain-name, as we were unable to find just one match", comment: "if there are more than one result")
-                        }
+                        self.updateSearchDomainLabel(stringValue: NSLocalizedString("Please review your domain-name, as we were unable to find just one match", comment: "if there are more than one result"), textColor: .black)
+                        
                     }
                 case .failure(let error):
-                    DispatchQueue.main.async {
-                        self.searchDomainLabel.stringValue = NSLocalizedString("We encountered an unexpected error", comment: "if failure received")
-                        print(error)
-                    }
+                    self.updateSearchDomainLabel(stringValue: NSLocalizedString("We encountered an unexpected error", comment: "if failure received"), textColor: .black)
+                    print(error)
                 }
             }
         }
         else{
-            DispatchQueue.main.async {
-                self.searchDomainLabel.stringValue = NSLocalizedString("Looks like the domain field was empty", comment: "if proxy field was empty")
-            }
+            self.updateSearchDomainLabel(stringValue: NSLocalizedString("Looks like the domain field was empty", comment: "if proxy field was empty"), textColor: .black)
         }
     }
     
-
+    
+    
+    func updateSearchDomainLabel(stringValue: String, textColor: NSColor) {
+        DispatchQueue.main.async {
+            self.searchDomainLabel.stringValue = stringValue
+            self.searchDomainLabel.textColor = textColor
+        }
+    }
     
     
     

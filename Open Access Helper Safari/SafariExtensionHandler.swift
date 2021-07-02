@@ -136,6 +136,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
         
+        updateSettingsFromServer()
+        
     }
     
 //    override func toolbarItemClicked(in window: SFSafariWindow) {
@@ -1066,6 +1068,41 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
         }.resume()
         
+    }
+    
+    func updateSettingsFromServer() {
+        let compareTime = "\(NSDate().timeIntervalSince1970 - 7*24*60*60)"
+        let lastUpdateTime = self.preferences.getStringValue(key: "lastUpdate")
+        let instituteId = self.preferences.getStringValue(key: "instituteId")
+        
+        if (compareTime < lastUpdateTime) {
+            return
+        }
+        
+        if (instituteId == ""){
+            return
+        }
+        
+        let proxyFind = ProxyFind()
+        print("\(instituteId)")
+        proxyFind.askForProxy(domain: "\(instituteId)", searchType: "id") { (res) in
+            switch (res) {
+            case .success(let proxyList):
+                if(proxyList.count == 1){
+                    proxyFind.processProxyList(proxyList: proxyList) { (res1) in
+                        switch res1 {
+                        case .success(_):
+                            print("Successfully processed Proxy List")
+                        case .failure(_):
+                            print("Failed processed Proxy List")
+                        }
+                    }
+                }
+            case .failure(_):
+                print("Failed to get proxy list")
+            }
+        }
+
     }
     
 }
