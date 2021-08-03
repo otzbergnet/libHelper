@@ -1010,13 +1010,43 @@ function showRecommendations(data, infoString){
     var myRecomElement = document.getElementById("oahelper_corerecommendations");
     var obj = JSON.parse(data)
     for(i=0; i<obj.length; i++){
-        var year = ""
-        if(obj[i].year != ""){
-            year = "("+obj[i].year+") ";
+        var year = "";
+        var authors = "";
+        var link = "";
+        var foundLink = false;
+        console.log(obj[i]);
+        if(obj[i].yearPublished != ""){
+            year = "("+obj[i].yearPublished+") ";
         }
+        //get three authors & et al
+        if(obj[i].authors.length > 0){
+            var maxAuthors = 3;
+            if(obj[i].authors.length < 3) {
+                maxAuthors = obj[i].authors.length;
+            }
+            for(j=0; j<maxAuthors; j++){
+                authors += obj[i].authors[j].name+"; ";
+            }
+            if (obj[i].authors.length > 3 ){
+                authors += " et al.";
+            }
+        }
+        if(obj[i].links.length > 0){
+            for(k=0; k<obj[i].links.length; k++){
+                if(obj[i].links[k].type == "download" && !foundLink){
+                    link = obj[i].links[k].url;
+                    foundLink = true;
+                }
+                if(obj[i].links[k].type == "display" && !foundLink){
+                    link = obj[i].links[k].url;
+                    foundLink = true;
+                }
+            }
+        }
+        
         var div = document.createElement('div');
         div.className = "oahelper_recommendation";
-        div.innerHTML = '<p class="oahelper_recommendation_p"><a href="'+obj[i].link+'" target="_blank" class="oahelper_recommendation_a">'+obj[i].title+'</a><br>'+year+obj[i].author+'</p>';
+        div.innerHTML = '<p class="oahelper_recommendation_p"><a href="'+link+'" target="_blank" class="oahelper_recommendation_a">'+obj[i].title+'</a><br>'+year+authors+'</p>';
         myRecomElement.appendChild(div);
     }
     
