@@ -415,11 +415,24 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         // if we got here the client wants core
         
         toolbarAction(imgName: "oahelper_black_filled.pdf")
-        let apiKey = self.getAPIKeyFromPlist(type: "apikey")
-        let jsonUrlString = "https://api.core.ac.uk/discovery/discover?doi=\(doi)&apiKey=\(apiKey)"
-        let url = URL(string: jsonUrlString)
         
-        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
+        //make request JSON
+        let json: [String: Any] = ["doi": doi]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        //prepare API call
+        let apiKey = self.getAPIKeyFromPlist(type: "core")
+        let jsonUrlString = "https://api.core.ac.uk/v3/discover"
+        guard let url = URL(string: jsonUrlString) else {
+            return
+        }
+        //setup POST REQUEST
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oahelper_black.pdf")
@@ -446,6 +459,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         //sole purpose is to dispatch the url
         do{
             let coreData = try JSONDecoder().decode(Coredata.self, from: data)
+            print(coreData)
             if let boa = coreData.fullTextLink {
                 if (boa != "") {
                     toolbarAction(imgName: "oahelper_black_filled.pdf")
