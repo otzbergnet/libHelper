@@ -700,7 +700,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 202108;
+				CURRENT_PROJECT_VERSION = 202109;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -709,7 +709,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -726,7 +726,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 202108;
+				CURRENT_PROJECT_VERSION = 202109;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper/Info.plist";
@@ -735,7 +735,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.otzberg.libHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -749,7 +749,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202108;
+				CURRENT_PROJECT_VERSION = 202109;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -759,7 +759,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -773,7 +773,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Access Helper Safari/libHelper Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202108;
+				CURRENT_PROJECT_VERSION = 202109;
 				DEVELOPMENT_TEAM = J3PNNM2UXC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Open Access Helper Safari/Info.plist";
@@ -783,7 +783,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.otzberg.libHelper.libHelper-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

@@ -114,17 +114,21 @@ struct OAReceivedObject : Decodable{
 
 // MARK:  CORE Recommender Related Structs
 
-struct CoreRecommender : Decodable{
-    var msg : String
-    var code : Int
-    var data : [CoreRecommendations]
+struct CoreRecommender : Codable{
+    var authors : [CoreRecommenderAuthor]
+    var title : String
+    var links : [CoreRecommenderLinks]?
+    var yearPublished : Int?
+    
 }
 
-struct CoreRecommendations : Codable{
-    var title : String
-    var year : String
-    var author : String
-    var link : String
+struct CoreRecommenderLinks : Codable{
+    var type : String
+    var url : String
+}
+
+struct CoreRecommenderAuthor : Codable {
+    var name : String
 }
 
 class CoreRequestObject{

@@ -415,11 +415,24 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         // if we got here the client wants core
         
         toolbarAction(imgName: "oahelper_black_filled.pdf")
-        let apiKey = self.getAPIKeyFromPlist(type: "apikey")
-        let jsonUrlString = "https://api.core.ac.uk/discovery/discover?doi=\(doi)&apiKey=\(apiKey)"
-        let url = URL(string: jsonUrlString)
         
-        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
+        //make request JSON
+        let json: [String: Any] = ["doi": doi]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        //prepare API call
+        let apiKey = self.getAPIKeyFromPlist(type: "core")
+        let jsonUrlString = "https://api.core.ac.uk/v3/discover"
+        guard let url = URL(string: jsonUrlString) else {
+            return
+        }
+        //setup POST REQUEST
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
             if let error = error{
                 //we got an error, let's tell the user
                 self.toolbarAction(imgName: "oahelper_black.pdf")
@@ -446,6 +459,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         //sole purpose is to dispatch the url
         do{
             let coreData = try JSONDecoder().decode(Coredata.self, from: data)
+            print(coreData)
             if let boa = coreData.fullTextLink {
                 if (boa != "") {
                     toolbarAction(imgName: "oahelper_black_filled.pdf")
@@ -891,10 +905,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             switch res{
             case .success(let coreRecommends):
                 // let's check if there are recommendations and then display
-                
-                if(coreRecommends.data.count > 0){
+
+                if(coreRecommends.count > 0){
                     let encoder = JSONEncoder()
-                    if let jsonData = try? encoder.encode(coreRecommends.data) {
+                    if let jsonData = try? encoder.encode(coreRecommends) {
                         if let jsonString = String(data: jsonData, encoding: .utf8) {
                             let infoString = NSLocalizedString("We found a short list of fresh papers similar to the one you are currently browsing. We hope you'll like them!", comment: "to be shown in JavaScript Popover")
                             page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "show", "data" : jsonString, "infoString": infoString])
@@ -906,7 +920,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     else{
                         page.dispatchMessageToScript(withName: "recomResults", userInfo: ["action" : "dismiss", "detail" : "unable to jsonEncode"])
                     }
-                    
+
                 }
                 else{
                     // there was nothing
@@ -922,50 +936,43 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
     }
     
-    func askForRecommendation(metaData : CoreRequestObject, completion: @escaping (Result<CoreRecommender, Error>) -> ()){
-        let apiKey = self.getAPIKeyFromPlist(type: "coreRecommender")
-        let apiEndPoint = self.getAPIKeyFromPlist(type: "coreRecommenderUrl")
+    func askForRecommendation(metaData : CoreRequestObject, completion: @escaping (Result<[CoreRecommender], Error>) -> ()){
+        let apiKey = self.getAPIKeyFromPlist(type: "core")
         if (apiKey == "") {
             //print("no API Key")
             completion(.failure(NSError(domain: "", code: 441, userInfo: ["description" : "no APIKey Present"])))
             return
         }
-        if(apiEndPoint == ""){
-            //print("no API EndPoint")
-            completion(.failure(NSError(domain: "", code: 442, userInfo: ["description" : "no API End Point Present"])))
-            return
-        }
-        let jsonUrlString = apiEndPoint
+        //make request JSON
+        let json: [String: Any] = ["limit": "3",
+                                   "identifier": "\(metaData.doi)",
+                                   "abstract": "\(metaData.aabstract)",
+                                   "authors": "\(metaData.author)",
+                                   "title": "\(metaData.title)",
+                                   "exclude": ["fullText"]
+                                    ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        //prepare API call
+        let jsonUrlString = "https://api.core.ac.uk/v3/recommend"
         guard let url = URL(string: jsonUrlString) else {
-            //print("could not create URL")
             completion(.failure(NSError(domain: "", code: 443, userInfo: ["description" : "could not create URL"])))
             return
         }
         
+        //setup POST REQUEST
         var request = URLRequest(url: url)
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue(apiKey, forHTTPHeaderField: "X-Token")
         request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         
-        let parameters: [String: Any] = [
-            "title" : metaData.title,
-            "aabstract" : metaData.aabstract,
-            "author" : metaData.author,
-            "referer" : metaData.referer,
-            "url" : metaData.fulltextUrl,
-            "doi" : metaData.doi,
-            "origin" : "macOS"
-        ]
-        
-        request.httpBody = parameters.percentEscaped().data(using: .utf8)
         let urlconfig = URLSessionConfiguration.default
         urlconfig.timeoutIntervalForRequest = 31
         urlconfig.timeoutIntervalForResource = 31
         
         let session = URLSession(configuration: urlconfig, delegate: self as? URLSessionDelegate, delegateQueue: nil)
-        //print("start recommender task")
+        
         let task = session.dataTask(with: request) {(data, response, error) in
-            //print("The core recommender task took \(timer.stop()) seconds.")
             if let error = error{
                 //we got an error, let's tell the user
                 completion(.failure(error))
@@ -973,22 +980,19 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             if let data = data {
                 //this worked just fine
-                //print("this worked fine")
                 do {
-                    print(data)
-                    let recommendations = try JSONDecoder().decode(CoreRecommender.self, from: data)
+                    let recommendations = try JSONDecoder().decode([CoreRecommender].self, from: data)
                     completion(.success(recommendations))
                 }
                 catch let jsonError{
                     //print(data)
                     //print("json decode error", jsonError)
-                    print("===== JSON String: \(String(data: data, encoding: .utf8) ?? "JSON ERROR")")
+                    print("JSON String: \(String(data: data, encoding: .utf8) ?? "JSON ERROR COULD NOT PRINT")")
                     completion(.failure(jsonError))
                 }
             }
             else{
                 //another error
-                print("another error")
                 completion(.failure(NSError(domain: "", code: 440, userInfo: ["description" : "failed to get data"])))
                 return
             }
