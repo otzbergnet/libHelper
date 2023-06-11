@@ -37,7 +37,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## PubMed
 
-* Orange [-]: https://www.ncbi.nlm.nih.gov/pubmed/30468734                          
+* Orange [OC]: https://www.ncbi.nlm.nih.gov/pubmed/30468734                          
 * Orange [OC]: https://www.ncbi.nlm.nih.gov/pubmed/30258935             
 * Green [OC]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6147107/     
 
@@ -54,7 +54,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Sage Publishing
 
-* No Badge [CORE_Recom]: https://journals.sagepub.com/doi/pdf/10.1177/001979396001400128
+* No Badge [E | CORE_Recom]: https://journals.sagepub.com/doi/pdf/10.1177/001979396001400128
 * No Badge [OAB | OC | CORE_Recom]: https://journals.sagepub.com/doi/full/10.1177/0956797616674999           
 * Orange [OC]: https://journals.sagepub.com/doi/full/10.1177/1474515116687178                
 * Green [-]: https://journals.sagepub.com/doi/full/10.1177/1536504211418465 (Open Access)               
@@ -62,24 +62,22 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Wiley
 
-* No Badge [OAB | OC | CORE_Recom]: https://iubmb.onlinelibrary.wiley.com/doi/10.1002/iub.2222                  
+* Green [OC | CORE_Recom]: https://iubmb.onlinelibrary.wiley.com/doi/10.1002/iub.2222                  
 * Green [OC]: https://stemcellsjournals.onlinelibrary.wiley.com/doi/10.1002/stem.2571        
 * Orange [OC]: https://onlinelibrary.wiley.com/iucr/doi/10.1107/S1600577517008372           
 * Green [OC]: https://onlinelibrary.wiley.com/doi/10.1002/ijc.28702                         
 
 ## IngentaConnect
 
-* No Badge [OAB | CORE_Recom]: https://www.ingentaconnect.com/content/bpl/ijc/2020/00000147/00000012/art00025  
 * Orange [OC]: https://www.ingentaconnect.com/content/wk/hyp/2018/00000071/00000001/art00017     
 * Orange [OC]: https://www.ingentaconnect.com/content/sp/mmr/2016/00000013/00000003/art00117     
-* Orange [OC]: https://www.ingentaconnect.com/content/sp/ijo/2010/00000037/00000002/art00013     
-* Green [OC]: https://www.ingentaconnect.com/contentone/cog/or/2017/00000025/00000004/art00007   
+* Orange [OC]: https://www.ingentaconnect.com/content/sp/ijo/2010/00000037/00000002/art00013 
 
 ## Springer Link
 
-* No Badge [OC | CORE_Recom]: https://link.springer.com/article/10.1007/s11684-014-0315-5         
+* No Badge [E | OC | CORE_Recom]: https://link.springer.com/article/10.1007/s11684-014-0315-5         
 * Orange [OC]: https://link.springer.com/article/10.1186/1479-5876-8-42              
-* Green[OC]: https://link.springer.com/article/10.1007/s10108-003-0072-0
+* Green [OC]: https://link.springer.com/article/10.1007/s10108-003-0072-0
 
 ## Oxford University Press
 
@@ -93,9 +91,6 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * Orange [OC]: https://www.cambridge.org/core/journals/journal-of-laryngology-and-otology/article/topical-chemoprevention-of-skin-cancer-in-mice-using-combined-inhibitors-of-5lipoxygenase-and-cyclooxygenase2/B570AB399B995BD21221D405DADAD62B     
 * Green [OC]: https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/resistant-carbohydrates-stimulate-cell-proliferation-and-crypt-fission-in-wildtype-mice-and-in-the-apcmin-mouse-model-of-intestinal-cancer-association-with-enhanced-polyp-development/DBEB6AC22DEFADC33C73411520F8FCFA    
 
-## GetTheResearch
-
-* https://gettheresearch.org -> search for -- vaccines and autism -- click on learn more next to an article
 
 ## PsycNet.apa.org
 
