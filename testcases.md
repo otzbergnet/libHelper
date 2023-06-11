@@ -30,8 +30,9 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 ## ScienceDirect
 
 * No Badge [OAB | CORE_Recom]: https://www.sciencedirect.com/science/article/pii/B9780128012383651036  
-* Orange [OC]: https://www.sciencedirect.com/science/article/pii/S0742051X16306692       
-* Green [OC]: https://www.sciencedirect.com/science/article/pii/S2352345X18301188        
+* No Badge [OC]: https://www.sciencedirect.com/science/article/pii/S0742051X16306692   
+* Orange [OC]: https://www.sciencedirect.com/science/article/pii/S2352345X18301188  
+* Green [OC]: https://www.cmghjournal.org/article/S2352-345X(18)30118-8/fulltext      
 * Orange [OC]: https://www.sciencedirect.com/science/article/pii/S0040580910000791       
 
 ## PubMed
