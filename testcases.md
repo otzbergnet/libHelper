@@ -30,7 +30,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 ## ScienceDirect
 
 * No Badge [OAB | CORE_Recom]: https://www.sciencedirect.com/science/article/pii/B9780128012383651036  
-* No Badge [OC]: https://www.sciencedirect.com/science/article/pii/S0742051X16306692   
+* Orange [OC]: https://www.sciencedirect.com/science/article/pii/S0742051X16306692   
 * Orange [OC]: https://www.sciencedirect.com/science/article/pii/S2352345X18301188  
 * Green [OC]: https://www.cmghjournal.org/article/S2352-345X(18)30118-8/fulltext      
 * Orange [OC]: https://www.sciencedirect.com/science/article/pii/S0040580910000791       
@@ -43,7 +43,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## BMJ
 
-* Green [OC]: https://ard.bmj.com/content/78/3/421 (Hybridge)            
+* Green [OC]: https://ard.bmj.com/content/78/3/421           
 
 ## IEEE:
 
@@ -54,15 +54,15 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Sage Publishing
 
-* No Badge [E | CORE_Recom]: https://journals.sagepub.com/doi/pdf/10.1177/001979396001400128
+* No Badge [E | OC | CORE_Recom]: https://journals.sagepub.com/doi/pdf/10.1177/001979396001400128
 * No Badge [OAB | OC | CORE_Recom]: https://journals.sagepub.com/doi/full/10.1177/0956797616674999           
 * Orange [OC]: https://journals.sagepub.com/doi/full/10.1177/1474515116687178                
-* Green [-]: https://journals.sagepub.com/doi/full/10.1177/1536504211418465 (Open Access)               
+* No Badge [OAB | CORE_Recom]: https://journals.sagepub.com/doi/full/10.1177/1536504211418465 (Open Access)               
 * Green [OC]: https://journals.sagepub.com/doi/abs/10.1177/1947603519828432 (unpaywall.org)   
 
 ## Wiley
 
-* Green [OC | CORE_Recom]: https://iubmb.onlinelibrary.wiley.com/doi/10.1002/iub.2222                  
+* Green [OC]: https://iubmb.onlinelibrary.wiley.com/doi/10.1002/iub.2222                  
 * Green [OC]: https://stemcellsjournals.onlinelibrary.wiley.com/doi/10.1002/stem.2571        
 * Orange [OC]: https://onlinelibrary.wiley.com/iucr/doi/10.1107/S1600577517008372           
 * Green [OC]: https://onlinelibrary.wiley.com/doi/10.1002/ijc.28702                         
@@ -97,11 +97,12 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 * Note: There is a 4.5 second delay on detecting DOIs for this SPA*
 
 * https://psycnet.apa.org -> search for -- adhd -- click an article
-* https://psycnet.apa.org/record/2019-80678-001 (recommendations & OAB)
-* https://psycnet.apa.org/doi/10.1037/neu0000590
+* Green [OC] - https://psycnet.apa.org/record/2019-80678-001
+* https://psycnet.apa.org/doi/10.1037/neu0000590 ???
 
 ## ProQuest 
 * Orange [OC]: https://www.proquest.com/docview/2246651524/BAB1D866B3CE4895PQ/7
 
 ## EBSCO example
-* Orange: Login through http://www.libraryresearch.com/ adnd search for AN 144426220    
+* Orange [OC]: Login through http://www.libraryresearch.com/ adnd search for AN 144426220    
+* https://research.ebsco.com/c/xjonn2/details/uwzhfyznmj?q=AN%20144426220
