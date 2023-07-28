@@ -23,14 +23,14 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Nature
 
-* No Badge [OAB | OC | CORE_Recom]: http://www.nature.com/articles/ngeo2372     
+* No Badge / EBSCO [OAB | OC | CORE_Recom]: http://www.nature.com/articles/ngeo2372     
 * Orange [OC]: https://www.nature.com/articles/nature21360   
 * Orange [OC]: http://www.nature.com/articles/nature17448    
 
 ## ScienceDirect
 
 * No Badge [OAB | CORE_Recom]: https://www.sciencedirect.com/science/article/pii/B9780128012383651036  
-* Orange [OC]: https://www.sciencedirect.com/science/article/pii/S0742051X16306692   
+* Orange (core) [OC]: https://www.sciencedirect.com/science/article/pii/S0742051X16306692   
 * Orange [OC]: https://www.sciencedirect.com/science/article/pii/S2352345X18301188  
 * Green [OC]: https://www.cmghjournal.org/article/S2352-345X(18)30118-8/fulltext      
 * Orange [OC]: https://www.sciencedirect.com/science/article/pii/S0040580910000791       
@@ -54,10 +54,10 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Sage Publishing
 
-* No Badge [E | OC | CORE_Recom]: https://journals.sagepub.com/doi/pdf/10.1177/001979396001400128
+* No Badge / EBSCO [CORE_Recom]: https://journals.sagepub.com/doi/pdf/10.1177/001979396001400128
 * No Badge [OAB | OC | CORE_Recom]: https://journals.sagepub.com/doi/full/10.1177/0956797616674999           
 * Orange [OC]: https://journals.sagepub.com/doi/full/10.1177/1474515116687178                
-* No Badge [OAB | CORE_Recom]: https://journals.sagepub.com/doi/full/10.1177/1536504211418465 (Open Access)               
+* Green: https://journals.sagepub.com/doi/full/10.1177/1536504211418465 (Open Access)               
 * Green [OC]: https://journals.sagepub.com/doi/abs/10.1177/1947603519828432 (unpaywall.org)   
 
 ## Wiley
@@ -75,7 +75,7 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## Springer Link
 
-* No Badge [E | OC | CORE_Recom]: https://link.springer.com/article/10.1007/s11684-014-0315-5         
+* No Badge / EBSCO [OC | CORE_Recom]: https://link.springer.com/article/10.1007/s11684-014-0315-5         
 * Orange [OC]: https://link.springer.com/article/10.1186/1479-5876-8-42              
 * Green [OC]: https://link.springer.com/article/10.1007/s10108-003-0072-0
 
@@ -105,4 +105,4 @@ Please note that I will try to limit "screen scraping" cases to the bare minimum
 
 ## EBSCO example
 * Orange [OC]: Login through http://www.libraryresearch.com/ adnd search for AN 144426220    
-* https://research.ebsco.com/c/xjonn2/details/uwzhfyznmj?q=AN%20144426220
+* Orange [OC]: https://liu.se/en/library > search for AN 144426220 
